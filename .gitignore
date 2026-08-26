@@ -1,0 +1,24 @@
+# MATLAB
+*.asv
+*.m~
+slprj/
+codegen/
+
+# backups written by SET_REFERENCE_PATH
+*.bak
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
