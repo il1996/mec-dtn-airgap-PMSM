@@ -1,0 +1,90 @@
+
+M = 
+
+  struct with fields:
+
+      Nm: 14
+       p: 7
+      Ns: 15
+       m: 3
+    Nspp: 0.3571
+     Rsi: 0.0347
+     Rso: 0.0625
+     lag: 1.0000e-03
+      hm: 0.0035
+     Rri: 0.0155
+     Rro: 0.0337
+     rmi: 0.0302
+    rmid: 0.0342
+      ls: 0.0330
+     hs0: 1.0000e-03
+     hs1: 5.0000e-04
+     hs2: 0.0196
+     ws0: 0.0020
+    wst1: 0.0085
+    wst2: 0.0085
+      hs: 0.0211
+     ws1: 6.7000
+
+
+M = 
+
+  struct with fields:
+
+      Nm: 14
+       p: 7
+      Ns: 15
+       m: 3
+    Nspp: 0.3571
+     Rsi: 0.0347
+     Rso: 0.0625
+     lag: 1.0000e-03
+      hm: 0.0035
+     Rri: 0.0155
+     Rro: 0.0337
+     rmi: 0.0302
+    rmid: 0.0342
+      ls: 0.0330
+     hs0: 1.0000e-03
+     hs1: 5.0000e-04
+     hs2: 0.0196
+     ws0: 0.0020
+    wst1: 0.0085
+    wst2: 0.0085
+      hs: 0.0211
+     ws1: 6.7000
+     ws2: 15.0322
+
+=== Ce que le DtN apporte face au MEC classique ===
+  ouverture 2.00 mm, entrefer magnetique 4.369 mm -> kC = 1.0100
+
+  modele                               Bg1 (T)      ecart    rang 8      ecart   rang 22      ecart   Bt rms      ecart
+  (N1) lisse + Carter                   1.0958      2.0 %   0.00000   -100.0 %   0.00000   -100.0 %   0.1070    -19.7 %
+  (N2) + permeance cos^2 generique      1.0958      2.0 %   0.08003    307.1 %   0.08004    144.3 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.25 a_t           1.0958      2.0 %   0.01794     -8.7 %   0.01794    -45.2 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.50 a_t           1.0958      2.0 %   0.05310    170.1 %   0.05310     62.1 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 1.00 a_t           1.0958      2.0 %   0.00071    -96.4 %   0.00071    -97.8 %   0.1070    -19.7 %
+  (N3) DtN complet (reseau)             1.0775      0.3 %   0.01806     -8.1 %   0.03524      7.6 %   0.1432      7.4 %
+  reference FEA                         1.0746         --   0.01966         --   0.03276         --   0.1333         --
+
+  --- lecture ---
+  N1 ne produit AUCUNE bande de denture : par construction, un entrefer
+     lisse n'a pas d'harmonique d'encoche. Le Bt qui subsiste (0.107 T)
+     vient des transitions entre aimants, PAS de la denture : d'ou -20 %.
+  N2 restitue des bandes laterales, mais la PROFONDEUR du creux de
+     permeance n'est pas identifiee ici (forme cos^2 generique) et elle
+     depasse la cible d'un facteur 3 a 4. C'est precisement le point :
+     ce niveau de modele EXIGE un calage, que N3 n'exige pas. Et une
+     permeance REELLE module l'amplitude sans rien ajouter a Bt.
+  N2b est la fonction REELLE de Silva (plateau + gaussienne, eq. 14).
+     Ses parametres gm et gz sont des ARCS D'ELEMENTS, pas des grandeurs
+     physiques : le balayage de a_r ci-dessus mesure cette dependance.
+     Dispersion du rang 8 sur les trois maillages : 219 %
+  N3 produit les bandes ET la denture dans Bt, sans coefficient de Carter,
+     sans fonction de permeance et sans aucune constante identifiee.
+
+  --- pourquoi N1 et N2/N2b partagent le meme Bg1 ---
+  Toute modulation de periode le pas dentaire ne cree d'harmoniques
+  qu'aux rangs p +- k*Ns. Normalisee a <lam> = 1, elle laisse le rang p
+  INCHANGE. L'egalite est structurelle, pas fortuite. Verification :
+  <lam> N2 = 1.000000 | N2b = 1.000000 1.000000 1.000000

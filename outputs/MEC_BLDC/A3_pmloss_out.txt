@@ -1,0 +1,33 @@
+=== A3 : pertes aimants, chaine gelee ===
+  chaine : pm_loss | Np = 241 | kfringe = 0.3250 | 1688 tr/min
+  sigma_pm = 555556 S/m (rho = 1.800e-06 ohm.m)
+
+  ---- A VIDE ----
+  source du champ                 P (W)        FEA      ecart
+  reseau a une dent              0.2036     0.3340     -39.1 %
+  MAILLAGE polaire               0.2516     0.3340     -24.7 %
+  (les 0,342 W publies venaient de pm_loss_load AVANT correction
+   de signe -- 0,341619 W ; la meme chaine corrigee rend 0,2120 W,
+   soit le meme ordre que les deux lignes ci-dessus. Voir D1.)
+
+  ---- EN CHARGE ----
+  (valeurs de BLDC_MEC_COMPLET section 5b, source declaree)
+  MEC   (1257 tr/min, 1.419 A)           1.5775 W
+  FEA   (1340 tr/min, 1.552 A)           3.1827 W
+  ecart BRUT                                      -50.4 %
+
+  normalisation du point de fonctionnement :
+    facteur vitesse  (1257/1340)^2 = 0.8800
+    facteur courant  (1.419/1.552)^2 = 0.8360
+    produit                          = 0.7356
+  ecart NORMALISE                                 -32.6 %
+
+  ---- CONSEQUENCE POUR §5.7 ET §8.4 ----
+  L'argument "a vide valide la chaine, en charge est ouvert" NE TIENT
+  PLUS. A vide la chaine gelee donne -39.1 % (reseau) et -24.7 %
+  (maillage), non les +2,4 % publies. En charge, apres normalisation,
+  le residu tombe a -32.6 %. Les deux points de fonctionnement sont
+  donc du MEME ordre, et la dichotomie disparait.
+
+  duree 181 s
+=== A3 termine ===

@@ -1,0 +1,54 @@
+=== G1 : convention sur gamma, croissance du crochet regeneree ===
+
+  CONFIGURATION
+    machine     : PMSM 15/14, 750 W (machine_bldc)
+    chaine      : cogging_mec + airgap_magnet (identique a R4)
+    base        : P0 (constante par morceaux)
+    solveur     : lineaire, mu_i = 3000
+    k_fringe    : 0.3250
+    pavage      : M_s = 1080 FIXE
+    gamma       : 0.57721566490153287
+
+  ---- 1. BALAYAGE A TRONCATURE RELACHEE (le balayage publie) ----
+       N_h  ln N + ln|2sin|  ln N + g + ln|2sin|        Bg1 (T)
+       540   1.144728475583       1.721944140485       1.078648
+      1080   1.837875656143       2.415091321045       1.079783
+      2160   2.531022836703       3.108238501605       1.080847
+      4320   3.224170017263       3.801385682165       1.081745
+
+  ---- 2. CROISSANCE SUR LE BALAYAGE, PLEINE PRECISION ----
+    SANS gamma : 1.144728475583 -> 3.224170017263
+                 croissance = 181.6536922103 %   -> arrondi : +182 %
+    AVEC gamma : 1.721944140485 -> 3.801385682165
+                 croissance = 120.7612658733 %   -> arrondi : +120.8 %
+
+  ---- 3. PENTE PAR DECADE (la garde) ----
+    pente SANS gamma : 2.302585092994 par decade
+    pente AVEC gamma : 2.302585092994 par decade
+    ln 10            : 2.302585092994
+    ecart SANS gamma a ln10 : +0.0000 %
+    ecart AVEC gamma a ln10 : +0.0000 %
+    |pente_sans - pente_avec| = 4.441e-16
+    GARDE 1 PASSEE : gamma est additif, la pente ne bouge pas.
+
+  ---- 4. GARDE 2 : verrou contre deverrouillage a N_h = M_s/2 ----
+    Bg1 verrouille   : 1.078648294812032 T
+    Bg1 deverrouille : 1.078648294812032 T
+    ecart max sur Br : 0.000e+00 T
+    GARDE 2 PASSEE : identite au bit pres.
+
+  ---- 5. VALEUR LIMITE DU CROCHET SOUS VERROU ----
+    ln(pi)         = 1.144729885849
+    ln(pi) + gamma = 1.721945550751
+
+  ---- 6. PANNEAU LaTeX, Table 6 panneau bas, AVEC gamma ----
+
+$N_h$ & \multicolumn{2}{c}{$\ln N+\gamma+\ln|2\sin(d/2)|$}
+      & \multicolumn{2}{c}{$B_{g1}$ (\si{\tesla}), dev.}\\
+\num{540}  & \multicolumn{2}{c}{\num{1.7219}} & \multicolumn{2}{c}{\num{1.07865}\quad ---}\\
+\num{1080} & \multicolumn{2}{c}{\num{2.4151}} & \multicolumn{2}{c}{\num{1.07978}\quad $+0.11\%$}\\
+\num{2160} & \multicolumn{2}{c}{\num{3.1082}} & \multicolumn{2}{c}{\num{1.08085}\quad $+0.20\%$}\\
+\num{4320} & \multicolumn{2}{c}{\num{3.8014}} & \multicolumn{2}{c}{\num{1.08175}\quad $+0.29\%$}\\
+
+  duree 16 s
+=== G1 termine ===

@@ -1,0 +1,93 @@
+=== C3 : les multiples de sigma du Test 2 ===
+  machine : PMSM 15/14, 750 W | Ns = 15, Nm = 14, LCM = 210
+
+  ---- 1. les deux essais ----
+                                     magnetost. transitoire
+  nombre de positions N                     360        101
+  etendue angulaire (deg)                359.00      51.39
+  maillage                             REMAILLE   PRESERVE
+  ecart-type du couple (mN.m)           60.5298     2.5071
+
+  ---- 2. amplitude et incertitude a l'ordre 42 ----
+  sigma = std(residu) * sqrt(2/N)   (erreur-type de l'amplitude)
+
+                                 magnetostatique    transitoire
+  amplitude A_42 (mN.m)               77.044008       0.883110
+  std du residu (mN.m)                26.162670       2.419214
+  N                                         360            101
+  sigma (mN.m)                         1.950050       0.340431
+  multiple A/sigma                        39.51           2.59
+
+  ---- 3. l'objection levee ----
+  rapport des AMPLITUDES        A_m/A_t         =   87.242
+  rapport des MULTIPLES         (A/s)_m/(A/s)_t =   15.230
+  rapport des SIGMA             s_m/s_t         =    5.728
+  produit multiples x sigma                     =   87.242
+  identite verifiee a 1.63e-16 pres
+
+  LECTURE. Le rapport des amplitudes se factorise EXACTEMENT en
+  rapport des multiples fois rapport des sigma. Les deux multiples
+  sont donc COHERENTS entre eux ; ce qui differe est sigma, et il
+  DOIT differer, puisque les deux essais n'ont ni le meme bruit ni
+  le meme nombre de points. L'hypothese de deux normalisations
+  melangees est ecartee : la normalisation est unique, c'est le
+  JEU DE DONNEES qui change.
+
+  ---- 4. correction a porter au manuscrit ----
+  Le Test 2 doit ecrire les deux sigma, et non "sigma" seul :
+
+    ordre 42, magnetostatique remaillee : 77.04 mN.m = 40 sigma_m,
+      sigma_m = 1.9501 mN.m (N = 360, maillage remaille)
+    ordre 42, transitoire maillage preserve : 0.88 mN.m = 2.6 sigma_t,
+      sigma_t = 0.3404 mN.m (N = 101, maillage preserve)
+
+  Les deux valeurs peuvent donc etre RETABLIES, contrairement a ce
+  que la specification laissait craindre. Elles etaient justes ; leur
+  PRESENTATION ne disait pas que sigma change d'un essai a l'autre.
+
+  ---- 5. controle du verdict du Test 2 ----
+  A_42 transitoire = 0.8831 mN.m contre 3*sigma_t = 1.0213 mN.m
+  => l'ordre 42 est SOUS LE BRUIT du transitoire. Le verdict du
+     Test 2 tient : les 220 mN.m sont un artefact de remaillage.
+  detente (ordre 210) : magnetost. 7.0995 (hors bande, Nyquist 180)
+                       transitoire 0.3022 +/- 0.3503 mN.m  <- reference
+
+  duree 3 s
+=== C3 termine ===
+=== Rapprocher la detente MEC de la FEA : quelle cible ? ===
+
+--- 1. Repliement : detente MEC vue avec le pas de 1 deg de la FEA ---
+  ordre reel de la detente MEC              : 210
+  ordre apparent apres echantillonnage 1 deg: 150  (repliement 360-210)
+  amplitude repliee                         : 0.431 mN.m
+  ordre dominant de la FEA magnetostatique  : 42 (77.1 mN.m)
+  => 42 n'est NI 210 NI son repli 150 : la magnetostatique ne
+     contient PAS de detente, meme repliee. Ce n'est pas une cible.
+
+--- 2. Reference VALIDE : essai transitoire (maillage preserve) ---
+  101 positions sur 51.39 deg mec (30 periodes de detente)
+  amplitude a l'ordre 210 : 0.302 +/- 0.350 mN.m (bruit residuel 2.49)
+  -> detente FEA = 0.604 mN.m c-c, borne a 2 sigma : < 2.01 mN.m c-c
+
+--- 3. MEC sans parametre ajuste : convergence de la detente ---
+       K    numax |  detente c-c
+       6     1308 |      0.852 mN.m
+       8     1744 |      0.916 mN.m
+      10     2179 |      0.907 mN.m
+  variation K=8->10 : -1.0 % (convergence)
+  detente du modele a kfringe (reference interne) : 0.863 mN.m
+
+===================== BILAN =====================
+  MEC (sous-domaine exact, sans parametre) : 0.907 mN.m c-c
+  MEC (reseau + kfringe identifie)         : 0.863 mN.m c-c
+  FEA transitoire (ordre 210)               : 0.604 mN.m c-c
+  incertitude de la reference (2 sigma)    : +/- 1.401 mN.m
+  ecart MEC-FEA = 0.303 mN.m  -> DANS l'incertitude de la reference
+  ordre : MEC 210 / FEA 210  -> IDENTIQUE
+
+--- 5. Ce que l'ordre 42 de la FEA representerait physiquement ---
+  un couple aux multiples de 14 exige une dispersion AIMANT A AIMANT
+  (un stator parfait ne peut produire que des multiples de 210)
+  dispersion de Br equivalente : ~298 % -- inconcevable pour des
+  aimants industriels (tolerance usuelle 1-3 %). C'est donc bien du
+  bruit de remaillage, chaque aimant etant maille differemment.

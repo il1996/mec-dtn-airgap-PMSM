@@ -1,0 +1,22 @@
+=== T18 : convergence en Np (pertes aimant) ===
+  cible colonne localisee : 0.342 W (publie) ; FEA 0.334 W
+
+      Np   P localise ecart/0.342
+      61       0.2000     -41.5 %
+     121       0.2028     -40.7 %
+     181       0.2034     -40.5 %
+     241       0.2036     -40.5 %
+     361       0.2037     -40.4 %
+     481       0.2038     -40.4 %
+
+  Np retenu : 481  (colonne localisee 0.2038 W)
+
+  balayage du maillage a Np = 481 ...
+
+  --- cellule "pertes aimant" du Tableau 7 ---
+  source du champ               P (W)        FEA      ecart
+  reseau a une dent            0.2038     0.3340     -39.0 %
+  MAILLAGE polaire             0.2519     0.3340     -24.6 %
+
+  duree 325 s
+=== termine ===

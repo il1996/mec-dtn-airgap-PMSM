@@ -1,0 +1,25 @@
+=== C4c : Table 8, spectre spatial de Br, pleine precision ===
+  PMSM 15/14 | Ns = 15, p = 7 | kfringe = 0.3250
+  reference EF relue du projet, aucune transcription
+
+  ordre                            reseau             EF        ecart  nature
+  p = 7 (fondamental)           1.0775474      1.0745514      0.2788 %  
+  |Ns - p| = 8                  0.0180619      0.0196579     -8.1190 %  1re bande
+  3p = 21                       0.2593437      0.2656534     -2.3751 %  harmonique de travail
+  Ns + p = 22                   0.0352377      0.0327597      7.5644 %  1re bande
+  |2Ns - p| = 23                0.0325496      0.0202107     61.0513 %  2e bande (coin)
+  5p = 35                       0.1047221      0.1066984     -1.8523 %  harmonique de travail
+  2Ns + p = 37                  0.0426914      0.0270805     57.6465 %  2e bande (coin)
+
+  ---- lecture ----
+  harmoniques de TRAVAIL (3p, 5p) : |ecart| max 2.375 %
+  PREMIERES bandes (8, 22)        : -8.119 % et 7.564 %
+  SECONDES bandes (23, 37)        : 61.051 % et 57.646 %
+  Les secondes bandes echantillonnent la region de coin plus
+  finement que les premieres -- leur longueur d'onde angulaire
+  vaut environ la moitie de l'ouverture d'encoche -- donc la meme
+  singularite non resolue y produit une erreur relative plus
+  grande. A rapporter comme INDICATEUR de resolution de coin.
+
+  duree 3 s
+=== C4c termine ===

@@ -1,0 +1,32 @@
+=== T9 : temps de calcul, elements finis vs MEC ===
+
+  profil            records    somme brute      si 1e-6 s      si 1e-7 s
+  BLDC  opti0_2         385     3.6824e+06         3.7 s         0.4 s
+  BLDC  opti44_0         12     1.4686e+05         0.1 s         0.0 s
+  BLDC  opti53_0         65     4.2477e+07        42.5 s         4.2 s
+  MAS   opti59_5        129     8.4107e+07        84.1 s         8.4 s
+
+  --- calibration ---
+  BLDC  opti0_2     385 variations ->   0.01 s/var (1e-6) |  0.001 s/var (1e-7)
+  BLDC  opti44_0     12 variations ->   0.01 s/var (1e-6) |  0.001 s/var (1e-7)
+  BLDC  opti53_0     67 variations ->   0.63 s/var (1e-6) |  0.063 s/var (1e-7)
+  MAS   opti59_5    129 variations ->   0.65 s/var (1e-6) |  0.065 s/var (1e-7)
+
+  --- temps MEC mesures (MATLAB) ---
+  BLDC 15/14  : 133 s   (8 analyses, 29 grandeurs, 9 figures)
+  MAS 48/44   : 647 s   (30 glissements, 3 conditions, cartes)
+
+  --- RESERVE METHODOLOGIQUE, a lire avant tout ratio ---
+  T9 demande une comparaison CONTROLEE : une machine, un point de
+  fonctionnement, MEME MATERIEL, meme cible de precision. Les conditions
+  ci-dessus ne la satisfont pas :
+    (a) les runs EF datent de 2024 sur DESKTOP-1FRG5FP, les runs MEC
+        sont recents et sur une autre machine ;
+    (b) les profils couvrent des BALAYAGES optimetrics, le MEC couvre
+        une etude complete : les PERIMETRES different ;
+    (c) aucune cible de precision commune n'a ete fixee.
+  Un ratio tire de ces nombres serait une illustration, PAS une mesure.
+  Il peut etre publie comme ordre de grandeur explicitement date et
+  situe ; il ne peut pas etayer une affirmation d'economie.
+
+=== T9 termine ===

@@ -1,0 +1,87 @@
+=== X1 : Table 5(b) et encadrement -- identification du parametre ===
+  machine       : PMSM 15/14, 750 W (machine_bldc)
+  chaine        : mesh_bldc + solve_bldc_mesh, base P0, numax=floor(Ms/2)
+  pavage        : nst=4, nys=3, n_sh balaye 1..4 (Ls = 2*n_sh + 7)
+  solveurs      : lineaire mu_r=3000  ET  Newton exact (bh_curve M350)
+  kfringe       : 0.3250  (sans effet ici -- controle §0)
+  reference EF  : C:\Users\hp\Desktop\ANSYS résultat 750W
+    Bg1  = 1.074548 T
+    nu=8 = 0.0196594150 T   (c'est le denominateur de toutes les colonnes)
+
+  ---- 0. controle kfringe (candidat n.1 de la specification) ----
+    Ms=540, n_sh=2, lineaire : kfringe=0.325 -> nu=8 = 1.580801250548e-02
+                               kfringe=0.750 -> nu=8 = 1.580801250548e-02
+    ecart relatif = 0.000e+00
+    => kfringe N'EST PAS le parametre cherche. Ecarte.
+
+  ---- 1. balayage n_sh = 1..4 x Ms = 360/540/900 x deux solveurs ----
+    n_sh=1 termine (18 s)
+    n_sh=2 termine (25 s)
+    n_sh=3 termine (30 s)
+    n_sh=4 termine (36 s)
+
+    -- n_sh = 1  (couches de bec nshT = 2, Ls = 9) --
+        Ms  inconnues    nu=8 lin.  nu=8 Newton  peak B lin.    peak B NL
+       360       3600       -19.8 %        16.4 %       2.5696       1.9243
+       540       5400       -13.3 %        22.3 %       2.6986       1.9741
+       900       9000        -9.7 %        32.0 %       2.7989       2.0056
+    residus vs publie (points de %) : lin [7 8.25 9.08] | Newton [6 7.26 8.18]
+    residu maximal sur les six cellules : 9.08 point
+
+    -- n_sh = 2  (couches de bec nshT = 4, Ls = 11) --
+        Ms  inconnues    nu=8 lin.  nu=8 Newton  peak B lin.    peak B NL
+       360       4320       -25.2 %        11.8 %       2.7651       1.9271
+       540       6480       -19.6 %        16.8 %       2.9736       1.9778
+       900      10800       -16.0 %        26.2 %       3.1522       2.0095
+    residus vs publie (points de %) : lin [1.62 2.01 2.78] | Newton [1.39 1.81 2.38]
+    residu maximal sur les six cellules : 2.78 point
+
+    -- n_sh = 3  (couches de bec nshT = 6, Ls = 13) --
+        Ms  inconnues    nu=8 lin.  nu=8 Newton  peak B lin.    peak B NL
+       360       5040       -26.4 %        10.7 %       2.8562       1.9277
+       540       7560       -21.0 %        15.5 %       3.1115       1.9787
+       900      12600       -18.0 %        24.5 %       3.3500       2.0115
+    residus vs publie (points de %) : lin [0.43 0.57 0.81] | Newton [0.34 0.52 0.73]
+    residu maximal sur les six cellules : 0.81 point
+
+    -- n_sh = 4  (couches de bec nshT = 8, Ls = 15) --
+        Ms  inconnues    nu=8 lin.  nu=8 Newton  peak B lin.    peak B NL
+       360       5760       -26.8 %        10.3 %       2.9082       1.9279
+       540       8640       -21.6 %        15.0 %       3.1909       1.9790
+       900      14400       -18.8 %        23.8 %       3.4709       2.0125
+    residus vs publie (points de %) : lin [-0.01 0.03 -0.01] | Newton [-0.06 0.02 0.03]
+    residu maximal sur les six cellules : 0.06 point
+
+  ---- 2. verdict ----
+      n_sh     residu max residu peak B NL
+         1         9.08 pt         0.0074 T
+         2         2.78 pt         0.0035 T
+         3         0.81 pt         0.0015 T
+         4         0.06 pt         0.0005 T
+
+    RECONCILIE : n_sh = 4 reproduit la Table 5(b) publiee
+    (residu maximal 0.06 point sur six cellules, arrondi du
+     manuscrit a 0,1 point pres). Le parametre est le NOMBRE DE
+     COUCHES DE BEC ; A2 l'avait pris a 2 au lieu de 4.
+
+  ---- 3. Table 5(b) retenue : n_sh = 4 ----
+    machine PMSM 15/14 | nst=4, nys=3, n_sh=4 | base P0 |
+    numax=floor(Ms/2) | kfringe=0.325 (inoperant) | phi=0 |
+    reference EF nu=8 = 0.0196594150 T
+
+        Ms  inconnues   nu=8 lin (T)      ecart    nu=8 NL (T)      ecart    pk B lin     pk B NL
+       360       5760     0.01438943    -26.8 %     0.02169279     10.3 %      2.9082      1.9279
+       540       8640     0.01541815    -21.6 %     0.02261221     15.0 %      3.1909      1.9790
+       900      14400     0.01596162    -18.8 %     0.02434414     23.8 %      3.4709      2.0125
+
+  ---- encadrement eq:bracket, MEME EXECUTION, Ms = 900 ----
+    lineaire 0.01596162 T  <  EF 0.01965942 T  <  Newton 0.02434414 T
+    soit -18.81 % et +23.83 %
+    publie  : 0.01596 < 0.01966 < 0.02434 T, soit -18.82 % et +23.81 %
+    ecart sur les bornes : +0.000002 et +0.000004 T
+    L'encadrement est VALIDE si et seulement si la ligne Ms=900
+    ci-dessus est celle qui entre dans la Table 5(b) : c'est le cas
+    par construction, les deux sortant de la meme execution.
+
+  duree 36 s
+=== X1 termine ===

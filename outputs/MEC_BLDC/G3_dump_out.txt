@@ -1,0 +1,183 @@
+=== G3 : vidage cible ===
+
+---- A1_table7.mat : les colonnes de la Table 13 ----
+  Rm     class=struct     size=[1 2]
+  VF     class=double     size=[1 17]
+  VL     class=double     size=[1 17]
+  lab    class=cell       size=[1 17]
+  lab :
+     1  Bg1 fondamental (T)
+     2  B entrefer moyen |Br| (T)
+     3  Br crete (T)
+     4  Bt tangentiel rms (T)
+     5  bande de denture nu=8 (T)
+     6  ligne de flux A (Wb/m)
+     7  flux totalise crete (Wb)
+     8  FMM moy./aimant (A)
+     9  FMM moy./entrefer (A)
+    10  dispersion FMM (%)
+    11  FEM de phase crete (V)
+    12  enveloppe six-step (V)
+    13  self La (mH)
+    14  mutuelle M (mH)
+    15  synchrone Ld (mH)
+    16  facteur k_r (-)
+    17  facteur k_l (-)
+
+  Rm (colonnes de modele maille) :
+  1x2 struct array with fields:
+
+    v
+    N
+
+
+  VL (colonne lumped) :
+     1  1.077547400710420
+     2  0.761473303688910
+     3  0.986000748253592
+     4  0.143165175305553
+     5  0.018061875599861
+     6  0.005859718486971
+     7  0.261205581969985
+     8  762.911850106140491
+     9  725.064465270056758
+    10  6.809527808769952
+    11  240.877287533442626
+    12  468.719026136600348
+    13  50.772637865806821
+    14  -2.220145058284568
+    15  52.992782924091387
+    16  1.052198648049849
+    17  0.853710084081512
+
+  VF (colonne FEA) :
+     1  1.074551406934558
+     2  0.760909486422807
+     3  0.990727266148032
+     4  0.133260862500307
+     5  0.019657894438053
+     6  0.005854628269625
+     7  0.258328141980980
+     8  769.445264488978751
+     9  721.503797958759606
+    10  6.584577129726880
+    11  233.030540217885004
+    12  459.918333740732010
+    13  50.208608097252593
+    14  -2.132924119144895
+    15  52.341532216397496
+    16  1.086928844128470
+    17  0.867230114336116
+
+---- la matrice 2 x 2 de k_r ----
+  indice de k_r retenu : 16  (facteur k_r (-))
+{Index in position 1 exceeds array bounds. Index must not exceed 1.
+
+Error in RUN_G3_DUMP (line 32)
+kr_m1=A.Rm(ikr,1); kr_m2=A.Rm(ikr,2); kr_lu=A.VL(ikr); kr_fe=A.VF(ikr);
+} 
+=== G3 : vidage cible ===
+
+---- A1_table7.mat : les colonnes de la Table 13 ----
+  Rm     class=struct     size=[1 2]
+  VF     class=double     size=[1 17]
+  VL     class=double     size=[1 17]
+  lab    class=cell       size=[1 17]
+  lab :
+     1  Bg1 fondamental (T)
+     2  B entrefer moyen |Br| (T)
+     3  Br crete (T)
+     4  Bt tangentiel rms (T)
+     5  bande de denture nu=8 (T)
+     6  ligne de flux A (Wb/m)
+     7  flux totalise crete (Wb)
+     8  FMM moy./aimant (A)
+     9  FMM moy./entrefer (A)
+    10  dispersion FMM (%)
+    11  FEM de phase crete (V)
+    12  enveloppe six-step (V)
+    13  self La (mH)
+    14  mutuelle M (mH)
+    15  synchrone Ld (mH)
+    16  facteur k_r (-)
+    17  facteur k_l (-)
+
+  Rm (colonnes de modele maille) :
+  1x2 struct array with fields:
+
+    v
+    N
+
+
+  VL (colonne lumped) :
+     1  1.077547400710420
+     2  0.761473303688910
+     3  0.986000748253592
+     4  0.143165175305553
+     5  0.018061875599861
+     6  0.005859718486971
+     7  0.261205581969985
+     8  762.911850106140491
+     9  725.064465270056758
+    10  6.809527808769952
+    11  240.877287533442626
+    12  468.719026136600348
+    13  50.772637865806821
+    14  -2.220145058284568
+    15  52.992782924091387
+    16  1.052198648049849
+    17  0.853710084081512
+
+  VF (colonne FEA) :
+     1  1.074551406934558
+     2  0.760909486422807
+     3  0.990727266148032
+     4  0.133260862500307
+     5  0.019657894438053
+     6  0.005854628269625
+     7  0.258328141980980
+     8  769.445264488978751
+     9  721.503797958759606
+    10  6.584577129726880
+    11  233.030540217885004
+    12  459.918333740732010
+    13  50.208608097252593
+    14  -2.132924119144895
+    15  52.341532216397496
+    16  1.086928844128470
+    17  0.867230114336116
+
+---- la matrice 2 x 2 de k_r ----
+  indice de k_r retenu : 16  (facteur k_r (-))
+  inconnues : n_sh=1 -> 5400 | n_sh=2 -> 6480
+  k_r mesh n_sh=1 : 1.070690086039355
+  k_r mesh n_sh=2 : 1.066652526241467
+  k_r lumped      : 1.052198648049849
+  k_r FEA (table) : 1.086928844128470   (relu du projet : 1.086928844128470)
+  reference hors point aberrant : 1.066446589284564
+
+  colonne                 / %.6f (tous)      / hors aberrant
+  mesh n_sh=1                  -1.4940 %              0.3979 %
+  mesh n_sh=2                  -1.8655 %              0.0193 %
+  lumped                       -3.1953 %             -1.3360 %
+
+---- R7_scorecard.mat : lignes de rendement en points ----
+  E      class=double     size=[1 29]
+  N      class=double     size=[1 1]
+  Nk     class=double     size=[1 1]
+  SC     class=struct     size=[1 29]
+  ann    class=double     size=[1 1]
+  keep   class=logical    size=[1 29]
+  myok   class=double     size=[1 1]
+  okk    class=double     size=[1 1]
+
+  ecarts relatifs #25 et #29 : -0.2089187503  -4.4574131821
+
+---- largeurs d encadrement Newton, pleine precision ----
+  n_sh = 1 : lineaire -9.717218 %  Newton +31.982123 %  largeur 41.699342 points
+  n_sh = 2 : lineaire -16.018999 %  Newton +26.183413 %  largeur 42.202412 points
+  n_sh = 3 : lineaire -17.987571 %  Newton +24.526287 %  largeur 42.513858 points
+  n_sh = 4 : lineaire -18.809286 %  Newton +23.829427 %  largeur 42.638713 points
+  M_s de la colonne retenue : 900
+
+=== G3 termine ===

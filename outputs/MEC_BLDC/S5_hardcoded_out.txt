@@ -1,0 +1,26 @@
+======================================================================
+  S5 - CHAINES IMPRIMEES PORTANT UN NOMBRE CODE EN DUR
+======================================================================
+  source : BLDC_MEC_COMPLET.m (90223 octets, modifie 13-août-2026 18:32:12)
+  regle  : dans une chaine imprimee, tout chiffre hors specification
+           de format est un nombre code en dur.
+
+  ---- 1. BALAYAGE ----
+    1506 lignes, 478 chaines litterales dans un appel d'impression
+
+  ---- 2. CHAINES PORTANT UN NOMBRE NON DECLARE ----
+    aucune.
+
+  ---- 3. LES DEUX CHAINES NOMMEES PAR LA SPECIFICATION ----
+    aucune des deux ne subsiste dans une chaine imprimee.
+
+  ---- 4. LES MEMES CHAINES AILLEURS DANS LE DOSSIER ----
+    aucune.
+
+  ---- 5. VERDICT ----
+    H1  aucun nombre code en dur non declare                 PASSEE
+    H2  chaque declaration porte un motif                    PASSEE
+
+    GARDE S5 PASSEE
+
+=== S5 termine ===

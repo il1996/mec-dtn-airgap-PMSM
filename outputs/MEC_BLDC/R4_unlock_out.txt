@@ -1,0 +1,61 @@
+=== R4 : deverrouillage troncature-pavage ===
+
+  CONFIGURATION
+    machine     : PMSM 15/14, 750 W (machine_bldc)
+    chaine      : cogging_mec + airgap_magnet
+    base        : P0 (constante par morceaux), celle du §3.5
+    solveur     : lineaire, mu_i = 3000
+    k_fringe    : 0.3250
+    pavage      : FIXE, uniforme
+    reference EF: C:\Users\hp\Desktop\ANSYS résultat 750W
+
+  ---- 1. CHAINE VERROUILLEE (numax = M_s/2) ----
+       M_s    numax        Bg1 (T)     lam_a (Wb)  ln N + ln|2sin|
+       540      270       1.073905             --         1.144724
+      1080      540       1.078648             --         1.144728
+      2160     1080       1.077929             --         1.144730
+      4320     2160       1.077591             --         1.144730
+      8640     4320       1.077428             --         1.144730
+  crochet : 1.144724 -> 1.144730, soit +0.0005 % sur un facteur 16 en M_s
+  ln(pi) = 1.144730  |  ln(pi)+gamma = 1.721946
+  => STATIONNAIRE. Le terme divergent ne croit pas : c'est le verrou.
+
+  ---- 2. CHAINE DEVERROUILLEE (M_s = 1080 FIXE, numax libre) ----
+       numax n/verrou        Bg1 (T)  ln N + ln|2sin|      ecart Bg1
+         540        1       1.078648         1.144728        0.0000 %
+        1080        2       1.079783         1.837876        0.1052 %
+        2160        4       1.080847         2.531023        0.2038 %
+        4320        8       1.081745         3.224170        0.2871 %
+[Warning: Matrix is singular, close to singular or badly scaled. Results may be inaccurate. RCOND = NaN.] 
+[> In cogging_mec (line 105)
+In RUN_R4_UNLOCK (line 79)
+] 
+        8640       16            NaN         3.917317           NaN %
+  crochet : 1.144728 -> 3.917317, soit +242.2049 %
+
+  pente du crochet : 2.302585 par decade de N (predit : ln10 = 2.302585)
+  ecart a la prediction : -0.0000 %
+  pente de Bg1     : NaN T par decade de N
+  coefficient predit (2*mu0*L/pi)*ln10 = 6.078825e-08
+
+  ---- 3. GARDE : la chaine deverrouillee redonne-t-elle le verrou ? ----
+    numax verrouille   : 540
+    numax deverrouille : 540
+    Bg1 verrouille     : 1.078648294812032 T
+    Bg1 deverrouille   : 1.078648294812032 T
+    ecart              : 0.000e+00 T
+    ecart max sur Br   : 0.000e+00 T
+    GARDE PASSEE : identite au bit pres.
+
+  ---- 4. PANNEAU A AJOUTER A LA TABLE 8 ----
+
+\multicolumn{4}{l}{\emph{Truncation unlocked from the tiling}, $M_s = 1080$}\\
+$N_h$ & $\ln N + \ln|2\sin(d/2)|$ & $B_{g1}$ (T) & dev. \\
+540 & 1.1447 & 1.07865 & $+0.00\%$ \\
+1080 & 1.8379 & 1.07978 & $+0.11\%$ \\
+2160 & 2.5310 & 1.08085 & $+0.20\%$ \\
+4320 & 3.2242 & 1.08175 & $+0.29\%$ \\
+8640 & 3.9173 & NaN & $NaN\%$ \\
+
+  duree 206 s
+=== R4 termine ===

@@ -1,0 +1,536 @@
+======================================================================
+  S2 - TABLEAU DE PROVENANCE DES 29 LIGNES DU TABLEAU DE SYNTHESE
+======================================================================
+  source     : BLDC_MEC_COMPLET.m (87519 octets, modifie 13-août-2026 18:12:15)
+  analyseur  : mec_srcgraph.m, partage avec la garde S1
+  graphe     : 1293 instructions, 649 affectations, point fixe en 2 iterations
+
+  ---- 0. COMMENT LIRE CE TABLEAU ----
+    Chaque operande est remonte a ses RACINES par le graphe
+    d'affectation complet du programme. Trois natures de racine :
+      solveur:<nom>@<ligne>  une resolution du MEC
+      FEA:<dossier>          un import .tab, nomme par l'ESSAI ANSYS
+                             d'ou il sort -- c'est cet essai qui fixe
+                             le point de fonctionnement
+      cache:<fichier>        une carte precalculee relue d'un .mat
+    et le verdict de nature qui en decoule :
+      CALCULE (reseau) / EXPORT ANSYS / MIXTE / ENTREE DECLAREE
+
+    ENTREE DECLAREE ne veut pas dire "depend de M" : toute grandeur
+    calculee depend de M par la geometrie et les materiaux. Cela veut
+    dire "ne remonte a AUCUN solveur ni AUCUN import", donc n'est
+    qu'un parametre recopie. C'est la nature exacte du defaut S1.
+
+    POINT DE FONCTIONNEMENT. Cote reference il est donne par le
+    dossier d'essai. Cote modele il est donne par la vitesse
+    traversee, avec une regle explicite : toute grandeur descendant
+    de drive_mec est au point du MEC, parce que la vitesse y est un
+    RESULTAT (nMt) et non une donnee. Les six etiquettes possibles :
+      magnetostat  vide-1500  vide-nnl  EF-charge  MEC-charge  balayage
+
+  ---- 1. VUE COMPACTE ----
+
+    # grandeur                     nature MODELE    nature REFERENCE pt MODELE   pt REFER.   
+    1 Bg1 fondamental              MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    2 B entrefer moyen |Br|        MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    3 B entrefer crete             MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    4 Bt tangentiel RMS            MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    5 Lignes de flux A crete       MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    6 FMM par aimant (moyenne)     MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    7 FMM par entrefer (moyenne)   MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    8 FMM aimant : dispersion      MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+    9 Facteur de reluctance k_r    MIXTE res+ANSYS  EXPORT ANSYS     magnetostat magnetostat 
+   10 Facteur de fuite k_l         CALCULE (reseau) EXPORT ANSYS     magnetostat magnetostat 
+   11 Inductance propre La         CALCULE (reseau) EXPORT ANSYS     magnetostat magnetostat 
+   12 Mutuelle M                   CALCULE (reseau) EXPORT ANSYS     magnetostat magnetostat 
+   13 Inductance synchrone Ld      CALCULE (reseau) EXPORT ANSYS     magnetostat magnetostat 
+   14 FEM de phase crete           CALCULE (reseau) EXPORT ANSYS     vide-1500   vide-1500   
+   15 Enveloppe six-step crete     CALCULE (reseau) EXPORT ANSYS     vide-1500   vide-1500   
+   16 Flux totalise crete          CALCULE (reseau) EXPORT ANSYS     magnetostat vide-1500   (equivalence declaree)
+   17 Couple en charge             MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   18 Courant de phase RMS         MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   19 Pertes fer a vide            CALCULE (reseau) EXPORT ANSYS     vide-nnl    vide-nnl    
+   20 Pertes aimant a vide         CALCULE (reseau) EXPORT ANSYS     vide-nnl    vide-nnl    
+   21 Vitesse etablie en charge    MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   22 Courant de bus moyen         MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   23 Pertes fer en charge         MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   24 Pertes aimant en charge      MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   25 Rendement en charge          MIXTE res+ANSYS  EXPORT ANSYS     MEC-charge  EF-charge   <-- POINTS DIFFERENTS
+   26 Constante de FEM k_E         CALCULE (reseau) EXPORT ANSYS     vide-1500   balayage    (equivalence declaree)
+   27 Couple a l'arret (balayage)  MIXTE res+ANSYS  EXPORT ANSYS     balayage    balayage    
+   28 Puissance max (balayage)     MIXTE res+ANSYS  EXPORT ANSYS     balayage    balayage    
+   29 Rendement max (balayage)     MIXTE res+ANSYS  EXPORT ANSYS     balayage    balayage    
+
+
+  ---- 2. TABLEAU DETAILLE : LES RACINES DE CHAQUE OPERANDE ----
+
+  #1  Bg1 fondamental
+      ligne source 205
+      MODELE    amp(Brm,thm,p)
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE amp(BrFu,thu,p)
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #2  B entrefer moyen |Br|
+      ligne source 206
+      MODELE    mean(abs(Brm))
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE mean(abs(BrFu))
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #3  B entrefer crete
+      ligne source 207
+      MODELE    max(Brm)
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE max(BrFu)
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #4  Bt tangentiel RMS
+      ligne source 208
+      MODELE    sqrt(mean(Btm.^2))
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE sqrt(mean(BtFu.^2))
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #5  Lignes de flux A crete
+      ligne source 210
+      MODELE    max(Amec)
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE max(Afea)
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #6  FMM par aimant (moyenne)
+      ligne source 238
+      MODELE    mean(mmf_m_M)
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE mean(mmf_m_F)
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #7  FMM par entrefer (moyenne)
+      ligne source 239
+      MODELE    mean(mmf_g_M)
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE mean(mmf_g_F(2:end))
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #8  FMM aimant : dispersion
+      ligne source 240
+      MODELE    std(mmf_m_M)/mean(mmf_m_M)*100
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE std(mmf_m_F)/mean(mmf_m_F)*100
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #9  Facteur de reluctance k_r
+      ligne source 251
+      MODELE    kr_M
+        solveur : cogging_mec@150
+        FEA     : magnetostique(Magnetic_loading)
+        cache   : kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : magnetostat
+      REFERENCE kr_F
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #10  Facteur de fuite k_l
+      ligne source 304
+      MODELE    kl_M
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        nature  : CALCULE (reseau)   |   point : magnetostat
+      REFERENCE kl_F
+        FEA     : magnetostique(Magnetic_loading)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #11  Inductance propre La
+      ligne source 327
+      MODELE    RI.La*1e3
+        solveur : inductance_mec@326
+        nature  : CALCULE (reseau)   |   point : magnetostat
+      REFERENCE LaF*1e3
+        FEA     : magnetostique(Armature-Field)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #12  Mutuelle M
+      ligne source 328
+      MODELE    RI.M*1e3
+        solveur : inductance_mec@326
+        nature  : CALCULE (reseau)   |   point : magnetostat
+      REFERENCE MF*1e3
+        FEA     : magnetostique(Armature-Field)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #13  Inductance synchrone Ld
+      ligne source 329
+      MODELE    RI.Ld*1e3
+        solveur : inductance_mec@326
+        nature  : CALCULE (reseau)   |   point : magnetostat
+      REFERENCE LdF*1e3
+        FEA     : magnetostique(Armature-Field)
+        nature  : EXPORT ANSYS   |   point : magnetostat
+
+  #14  FEM de phase crete
+      ligne source 344
+      MODELE    max(abs(eA))
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        vitesse : M.speed, om
+        nature  : CALCULE (reseau)   |   point : vide-1500
+      REFERENCE max(abs(EaF))
+        FEA     : transitoire (Back_emf)
+        nature  : EXPORT ANSYS   |   point : vide-1500
+
+  #15  Enveloppe six-step crete
+      ligne source 345
+      MODELE    max(env)
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        vitesse : M.speed, om
+        nature  : CALCULE (reseau)   |   point : vide-1500
+      REFERENCE max(envF)
+        FEA     : transitoire (Back_emf)
+        nature  : EXPORT ANSYS   |   point : vide-1500
+
+  #16  Flux totalise crete
+      ligne source 352
+      MODELE    max(abs(lamA))
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        nature  : CALCULE (reseau)   |   point : magnetostat
+      REFERENCE max(abs(FLaF))
+        FEA     : transitoire (Back_emf)
+        nature  : EXPORT ANSYS   |   point : vide-1500
+
+  #17  Couple en charge
+      ligne source 408  (place reservee, slot "kTload")
+      MODELE    TMt
+        solveur : cogging_mec@353, cogging_mec@497, drive_mec@534, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE TF
+        FEA     : transitoire (en charge)
+        vitesse : nOL
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #18  Courant de phase RMS
+      ligne source 423  (place reservee, slot "kIrms")
+      MODELE    IrmsM
+        solveur : cogging_mec@353, cogging_mec@497, drive_mec@534, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE IrmsF
+        FEA     : transitoire (en charge)
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #19  Pertes fer a vide
+      ligne source 447
+      MODELE    Pfe
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        vitesse : M.FEA.n_nl
+        nature  : CALCULE (reseau)   |   point : vide-nnl
+      REFERENCE PfeF
+        FEA     : transitoire (a vide)
+        nature  : EXPORT ANSYS   |   point : vide-nnl
+
+  #20  Pertes aimant a vide
+      ligne source 448
+      MODELE    Ppm
+        solveur : cogging_mec@442, pm_loss_load@444
+        cache   : kfringe_ident.mat
+        vitesse : M.FEA.n_nl, om_nl
+        nature  : CALCULE (reseau)   |   point : vide-nnl
+      REFERENCE PpmF
+        FEA     : transitoire (a vide)
+        nature  : EXPORT ANSYS   |   point : vide-nnl
+
+  #21  Vitesse etablie en charge
+      ligne source 673
+      MODELE    nMt
+        solveur : cogging_mec@353, cogging_mec@497, drive_mec@534, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nMt
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE nOL
+        FEA     : transitoire (en charge)
+        vitesse : nOL
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #22  Courant de bus moyen
+      ligne source 674
+      MODELE    IbM
+        solveur : cogging_mec@353, cogging_mec@497, drive_mec@534, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE IbF
+        FEA     : transitoire (en charge)
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #23  Pertes fer en charge
+      ligne source 675
+      MODELE    PfeL
+        solveur : cogging_mec@353, cogging_mec@497, drive_mec@534, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nMt
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE PfeF_L
+        FEA     : transitoire (en charge)
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #24  Pertes aimant en charge
+      ligne source 676
+      MODELE    PpmL
+        solveur : cogging_mec@150, cogging_mec@353, cogging_mec@497, cogging_mec@607, drive_mec@534, inductance_mec@326, inductance_mec@606, mec_map@516, mec_map@523, pm_loss_load@611
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nMt
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE PpmF_L
+        FEA     : transitoire (en charge)
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #25  Rendement en charge
+      ligne source 677
+      MODELE    100*etaM
+        solveur : cogging_mec@150, cogging_mec@353, cogging_mec@497, cogging_mec@607, drive_mec@534, inductance_mec@326, inductance_mec@606, mec_map@516, mec_map@523, pm_loss_load@611
+        FEA     : transitoire (Back_emf), transitoire (en charge)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nMt, omMt
+        nature  : MIXTE res+ANSYS   |   point : MEC-charge
+      REFERENCE 100*etaF
+        FEA     : transitoire (en charge)
+        nature  : EXPORT ANSYS   |   point : EF-charge
+      >> les deux cotes ne sont PAS au meme point : MEC-charge contre EF-charge
+
+  #26  Constante de FEM k_E
+      ligne source 746
+      MODELE    kE*1000
+        solveur : cogging_mec@150
+        cache   : kfringe_ident.mat
+        vitesse : M.speed, om
+        nature  : CALCULE (reseau)   |   point : vide-1500
+      REFERENCE interp1(nS,ES,1500)/1500*1000
+        FEA     : balayage
+        vitesse : nS
+        nature  : EXPORT ANSYS   |   point : balayage
+
+  #27  Couple a l'arret (balayage)
+      ligne source 874
+      MODELE    Tm(1)
+        solveur : cogging_mec@150, cogging_mec@497, drive_mec@784, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : balayage, transitoire (Back_emf)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nS, omq
+        nature  : MIXTE res+ANSYS   |   point : balayage
+      REFERENCE TS(1)
+        FEA     : balayage
+        vitesse : nS
+        nature  : EXPORT ANSYS   |   point : balayage
+
+  #28  Puissance max (balayage)
+      ligne source 875
+      MODELE    Pmax
+        solveur : cogging_mec@150, cogging_mec@497, drive_mec@784, inductance_mec@326, mec_map@516, mec_map@523
+        FEA     : balayage, transitoire (Back_emf)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nS, omq
+        nature  : MIXTE res+ANSYS   |   point : balayage
+      REFERENCE PmaxF
+        FEA     : balayage
+        vitesse : nS
+        nature  : EXPORT ANSYS   |   point : balayage
+
+  #29  Rendement max (balayage)
+      ligne source 876
+      MODELE    100*max(Etm)
+        solveur : cogging_mec@150, cogging_mec@497, cogging_mec@607, drive_mec@784, inductance_mec@326, inductance_mec@606, mec_map@516, mec_map@523, pm_loss_load@805
+        FEA     : balayage, transitoire (Back_emf)
+        cache   : ?, kfringe_ident.mat
+        vitesse : nS, omq
+        nature  : MIXTE res+ANSYS   |   point : balayage
+      REFERENCE 100*max(etaS)
+        FEA     : balayage
+        vitesse : nS
+        nature  : EXPORT ANSYS   |   point : balayage
+
+
+  ---- 3. Q2 : UN COTE EST-IL UNE ENTREE DECLAREE ? ----
+
+    V1  aucun cote de racine ENTREE seule                    PASSEE
+
+    V2  MODELE atteint le reseau, REFERENCE atteint ANSYS    PASSEE
+
+    champs de M cites EN CLAIR dans un operande :
+      aucun.
+
+
+  ---- 4. Q3 : LES DEUX COTES SONT-ILS AU MEME POINT ? ----
+    NON BLOQUANT ICI. C'est le materiau du bloc S3, qui decidera.
+
+    equivalences de point DECLAREES (signalees par la regle, mais
+    n'en sont pas -- motif verifiable dans le source) :
+      #16 Flux totalise crete          magnetostat contre vide-1500
+         motif : le flux totalise a vide NE DEPEND PAS de la vitesse (lamA =
+                 Ntc*sum(sign(P).*R.PhiT), magnetostatique, ligne 288-289). La
+                 reference est lue dans l'essai a 1500 tr/min parce que c'est la que
+                 ANSYS l'enregistre, non parce que la grandeur y serait liee. Les FEM
+                 des lignes 14-15, elles, portent bien om : elles derivent de lamA*om.
+      #26 Constante de FEM k_E         vide-1500 contre balayage
+         motif : LES DEUX COTES SONT A 1500 tr/min. Modele : kE = max(env)/M.speed
+                 (ligne 646). Reference : interp1(nS,ES,1500)/1500, c'est-a-dire le
+                 balayage INTERPOLE A 1500 tr/min. Le dossier "balayage" n'est que le
+                 vehicule de la donnee, pas le point de fonctionnement.
+
+    7 ligne(s) sur 29 comparent REELLEMENT deux points :
+
+        # grandeur                       pt MODELE    pt REFER.   
+       17 Couple en charge               MEC-charge   EF-charge   
+       18 Courant de phase RMS           MEC-charge   EF-charge   
+       21 Vitesse etablie en charge      MEC-charge   EF-charge   
+       22 Courant de bus moyen           MEC-charge   EF-charge   
+       23 Pertes fer en charge           MEC-charge   EF-charge   
+       24 Pertes aimant en charge        MEC-charge   EF-charge   
+       25 Rendement en charge            MEC-charge   EF-charge   
+
+    par ESSAI DE REFERENCE, les points de fonctionnement du modele :
+
+      essai "EF-charge" -- lignes [17 18 21 22 23 24 25]
+        modele au point MEC-charge   : #17 Couple en charge | #18 Courant de phase RMS | #21 Vitesse etablie en charge | #22 Courant de bus moyen | #23 Pertes fer en charge | #24 Pertes aimant en charge | #25 Rendement en charge
+
+      essai "balayage" -- lignes [26 27 28 29]
+        modele au point balayage     : #26 Constante de FEM k_E | #27 Couple a l'arret (balayage) | #28 Puissance max (balayage) | #29 Rendement max (balayage)
+
+      essai "magnetostat" -- lignes [1 2 3 4 5 6 7 8 9 10 11 12 13]
+        modele au point magnetostat  : #1 Bg1 fondamental | #2 B entrefer moyen |Br| | #3 B entrefer crete | #4 Bt tangentiel RMS | #5 Lignes de flux A crete | #6 FMM par aimant (moyenne) | #7 FMM par entrefer (moyenne) | #8 FMM aimant : dispersion | #9 Facteur de reluctance k_r | #10 Facteur de fuite k_l | #11 Inductance propre La | #12 Mutuelle M | #13 Inductance synchrone Ld
+
+      essai "vide-1500" -- lignes [14 15 16]
+        modele au point vide-1500    : #14 FEM de phase crete | #15 Enveloppe six-step crete | #16 Flux totalise crete
+
+      essai "vide-nnl" -- lignes [19 20]
+        modele au point vide-nnl     : #19 Pertes fer a vide | #20 Pertes aimant a vide
+
+    familles portant deux points : 0
+
+
+  ---- 4bis. CE QUE LE COTE MODELE EMPRUNTE A LA REFERENCE ----
+    #1   Bg1 fondamental              <- magnetostique(Magnetic_loading)
+    #2   B entrefer moyen |Br|        <- magnetostique(Magnetic_loading)
+    #3   B entrefer crete             <- magnetostique(Magnetic_loading)
+    #4   Bt tangentiel RMS            <- magnetostique(Magnetic_loading)
+    #5   Lignes de flux A crete       <- magnetostique(Magnetic_loading)
+    #6   FMM par aimant (moyenne)     <- magnetostique(Magnetic_loading)
+    #7   FMM par entrefer (moyenne)   <- magnetostique(Magnetic_loading)
+    #8   FMM aimant : dispersion      <- magnetostique(Magnetic_loading)
+    #9   Facteur de reluctance k_r    <- magnetostique(Magnetic_loading)
+    #17  Couple en charge             <- transitoire (Back_emf), transitoire (en charge)
+    #18  Courant de phase RMS         <- transitoire (Back_emf), transitoire (en charge)
+    #21  Vitesse etablie en charge    <- transitoire (Back_emf), transitoire (en charge)
+    #22  Courant de bus moyen         <- transitoire (Back_emf), transitoire (en charge)
+    #23  Pertes fer en charge         <- transitoire (Back_emf), transitoire (en charge)
+    #24  Pertes aimant en charge      <- transitoire (Back_emf), transitoire (en charge)
+    #25  Rendement en charge          <- transitoire (Back_emf), transitoire (en charge)
+    #27  Couple a l'arret (balayage)  <- balayage, transitoire (Back_emf)
+    #28  Puissance max (balayage)     <- balayage, transitoire (Back_emf)
+    #29  Rendement max (balayage)     <- balayage, transitoire (Back_emf)
+
+    19 lignes sur 29 ont une colonne MODELE qui n'est PAS
+    independante de la reference ; 10 le sont entierement.
+    Les 29 colonnes REFERENCE, elles, ne touchent aucun solveur.
+
+
+  ---- 5. INVENTAIRE : TOUTES LES RACINES ATTEINTES ----
+
+    essais ANSYS atteints par au moins un operande :
+      balayage
+      magnetostique(Armature-Field)
+      magnetostique(Magnetic_loading)
+      transitoire (Back_emf)
+      transitoire (a vide)
+      transitoire (en charge)
+
+    resolutions du MEC atteintes :
+      cogging_mec@150
+      cogging_mec@353
+      cogging_mec@442
+      cogging_mec@497
+      cogging_mec@607
+      drive_mec@534
+      drive_mec@784
+      inductance_mec@326
+      inductance_mec@606
+      mec_map@516
+      mec_map@523
+      pm_loss_load@444
+      pm_loss_load@611
+      pm_loss_load@805
+
+    caches relus :
+      ?
+      kfringe_ident.mat
+
+    vitesses traversees :
+      M.FEA.n_nl
+      M.speed
+      nMt
+      nOL
+      nS
+      om
+      omMt
+      om_nl
+      omq
+
+
+  ---- 6. RESUME ----
+    lignes analysees                       : 29
+    cotes de racine ENTREE seule           : 0   (V1 PASSEE)
+    cotes mal orientes (V2)                : 0   (V2 PASSEE)
+    lignes signalees par la regle de point       : 9
+    dont equivalences declarees et motivees      : 2
+    lignes a deux points de fonctionnement REELS : 7   -> S3
+    essais de reference portant deux points      : 0   -> S3
+
+    GARDE S2 PASSEE
+
+=== S2 termine ===

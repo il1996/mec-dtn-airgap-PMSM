@@ -1,0 +1,54 @@
+=== U-2 : table de donnees machine du MSAP 15/14, emise ===
+  source du code : machine_bldc.m
+  projet de reference : C:\Users\hp\Desktop\ANSYS-\BLDC\BLDC.aedt
+
+  ligne                                          emis         publie      ecart  provenance
+  rated output (W)                                750            750          0  [ANSYS] en-tete du projet
+  slots                                            15             15          0  [ANSYS] topologie
+  poles                                            14             14          0  [ANSYS] topologie
+  pole pairs p                                      7              7          0  [calcul] Nm/2
+  stator bore D (mm)                          69.3564         69.356    0.00036  [ANSYS] $D
+  stator outer diameter (mm)                      125            125          0  [ANSYS] $OSD
+  mechanical air gap g (mm)                         1              1          0  [ANSYS] $g
+  active length L (mm)                             33             33          0  [ANSYS] $Lsk
+  magnet thickness (mm)                           3.5            3.5          0  [ANSYS] $dm
+  magnet embrace                                 0.94           0.94          0  [ANSYS] alpha_p
+  tooth width (mm)                            8.49014           8.49    0.00014  [ANSYS] $wst1
+  slot height hs0 (mm)                              1              1          0  [ANSYS] $hs0
+  slot height hs1 (mm)                            0.5            0.5          0  [ANSYS] $hs1
+  slot height hs2 (mm)                           19.6           19.6    3.6e-15  [ANSYS] $hs2
+  slot width bs0 (mm)                               2              2          0  [ANSYS] $bs0
+  slot width bs1 (mm)                             6.7            6.7    1.3e-14  [calcul] formule $bs1
+  slot width bs2 (mm)                         15.0322          15.03     0.0022  [calcul] formule $bs2
+  total slot height (mm)                         21.1           21.1          0  [calcul] hs0+hs1+hs2
+  stator yoke (mm)                            6.72182          6.722    0.00018  [calcul] Rso-Rsi-hs
+  rotor yoke (mm)                             14.6782         14.678    0.00018  [calcul] rmi-Rri
+  winding factor kw1                           0.9514         0.9514          0  [ANSYS] bobinage
+  turns per coil                                  152            152          0  [ANSYS] $Ntc
+  turns per phase                                 760            760          0  [ANSYS] $Ntph
+  parallel paths                                    1              1          0  [ANSYS] $a
+  phase resistance, network (ohm)             10.2223        10.2223      4e-06  [ANSYS] a 80 degC
+  stacking factor                                 0.9            0.9          0  [ANSYS] stacking_factor
+  Bertotti kh                                 182.455        182.455          0  [ANSYS] materiau M350-50A
+  Bertotti kc                                 1.34676        1.34676          0  [ANSYS] materiau M350-50A
+  Bertotti ke                                       0              0          0  [ANSYS] materiau M350-50A
+  magnet Br (T)                                1.2471         1.2471          0  [ANSYS] N42UH
+  magnet Hc (kA/m)                            955.204            955        0.2  [ANSYS] N42UH
+  magnet mu_rec                               1.03895          1.039    4.8e-05  [calcul] Br/(mu0*Hc)
+  magnet sigma (S/m)                           555556         555556       0.44  [ANSYS] N42UH
+  dc bus (V)                                      500            500          0  [ANSYS] alimentation
+
+  ---- reglage mecanique : le projet et le modele emploient-ils les memes ? ----
+  ligne                          modele (drive_mec) projet (BLDC.aedt)
+  moment of inertia (kg.m2)                   0.001              0.001  identiques
+  viscous damping (N.m.s)         0.000607927101854  0.000607927101854  identiques
+  load torque (N.m)                             4.8                4.8  identiques
+  Le modele integre le meme systeme mecanique que la reference.
+  La valeur 3,789e-4 kg.m2 imprimee par une version anterieure de la
+  table ne vient NI du projet NI du modele : elle vient d'une fiche de
+  dimensionnement. Elle est ecartee.
+
+  ---- BILAN ----
+  34 lignes concordent, 0 en ecart, sur 34
+  GARDE PASSEE -- toute la table se trace au projet ou au code
+=== U-2 termine ===

@@ -1,0 +1,17 @@
+=== T18 : pertes fer et aimant sur le maillage ===
+  Ms=540, nsh=2, 61 positions, 1500 tr/min
+  balayage termine (141 s)
+
+  --- pertes fer ---
+  f = 175.0 Hz | 8415 branches de fer | masse 1.951 kg
+  B alternatif max 1.978 T | B moyen max 0.000 T
+  Pfe MAILLAGE = 128612.55 W   (localise 21.34 | FEA 19.73)
+  ecart vs FEA : +651762.9 %
+
+  --- pertes aimant ---
+  7 anneaux x 241 angles, contrainte sur la section ENTIERE
+  Paimant MAILLAGE = 112.2119 W   (localise 0.342 | FEA 0.334)
+  ecart vs FEA : +33496.4 %
+
+  duree 263 s
+=== T18 termine ===

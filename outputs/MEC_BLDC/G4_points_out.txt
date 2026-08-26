@@ -1,0 +1,29 @@
+=== G4 : rendements en points, et recomptage ===
+
+  champs de SC : n, m, f, u, pt
+
+  GARDE : ecart relatif recompose contre E sauvegarde
+    ecart maximal sur les 29 : 7.105e-15
+    GARDE PASSEE
+
+  ---- les deux lignes de rendement ----
+    #25  MECcharge/EFcharge              
+        modele 86.3340330680   reference 86.5147786624
+        relatif -0.208919 %    POINTS -0.180746 p.p.
+    #29  balayage                        
+        modele 85.4455763512   reference 89.4319268475
+        relatif -4.457413 %    POINTS -3.986350 p.p.
+
+  ---- RECOMPTAGE ----
+    dans les 5, tout en relatif    : 21 / 29
+    dans les 5, 25 et 29 en points : 21 / 29
+    hors les trois non validees, relatif : 20 / 26
+    hors les trois non validees, points  : 20 / 26
+
+    a moins d un point du seuil de 5 --
+      convention actuelle : #12 magnetostat (+4.1538)  #27 balayage (+4.9520)  #29 balayage (-4.4574)  
+      lignes 25 et 29 en points : #12 magnetostat (+4.1538)  #27 balayage (+4.9520)  
+
+    nombre a moins d un point : 3 en relatif, 2 en points
+
+=== G4 termine ===

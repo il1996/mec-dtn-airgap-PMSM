@@ -1,0 +1,121 @@
+======================================================================
+  S3 - POINT DE FONCTIONNEMENT DECLARE PAR CHAQUE LIGNE
+======================================================================
+  source     : BLDC_MEC_COMPLET.m (87519 octets, modifie 13-août-2026 18:12:15)
+  analyseur  : mec_srcgraph.m, partage avec S1 et S2
+
+  ---- 1. LA TABLE DES POINTS, RELUE DU PROGRAMME ----
+    6 point(s) declare(s) dans BLDC_MEC_COMPLET.m :
+
+      magnetostat  (ligne 92)
+        vitesse : (sans objet -- magnetostatique, position balayee)
+        courant : 0 -- essai a vide, aucun courant d'induit
+      vide1500     (ligne 94)
+        vitesse : M.speed = 1500 tr/min
+        courant : 0 -- essai a vide, aucun courant d'induit
+      videnl       (ligne 96)
+        vitesse : M.FEA.n_nl, vitesse de l'essai transitoire a vide
+        courant : 0 -- essai a vide, aucun courant d'induit
+      EFcharge     (ligne 98)
+        vitesse : nOL, vitesse etablie de l'essai EF en charge
+        courant : dOLi, courant de phase de l'essai EF
+      MECcharge    (ligne 100)
+        vitesse : nMt, vitesse etablie du transitoire du MEC
+        courant : DT.i, courant de phase calcule par le MEC
+      balayage     (ligne 102)
+        vitesse : nS, points de vitesse du balayage EF
+        courant : Dq.i, courant du MEC a chacun de ces points
+
+    2 equivalence(s) de point declaree(s) :
+
+      "Flux totalise crete" : magnetostat <=> vide1500
+        motif : le flux totalise a vide NE DEPEND PAS de la vitesse : lamA =
+                Ntc*sum(sign(P).*R.PhiT) est magnetostatique. La reference est lue
+                dans l'essai a 1500 tr/min parce que c'est la qu'ANSYS l'enregistre,
+                non parce que la grandeur y serait liee. Les deux FEM qui precedent,
+                elles, portent bien om : elles derivent de lamA*om.
+
+      "Constante de FEM k_E" : vide1500 <=> balayage
+        motif : les deux cotes sont a 1500 tr/min. Modele : kE = max(env)/M.speed.
+                Reference : interp1(nS,ES,1500)/1500, c'est-a-dire le balayage
+                INTERPOLE A 1500 tr/min. Le dossier "balayage" est le vehicule de la
+                donnee, pas le point de fonctionnement.
+
+  ---- 2. DECLARATION CONTRE PROVENANCE ----
+    point deduit : cote modele, la vitesse traversee (toute grandeur
+    descendant de drive_mec est au point du MEC, la vitesse y etant
+    un RESULTAT) ; cote reference, le dossier d'essai ANSYS.
+
+    # grandeur                     declare              deduit MOD  deduit REF  
+    1 Bg1 fondamental              magnetostat          magnetostat magnetostat 
+    2 B entrefer moyen |Br|        magnetostat          magnetostat magnetostat 
+    3 B entrefer crete             magnetostat          magnetostat magnetostat 
+    4 Bt tangentiel RMS            magnetostat          magnetostat magnetostat 
+    5 Lignes de flux A crete       magnetostat          magnetostat magnetostat 
+    6 FMM par aimant (moyenne)     magnetostat          magnetostat magnetostat 
+    7 FMM par entrefer (moyenne)   magnetostat          magnetostat magnetostat 
+    8 FMM aimant : dispersion      magnetostat          magnetostat magnetostat 
+    9 Facteur de reluctance k_r    magnetostat          magnetostat magnetostat 
+   10 Facteur de fuite k_l         magnetostat          magnetostat magnetostat 
+   11 Inductance propre La         magnetostat          magnetostat magnetostat 
+   12 Mutuelle M                   magnetostat          magnetostat magnetostat 
+   13 Inductance synchrone Ld      magnetostat          magnetostat magnetostat 
+   14 FEM de phase crete           vide1500             vide1500    vide1500    
+   15 Enveloppe six-step crete     vide1500             vide1500    vide1500    
+   16 Flux totalise crete          magnetostat/vide1500 magnetostat vide1500    
+   17 Couple en charge             MECcharge/EFcharge   MECcharge   EFcharge    
+   18 Courant de phase RMS         MECcharge/EFcharge   MECcharge   EFcharge    
+   19 Pertes fer a vide            videnl               videnl      videnl      
+   20 Pertes aimant a vide         videnl               videnl      videnl      
+   21 Vitesse etablie en charge    MECcharge/EFcharge   MECcharge   EFcharge    
+   22 Courant de bus moyen         MECcharge/EFcharge   MECcharge   EFcharge    
+   23 Pertes fer en charge         MECcharge/EFcharge   MECcharge   EFcharge    
+   24 Pertes aimant en charge      MECcharge/EFcharge   MECcharge   EFcharge    
+   25 Rendement en charge          MECcharge/EFcharge   MECcharge   EFcharge    
+   26 Constante de FEM k_E         vide1500/balayage    vide1500    balayage    
+   27 Couple a l'arret (balayage)  balayage             balayage    balayage    
+   28 Puissance max (balayage)     balayage             balayage    balayage    
+   29 Rendement max (balayage)     balayage             balayage    balayage    
+
+  ---- 3. SOUS UN MEME ESSAI DE REFERENCE ----
+    C'est la forme sous laquelle le lecteur rencontre le defaut :
+    des barres voisines, sous la meme etiquette de famille, qui ne
+    sont pas a la meme condition d'essai.
+    Le point de modele est d'abord ramene par les equivalences
+    declarees : une difference de NOM qui n'est pas une difference
+    de CONDITION ne doit pas compter comme une divergence.
+
+      essai de reference "EFcharge" -- 7 ligne(s)
+        modele au point MECcharge    : #17 Couple en charge | #18 Courant de phase RMS | #21 Vitesse etablie en charge | #22 Courant de bus moyen | #23 Pertes fer en charge | #24 Pertes aimant en charge | #25 Rendement en charge
+
+      essai de reference "balayage" -- 4 ligne(s)
+        modele au point balayage     : #26 Constante de FEM k_E | #27 Couple a l'arret (balayage) | #28 Puissance max (balayage) | #29 Rendement max (balayage)
+
+      essai de reference "magnetostat" -- 13 ligne(s)
+        modele au point magnetostat  : #1 Bg1 fondamental | #2 B entrefer moyen |Br| | #3 B entrefer crete | #4 Bt tangentiel RMS | #5 Lignes de flux A crete | #6 FMM par aimant (moyenne) | #7 FMM par entrefer (moyenne) | #8 FMM aimant : dispersion | #9 Facteur de reluctance k_r | #10 Facteur de fuite k_l | #11 Inductance propre La | #12 Mutuelle M | #13 Inductance synchrone Ld
+
+      essai de reference "vide1500" -- 3 ligne(s)
+        modele au point vide1500     : #14 FEM de phase crete | #15 Enveloppe six-step crete | #16 Flux totalise crete
+
+      essai de reference "videnl" -- 2 ligne(s)
+        modele au point videnl       : #19 Pertes fer a vide | #20 Pertes aimant a vide
+
+
+  ---- 4. LE COUPLE : QUELLE GRANDEUR LE TABLEAU PORTE-T-IL ? ----
+    ligne #17, operande modele : TMt
+    point declare : MECcharge/EFcharge   |   deduit : MECcharge / EFcharge
+    -> le tableau porte TMt, la meme grandeur que la Table 16.
+
+    l'autre couple est-il encore nomme dans le programme ?
+      ligne 469  fprintf(' couple a COURANT IMPOSE (courant EF reel, %.0f tr/min) = %.3f N.m (%+.1f %%)..
+
+  ---- 5. VERDICT ----
+    G1  chaque ligne declare un point connu                  PASSEE
+    G2  chaque point nomme sa vitesse et son courant         PASSEE
+    G3  la declaration s'accorde avec la provenance          PASSEE
+    G4  un essai de reference, un seul point de modele       PASSEE
+    G5  chaque equivalence a un motif et sert une ligne      PASSEE
+
+    GARDE S3 PASSEE
+
+=== S3 termine ===

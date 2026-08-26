@@ -1,0 +1,50 @@
+=== Mod-3 et Mod-4 : bornes de deux hypotheses ===
+
+  CONFIGURATION
+    machine : PMSM 15/14, 750 W (machine_bldc)
+    courbe  : bh_curve (M350-50A, 81 points du projet ANSYS)
+
+  ---- Mod-4 : HYPOTHESE RESISTIVE (pertes aimant) ----
+    vitesse de l'essai a vide      : 1688 tr/min
+    frequence de denture f = Ns*n/60 : 422.0 Hz
+    conductivite aimant sigma        : 555556 S/m
+    permeabilite de recul mu_r       : 1.0390
+    epaisseur de peau delta          : 32.25 mm
+    epaisseur d'aimant h_m           : 3.50 mm
+    RAPPORT delta / h_m              : 9.2
+
+    Lecture : le rapport etant de l'ordre de 9, le champ de
+    reaction des courants induits est negligeable et la contrainte
+    de courant net nul sans reaction est licite. L'hypothese
+    tomberait sur un aimant plus epais, plus conducteur, ou a
+    vitesse sensiblement plus elevee.
+
+  ---- Mod-3 : CULASSE ROTORIQUE INFINIMENT PERMEABLE ----
+    epaisseur de culasse rotor w_ry  : 14.678 mm
+    rayon interne d'aimant r_mi      : 30.178 mm
+    rayon d'arbre R_ri               : 15.500 mm
+    epaisseur logarithmique d'aimant U_m = ln(R_ro/r_mi) : 0.109731
+
+    ordre a partir duquel coth(n*U_m) approche 1 :
+         n    coth(n*U_m)
+         1       9.149742
+         2       4.629517
+         5       2.001956
+        10       1.250734
+        20       1.025132
+        50       1.000034
+
+    Lecture : des n = 10, coth(n*U_m) vaut 1.2507. Au-dela, la
+    couche d'aimant decouple la surface du fer rotorique et la
+    condition de Dirichlet en r_mi cesse d'influencer g_n. Ce qui
+    reste expose est le FONDAMENTAL et les tout premiers ordres.
+
+  ---- CE QUE CE SCRIPT N'ETABLIT PAS ----
+    L'induction crete REELLE dans la culasse rotorique n'est pas
+    lue ici : elle demanderait une sonde locale dans le projet EF,
+    et aucun .tab du dossier ne l'exporte. La borne ci-dessus est
+    donc GEOMETRIQUE (decouplage par la couche d'aimant), non
+    MAGNETIQUE (marge de permeabilite du fer). A declarer comme
+    telle dans le manuscrit.
+
+=== termine ===

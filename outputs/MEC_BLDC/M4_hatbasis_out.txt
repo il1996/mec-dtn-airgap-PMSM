@@ -1,0 +1,59 @@
+=== M-4 : troncature liberee, base P0 CONTRE base chapeau ===
+
+  CONFIGURATION
+    machine   : PMSM 15/14, 750 W (machine_bldc)
+    chaine    : cogging_mec + airgap_magnet
+    pavage    : M_s = 1080, FIXE
+    verrou    : N = M_s/2 = 540
+    N balaye  : verrou x [1 2 4 8]
+    solveur   : lineaire, mu_r = 3000 | k_fringe = 0.3250
+
+  ---- base P0 (constante) ----
+         N   N/verrou          Bg1 (T) ecart au verrou
+       540          1         1.078648        0.0000 %
+      1080          2         1.079783        0.1052 %
+      2160          4         1.080847        0.2038 %
+      4320          8         1.081745        0.2871 %
+
+  ---- base P1 (chapeau) ----
+         N   N/verrou          Bg1 (T) ecart au verrou
+       540          1         1.078007        0.0000 %
+      1080          2         1.078218        0.0195 %
+      2160          4         1.078246        0.0221 %
+      4320          8         1.078254        0.0229 %
+
+  ---- INCREMENTS DE Bg1 ET LEURS RAPPORTS ----
+  Rapport -> 1 : queue logarithmique, pas de limite.
+  Rapport < 1 et decroissant : convergence.
+
+           N            dP0    rap. P0            dP1    rap. P1
+        1080      1.135e-03      0.937      2.103e-04      0.135
+        2160      1.064e-03      0.845      2.843e-05      0.270
+        4320      8.984e-04        NaN      7.677e-06        NaN
+
+  dispersion de Bg1 sur le balayage :
+    base P0        0.2867 %
+    base chapeau   0.0229 %
+
+  ---- GARDE : recouvrement au verrou, dans chaque base ----
+    base P0 (constante) ecart max sur Br : 0.000e+00 T  identite au bit pres
+    base P1 (chapeau)   ecart max sur Br : 0.000e+00 T  identite au bit pres
+    GARDE PASSEE
+
+  ---- VERDICT ----
+    La base chapeau CONVERGE sur cette machine : rapport
+    d'increments 0.270, dispersion 0.0229 % contre 0.2867 % en P0.
+    L'Article I peut demontrer son resultat central sur sa
+    PROPRE machine, et le premier item de << further work >>
+    est acquitte.
+
+  ---- PANNEAU POUR LE PANNEAU BAS DE LA TABLE 8 ----
+
+$N_h$ & $B_{g1}$ p.c.\ (\si{\tesla}) & $B_{g1}$ hat (\si{\tesla}) & dev.\ hat\\
+540 & \num{1.07865} & \num{1.07801} & $+0.000\%$\\
+1080 & \num{1.07978} & \num{1.07822} & $+0.020\%$\\
+2160 & \num{1.08085} & \num{1.07825} & $+0.022\%$\\
+4320 & \num{1.08175} & \num{1.07825} & $+0.023\%$\\
+
+  duree 15 s
+=== M-4 termine ===

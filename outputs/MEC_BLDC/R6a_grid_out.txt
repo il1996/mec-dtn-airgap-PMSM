@@ -1,0 +1,85 @@
+=== R6a : inductance incrementale et pas de grille en courant ===
+
+  CONFIGURATION
+    machine      : PMSM 15/14, 750 W (machine_bldc)
+    chaine       : mec_map + local_Lline (recopiee verbatim)
+    Nsurf        : 720 noeuds de surface
+    Nth          : 61 positions rotor par point de courant
+    k_fringe     : 0.7500 (role induit)
+    solveur      : Newton, courbe B(H) M350-50A (bh_curve)
+    loi de grille: 28*sign(u)*|u|^2, u = linspace(-1,1,na)
+    na balaye    : [19 27 35 43]   (production = 19)
+    conduction   : phase a en serie avec phase b, (ia,ib)=(i,-i/sqrt(3))
+    cache        : AUCUN, tout reconstruit
+
+  valeurs publiees relues du manuscrit (Fig. 12) :
+    L_ligne(0 A) = 104.3 mH   |   L_ligne(25 A) = 12.1 mH
+
+  ---- na = 19 (13045 s) ----
+     i (A)    pas (A)  L increm (mH) L secante (mH)   lam_arm (Wb)
+       0.0      0.346       104.3182            NaN        0.00000
+       2.0      1.728        98.2590       102.4804        0.20496
+       5.0      2.420        82.2440        95.6343        0.47817
+      10.0      3.802        62.3094        84.2491        0.84249
+      15.0      4.494        51.1313        73.5940        1.10391
+      20.0      5.185        30.5739        67.5986        1.35197
+      25.0      5.877        12.0575        57.0832        1.42708
+
+  ---- na = 27 (261 s) ----
+     i (A)    pas (A)  L increm (mH) L secante (mH)   lam_arm (Wb)
+       0.0      0.166       104.3182            NaN        0.00000
+       2.0      1.160        99.2978       102.6072        0.20521
+       5.0      1.822        82.4937        95.7089        0.47854
+      10.0      2.485        63.1798        84.5158        0.84516
+      15.0      3.148        47.0224        73.9341        1.10901
+      20.0      3.479        34.8976        68.3284        1.36657
+      25.0      4.142         7.8912        57.2720        1.43180
+
+  ---- na = 35 (450 s) ----
+     i (A)    pas (A)  L increm (mH) L secante (mH)   lam_arm (Wb)
+       0.0      0.097       104.3182            NaN        0.00000
+       2.0      0.872       100.0101       102.6760        0.20535
+       5.0      1.453        82.2554        95.8152        0.47908
+      10.0      2.035        63.4738        84.5710        0.84571
+      15.0      2.422        45.8595        73.8256        1.10738
+      20.0      2.810        32.7865        68.1898        1.36380
+      25.0      3.197        10.5680        58.2249        1.45562
+
+  ---- na = 43 (707 s) ----
+     i (A)    pas (A)  L increm (mH) L secante (mH)   lam_arm (Wb)
+       0.0      0.063       104.3182            NaN        0.00000
+       2.0      0.698       100.2453       102.7068        0.20541
+       5.0      1.079        82.3401        95.8620        0.47931
+      10.0      1.587        63.6390        84.5526        0.84553
+      15.0      1.968        38.9807        74.8099        1.12215
+      20.0      2.222        29.9239        68.1415        1.36283
+      25.0      2.476         9.5176        58.0600        1.45150
+
+  ---- GARDE : grille de production contre Fig. 12 ----
+    L(0 A)  : chaine 104.32 mH | publie 104.3 mH | ecart +0.02 %
+    L(25 A) : chaine 12.06 mH | publie 12.1 mH | ecart -0.35 %
+    GARDE PASSEE : la chaine reconstruite reproduit la figure publiee.
+
+  ---- CONVERGENCE DE L'INDUCTANCE INCREMENTALE ----
+     i (A)        na=19        na=27        na=35        na=43 deriv./prod.   dispersion
+       0.0     104.3182     104.3182     104.3182     104.3182        0.00 %        0.00 %
+       2.0      98.2590      99.2978     100.0101     100.2453        2.02 %        2.00 %
+       5.0      82.2440      82.4937      82.2554      82.3401        0.12 %        0.30 %
+      10.0      62.3094      63.1798      63.4738      63.6390        2.13 %        2.11 %
+      15.0      51.1313      47.0224      45.8595      38.9807      -23.76 %       26.56 %
+      20.0      30.5739      34.8976      32.7865      29.9239       -2.13 %       15.52 %
+      25.0      12.0575       7.8912      10.5680       9.5176      -21.06 %       41.63 %
+
+  ---- SECANTE CONTRE INCREMENTALE (grille la plus fine) ----
+  Les confondre fabriquerait exactement l'ecart cherche : on les affiche.
+     i (A)     increm. (mH)     secante (mH)      rapport
+       0.0         104.3182              NaN          NaN
+       2.0         100.2453         102.7068       1.0246
+       5.0          82.3401          95.8620       1.1642
+      10.0          63.6390          84.5526       1.3286
+      15.0          38.9807          74.8099       1.9192
+      20.0          29.9239          68.1415       2.2772
+      25.0           9.5176          58.0600       6.1003
+
+  duree totale 14463 s
+=== R6a termine ===

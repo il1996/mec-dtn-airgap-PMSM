@@ -1,0 +1,26 @@
+=== D1b : tests unitaires des pertes aimant ===
+  BLDC 15/14 | p = 7 | 14 aimants | 1688 tr/min
+  quadrature commune : nr = 41 (in), nth = 720, Np = 181
+
+  420 noeuds de surface, releve depuis AG (controle : max|Wc^2+Ws^2 - prj^2| = 3.4e-20)
+
+  ---- TEST 1 : excitation SYNCHRONE, reponse attendue NULLE ----
+  routine                   P (W)      P / echelle
+  pm_loss            9.521116e-32        9.95e-27
+  pm_loss_load       7.955906e-33        8.32e-28
+  echelle = plus grande perte du test 2 = 0.000010 W
+  GARDE 1 PASSEE pour les deux
+
+  ---- TEST 2 : harmonique FIXE AU STATOR, reference analytique ----
+     n0      reference        pm_loss   pm_loss_load  ecart pm_l ecart p_l_l
+      8       0.000010       0.000010       0.000010      -0.01 %      -0.01 %
+     22       0.000010       0.000010       0.000010      -0.09 %      -0.09 %
+  GARDE 2 PASSEE pour les deux
+
+  ---- LECTURE ----
+  Les deux tests ont une reponse connue avant le calcul et ne
+  dependent d'aucune reference EF ni d'aucune constante ajustee.
+
+  GARDES : 1 OK | 2 OK
+  duree 117 s
+=== D1b termine ===

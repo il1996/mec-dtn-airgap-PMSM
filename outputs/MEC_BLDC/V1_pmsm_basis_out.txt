@@ -1,0 +1,64 @@
+=== V1 : base P0 vs P1 sur le bore du PMSM ===
+  machine 15/14 750 W | pavage FIXE Nsurf = 1260 colonnes
+  kfringe = 0.3250 | seul N (numax) varie
+  reference EF : Bg1 1.0746 | rang8 0.01966 | Ld 52.342 mH
+
+  --- base P0 ---
+       N        Bg1   |Br| moyen    Br crete     Bt rms      rang 8
+{Unrecognized field name "ths".
+
+Error in RUN_V1_PMSM_BASE (line 43)
+        AGb=airgap_magnet(M,R.ths,R.dths,N,bs);
+} 
+=== V1 : base P0 vs P1 sur le bore du PMSM ===
+  machine 15/14 750 W | kfringe = 0.3250 | solveur lineaire
+  reference EF : Bg1 1.0746 | rang8 0.01966 T
+  NOTE : numax = Nsurf/2 impose par cogging_mec (rang de Y).
+         Le balayage varie donc pavage ET troncature ensemble.
+
+  --- base P0 ---
+    Nsurf      N        Bg1   |Br| moyen    Br crete     Bt rms      rang 8
+      540    270    1.07390      0.75878     1.00102    0.14940    0.021761
+     1080    540    1.07865      0.76228     0.98270    0.14136    0.016944
+     1260    630    1.07755      0.76147     0.98576    0.14317    0.018062
+     2160   1080    1.07793      0.76175     0.98434    0.14246    0.017672
+     4320   2160    1.07759      0.76150     0.98527    0.14299    0.018014
+     8640   4320    1.07743      0.76137     0.98572    0.14325    0.018180
+
+  --- base P1 ---
+    Nsurf      N        Bg1   |Br| moyen    Br crete     Bt rms      rang 8
+      540    270    1.07267      0.75786     1.00021    0.15094    0.023000
+     1080    540    1.07801      0.76181     0.98427    0.14239    0.017596
+     1260    630    1.07698      0.76104     0.98725    0.14406    0.018637
+     2160   1080    1.07759      0.76149     0.98535    0.14301    0.018020
+     4320   2160    1.07741      0.76136     0.98579    0.14328    0.018195
+     8640   4320    1.07734      0.76131     0.98598    0.14340    0.018271
+
+  --- increments de Bg1 et leurs rapports ---
+     Nsurf           dP0    rap.P0           dP1    rap.P1
+      1080     4.744e-03    -0.232     5.336e-03    -0.192
+      1260    -1.101e-03    -0.347    -1.027e-03    -0.590
+      2160     3.819e-04    -0.885     6.056e-04    -0.285
+      4320    -3.380e-04     0.483    -1.728e-04     0.437
+      8640    -1.633e-04       NaN    -7.561e-05       NaN
+
+  dispersion sur les 6 discretisations :
+  Bg1 (T)            P0    0.440 %   P1    0.496 %
+  |Br| moyen (T)     P0    0.461 %   P1    0.519 %
+  Br crete (T)       P0    1.856 %   P1    1.613 %
+  Bt rms (T)         P0    5.592 %   P1    5.921 %
+  rang 8 (T)         P0   26.126 %   P1   28.514 %
+
+  valeurs a la plus fine discretisation (Nsurf = 8640) :
+  Bg1 (T)            P0    1.07743   P1    1.07734   ecart   -0.01 %
+  |Br| moyen (T)     P0    0.76137   P1    0.76131   ecart   -0.01 %
+  Br crete (T)       P0    0.98572   P1    0.98598   ecart   +0.03 %
+  Bt rms (T)         P0    0.14325   P1    0.14340   ecart   +0.10 %
+  rang 8 (T)         P0    0.01818   P1    0.01827   ecart   +0.50 %
+
+  LECTURE. Rapports -> 1 : queue logarithmique. Rapports ~0,3 :
+  convergence geometrique. Si P0 disperse peu, c'est que la chaine
+  PMSM opere SOUS le seuil ou le defaut se manifeste.
+
+  duree 58 s
+=== V1 termine ===

@@ -1,0 +1,484 @@
+=== A4 : pertes fer, decomposition et derive en n_sh ===
+  machine   : PMSM 15/14, 750 W | Ms = 540, nst = 4, nys = 3
+  vitesse   : 1688 tr/min -> f = 196.933 Hz | Np = 60 positions
+  Bertotti  : Kh = 182.455, Kc = 1.34676, Ke = 0 [W/m3] | Ki = 0.90
+  reference : 19.73 W a vide
+
+  NOTE. Le terme d'EXCES est nul dans le materiau du projet
+  (core_loss_ke = 0 dans BLDC.aedt). La decomposition demandee
+  se reduit donc a hysteresis + Foucault, et le dire est plus
+  honnete que de publier une colonne d'exces a zero.
+
+  ---- 1. chaine LOCALISEE, decomposition ----
+  region                     hysteresis     Foucault        total       part
+  dents stator                   6.1747       8.9757      15.1504      66.6 %
+  culasse stator                 2.3357       3.3953       5.7310      25.2 %
+  culasse rotor                  0.7579       1.1017       1.8595       8.2 %
+  TOTAL                          9.2683      13.4726      22.7409
+  part hysteresis 40.8 % | part Foucault 59.2 %
+  stator seul 20.881 W | rotor 1.860 W
+
+  ---- 2. chaine MAILLAGE, balayage du maillage de bec ----
+    volume geometrique du fer stator : 1.568964e-04 m3 (1.2003 kg)
+
+    n_sh = 1 : Ls =  9,  5400 inconnues | fer des cellules 1.1951 kg (-0.43 %)
+               Ph =   9.201  Pe =  13.375  ->   22.576 W  [52 s]
+    n_sh = 2 : Ls = 11,  6480 inconnues | fer des cellules 1.1951 kg (-0.43 %)
+               Ph =   9.314  Pe =  13.539  ->   22.854 W  [91 s]
+    n_sh = 4 : Ls = 15,  8640 inconnues | fer des cellules 1.1951 kg (-0.43 %)
+               Ph =   9.372  Pe =  13.624  ->   22.996 W  [137 s]
+
+  ---- 3. derive des pertes fer avec le maillage de bec ----
+  Reference EF 19.73 W : c'est un TOTAL MACHINE. Le maillage ne
+  contient que le fer STATOR ; la culasse rotor (1.860 W) vient de
+  la chaine localisee. Les deux perimetres sont donc donnes.
+
+    n_sh  inconnues    Ph (W)    Pe (W) |   stator W     ec./EF |   +rotor W     ec./EF |    peak B
+       1       5400     9.201    13.375 |     22.576      14.4 % |     24.436      23.8 % |    1.9742
+       2       6480     9.314    13.539 |     22.854      15.8 % |     24.713      25.3 % |    1.9779
+       4       8640     9.372    13.624 |     22.996      16.6 % |     24.856      26.0 % |    1.9791
+
+  PERIMETRE RETENU POUR LA PUBLICATION : STATOR + ROTOR, seul
+  comparable au total machine de la reference. La colonne "stator"
+  est donnee pour que X2 §4, qui raisonne a perimetre stator, reste
+  rapprochable de ce tableau.
+
+  derive du total sur le balayage n_sh = 1 -> 4 : +1.86 %
+
+  repartition par region (bec / corps de dent / culasse) :
+    n_sh        bec (W)      corps (W)    culasse (W)
+       1          1.914         15.264          5.398
+       2          2.167         15.281          5.406
+       4          2.303         15.286          5.408
+    part          10.0 %          66.5 %          23.5 %
+  derive de la part de BEC : +20.28 % (c'est la region du coin)
+
+  ---- 4. consequence pour la restriction §8.5 ----
+  Rappel X1, meme machine, meme famille de maillages, a Ms = 900 :
+    bande nu=8   : -9,7 % (n_sh=1) -> -18,8 % (n_sh=4)
+    peak B lin.  : 2,7989 T -> 3,4709 T, sans se stabiliser
+  Ici, memes raffinements du bec :
+    pertes fer   : +1.86 % sur le total, +20.28 % sur la part de bec
+    peak B NL    : 1.9742 -> 1.9791 T
+
+  LECTURE, ET ELLE EST PLUS NUANCEE QUE PREVU.
+  Le TOTAL ne derive que de +1.86 % : les pertes fer ne sont PAS
+  aussi sensibles au maillage de bec que la bande de denture, qui
+  double sur le meme balayage. Publier "les pertes derivent comme
+  nu=8" serait faux.
+
+  C'est la DECOMPOSITION qui porte le resultat :
+    - corps de dent + culasse (90.0 % du total) : stables ;
+    - BEC (10.0 % du total) : +20.28 %, non converge.
+  La perte fer est donc la SOMME d'une part volumique convergee et
+  d'une part de coin qui ne converge pas. Ici la part de coin est
+  petite, donc le total parait robuste -- mais c'est une propriete
+  de la REPARTITION DES PERTES DE CETTE MACHINE, non une garantie.
+  Sur une machine ou le bec porte davantage (frequence plus haute,
+  bec plus mince, saturation plus forte), le meme defaut dominerait.
+
+  A NOTER : le champ de fer crete reste borne (1.9742 -> 1.9791 T) parce
+  que le solveur est NEWTON. X1 montre qu'en LINEAIRE le meme coin
+  diverge (2,7989 -> 3,4709 T). La saturation MASQUE la singularite
+  sans la supprimer : elle borne l'amplitude, pas la dependance au
+  maillage.
+
+  CONSEQUENCE POUR LA §8.5. La restriction tient, et doit etre
+  enoncee avec precision : les pertes sont exclues de la regle des
+  grandeurs integrales parce que leur COMPOSANTE LOCALE ne converge
+  pas -- meme lorsque le total parait stable, ce qui est le cas ici.
+  Trois faits sources l'etayent :
+    - A3 : pertes aimants -39,1 % -> -24,7 % selon la source du champ ;
+    - X2 : pertes fer +15,3 % -> +25,3 % selon la source du champ ;
+    - A4 : part de bec +20.28 % sous raffinement, a source fixee.
+  NE PAS employer le -14,8 % de ARCHITECTURE §1.5 : anomalie A-1.
+
+  duree 137 s
+=== A4 termine ===
+=== A4 : pertes fer, delimitation de la regle des integrales ===
+  machine   : PMSM 15/14, 750 W | Ms = 540, nst = 4, nys = 3, n_sh = 2
+  balayage  : une periode electrique, Np = 61, solveur Newton
+  amplitude : demi-etendue crete-a-crete PAR BRANCHE
+  reference : 19.73 W a vide @ 1688 tr/min (f = 196.933 Hz)
+  acquis    : maillage 16,81 W @ 1500 tr/min (f = 175.000 Hz)
+  kfringe   : 0.3250 (chaine localisee seulement)
+
+  ---- 0. coefficients de Bertotti, relus dans BLDC.aedt ----
+    source    : BLDC.aedt
+    kh  = 182.455      [W/m3 par Hz par T^2]
+    kc  = 1.34676      [W/m3 par (Hz.T)^2]
+    ke  = 0            [W/m3 par (Hz.T)^1.5]
+    rho = 7650         kg/m3   |   kFe = 0.90
+    concordance avec machine_bldc : ecart max 0.000e+00 (0 attendu)
+    PIEGE D'UNITES. Ces coefficients sont VOLUMIQUES [W/m3]. Les
+    multiplier par la masse surestime d'un facteur rho = 7650.
+    TERME D'EXCES. ke = 0 dans le materiau du projet : le terme
+    ke*(f*B)^1.5 est IDENTIQUEMENT NUL. Il est calcule et imprime
+    ci-dessous pour que le zero soit une SORTIE et non une
+    omission, mais la decomposition demandee se reduit en fait a
+    hysteresis + Foucault. Le dire est plus honnete que de
+    publier une colonne d'exces vide.
+
+  ---- 1. balayage rotor, 61 positions ----
+    11880 branches, 8415 de fer | 6480 inconnues | Ls = 11 couches
+    amplitude alternative maximale sur le balayage : 1.9779 T
+    (non nul : le balayage a bien varie, piege du chaud ecarte)
+    duree du balayage : 41 s
+
+  ---- 2. confirmation des deux valeurs acquises ----
+    2.1 MAILLAGE, recette de l'acquis (par BRANCHE, kFe re-applique,
+        1500 tr/min, f = 175.000 Hz) :
+        Pfe = 16.8121 W        (acquis annonce 16,81 W)
+        ecart / reference 19.73 W : -14.79 %   (acquis annonce -14,8 %)
+        trace : Pfe x rho = 128612.55 W, la valeur brute stockee dans T18_out
+        CONFIRME.
+
+    2.2 MODELE LOCALISE (reseau a une dent, mu_r = 3000, 1688 tr/min) :
+        formulation du manuscrit (Foucault en <(dB/dt)^2>),
+        perimetre STATOR + CULASSE ROTOR :
+        Pfe = 21.3358 W        (acquis annonce 21,34 W)
+        ecart / reference 19.73 W : +8.14 %   (acquis annonce +8,2 %)
+        CONFIRME.
+
+    2.3 AUDIT DES DEUX VALEURS. Les reproduire ne les valide pas.
+        bilan de matiere du fer STATOR :
+          geometrie exacte   1.568964e-04 m3 -> 1.2003 kg
+          somme des CELLULES 1.562183e-04 m3 -> 1.1951 kg  (ecart -0.43 %)
+          somme des BRANCHES 2.833248e-04 m3 -> 2.1674 kg  (rapport 1.806)
+        La recette de 2.1 somme sur les BRANCHES : elle porte 1.806 fois
+        le fer de la machine, puis le re-multiplie par kFe = 0.90 alors
+        que ME.A est deja une section NETTE, et l'evalue a 1500 tr/min
+        quand la reference est a 1688 tr/min.
+        Trois defauts de sens contraire : le -14,8 % est un ecart
+        ARITHMETIQUEMENT reproductible et PHYSIQUEMENT vide.
+        facteurs isoles : fer x1.814 | kFe x0.900 | vitesse x0.830
+
+  ---- 3. decomposition hysteresis / Foucault / exces ----
+    formule : p = kh*f*B^2 + kc*(f*B)^2 + ke*(f*B)^1.5  [W/m3]
+    les deux modeles a 1688 tr/min, f = 196.933 Hz, formulation d'amplitude
+
+    MODELE A -- MAILLAGE polaire (perimetre STATOR seul)
+    region                   hysteresis     Foucault        exces        total
+    bec de dent                  0.9918       1.4417       0.0000       2.4336
+    corps de dent                6.2291       9.0547       0.0000      15.2838
+    culasse stator               2.2042       3.2040       0.0000       5.4082
+    TOTAL STATOR                 9.4251      13.7005       0.0000      23.1256
+    part : hysteresis 40.8 % | Foucault 59.2 % | exces 0.0 %
+    (variante : amplitude prise apres moyenne de cellule -> 22.8537 W,
+     soit -1.18 % ; l'ordre des deux operations est un effet du 2e ordre)
+
+    MODELE B -- LOCALISE, reseau a une dent
+    region                   hysteresis     Foucault        exces        total
+    dents stator                 6.1747       8.9757       0.0000      15.1504
+    culasse stator               2.3357       3.3953       0.0000       5.7310
+    TOTAL STATOR                 8.5104      12.3710       0.0000      20.8814
+    culasse rotor                0.7579       1.1017       0.0000       1.8595
+    TOTAL + ROTOR                9.2683      13.4726       0.0000      22.7409
+    part : hysteresis 40.8 % | Foucault 59.2 % | exces 0.0 %
+
+    LE TERME D'EXCES EST NUL DANS LES DEUX COLONNES, ET IL EST NUL
+    PAR CONSTRUCTION : ke = 0 dans BLDC.aedt. Somme calculee cote maillage
+    0.0000e+00 W, cote localise 0.0000e+00 W. Ce n'est pas une omission.
+
+  ---- 4. repartition dents / culasse ----
+    maillage : separation par ME.lay, couches de culasse = ME.layY
+               = [9  10  11] sur Ls = 11 ; couche de reference de dent
+               ME.lamT = 7 (mi-corps d'encoche)
+
+                                 maillage W       part   localise W       part
+    DENTS (bec + corps)             17.7174      76.6 %      15.1504      72.6 %
+    CULASSE stator                   5.4082      23.4 %       5.7310      27.4 %
+    TOTAL STATOR                    23.1256     100.0 %      20.8814     100.0 %
+    detail du maillage dans les dents : bec 2.4336 W (10.5 % du total)
+                                        corps 15.2838 W (66.1 %)
+    Le modele localise n'a PAS de region de bec : sa dent est une
+    branche unique de section wst1. Le bec est donc la part que le
+    maillage ajoute et que le localise ne peut pas porter.
+
+    volumes portes par chaque modele (controle) :
+      dents   : maillage 8.203644e-05 m3 | localise 7.980777e-05 m3 (-2.72 %)
+      culasse : maillage 7.418190e-05 m3 | localise 7.418190e-05 m3 (+0.00 %)
+      => les deux modeles portent le MEME fer ; tout ecart de perte
+         vient du CHAMP, non de la matiere.
+
+  ---- 5. induction locale maximale par region ----
+    |B| crete = max sur le balayage et sur la region ; B alt = max de
+    la demi-etendue crete-a-crete par branche (la grandeur des pertes)
+
+    MAILLAGE
+    region                    |B| crete    B alt max    B alt rad    B alt tan
+    bec de dent                  1.9779       2.4623       1.5802       1.8914
+    corps de dent                1.5670       1.6480       1.6002       0.7162
+    culasse stator               1.2104       1.5156       1.1288       1.1700
+    ensemble du fer              1.9779       2.4623
+
+    LOCALISE
+    region                    |B| crete    B alt max
+    dents stator                 1.4674       1.4674
+    culasse stator               0.9361       0.9361
+    culasse rotor                0.5332       0.5332
+
+    LECTURE. Le maillage voit dans le bec une induction que le
+    modele localise ne peut pas voir : 1.9779 T contre 1.4674 T sur la
+    dent entiere, soit +34.8 %. Comme p varie en B^2, ce seul coin
+    porte un facteur 1.82 sur la densite locale de perte.
+
+  ---- 6. controle sur une grandeur INTEGRALE, meme solution ----
+    flux totalise de phase, crete (grandeur INTEGRALE)
+    reference EF : 0.25833 Wb   [Output Variables Plot 4.tab]
+    source du champ            lambda_a (Wb)   ecart / EF
+    MAILLAGE (meme balayage)        0.25424       -1.58 %
+    LOCALISE (meme reseau)          0.26121        1.11 %
+
+    la MEME solution, lue en PERTE (grandeur locale) :
+    reference EF : 19.73 W (total machine)
+    source du champ                P_fe (W)   ecart / EF
+    MAILLAGE, stator seul            23.126        17.2 %
+    MAILLAGE + culasse rotor         24.985        26.6 %
+    LOCALISE, stator seul            20.881         5.8 %
+    LOCALISE + culasse rotor         22.741        15.3 %
+    LOCALISE, forme manuscrit        21.336         8.1 %
+
+  ---- 7. conclusion : la regle des integrales est DELIMITEE ----
+    (1) LES DEUX ACQUIS SONT CONFIRMES PAR LE CALCUL.
+        maillage recette d'origine : 16.81 W, -14.8 % (annonce 16,81 / -14,8)
+        localise forme manuscrit    : 21.34 W, +8.1 % (annonce 21,34 / +8,2)
+
+    (2) MAIS LE -14,8 % NE PEUT PAS SERVIR D'ARGUMENT. Il repose sur
+        une sommation par branche qui compte le fer 1.806 fois, sur un
+        foisonnement applique deux fois, et sur une vitesse (1500) qui
+        n'est pas celle de la reference (1688). Bilan de matiere ferme
+        et perimetre egal, le maillage donne +26.6 % -- il AGRANDIT
+        l'ecart, il ne l'inverse pas.
+
+    (3) LA THESE EST ETAYEE, PAR UN ARGUMENT PLUS FORT QUE LE -14,8 %.
+        Sur LA MEME solution de champ, au MEME balayage :
+          grandeur INTEGRALE (flux totalise) : ecart max 1.58 %
+          grandeur LOCALE    (pertes fer)    : ecart de 5.8 a 26.6 %
+        Deux ordres de grandeur separent les deux lectures d'un meme
+        champ. La perte n'herite donc PAS du statut des integrales.
+
+    (4) LE MECANISME EST IDENTIFIE, ET IL EST LOCAL. A perimetre et
+        matiere identiques (1.43 % d'ecart de volume), les deux
+        modeles different de +10.7 % sur la perte parce que le
+        maillage resout un BEC que le modele localise ne porte pas :
+        1.9779 T dans le bec contre 1.4674 T dans la dent, et p en B^2.
+        Le bec pese 10.5 % de la perte du maillage pour 5.5 % du fer.
+
+    (5) FORMULATION RETENUE POUR LA §8.5. La regle du 1 % porte sur
+        les grandeurs INTEGRALES -- flux, FEM, couple, inductances --
+        qui ne dependent que des flux de branche. Les pertes fer en
+        sont EXCLUES : elles integrent B^2 point par point, donc elles
+        heritent de la precision LOCALE du champ, qui est d'un ordre
+        de grandeur inferieure. Ce n'est pas une exception a la regle,
+        c'est sa DELIMITATION : la regle ne s'applique jamais a une
+        fonctionnelle non lineaire du champ local.
+        NE PAS employer le -14,8 % pour l'illustrer : voir (2).
+
+  duree 45 s
+=== A4 termine ===
+=== A4 : pertes fer, delimitation de la regle des integrales ===
+  machine   : PMSM 15/14, 750 W | Ms = 540, nst = 4, nys = 3, n_sh = 2
+  balayage  : une periode electrique, Np = 61, solveur Newton
+  amplitude : demi-etendue crete-a-crete PAR BRANCHE
+  reference : 19.73 W a vide @ 1688 tr/min (f = 196.933 Hz)
+  acquis    : maillage 16,81 W @ 1500 tr/min (f = 175.000 Hz)
+  kfringe   : 0.3250 (chaine localisee seulement)
+
+  ---- 0. coefficients de Bertotti, relus dans BLDC.aedt ----
+    source    : BLDC.aedt
+    kh  = 182.455      [W/m3 par Hz par T^2]
+    kc  = 1.34676      [W/m3 par (Hz.T)^2]
+    ke  = 0            [W/m3 par (Hz.T)^1.5]
+    rho = 7650         kg/m3   |   kFe = 0.90
+    concordance avec machine_bldc : ecart max 0.000e+00 (0 attendu)
+    PIEGE D'UNITES. Ces coefficients sont VOLUMIQUES [W/m3]. Les
+    multiplier par la masse surestime d'un facteur rho = 7650.
+    TERME D'EXCES. ke = 0 dans le materiau du projet : le terme
+    ke*(f*B)^1.5 est IDENTIQUEMENT NUL. Il est calcule et imprime
+    ci-dessous pour que le zero soit une SORTIE et non une
+    omission, mais la decomposition demandee se reduit en fait a
+    hysteresis + Foucault. Le dire est plus honnete que de
+    publier une colonne d'exces vide.
+
+  ---- 1. balayage rotor, 61 positions ----
+    11880 branches, 8415 de fer | 6480 inconnues | Ls = 11 couches
+    amplitude alternative maximale sur le balayage : 1.9779 T
+    (non nul : le balayage a bien varie, piege du chaud ecarte)
+    duree du balayage : 58 s
+
+  ---- 2. confirmation des deux valeurs acquises ----
+    2.1 MAILLAGE, recette de l'acquis (par BRANCHE, kFe re-applique,
+        1500 tr/min, f = 175.000 Hz) :
+        Pfe = 16.8121 W        (acquis annonce 16,81 W)
+        ecart / reference 19.73 W : -14.79 %   (acquis annonce -14,8 %)
+        trace : Pfe x rho = 128612.55 W, la valeur brute stockee dans T18_out
+        CONFIRME.
+
+    2.2 MODELE LOCALISE (reseau a une dent, mu_r = 3000, 1688 tr/min) :
+        formulation du manuscrit (Foucault en <(dB/dt)^2>),
+        perimetre STATOR + CULASSE ROTOR :
+        Pfe = 21.3358 W        (acquis annonce 21,34 W)
+        ecart / reference 19.73 W : +8.14 %   (acquis annonce +8,2 %)
+        CONFIRME.
+
+    2.3 AUDIT DES DEUX VALEURS. Les reproduire ne les valide pas.
+        bilan de matiere du fer STATOR :
+          geometrie exacte   1.568964e-04 m3 -> 1.2003 kg
+          somme des CELLULES 1.562183e-04 m3 -> 1.1951 kg  (ecart -0.43 %)
+          somme des BRANCHES 2.833248e-04 m3 -> 2.1674 kg  (rapport 1.806)
+        La recette de 2.1 somme sur les BRANCHES : elle porte 1.806 fois
+        le fer de la machine, puis le re-multiplie par kFe = 0.90 alors
+        que ME.A est deja une section NETTE, et l'evalue a 1500 tr/min
+        quand la reference est a 1688 tr/min.
+        Trois defauts de sens contraire : le -14,8 % est un ecart
+        ARITHMETIQUEMENT reproductible et PHYSIQUEMENT vide.
+        facteurs isoles : fer x1.814 | kFe x0.900 | vitesse x0.830
+
+  ---- 3. decomposition hysteresis / Foucault / exces ----
+    formule : p = kh*f*B^2 + kc*(f*B)^2 + ke*(f*B)^1.5  [W/m3]
+    les deux modeles a 1688 tr/min, f = 196.933 Hz, formulation d'amplitude
+
+    MODELE A -- MAILLAGE polaire (perimetre STATOR seul)
+    region                   hysteresis     Foucault        exces        total
+    bec de dent                  0.9918       1.4417       0.0000       2.4336
+    corps de dent                6.2291       9.0547       0.0000      15.2838
+    culasse stator               2.2042       3.2040       0.0000       5.4082
+    TOTAL STATOR                 9.4251      13.7005       0.0000      23.1256
+    part : hysteresis 40.8 % | Foucault 59.2 % | exces 0.0 %
+    (variante : amplitude prise apres moyenne de cellule -> 22.8537 W,
+     soit -1.18 % ; l'ordre des deux operations est un effet du 2e ordre.
+     Cette variante est EXACTEMENT la recette de X2 : elle en reproduit
+     la valeur publiee, ce qui controle toute la chaine de ce bloc.)
+
+    MODELE B -- LOCALISE, reseau a une dent
+    region                   hysteresis     Foucault        exces        total
+    dents stator                 6.1747       8.9757       0.0000      15.1504
+    culasse stator               2.3357       3.3953       0.0000       5.7310
+    TOTAL STATOR                 8.5104      12.3710       0.0000      20.8814
+    culasse rotor                0.7579       1.1017       0.0000       1.8595
+    TOTAL + ROTOR                9.2683      13.4726       0.0000      22.7409
+    part : hysteresis 40.8 % | Foucault 59.2 % | exces 0.0 %
+
+    LE TERME D'EXCES EST NUL DANS LES DEUX COLONNES, ET IL EST NUL
+    PAR CONSTRUCTION : ke = 0 dans BLDC.aedt. Somme calculee cote maillage
+    0.0000e+00 W, cote localise 0.0000e+00 W. Ce n'est pas une omission.
+
+  ---- 4. repartition dents / culasse ----
+    maillage : separation par ME.lay, couches de culasse = ME.layY
+               = [9  10  11] sur Ls = 11 ; couche de reference de dent
+               ME.lamT = 7 (mi-corps d'encoche)
+
+                                 maillage W       part   localise W       part
+    DENTS (bec + corps)             17.7174      76.6 %      15.1504      72.6 %
+    CULASSE stator                   5.4082      23.4 %       5.7310      27.4 %
+    TOTAL STATOR                    23.1256     100.0 %      20.8814     100.0 %
+    detail du maillage dans les dents : bec 2.4336 W (10.5 % du total)
+                                        corps 15.2838 W (66.1 %)
+    Le modele localise n'a PAS de region de bec : sa dent est une
+    branche unique de section wst1. Le bec est donc la part que le
+    maillage ajoute et que le localise ne peut pas porter.
+
+    volumes portes par chaque modele (controle) :
+      dents   : maillage 8.203644e-05 m3 | localise 7.980777e-05 m3 (-2.72 %)
+      culasse : maillage 7.418190e-05 m3 | localise 7.418190e-05 m3 (+0.00 %)
+      => les deux modeles portent le MEME fer ; tout ecart de perte
+         vient du CHAMP, non de la matiere.
+
+  ---- 5. induction locale maximale par region ----
+    trois grandeurs distinctes, a ne pas confondre :
+      |B| crete   : max sur le balayage du module par BRANCHE
+                    -- c'est le "B local maximal" demande
+      B alt br.   : max de la demi-etendue crete-a-crete PAR BRANCHE
+      Bra / Bta   : amplitudes des deux composantes orthogonales,
+                    moyennees sur la cellule ; c'est le couple
+                    (Bra,Bta) qui entre dans Bertotti, via Bra^2+Bta^2
+
+    MAILLAGE
+    region                   |B| crete   B alt br.         Bra         Bta       hypot
+    bec de dent                 1.9779      1.9779      1.5802      1.8914      2.4623
+    corps de dent               1.5670      1.5670      1.6002      0.7162      1.6480
+    culasse stator              1.2104      1.2104      1.1288      1.1700      1.5156
+    ensemble du fer             1.9779      1.9779                              2.4623
+    NOTE DE LECTURE. La colonne "hypot" = sqrt(Bra^2+Bta^2) est un
+    MODULE DE DEUX AMPLITUDES, pas une induction instantanee : elle
+    peut donc depasser la colonne "|B| crete" sans rien violer, les
+    deux composantes n'atteignant pas leur extremum a la meme
+    position rotor. Elle est imprimee parce que c'est elle, et non
+    |B| crete, qui pilote la perte.
+
+    LOCALISE
+    region                   |B| crete   B alt br.
+    dents stator                1.4674      1.4674
+    culasse stator              0.9361      0.9361
+    culasse rotor               0.5332      0.5332
+
+    LECTURE. Le maillage voit dans le bec une induction que le
+    modele localise ne peut pas voir : 1.9779 T contre 1.4674 T sur la
+    dent entiere, soit +34.8 %. Comme p varie en B^2, ce seul coin
+    porte un facteur 1.82 sur la densite locale de perte.
+
+  ---- 6. controle sur une grandeur INTEGRALE, meme solution ----
+    flux totalise de phase, crete (grandeur INTEGRALE)
+    reference EF : 0.25833 Wb   [Output Variables Plot 4.tab]
+    source du champ            lambda_a (Wb)   ecart / EF
+    MAILLAGE (meme balayage)        0.25424       -1.58 %
+    LOCALISE (meme reseau)          0.26121        1.11 %
+
+    la MEME solution, lue en PERTE (grandeur locale) :
+    reference EF : 19.73 W (total machine)
+    source du champ                P_fe (W)   ecart / EF
+    MAILLAGE, stator seul            23.126        17.2 %
+    MAILLAGE + culasse rotor         24.985        26.6 %
+    LOCALISE, stator seul            20.881         5.8 %
+    LOCALISE + culasse rotor         22.741        15.3 %
+    LOCALISE, forme manuscrit        21.336         8.1 %
+
+  ---- 7. conclusion : la regle des integrales est DELIMITEE ----
+    (1) LES DEUX ACQUIS SONT CONFIRMES PAR LE CALCUL.
+        maillage recette d'origine : 16.81 W, -14.8 % (annonce 16,81 / -14,8)
+        localise forme manuscrit    : 21.34 W, +8.1 % (annonce 21,34 / +8,2)
+
+    (2) MAIS LE -14,8 % NE PEUT PAS SERVIR D'ARGUMENT. Il repose sur
+        une sommation par branche qui compte le fer 1.806 fois, sur un
+        foisonnement applique deux fois, et sur une vitesse (1500) qui
+        n'est pas celle de la reference (1688). Bilan de matiere ferme
+        et perimetre egal, le maillage donne +26.6 % -- il AGRANDIT
+        l'ecart, il ne l'inverse pas.
+
+    (3) LA THESE EST ETAYEE, PAR UN ARGUMENT PLUS FORT QUE LE -14,8 %.
+        Sur LA MEME solution de champ, au MEME balayage :
+          grandeur INTEGRALE (flux totalise) : ecart max 1.58 %
+          grandeur LOCALE    (pertes fer)    : ecart de 5.8 a 26.6 %
+        Soit un facteur 3.7 a 16.8 entre les deux lectures d'un meme
+        champ. La perte n'herite donc PAS du statut des integrales.
+
+        RESERVE, ET ELLE PORTE SUR LA §8.5 ELLE-MEME. Le seuil de
+        1 % n'est PAS tenu par le flux totalise : -1.58 % (maillage)
+        et +1.11 % (localise) contre la reference EF. La these de ce
+        bloc ne repose donc pas sur "les integrales sont a 1 %" mais
+        sur le CONTRASTE, qui lui est etabli : meme champ, meme
+        balayage, un facteur 17 entre l'erreur sur l'integrale et
+        l'erreur sur la perte. Si la §8.5 veut garder le seuil de
+        1 %, elle doit nommer les grandeurs sur lesquelles il a ete
+        verifie -- le flux totalise crete n'en fait pas partie.
+
+    (4) LE MECANISME EST IDENTIFIE, ET IL EST LOCAL. A perimetre et
+        matiere identiques (1.43 % d'ecart de volume), les deux
+        modeles different de +10.7 % sur la perte parce que le
+        maillage resout un BEC que le modele localise ne porte pas :
+        1.9779 T dans le bec contre 1.4674 T dans la dent, et p en B^2.
+        Le bec pese 10.5 % de la perte du maillage pour 5.5 % du fer.
+
+    (5) FORMULATION RETENUE POUR LA §8.5. La regle du 1 % porte sur
+        les grandeurs INTEGRALES -- flux, FEM, couple, inductances --
+        qui ne dependent que des flux de branche. Les pertes fer en
+        sont EXCLUES : elles integrent B^2 point par point, donc elles
+        heritent de la precision LOCALE du champ, qui est d'un ordre
+        de grandeur inferieure. Ce n'est pas une exception a la regle,
+        c'est sa DELIMITATION : la regle ne s'applique jamais a une
+        fonctionnelle non lineaire du champ local.
+        NE PAS employer le -14,8 % pour l'illustrer : voir (2).
+
+  duree 63 s
+=== A4 termine ===

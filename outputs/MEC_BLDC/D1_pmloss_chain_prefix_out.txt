@@ -1,0 +1,54 @@
+﻿=== PIECE : D1 AVANT correction de signe de pm_loss_load.m:107 ===
+  Execution du 12 aout 2026, INTERROMPUE volontairement pendant le
+  balayage radial de pm_loss (nr = 41), au moment ou la correction de
+  signe a ete appliquee a pm_loss_load.m : poursuivre aurait melange
+  dans un meme transcript deux versions de la routine.
+  Ce fichier porte donc l'etat AVANT correction, et c'est a ce titre
+  qu'il fait foi : GARDE A, le carre 2x2, l'echantillonnage et la
+  convergence radiale y sont complets.
+  Suite et etat APRES correction : D1_pmloss_chain_out.txt.
+=== D1 : cause du facteur 1,7 sur les pertes aimant a vide ===
+  machine BLDC 15/14 750 W | kfringe = 0.3250 | 1688 tr/min
+  reference FEA a vide : 0.3340 W
+
+  ---- GARDE A : les deux chaines publiees ----
+  pm_loss(1260,241) -- A3                          0.203570 W  (publie 0.203600)
+  pm_loss_load(1680,181,nr=41) -- maitre           0.341619 W  (publie 0.341619)
+  rapport maitre / A3 = 1.678
+  GARDE A PASSEE
+
+  ---- 1. SEPARER LA SOURCE DE CHAMP DE LA ROUTINE ----
+  Meme source, deux routines ; meme routine, deux sources.
+  source du champ                         pm_loss pm_loss_load    rapport
+  A3   (1260 surf, 241 pos, mu=1500)     0.203570     0.367524      1.805   (Np=241)
+  maitre (1680 surf, 181 pos, mu=3000)     0.227467     0.341619      1.502   (Np=181)
+  dispersion due a la SOURCE (routine fixee)  : 10.5 %
+  dispersion due a la ROUTINE (source fixee)  : 44.6 %
+  GARDE B PASSEE -- la source n'explique pas l'ecart
+
+  ---- 2. ECHANTILLONNAGE TEMPOREL (pm_loss_load, nr=41) ----
+  Nt =   181  ->    0.340640 W  ( -0.29 % / Nt=721)
+  Nt =   361  ->    0.341352 W  ( -0.08 % / Nt=721)
+  Nt =   721  ->    0.341619 W  ( +0.00 % / Nt=721)
+  Nt =  1441  ->    0.341731 W  ( +0.03 % / Nt=721)
+  dispersion sur un facteur 8 : 0.32 %
+
+  ---- 3. QUADRATURE RADIALE, LA CAUSE PRESUMEE ----
+  Source : maitre. Le champ de denture decroit en cosh(n*v)/sinh(n*Um)
+  de Rro vers rmi : la couche limite est du cote de l'ENTREFER.
+
+  pm_loss_load (derivee en temps, nth=720)
+      nr    equidistant   cos vers rmi   cos vers Rro
+       7       0.357928       0.380141       0.349958
+      13       0.344348       0.350590       0.342249
+      25       0.340816       0.342429       0.340283
+      41       0.340054       0.340640       0.339862
+      81       0.339732       0.339879       0.339684
+     161       0.339652       0.339689       0.339640
+
+  pm_loss (derivee en position, nth=1440, Np=181)
+      nr    equidistant   cos vers rmi   cos vers Rro
+       7       0.227467       0.248310       0.219748
+      13       0.214803       0.220669       0.212771
+      25       0.211507       0.213023       0.210991
+

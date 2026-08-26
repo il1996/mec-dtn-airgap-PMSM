@@ -1,0 +1,70 @@
+=== D1 : cause du facteur 1,7 sur les pertes aimant a vide ===
+  machine BLDC 15/14 750 W | kfringe = 0.3250 | 1688 tr/min
+  reference FEA a vide : 0.3340 W
+
+  ---- GARDE A : les deux chaines publiees ----
+  pm_loss(1260,241) -- A3, INCHANGEE               0.203570 W  (publie 0.203600)
+  pm_loss_load(1680,181,nr=41) -- maitre           0.212037 W  (avant correction 0.341619)
+  effet de la correction de signe : -37.9 %
+  rapport maitre / A3 : 1.042  (avant correction 1.678)
+  GARDE A PASSEE -- pm_loss est bit pour bit celle du manuscrit
+
+  ---- 1. SEPARER LA SOURCE DE CHAMP DE LA ROUTINE ----
+  Meme source, deux routines ; meme routine, deux sources.
+  source du champ                         pm_loss pm_loss_load    rapport
+  A3   (1260 surf, 241 pos, mu=1500)     0.203570     0.188426      0.926   (Np=241)
+  maitre (1680 surf, 181 pos, mu=3000)     0.227467     0.212037      0.932   (Np=181)
+  dispersion due a la SOURCE (routine fixee)  : 11.1 %
+  dispersion due a la ROUTINE (source fixee)  : 8.0 %
+  GARDE B ECHOUEE -- la source pese autant que la routine
+
+  ---- 2. ECHANTILLONNAGE TEMPOREL (pm_loss_load, nr=41) ----
+  Nt =   181  ->    0.211680 W  ( -0.17 % / Nt=721)
+  Nt =   361  ->    0.211964 W  ( -0.03 % / Nt=721)
+  Nt =   721  ->    0.212037 W  ( +0.00 % / Nt=721)
+  Nt =  1441  ->    0.212056 W  ( +0.01 % / Nt=721)
+  dispersion sur un facteur 8 : 0.18 %
+
+  ---- 3. QUADRATURE RADIALE, LA CAUSE PRESUMEE ----
+  Source : maitre. Le champ de denture decroit en cosh(n*v)/sinh(n*Um)
+  de Rro vers rmi : la couche limite est du cote de l'ENTREFER.
+
+  pm_loss_load (derivee en temps, nth=720)
+      nr    equidistant   cos vers rmi   cos vers Rro
+       7       0.227807       0.248657       0.220086
+      13       0.215138       0.221006       0.213106
+      25       0.211841       0.213357       0.211325
+      41       0.211129       0.211680       0.210943
+      81       0.210829       0.210967       0.210782
+     161       0.210753       0.210788       0.210742
+
+  pm_loss (derivee en position, nth=1440, Np=181)
+      nr    equidistant   cos vers rmi   cos vers Rro
+       7       0.227467       0.248310       0.219748
+      13       0.214803       0.220669       0.212771
+      25       0.211507       0.213023       0.210991
+      41       0.210796       0.211346       0.210610
+      81       0.210495       0.210633       0.210449
+
+  ---- 4. QUADRATURE ANGULAIRE (pm_loss_load, nr=41 vers Rro) ----
+  nth =   360  ->    0.210214 W
+  nth =   720  ->    0.210943 W
+  nth =  1440  ->    0.210610 W
+  nth =  2880  ->    0.210434 W
+  dispersion sur un facteur 8 : 0.35 %
+
+  ---- 5. GARDE C : meme source, quadrature convergee ----
+  pm_loss_load  nr= 81 vers Rro, nth=1440 :   0.210449 W
+  pm_loss       nr= 81 vers Rro, nth=1440 :   0.210449 W
+  ecart entre les deux routines           :     -0.00 %
+  GARDE C PASSEE -- une seule formulation, deux resolutions
+
+  ---- SYNTHESE ----
+  publie A3      (nr= 7 equidistant)    0.203570 W  ( -39.1 % / FEA)
+  maitre AVANT correction de signe      0.341619 W  (  +2.3 % / FEA)
+  maitre APRES correction de signe      0.212037 W  ( -36.5 % / FEA)
+  converge       (nr eleve vers Rro)    0.210449 W  ( -37.0 % / FEA)
+
+  GARDES : A OK | B KO | C OK
+  duree 2134 s
+=== D1 termine ===

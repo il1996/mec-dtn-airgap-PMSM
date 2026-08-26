@@ -1,0 +1,74 @@
+======================================================================
+  S1 - GARDE DE PROVENANCE DES OPERANDES DU TABLEAU DE SYNTHESE
+======================================================================
+  source analysee : BLDC_MEC_COMPLET.m (87519 octets, modifie 13-août-2026 18:12:15)
+  analyseur       : mec_srcgraph.m (partage avec S2)
+  methode         : analyse STATIQUE du texte source. Le programme
+                    maitre n'est PAS execute et aucune de ses valeurs
+                    n'est lue. La garde ne peut pas heriter du defaut.
+
+  ---- 1. NORMALISATION ----
+    1462 lignes physiques -> 1293 instructions logiques
+    649 affectations relevees, point fixe en 2 iterations
+    la structure machine M est affectee 1 fois :
+      ligne 47   M = machine_bldc()
+    -> traitee comme racine DECLARATIVE quoi qu'il arrive.
+
+  ---- 2. LES 29 LIGNES DU TABLEAU, OPERANDE PAR OPERANDE ----
+    provenance : RESEAU = descend d'une resolution du MEC
+                 ANSYS  = descend d'un import .tab
+                 ENTREE = ne descend d'aucun des deux (parametre declare)
+
+    # grandeur                     ligne operande MODELE          prov.   operande REFERENCE       prov.  
+    1 Bg1 fondamental                205 amp(Brm,thm,p)           RES+ANS amp(BrFu,thu,p)          ANSYS  
+    2 B entrefer moyen |Br|          206 mean(abs(Brm))           RES+ANS mean(abs(BrFu))          ANSYS  
+    3 B entrefer crete               207 max(Brm)                 RES+ANS max(BrFu)                ANSYS  
+    4 Bt tangentiel RMS              208 sqrt(mean(Btm.^2))       RES+ANS sqrt(mean(BtFu.^2))      ANSYS  
+    5 Lignes de flux A crete         210 max(Amec)                RES+ANS max(Afea)                ANSYS  
+    6 FMM par aimant (moyenne)       238 mean(mmf_m_M)            RES+ANS mean(mmf_m_F)            ANSYS  
+    7 FMM par entrefer (moyenne)     239 mean(mmf_g_M)            RES+ANS mean(mmf_g_F(2:end))     ANSYS  
+    8 FMM aimant : dispersion        240 std(mmf_m_M)/mean(mmf_.. RES+ANS std(mmf_m_F)/mean(mmf_.. ANSYS  
+    9 Facteur de reluctance k_r      251 kr_M                     RES+ANS kr_F                     ANSYS  
+   10 Facteur de fuite k_l           304 kl_M                     RESEAU  kl_F                     ANSYS  
+   11 Inductance propre La           327 RI.La*1e3                RESEAU  LaF*1e3                  ANSYS  
+   12 Mutuelle M                     328 RI.M*1e3                 RESEAU  MF*1e3                   ANSYS  
+   13 Inductance synchrone Ld        329 RI.Ld*1e3                RESEAU  LdF*1e3                  ANSYS  
+   14 FEM de phase crete             344 max(abs(eA))             RESEAU  max(abs(EaF))            ANSYS  
+   15 Enveloppe six-step crete       345 max(env)                 RESEAU  max(envF)                ANSYS  
+   16 Flux totalise crete            352 max(abs(lamA))           RESEAU  max(abs(FLaF))           ANSYS  
+   17 Couple en charge               408 TMt                      RES+ANS TF                       ANSYS  
+   18 Courant de phase RMS           423 IrmsM                    RES+ANS IrmsF                    ANSYS  
+   19 Pertes fer a vide              447 Pfe                      RESEAU  PfeF                     ANSYS  
+   20 Pertes aimant a vide           448 Ppm                      RESEAU  PpmF                     ANSYS  
+   21 Vitesse etablie en charge      673 nMt                      RES+ANS nOL                      ANSYS  
+   22 Courant de bus moyen           674 IbM                      RES+ANS IbF                      ANSYS  
+   23 Pertes fer en charge           675 PfeL                     RES+ANS PfeF_L                   ANSYS  
+   24 Pertes aimant en charge        676 PpmL                     RES+ANS PpmF_L                   ANSYS  
+   25 Rendement en charge            677 100*etaM                 RES+ANS 100*etaF                 ANSYS  
+   26 Constante de FEM k_E           746 kE*1000                  RESEAU  interp1(nS,ES,1500)/15.. ANSYS  
+   27 Couple a l'arret (balayage)    874 Tm(1)                    RES+ANS TS(1)                    ANSYS  
+   28 Puissance max (balayage)       875 Pmax                     RES+ANS PmaxF                    ANSYS  
+   29 Rendement max (balayage)       876 100*max(Etm)             RES+ANS 100*max(etaS)            ANSYS  
+
+    places reservees puis alimentees plus loin :
+      #17 Couple en charge             slot "kTload"
+      #18 Courant de phase RMS         slot "kIrms"
+
+  ---- 3. CHAMPS DE LA STRUCTURE MACHINE CITES DANS UN OPERANDE ----
+    aucun -- aucun operande ne cite directement un champ de M.
+
+  ---- 4. AUTRES EMPLOIS DE M.Iph_rms_load DANS LE PROGRAMME ----
+    aucun -- M.Iph_rms_load n'est plus employe nulle part.
+
+  ---- 5. LA MEME CONSTRUCTION AILLEURS DANS LE DOSSIER ----
+    RUN_COMPARE_ALL.m        ligne 150  SC=add(SC,'Courant de phase RMS',M.Iph_rms_load,sqrt(mean(w4(dOLi(:,..
+    -> 1 occurrence(s). AVERTISSEMENT, non bloquant : a arbitrer.
+
+  ---- 6. VERDICT ----
+    C1  aucun operande de racine ENTREE seule                PASSEE
+    C2  MODELE atteint le reseau, REFERENCE atteint ANSYS    PASSEE
+    C3  aucune place reservee laissee vide                   PASSEE
+
+    GARDE S1 PASSEE
+
+=== S1 termine ===

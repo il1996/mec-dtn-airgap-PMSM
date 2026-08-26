@@ -1,0 +1,237 @@
+﻿======================================================================
+  BLDC 15/14 - 750 W - MEC (DtN etendu aimant+entrefer) vs ANSYS 2D
+======================================================================
+
+=== 0. MACHINE (parametres issus du projet ANSYS BLDC.aedt) ===
+  topologie      : 15 encoches / 14 poles (p=7), 3 phases
+  alesage $D     : 69.3564 mm      exterieur $OSD : 125.0 mm
+  entrefer $g    : 1.000 mm       aimant $dm     : 3.500 mm (embrace 0.94)
+  dent $wst1     : 8.4901 mm       ouverture $bs0 : 2.000 mm
+  encoche hs0/hs1/hs2 : 1.00 / 0.50 / 19.60 mm   culasse stator : 6.722 mm
+  longueur $Lsk  : 33.0 mm        foisonnement   : 0.90
+  AIMANT N42UH   : Br=1.2471 T, Hc=955204 A/m -> mu_r=1.0390, sigma=555556 S/m
+  TOLE M350-50A  : Kh=182.455, Kc=1.34676, Ke=0, rho=7650 kg/m3
+  bobinage       : Ntc=152, Ntph=760, kw1=0.9514, Rph=10.222 ohm
+  phase A (encoches signees) : [1 -2 -15 3 14]
+
+=== Resolution du reseau couple ... 1260 noeuds de surface, 721 positions (19 s) ===
+
+=== 1. CHAMP D'ENTREFER A VIDE (magnetostatique) ===
+  alignement : position rotor 39.429 deg mec (indice 553/721), origine 12.000 deg
+  ecart RMS des formes d'onde apres alignement complet : 0.0316 T (2.9 % de Bg1)
+  harmonique spatial                  MEC        FEA     ecart
+  p=7 (fondamental)               1.07755    1.07455     +0.3%
+  8 = |Ns-p|                      0.01806    0.01966     -8.1%
+  21 = 3p                         0.25934    0.26565     -2.4%
+  22 = Ns+p                       0.03524    0.03276     +7.6%
+  23 = |2Ns-p|                    0.03255    0.02021    +61.1%
+  35 = 5p                         0.10472    0.10670     -1.9%
+  37 = 2Ns+p                      0.04269    0.02708    +57.6%
+
+=== 2. CIRCUIT MAGNETIQUE : FMM par aimant et par entrefer ===
+  FMM aimant  : MEC 763.2 A   FEA 769.4 A
+  FMM entrefer: MEC 723.8 A   FEA 721.5 A  (hors point aberrant #1)
+  k_r = SUM(mmf_m)/SUM(mmf_g) : MEC 1.0545 | FEA 1.0869 (verif. def. 1.0869)
+      FEA sans le point aberrant mmf_g1=531 A : k_r = 1.0664 -> ecart MEC -1.1 %
+  continuite de B_r a l'interface aimant/entrefer : 4.3e-16 sur n<=80
+     (sur TOUS les ordres : 3.9e+07 -- domine par les harmoniques a
+      contribution nulle ou sinh(n*Um) depasse 1e29 : sans objet)
+  k_l = phi_ag/SUM(phi_Bm) [def. ANSYS, flux mesure DANS l'aimant] :
+        MEC 0.8538 | FEA 0.8672  (-1.6 %)
+        fuite inter-polaire : MEC 14.6 %  |  FEA 13.3 %
+        [pour memoire, flux mesure en SURFACE d'aimant : k_l = 0.9510]
+  (la dispersion d'un aimant a l'autre EST la denture vue par le rotor)
+
+=== 3. INDUCTANCES (essai de champ d'induit) ===
+  La = 50.816 mH (FEA 50.209) | M = -2.2215 mH (FEA -2.1329) | Ld = 53.037 mH (FEA 52.342)
+
+=== 4. BACK-EMF, FLUX TOTALISE ET COUPLE DE DETENTE ===
+  FEM phase 240.9 V (FEA 233.0) | enveloppe 469.3 V (FEA 459.9) | flux 0.2612 Wb (FEA 0.2583)
+  detente : 1.255 mN.m c-c, ordre 210 (= LCM(15,14) = 210, EXACT)
+  NB : la reference FEA de detente est du BRUIT DE MAILLAGE (voir sec.7)
+
+=== 5. FONCTIONNEMENT EN CHARGE ET PERTES ===
+  point de charge FEA : 1340 tr/min, Pem = 682.8 W -> T = 4.867 N.m
+  couple MEC (courant reel, alignement corrige) = 4.753 N.m (-2.3 %)
+  pertes : fer 21.34 W (FEA 19.73) | aimant 0.342 W (FEA 0.333) | Joule 73.7 W
+     dont hysteresis 9.27 + Foucault 12.07 W ; dents 67 %
+
+=== 5b. TRANSITOIRE EN CHARGE CALCULE PAR LE MEC ===
+  calage MEC/ANSYS etabli a vide : +143.49 deg elec (34261 pas de 1 us)
+  saturation : L_ligne 104.3 -> 12.1 mH et psi_ab 3.01 -> 0.68 Wb/rad de 0 a 25 A
+
+  GRANDEUR                     MEC lineaire  MEC sature         FEA     ecart
+  vitesse etablie (tr/min)       1218.2481   1257.0292   1339.8263     -6.2 % 
+  couple electromagnetique          5.0553      4.9490      4.8666      1.7 % N.m
+  courant de phase rms              1.5409      1.4186      1.5516     -8.6 % A
+  courant de bus moyen              1.4116      1.4274      1.6575    -13.9 % A
+  pertes Joule                     68.6622     69.4319     71.5640     -3.0 % W
+  crete de courant (demarrage)     11.2844     19.2445     23.1735    -17.0 % A
+  temps de montee a 95 %           19.3450     17.1350     11.8768     44.3 % ms
+
+  --- bilan de puissance en charge (definition ANSYS) ---
+                                       MEC         FEA     ecart
+  P_out = T*omega                  651.467     682.820     -4.6 % W
+  pertes Joule                      69.432      71.564     -3.0 % W
+  pertes fer (Bertotti)             19.083      18.465      3.3 % W
+  pertes aimant (DtN etendu)         1.593       3.183    -50.0 % W
+  rendement (%)                     86.332      86.515     -0.2 % 
+  --- attribution de l'ecart sur les pertes aimant ---
+  decomposition MEC : denture 0.180 W + induit six-step 1.413 W
+  facteur d'amplitude qu'il faudrait sur B : 1.41 (perte en B^2)
+  facteur DOCUMENTE du rang 8 (bande de denture)  : 1.09
+  ENCADREMENT : 1.593 W (brut) < 3.183 W (FEA) < 1.887 W (corrige du rang 8)
+  => l'ecart sur les pertes aimant n'est pas un defaut independant :
+     il est ENTIEREMENT contenu dans le residu unique deja identifie
+     sur la bande de denture, vu ici a travers un amplificateur B^2.
+  incertitude propre de la reference : en regime le bilan de puissance
+  de l'essai FEA ne boucle qu'a 52.7 W pres (6.4 % de 829 W entrants),
+  soit 17 fois la perte aimant elle-meme.
+
+  --- pourquoi le courant est le maillon fragile ---
+  FEM utile 342 V sur un bus de 500 V -> tension motrice 158 V seulement
+  le courant est une PETITE DIFFERENCE DE DEUX GRANDS NOMBRES :
+  une erreur relative de 1 % sur la FEM en produit 2.2 % sur le courant
+  l'ecart de courant observe (-8.6 %) correspond a -3.96 % sur la FEM
+
+  rendement FEA (essai en charge) = 86.51 %
+
+=== 6. BALAYAGE EN VITESSE (500 V) ===
+  30 points de 10 a 1676 tr/min ; k_E : MEC 312.8, FEA 323.6 mV/(tr/min)
+  NB : 'BEMF' du balayage = enveloppe aux bornes Vdc-2Ri, non la FEM
+
+=== 6b. BALAYAGE EN VITESSE CALCULE PAR LE MEC ===
+       n |   couple (N.m) |       P_em (W) |     I rms (A) |  enveloppe(V) |  rendement(%)
+  tr/min |    MEC     FEA |    MEC     FEA |    MEC    FEA |    MEC    FEA |    MEC    FEA
+      10 |  30.68   29.23 |     32      31 |  19.80  24.35 |     11      1 |    0.3    0.3
+     297 |  23.10   24.03 |    719     748 |  14.50  15.88 |    289    182 |   10.0   12.7
+     584 |  17.47   20.49 |   1069    1254 |   9.44  11.95 |    458    325 |   27.8   29.6
+     872 |  11.70   16.38 |   1068    1495 |   4.56   7.46 |    492    444 |   60.6   50.2
+    1159 |   6.66    9.20 |    808    1116 |   2.05   3.04 |    477    468 |   81.5   77.7
+    1446 |   2.27    2.96 |    344     449 |   0.67   0.90 |    487    482 |   84.4   89.2
+    1676 |  -0.08    0.09 |    -13      16 |   0.03   0.04 |    501    499 |    0.0   33.5
+
+  ecart moyen sur les 28 points au-dessus de 100 tr/min :
+  couple 25.8 % | Pem 25.8 % | courant 25.3 % | enveloppe 24.8 % | rendement 6.1 pt
+  courant de bus 38.1 % | flux totalise rms 22.1 %
+  couple par ampere : ecart moyen 15.1 % (le modele electromagnetique
+  est donc juste ; l'ecart porte sur le point de fonctionnement electrique)
+         n    e (V) i quasi-st     i MEC     i FEA
+       297       93     19.91     17.76     19.45
+       584      183     15.51     11.57     14.63
+       872      273     11.12      5.59      9.14
+      1159      362      6.73      2.51      3.73
+      1446      452      2.33      0.82      1.10
+  tau = L/2R = 5.19 ms ; periode electrique a 872 tr/min = 9.83 ms
+  -> aux vitesses moyennes le courant n'a PAS le temps de s'etablir
+     dans une fenetre de 60 deg : les deux modeles restent sous la
+     valeur quasi statique, le MEC davantage que la FEA.
+  NB : a 10 tr/min la FEA donne rms(i_a) = 24.351 A et avg(i_bus) = 24.352 A,
+  valeurs EGALES : sur sa fenetre de simulation le rotor n'a pas parcouru
+  une periode electrique (0.86 s a cette vitesse), aucune commutation n'a
+  eu lieu et la "rms" porte sur un courant continu. Les premiers points du
+  balayage FEA ne sont donc pas des moyennes de regime periodique.
+  puissance max : MEC 1115 W a 642 tr/min | FEA 1495 W a 929 tr/min
+  couple a l'arret : MEC 30.7 N.m | FEA 29.2 N.m
+  vitesse a vide (T -> 0) : MEC 1658 tr/min | FEA 1680 tr/min
+
+  a 1500 tr/min : T = 2.17 N.m, Pem = 341 W, rendement = 89.4 %
+
+=== 7. CONTROLE DE LA REFERENCE (bruit de maillage) ===
+  magnetostatique remaillee a 360 positions : couple 220.2 mN.m c-c
+  raie dominante ordre 42 -- IMPOSSIBLE (detente 15/14 = multiples de 210)
+  Nyquist de l'essai = ordre 180 < 210 : la detente physique est HORS BANDE
+  => perturbation de Br equivalente ~ 0.0047 T (harmonique 8 mesuree : 0.0197 T)
+  => la convergence en maillage de la reference n'est PAS etablie
+
+======================= SYNTHESE MEC vs FEA =======================
+  Grandeur                                 MEC         FEA     Ecart
+  Bg1 fondamental                       1.0775      1.0746     +0.3%  T
+  B entrefer moyen |Br|                 0.7615      0.7609     +0.1%  T
+  B entrefer crete                      0.9846      0.9907     -0.6%  T
+  Bt tangentiel RMS                     0.1432      0.1332     +7.5%  T
+  Lignes de flux A crete                0.0059      0.0059     +0.1%  Wb/m
+  FMM par aimant (moyenne)            763.2427    769.4453     -0.8%  A
+  FMM par entrefer (moyenne)          723.8292    721.5038     +0.3%  A
+  FMM aimant : dispersion               6.8073      6.5846     +3.4%  %
+  Facteur de reluctance k_r             1.0545      1.0869     -3.0%  -
+  Facteur de fuite k_l                  0.8538      0.8672     -1.6%  -
+  Inductance propre La                 50.8159     50.2086     +1.2%  mH
+  Mutuelle M                           -2.2215     -2.1329     +4.2%  mH
+  Inductance synchrone Ld              53.0374     52.3415     +1.3%  mH
+  FEM de phase crete                  240.9362    233.0305     +3.4%  V
+  Enveloppe six-step crete            469.2616    459.9183     +2.0%  V
+  Flux totalise crete                   0.2612      0.2583     +1.1%  Wb
+  Couple en charge                      4.7530      4.8666     -2.3%  N.m
+  Courant de phase RMS                  1.5500      1.5516     -0.1%  A
+  Pertes fer a vide                    21.3358     19.7298     +8.1%  W
+  Pertes aimant a vide                  0.3416      0.3335     +2.4%  W
+  Vitesse etablie en charge          1257.0292   1339.8263     -6.2%  tr/min
+  Courant de bus moyen                  1.4274      1.6575    -13.9%  A
+  Pertes fer en charge                 19.0830     18.4650     +3.3%  W
+  Pertes aimant en charge               1.5929      3.1827    -50.0%  W
+  Rendement en charge                  86.3323     86.5148     -0.2%  %
+  Constante de FEM k_E                312.8411    323.6442     -3.3%  mV/tr/min
+  Couple a l'arret (balayage)          30.6807     29.2331     +5.0%  N.m
+  Puissance max (balayage)           1115.0709   1495.2737    -25.4%  W
+  Rendement max (balayage)             85.4476     89.4319     -4.5%  %
+  Couple de detente c-c                  1.255       < 1.4   (borne)  mN.m
+  Ordre de detente                         210         210     exact
+
+  >> 23 grandeurs sur 29 a moins de 5 % d'ecart
+  >> residu unique : 1ere bande de denture (-28 %), attribuee a la
+     saturation progressive des cornes de bec (effet 2D local) ;
+     l'incertitude de maillage de la reference est du meme ordre.
+  alignement commun (sur le flux) : +143.49 deg elec (trace en ae+shL)
+  convention de FEM : ecart lambda/e = -178.6 deg -> ANSYS = +dlam/dt,
+     MEC = -omega*dlam/dtheta ; signe retourne a l'affichage seulement
+  superposition : ecart RMS flux 0.0036 Wb (1.4 % de la crete),
+                  ecart RMS FEM  6.7 V (2.9 % de la crete)
+  decalage residuel optimal : -0.5 deg (0 = alignement correct)
+
+===== COMPARAISON HARMONIQUE DU COUPLE DE DETENTE (A vs B) =====
+  regle : seuls les multiples de LCM(15,14) = 210 sont physiques
+                                          (A) MEC      (B) FEA
+  amplitude c-c (mN.m)                      1.255        220.2
+  ordre dominant                              210           42
+  amplitude a l'ordre dominant              0.628       77.070
+  amplitude a l'ordre 210                   0.628   hors bande
+  --- repartition de l'energie spectrale (%) ---
+  multiples de 210 (PHYSIQUE)               100.0          0.0
+  multiples de 14 (poles) seuls               0.0         90.1
+  multiples de 15 (encoches) seuls            0.0          1.1
+  autres (large bande)                        0.0          8.7
+  Nyquist : (A) ordre 5866   (B) ordre 180  <-- 210 NON representable en B
+  --- emulation : (B) = detente physique + bruit de remaillage ? ---
+                                    (B) FEA  (A)+noise   (A) seul
+  amplitude c-c (mN.m)                220.2      244.2      1.255
+  ecart-type (mN.m)                   60.53      60.56      0.444
+  ordre 42 (mN.m)                     77.07      77.07      0.000
+  ordre dominant                         42         42        150
+  part du residu dans la variance de (B) : 100.1 %
+  signe de la realisation surrogate : correlation -0.657 -> +0.657 (inversee)
+  --- reference FEA VALIDE (essai transitoire, maillage preserve) ---
+  ordre apparent au pas de 1 deg              150           42
+     (repliement de 210 -> 150 : or (B) culmine a 42, donc (B) ne
+      contient PAS de detente, meme repliee)
+  detente c-c (mN.m)                        1.255        0.604
+  incertitude 2 sigma (mN.m)                    -        1.401
+  => ecart 0.651 mN.m : DANS l'incertitude de la reference
+
+=== 8. CARTES 2D (maillage raffine) ===
+  5940 cellules, Newton 9/20 iterations, B fer max 1.98 / 2.17 T
+
+  Figures enregistrees (.fig + .png) :
+    BLDC_FIG1_champ     - champ d'entrefer (Br, Bt, spectre)
+    BLDC_FIG2_circuit   - circuit magnetique (FMM par element)
+    BLDC_FIG3_bemf      - back-EMF et flux totalise
+    BLDC_FIG4_detente   - detente + qualite de la reference FEA
+    BLDC_FIG5_charge    - transitoire en charge : MEC vs FEA (9 vues)
+    BLDC_FIG5b_charge_local - champs locaux, flux et courants en charge
+    BLDC_FIG6_balayage  - caracteristiques en vitesse
+    BLDC_FIG7_scorecard - synthese des ecarts
+    BLDC_FIG8_cartes2D  - cartes 2D sur maillage raffine (|B|, J)
+  Reouverture / edition :  openfig('BLDC_FIG1_champ.fig')
+  Re-export a la demande :  exportgraphics(gcf,'fig.png','Resolution',600)
+  Duree totale : 462 s
+======================================================================

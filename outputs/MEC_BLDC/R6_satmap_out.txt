@@ -1,0 +1,141 @@
+=== R6 : carte de saturation, inductance incrementale contre EF ===
+
+  CONFIGURATION
+    machine        : PMSM 15/14, 750 W (machine_bldc)
+    chaine MEC     : mec_map + local_Lline (recopiee verbatim)
+    Nsurf / Nth    : 720 / 61
+    grille courant : na = 43 (production = 19 ; convergence en R6a)
+    k_fringe       : 0.7500 (role induit) ET 0 (diagnostic §7)
+    solveur        : Newton, B(H) M350-50A
+    reference EF   : C:\Users\hp\Desktop\ANSYS résultat 750W
+    cache          : AUCUN
+
+  ---- 1. DONNEES EF ----
+    flux 301 pts | courants 300 pts | tensions 300 pts
+    le fichier de courant n'a pas la ligne t = 0 : appariement PAR TEMPS.
+    R_ph MESUREE sur la reference : 10.220000 ohm (code : 10.222304, ecart +0.023 %)
+
+  ---- 2. FENETRE EXPLOITABLE ----
+    conduction c -> b : 11 points, t = 0.1142 -> 1.2562 ms
+    ecart max sur i_c = -i_b (hors point a courant nul) : 50.3 ppm
+    courant maximal dans la fenetre : 12.2690 A
+    echantillon suivant (commutation) : i_c = 8.9517 A -> EXCLU
+    excursion electrique sur la fenetre : 0.3410 deg
+    |dLambda_cb/dtheta_e| max a vide : 0.4181 Wb/rad elec
+
+  ---- 3. REFERENCE EF : DEUX ROUTES INDEPENDANTES ----
+      i (A)    lam_arm     L route1     L route2    L secante    rot. %
+     0.0000    0.00000      72.53 mH      0.10 mH       NaN mH     0.39
+     0.7631    0.05513      71.53 mH     72.72 mH     72.25 mH     0.49
+     1.5239    0.10848      67.98 mH     69.19 mH     71.18 mH     0.63
+     2.3152    0.15998      61.53 mH     62.77 mH     69.10 mH     0.67
+     3.1762    0.20947      53.45 mH     54.70 mH     65.95 mH     0.60
+     4.1358    0.25671      45.55 mH     46.79 mH     62.07 mH     0.39
+     5.2039    0.30146      38.15 mH     39.40 mH     57.93 mH     0.02
+     6.4083    0.34340      29.97 mH     31.27 mH     53.59 mH     0.55
+     7.8733    0.38192      20.74 mH     22.09 mH     48.51 mH     1.38
+     9.8514    0.41581      13.76 mH     15.05 mH     42.21 mH     2.68
+    12.2690    0.44406      11.29 mH     11.21 mH     36.19 mH     3.41
+
+  GARDE 1 : accord des deux routes, points interieurs (2 a 10)
+    ecart moyen 3.78 % | maximal 9.37 % (a i = 9.85 A)
+    GARDE PASSEE : les deux routes mesurent la meme grandeur.
+
+  ---- 4. ANCRAGE A COURANT NUL : L'EF SE CONTREDIT ----
+    EF magnetostatique, i_a = 1 A, AIMANTS ETEINTS :
+      L_a = 0.050209 H, M = -0.002133 H -> L_ligne = 2(L_a-M) = 104.6831 mH
+    EF transitoire, AIMANTS PRESENTS, corde [0 ; 0.763 A] : 72.2471 mH
+    ecart entre les deux etudes EF : -30.98 %
+    A ce courant aucune saturation d'induit n'est possible :
+      FMM de bobine = Ntc*i = 116.0 At. L'ecart ne vient donc pas
+      du courant, mais de ce qui differe entre les deux etudes.
+
+  ---- 5. RESEAU : reconstruction de la carte ----
+    kfringe = 0.750 : 685 s
+    position de la fenetre EF (moyenne circulaire) : theta_e = 6.2808 rad
+    (la moyenne arithmetique des angles replies donnerait 5.7096 rad, faux)
+
+    sensibilite a la position rotor du nombre publie par le reseau :
+       i (A)      moyenne    a theta_W min sur tour max sur tour
+           0     104.32 mH    103.39 mH    103.28 mH    106.00 mH
+           2     100.25 mH     89.70 mH     87.59 mH    106.02 mH
+           5      82.34 mH     48.49 mH     35.97 mH    106.02 mH
+          10      63.64 mH     33.98 mH     31.56 mH    105.93 mH
+
+  GARDE 2 : la correction cale-t-elle L(0) sur la cible LINEAIRE ?
+    L(0) apres correction 104.3182 mH | cible 2*Ld_lin 104.3182 mH | ecart 9.71e-17
+    GARDE PASSEE : le calage est exact, par construction.
+    et cette cible contre l'EF magnetostatique : -0.35 %
+
+  ---- 6. CONFRONTATION, aux courants ATTEIGNABLES ----
+   i (A)        EF r1        EF r2       EF moy     MEC <th>  MEC a th_W       ecart
+       2      64.10 mH     65.33 mH     64.71 mH    100.25 mH    89.70 mH        55 %
+       5      39.56 mH     40.81 mH     40.19 mH     82.34 mH    48.49 mH       105 %
+      10      13.61 mH     14.81 mH     14.21 mH     63.64 mH    33.98 mH       348 %
+
+  Le piege nomme par la specification, chiffre : comparer la SECANTE
+  de l'EF a l'INCREMENTALE du reseau donnerait
+     2 A : +43 % au lieu de +55 %
+     5 A : +40 % au lieu de +105 %
+    10 A : +52 % au lieu de +348 %
+
+  ---- 7. DIAGNOSTIC : l'effet des aimants et son effacement ----
+    carte rejouee a kfringe = 0 (aucun double comptage) : 600 s
+  grandeur                                                 mH
+  L_ligne BRUTE a i=0, aimants ON, non lineaire      103.7563
+  cible du code : 2*Ld LINEAIRE, aimants OFF         104.3182
+  EF magnetostatique, aimants OFF                    104.6831
+  EF transitoire, aimants ON, i -> 0                  72.2471
+
+    effet des aimants VU PAR LE RESEAU  : -0.5619 mH (-0.5 %)
+    effet des aimants VU PAR L'EF       : -32.4360 mH (-31.0 %)
+
+    La correction retranche +29.3596 mH a kfringe = 0.750 et -0.5619 mH a
+    kfringe = 0, de facon LINEAIRE en courant, donc a TOUS les courants.
+
+  duree totale 1290 s
+=== R6 termine ===
+
+
+=== R6c : ce que fait la correction constante ===
+  (relit les cartes de R6b, n'en recalcule aucune)
+
+  ---- GARDE : la soustraction est-elle constante en courant ? ----
+    par construction : L_brute(i) = L_corrigee(i) + 29.3596 mH
+    verification a courant nul : L_corrigee(0) = 104.318239 mH = 2*Ld = 104.318239 mH
+    GARDE PASSEE
+
+  ---- INDUCTANCE DE LIGNE : BRUTE ET CORRIGEE, DEUX RESEAUX ----
+   i (A)   kfr=0.75 corr  kfr=0.75 brute      kfr=0 corr     kfr=0 brute    ecart des 2
+       0       104.318 mH       133.678 mH       104.318 mH       103.756 mH      29.921 mH
+       2       100.245 mH       129.605 mH       103.488 mH       102.926 mH      26.679 mH
+       5        82.340 mH       111.700 mH        98.824 mH        98.262 mH      13.437 mH
+      10        63.639 mH        92.999 mH        91.418 mH        90.856 mH       2.143 mH
+      15        38.981 mH        68.340 mH        81.840 mH        81.278 mH     -12.938 mH
+      20        29.924 mH        59.283 mH        70.849 mH        70.287 mH     -11.004 mH
+      25         9.518 mH        38.877 mH        58.742 mH        58.180 mH     -19.303 mH
+
+  ---- LA PREMISSE DE LA CORRECTION EST FAUSSE ----
+    Si l'exces etait un chemin d'AIR, l'ecart entre les deux reseaux
+    serait CONSTANT. Mesure : +29.921 mH a 0 A, -19.303 mH a 25 A.
+    Il change de SIGNE : amplitude de variation 49.224 mH.
+    Retrancher une constante calibree a i = 0 est donc exact a
+    courant nul et de plus en plus faux ensuite.
+
+  ---- CONSEQUENCE 1 : L'EFFONDREMENT PUBLIE EST EN PARTIE ARITHMETIQUE ----
+    courbe PUBLIEE (kfr=0.75 corrigee) : 104.3 -> 9.5 mH, facteur 11.0
+    physique BRUTE du meme reseau      : 133.7 -> 38.9 mH, facteur 3.4
+    physique brute SANS pont tangentiel: 103.8 -> 58.2 mH, facteur 1.8
+    Aucun reseau ne produit le facteur publie : il vient de ce qu'on
+    retranche 29.4 mH a une grandeur qui, elle, tombe a 38.9 mH.
+
+  ---- CONSEQUENCE 2 : L'AMPLIFICATION DU BRUIT DE GRILLE ----
+    A 25 A la valeur publiee est la difference de 38.9 mH et 29.4 mH.
+    Tout ecart relatif sur la brute est donc multiplie par 4.1 sur la
+    corrigee. R6a mesure une dispersion de 41,6 % a 25 A et de 0,3 % a 5 A :
+    la non-convergence en haut de plage est coherente avec ce facteur.
+    STATUT : explication coherente avec les nombres, NON mesuree
+    independamment (R6a n'a pas archive alpha pour chaque grille).
+
+  duree 0 s
+=== R6c termine ===

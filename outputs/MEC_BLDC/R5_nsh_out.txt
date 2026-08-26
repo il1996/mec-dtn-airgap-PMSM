@@ -1,0 +1,71 @@
+=== R5 : trancher n_sh (2 ou 4) ===
+
+  CONFIGURATION
+    machine     : PMSM 15/14, 750 W (machine_bldc)
+    chaine      : mesh_bldc + solve_bldc_mesh
+    pavage      : Ms = 540, nst = 4, nys = 3, phi = 0
+    solveur     : lineaire, mu_r = 3000
+    k_fringe    : 0.3250
+    base        : P0
+    manuscrit   : ..\article\ArticleI_DtN_PMSM.tex
+
+  ---- 1. INCONNUES PRODUITES PAR mesh_bldc ----
+  Ls = 2*n_sh + nst + nys ; rangees de noeuds = Ls + 1
+
+    n_sh     Ls    rangees    inconnues        Bg1 (T)
+       1      9         10         5400        1.07787
+       2     11         12         6480        1.07908
+       3     13         14         7560        1.07937
+       4     15         16         8640        1.07947
+
+  ---- 2. COMPTES D'INCONNUES RELUS DU MANUSCRIT ----
+  note de la Table 12 (tab:pmsm) :
+    n_sh = 1 -> 5400 inconnues declarees | chaine : 5400  [OUI]
+    n_sh = 2 -> 6480 inconnues declarees | chaine : 6480  [OUI]
+
+  lignes "Ms & inconnues" trouvees dans le manuscrit :
+        Ms    inconnues    rangees     n_sh
+       360         5760         16        4
+       540         8640         16        4
+       900        14400         16        4
+       180         1800         10        1
+       360         3600         10        1
+       540         5400         10        1
+       900         9000         10        1
+  => n_sh distincts impliques par les lignes : [1 4]
+
+  ---- 3. GARDE : B_g1 des colonnes publiees ----
+  B_g1 publie, colonnes "Mesh" de la Table 12 : 1.07787 | 1.07908 T
+    n_sh   Bg1 chaine    ecart col.1  ecart col.2
+       1      1.07787      1.75e-06    -1.21e-03
+       2      1.07908      1.21e-03     4.96e-06
+       3      1.07937      1.50e-03     2.87e-04
+       4      1.07947      1.60e-03     3.94e-04
+
+  colonne 1 <- n_sh = 1 : OUI
+  colonne 2 <- n_sh = 2 : OUI
+  colonne 2 <- n_sh = 4 : NON  (doit etre NON)
+
+  GARDE PASSEE
+
+  ---- 4. OCCURRENCES DE n_sh, LIGNE PAR LIGNE ----
+  L1656  n_sh = 4        | $n_{\mathrm{sh}}=4$ layers per shoe sub-region (fifteen radial layers),
+  L1663  n_sh = 4        | percentage points respectively. Only $n_{\mathrm{sh}}=4$ reproduces
+  L1690  n_sh = 1        | PMSM 15/14, $n_{\mathrm{sh}}=1$ layer per shoe sub-region (nine radial
+  L2014  n_sh = 1        | Unknowns: \num{5400} at $n_{\mathrm{sh}}=1$, \num{6480} at
+  L2015  n_sh = 2        | $n_{\mathrm{sh}}=2$, \num{1260} surface columns for the lumped network.
+  L2358  n_sh = [1 4]    | between $n_{\mathrm{sh}}=1$ and $n_{\mathrm{sh}}=4$ and both columns are
+
+  ---- 5. VERDICT ----
+  phrase de sensibilite (§Methods) :
+    L2357  analyses are carried through the paper. The shoe layering is varied
+    L2358  between $n_{\mathrm{sh}}=1$ and $n_{\mathrm{sh}}=4$ and both columns are
+
+  Correction A APPLIQUER PAR L'AUTEUR (aucun .tex modifie ici) :
+    fichier : article/ArticleI_DtN_PMSM.tex
+    ligne 2358
+      avant : between $n_{\mathrm{sh}}=1$ and $n_{\mathrm{sh}}=4$ and both columns are
+      apres : between $n_{\mathrm{sh}}=1$ and $n_{\mathrm{sh}}=2$ and both columns are
+
+  duree 2 s
+=== R5 termine ===

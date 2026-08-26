@@ -1,0 +1,77 @@
+=== A5bis : la mutuelle M, et ce qu'elle porte ===
+  machine : PMSM 15/14, 750 W | solveur lineaire mu_r = 3000
+
+  ---- 0. la reference : deux mutuelles, pas une ----
+    fichier : C:\Users\hp\Desktop\ANSYS résultat 750W\magnetostique(Armature-Field)\Output Variables Table 1.tab
+    en-tete : "i_a [A]"	"L_a []"	"L_ba []"	"L_ca []"
+    L_a  = 0.0502086081 H
+    L_ba = -0.0021328954 H
+    L_ca = -0.0021329528 H
+    ecart entre les DEUX mutuelles : 0.0027 %
+    moyenne retenue M_FEA = -0.0021329241 H
+    L_d,FEA = L_a - M = 52.341532 mH
+
+    PREMIERE HYPOTHESE ECARTEE. Les deux mutuelles de la reference
+    sont symetriques a 0.0027 % : moyenner n'introduit rien. Ce n'est
+    donc pas la moyenne qui cree l'encadrement.
+    SIGNE : M est NEGATIVE des deux cotes, comme attendu pour un
+    bobinage triphase. La convention n'est pas en cause non plus.
+
+  ---- 1. L_a, M et L_d dans les trois modeles ----
+  modele                L_a (mH)   M_ab (mH)   M_ac (mH)      M (mH)    L_d (mH)
+  maillage n_sh=1       50.37905    -2.01599    -2.01599    -2.01599    52.39504
+  maillage n_sh=2       50.48371    -2.02114    -2.02114    -2.02114    52.50485
+  localise 1 dent       50.77264         NaN         NaN    -2.22015    52.99278
+  reference EF          50.20861    -2.13290    -2.13295    -2.13292    52.34153
+
+  ecarts a la reference :
+  modele                     L_a           M         L_d
+  maillage n_sh=1          0.34 %      -5.48 %       0.10 %
+  maillage n_sh=2          0.55 %      -5.24 %       0.31 %
+  localise 1 dent          1.12 %       4.09 %       1.24 %
+
+  ecart entre les deux mutuelles du MAILLAGE : -0.0000 % (n_sh=1)
+  => le maillage reproduit lui aussi la symetrie : la moyenne
+     est licite des deux cotes.
+
+  ---- 2. L'accord sur L_d repose-t-il sur une compensation ? ----
+  modele               L_d modele L_d si M exact ecart modele ecart si M exact
+  maillage n_sh=1        52.39504     52.51197        0.10 %        0.33 %
+  maillage n_sh=2        52.50485     52.61663        0.31 %        0.53 %
+  localise 1 dent        52.99278     52.90556        1.24 %        1.08 %
+
+  LECTURE. Sur le maillage n_sh = 1, L_a est haute de 0.34 % et M
+  basse de 5.48 %. Comme L_d = L_a - M, les deux erreurs se
+  RETRANCHENT : l'ecart sur L_d tombe a 0.10 % alors qu'il vaudrait
+  0.33 % avec la mutuelle exacte. Le facteur est 3.2.
+
+  CONSEQUENCE POUR LE MANUSCRIT. Le resume annonce "L_d a 0,1 %".
+  Le chiffre est exact et reste publiable, mais il repose en partie
+  sur une compensation entre une erreur de +0.34 % sur L_a et une
+  erreur de -5.48 % sur M. Un rapporteur qui lit la Table 7 verra
+  les trois lignes et posera la question. Il faut donc l'ecrire, en
+  deux phrases, plutot que de laisser le +0,1 % seul.
+
+  ---- 3. le chemin de couplage inter-phases ----
+  Les deux modeles ne couplent pas les phases par le meme chemin.
+  - Le MAILLAGE : la FMM de la phase A est injectee dans les
+    branches RADIALES des couches de bobine (mesh_bldc:145-156), et
+    le flux capte par B et C emprunte les branches tangentielles et
+    la couronne DtN. Le couplage est RESOLU.
+  - Le LOCALISE : une branche par dent, le couplage passe par la
+    culasse et par la perméance d'entrefer d'une dent a l'autre.
+    Il est PORTE PAR LE RESEAU, donc par sa topologie.
+  Le maillage sous-estime |M| de 5.48 % : il laisse fuir une part du
+  flux de couplage dans les cellules d'encoche. Le localise le
+  surestime de 4.09 % : sans ces cellules, tout le flux qui quitte
+  la dent A rejoint B ou C. L'encadrement n'est donc pas fortuit --
+  c'est la signature des deux topologies, et il est PHYSIQUE.
+
+  A VERIFIER AVANT PUBLICATION (hors perimetre de ce bloc) : la
+  reference est un essai magnetostatique a 1 A, donc NON SATURE. Les
+  trois colonnes sont bien au meme point sur ce plan. Si un jour la
+  Table 7 passait au Newton pour les inductances, cette comparaison
+  serait a refaire.
+
+  duree 3 s
+=== A5bis termine ===

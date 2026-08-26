@@ -1,0 +1,100 @@
+=== R9 : assemblage de l'archive de depot ===
+
+  CONFIGURATION
+    destination  : C:\Users\hp\Desktop\Matlab program\MEC\article\zenodo
+    MATLAB       : 24.1.0.2537033 (R2024a) (2024a)
+    produits     : MATLAB de base seul (mesure, voir README §2)
+    ANSYS        : Electronics Desktop 2023 R1 (lu dans les .aedt)
+    code         : COPIE INCHANGE, chemins adaptes par SET_REFERENCE_PATH
+
+  ---- 1. ARBORESCENCE ----
+    zenodo/code/
+    zenodo/outputs/
+    zenodo/reference/
+    zenodo/notes/
+
+  ---- 2. CODE (copie inchange) ----
+    MEC_BLDC   107 fichiers .m
+    MEC_IM      87 fichiers .m (dont 37 dans +mec/)
+    article      4 fichiers .m
+    total 198 scripts
+
+  ---- 3. SORTIES D'EXECUTION ----
+    MEC_BLDC    29 fichiers .txt
+    MEC_IM      27 fichiers .txt
+    article      5 fichiers .txt
+    total 61 sorties
+
+  ---- 4. REFERENCE ELEMENTS FINIS (.tab seuls) ----
+    ANSYS_750W      38 fichiers .tab
+    ANSYS_18_5kW    46 fichiers .tab
+    total 84 fichiers, 4.89 Mo
+
+  ---- 5. NOTES ET MANIFESTE ----
+    MANIFEST.md
+    R1_NOTE.md
+    R2_NOTE.md
+    R3_NOTE.md
+    R4_NOTE.md
+    R5_NOTE.md
+    R6_NOTE.md
+    R7_NOTE.md
+    R8_NOTE.md
+    RAPPORT_SPEC_v2.md
+    RAPPORT_FINAL_HANDOFF.md
+    total 11 documents
+
+  ---- 5b. MANUSCRITS ----
+    ArticleI_DtN_PMSM.tex           176 ko
+    ArticleII_Carter_IM.tex          79 ko
+    Ils sont inclus parce que CINQ gardes les relisent pour se
+    verifier (R5, R6a, R8, A5, B6). Les retirer rend l'archive
+    incapable de se controler elle-meme.
+    DECISION D'AUTEUR AVANT DEPOT : verifier que l'accord
+    editeur autorise leur diffusion. Sinon, les retirer et le
+    declarer -- README §4 indique alors quels tests tombent.
+
+  ---- 5c. DEPENDANCES NON SATISFAITES ----
+    projet .aedt / .aedtresults (non inclus)   : 4 script(s)
+        RUN_A4_IRONLOSS.m (L58)
+        RUN_B5_SKEW.m (L25)
+        RUN_R3_FE_RATIO.m (L34)
+        RUN_T9_TEMPS.m (L15,16,17,18)
+    dossier externe de code analytique (non inclus) : 2 script(s)
+        RUN_ARTICLE.m (L64)
+        RUN_COMPARE_ANALYTIC.m (L17)
+    manuscrit herite, archive (non inclus)     : 2 script(s)
+        RUN_A5_LUMPED.m (L55,100,107,375)
+        RUN_B6_ANNEAU.m (L50,160,284)
+    total 8 scripts ne peuvent pas s'executer dans l'archive.
+    Ils sont conserves -- ils documentent des diagnostics reels --
+    mais le README doit les nommer plutot que les laisser decouvrir.
+
+  ---- 6. GARDE : completude du manifeste ----
+    sorties citees par le manifeste : 20 | absentes : 0
+    scripts cites par le manifeste  : 21 | absents  : 0
+    GARDE PASSEE : tout ce que le manifeste nomme est present.
+
+  ---- 7. INVENTAIRE ----
+    359 fichiers, 6.84 Mo au total
+    code/        201 fichiers     1.47 Mo
+    outputs/      61 fichiers     0.33 Mo
+    reference/    84 fichiers     4.89 Mo
+    notes/        11 fichiers     0.13 Mo
+    (racine)    LICENSE.txt
+    (racine)    README.md
+
+  ---- 8. CE QUI RESTE OUVERT ----
+    La garde d'acceptation de la v4 -- un TIERS regenere une
+    grandeur de chaque article avec le seul README -- n'est PAS
+    passee. Elle ne peut pas l'etre par qui a ecrit le code.
+    Le test a lui soumettre est au README §4 : RUN_R5_NSH (2 s)
+    et RUN_R8_TABLE2 (95 s), qui impriment chacun leur garde.
+    Tant qu'il n'a pas ete passe, l'archive est ASSEMBLEE mais
+    NON VALIDEE comme reproductible.
+
+    La licence est un MODELE : la ligne de copyright est vide et
+    le choix appartient a l'auteur. Aucun depot n'a ete effectue.
+
+  duree 2 s
+=== R9 termine ===

@@ -1,0 +1,86 @@
+
+
+=== R7 : recomptage des vingt-neuf grandeurs ===
+
+  CONFIGURATION
+    programme    : BLDC_MEC_COMPLET (execute a l'instant, 155 s)
+    machine      : PMSM 15/14, 750 W
+    cartes       : mec_map.mat / mec_map_field.mat, verifiees en R6
+    seuil        : |ecart| < 5 % (strict, comme le code : abs(e)<5)
+    manuscrit    : ..\article\ArticleI_DtN_PMSM.tex
+
+  ---- 1. LES 29 GRANDEURS, ECART SIGNE A PLEINE PRECISION ----
+    # grandeur                                        MEC              FEA      ecart (%) 
+    1 Bg1 fondamental                             1.07755          1.07455       +0.2788 
+    2 B entrefer moyen |Br|                      0.761473         0.760909       +0.0741 
+    3 B entrefer crete                           0.984576         0.990727       -0.6208 
+    4 Bt tangentiel RMS                          0.143165         0.133238       +7.4505   <-- HORS 5 %
+    5 Lignes de flux A crete                   0.00585972       0.00585343       +0.1074 
+    6 FMM par aimant (moyenne)                    763.243          769.445       -0.8061 
+    7 FMM par entrefer (moyenne)                  723.829          721.504       +0.3223 
+    8 FMM aimant : dispersion                      6.8073          6.58458       +3.3826 
+    9 Facteur de reluctance k_r                   1.05445          1.08693       -2.9880 
+   10 Facteur de fuite k_l                       0.853766          0.86723       -1.5525 
+   11 Inductance propre La                        50.8159          50.2086       +1.2096 
+   12 Mutuelle M                                 -2.22152         -2.13292       +4.1538 
+   13 Inductance synchrone Ld                     53.0374          52.3415       +1.3295 
+   14 FEM de phase crete                          240.936          233.031       +3.3925 
+   15 Enveloppe six-step crete                    469.262          459.918       +2.0315 
+   16 Flux totalise crete                        0.261206         0.258328       +1.1139 
+   17 Couple en charge                            4.75301          4.86664       -2.3348 
+   18 Courant de phase RMS                           1.55          1.55162       -0.1044 
+   19 Pertes fer a vide                           21.3358          19.7298       +8.1401   <-- HORS 5 %
+   20 Pertes aimant a vide                       0.341619         0.333466       +2.4450 
+   21 Vitesse etablie en charge                   1257.03          1339.83       -6.1797   <-- HORS 5 %
+   22 Courant de bus moyen                        1.42741          1.65746      -13.8796   <-- HORS 5 %
+   23 Pertes fer en charge                         19.083           18.465       +3.3471 
+   24 Pertes aimant en charge                     1.59291          3.18268      -49.9506   <-- HORS 5 %
+   25 Rendement en charge                         86.3323          86.5148       -0.2110 
+   26 Constante de FEM k_E                        312.841          323.644       -3.3380 
+   27 Couple a l'arret (balayage)                 30.6807          29.2331       +4.9520 
+   28 Puissance max (balayage)                    1115.07          1495.27      -25.4270   <-- HORS 5 %
+   29 Rendement max (balayage)                    85.4476          89.4319       -4.4552 
+
+  ---- 2. GARDE ----
+    compteur du programme maitre (nok) : 23 sur 29
+    recomptage independant             : 23 sur 29
+    GARDE PASSEE
+
+  ---- 3. CONTRE L'ANNONCE DU MANUSCRIT ----
+    texte relu du manuscrit : "twenty-three fall within 5 %"
+    annonce  : 23 sur 29 dans les 5 %, donc 6 depassements
+    mesure   : 23 sur 29 dans les 5 %, donc 6 depassements
+    => L'ANNONCE EST EXACTE sur le compte brut.
+
+  ---- 4. CAS LIMITES (le comptage visuel de la figure) ----
+    La figure trace des barres et le texte arrondit a 0,1 point.
+    Grandeurs a moins de 1 point du seuil :
+      Mutuelle M                          +4.1538 %  -> DANS les 5 %
+      Couple a l'arret (balayage)         +4.9520 %  -> DANS les 5 %
+      Rendement max (balayage)            -4.4552 %  -> DANS les 5 %
+
+  ---- 5. HORS GRANDEURS DECLAREES NON VALIDEES PAR LE MANUSCRIT ----
+    exclue #20 Pertes aimant a vide            +2.4450 %
+      motif : §6.6 : "The reference cannot resolve the quantity on which it is being compared."
+    exclue #24 Pertes aimant en charge        -49.9506 %
+      motif : §6.6 + Table 19 : ecart -1,6 W sous le plancher de resolution de 52,7 W
+    exclue #27 Couple a l'arret (balayage)     +4.9520 %
+      motif : §5 : "cannot be claimed as a validation ... excluded from the comparison"
+
+    compte hors grandeurs non validees : 21 sur 26 dans les 5 %
+    soit 5 depassement(s) sur 26.
+
+    les depassements qui SUBSISTENT apres exclusion :
+      Bt tangentiel RMS                   +7.4505 %
+      Pertes fer a vide                   +8.1401 %
+      Vitesse etablie en charge           -6.1797 %
+      Courant de bus moyen               -13.8796 %
+      Puissance max (balayage)           -25.4270 %
+
+  ---- 6. RESUME ----
+    annonce du manuscrit          : 23 / 29
+    compte brut mesure            : 23 / 29
+    compte hors non validees      : 21 / 26
+
+  duree totale 155 s
+=== R7 termine ===

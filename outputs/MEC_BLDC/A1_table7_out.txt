@@ -1,0 +1,166 @@
+=== A1 : Table 7 en configuration unique ===
+  machine 15/14 750 W | Ms = 540 | Np = 61 | base P0
+  kfringe = 0.3250 | solveur : lineaire (mu_i) ET Newton, declares
+  references EF relues du projet, aucune transcription
+
+{Error using readmatrix (line 171)
+Unable to find or open 'C:\Users\hp\Desktop\ANSYS résultat 750W\magnetostique(Magnetic_loading)\Output Variables Table 3.tab'. Check the path and filename or file permissions.
+
+Error in RUN_A1_TABLE7>@(f)readmatrix(f,'FileType','text','Delimiter','\t','NumHeaderLines',1) (line 19)
+rd=@(f)readmatrix(f,'FileType','text','Delimiter','\t','NumHeaderLines',1);
+
+Error in RUN_A1_TABLE7 (line 95)
+mmF=rd(fullfile(fea,'magnetostique(Magnetic_loading)','Output Variables Table 3.tab'));
+} 
+=== A1 : Table 7 en configuration unique ===
+  machine 15/14 750 W | Ms = 540 | Np = 61 | base P0
+  kfringe = 0.3250 | solveur : lineaire (mu_i) ET Newton, declares
+  references EF relues du projet, aucune transcription
+
+  inconnues : n_sh=1 -> 5400 | n_sh=2 -> 6480 | 1 dent -> 1260 surf.
+
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped          FEA
+  Bg1 fondamental (T)               1.07787      1.07908      1.07755      1.07455
+  B entrefer moyen |Br| (T)         0.76182      0.76273      0.76147      0.76091
+  Br crete (T)                      0.98051      0.97536      0.98600      0.99073
+  Bt tangentiel rms (T)             0.13755      0.13478      0.14317      0.13326
+  bande de denture nu=8 (T)         0.01704      0.01581      0.01806      0.01966
+  ligne de flux A (Wb/m)            0.00586      0.00587      0.00586      0.00585
+  flux totalise crete (Wb)          0.25894      0.25908      0.26121      0.25833
+  FMM moy./aimant (A)             761.67422    759.32903    762.91185    769.44526
+  FMM moy./entrefer (A)           711.38627    711.88041    725.06447    721.50380
+  dispersion FMM (%)                6.36923      5.95916      6.80953      6.58458
+  FEM de phase crete (V)            0.00000      0.00000    240.87729    233.03054
+  enveloppe six-step (V)            0.00000      0.00000    468.71903    459.91833
+  self La (mH)                     50.37905     50.48371     50.77264     50.20861
+  mutuelle M (mH)                  -2.01599     -2.02114     -2.22015     -2.13292
+  synchrone Ld (mH)                52.39504     52.50485     52.99278     52.34153
+  facteur k_r (-)                   1.07069      1.06665      1.05220      1.08693
+  facteur k_l (-)                   0.85326      0.85368      0.85371      0.86723
+
+  --- ecarts a la FEA, formes sur les valeurs PLEINES ---
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped
+  Bg1 fondamental (T)                0.309 %       0.422 %       0.279 %
+  B entrefer moyen |Br| (T)          0.119 %       0.240 %       0.074 %
+  Br crete (T)                      -1.031 %      -1.551 %      -0.477 %
+  Bt tangentiel rms (T)              3.218 %       1.143 %       7.432 %
+  bande de denture nu=8 (T)        -13.340 %     -19.584 %      -8.119 %
+  ligne de flux A (Wb/m)             0.115 %       0.221 %       0.087 %
+  flux totalise crete (Wb)           0.236 %       0.292 %       1.114 %
+  FMM moy./aimant (A)               -1.010 %      -1.315 %      -0.849 %
+  FMM moy./entrefer (A)             -1.402 %      -1.334 %       0.494 %
+  dispersion FMM (%)                -3.270 %      -9.498 %       3.416 %
+  FEM de phase crete (V)          -100.000 %    -100.000 %       3.367 %
+  enveloppe six-step (V)          -100.000 %    -100.000 %       1.914 %
+  self La (mH)                       0.339 %       0.548 %       1.123 %
+  mutuelle M (mH)                   -5.482 %      -5.241 %       4.089 %
+  synchrone Ld (mH)                  0.102 %       0.312 %       1.244 %
+  facteur k_r (-)                   -1.494 %      -1.865 %      -3.195 %
+  facteur k_l (-)                   -1.611 %      -1.562 %      -1.559 %
+
+  duree 17 s
+=== A1 termine ===
+=== A1 : Table 7 en configuration unique ===
+  machine 15/14 750 W | Ms = 540 | Np = 61 | base P0
+  kfringe = 0.3250 | solveur : lineaire (mu_i) ET Newton, declares
+  references EF relues du projet, aucune transcription
+
+  [diag n_sh=1] lam_a : min 0.25894 max 0.25894 etendue 0.000e+00 | om 157.08
+  [diag n_sh=1] e_a   : min -0.000 max -0.000 V
+  [diag n_sh=2] lam_a : min 0.25908 max 0.25908 etendue 0.000e+00 | om 157.08
+  [diag n_sh=2] e_a   : min -0.000 max -0.000 V
+  inconnues : n_sh=1 -> 5400 | n_sh=2 -> 6480 | 1 dent -> 1260 surf.
+
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped          FEA
+  Bg1 fondamental (T)               1.07787      1.07908      1.07755      1.07455
+  B entrefer moyen |Br| (T)         0.76182      0.76273      0.76147      0.76091
+  Br crete (T)                      0.98051      0.97536      0.98600      0.99073
+  Bt tangentiel rms (T)             0.13755      0.13478      0.14317      0.13326
+  bande de denture nu=8 (T)         0.01704      0.01581      0.01806      0.01966
+  ligne de flux A (Wb/m)            0.00586      0.00587      0.00586      0.00585
+  flux totalise crete (Wb)          0.25894      0.25908      0.26121      0.25833
+  FMM moy./aimant (A)             761.67422    759.32903    762.91185    769.44526
+  FMM moy./entrefer (A)           711.38627    711.88041    725.06447    721.50380
+  dispersion FMM (%)                6.36923      5.95916      6.80953      6.58458
+  FEM de phase crete (V)            0.00000      0.00000    240.87729    233.03054
+  enveloppe six-step (V)            0.00000      0.00000    468.71903    459.91833
+  self La (mH)                     50.37905     50.48371     50.77264     50.20861
+  mutuelle M (mH)                  -2.01599     -2.02114     -2.22015     -2.13292
+  synchrone Ld (mH)                52.39504     52.50485     52.99278     52.34153
+  facteur k_r (-)                   1.07069      1.06665      1.05220      1.08693
+  facteur k_l (-)                   0.85326      0.85368      0.85371      0.86723
+
+  --- ecarts a la FEA, formes sur les valeurs PLEINES ---
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped
+  Bg1 fondamental (T)                0.309 %       0.422 %       0.279 %
+  B entrefer moyen |Br| (T)          0.119 %       0.240 %       0.074 %
+  Br crete (T)                      -1.031 %      -1.551 %      -0.477 %
+  Bt tangentiel rms (T)              3.218 %       1.143 %       7.432 %
+  bande de denture nu=8 (T)        -13.340 %     -19.584 %      -8.119 %
+  ligne de flux A (Wb/m)             0.115 %       0.221 %       0.087 %
+  flux totalise crete (Wb)           0.236 %       0.292 %       1.114 %
+  FMM moy./aimant (A)               -1.010 %      -1.315 %      -0.849 %
+  FMM moy./entrefer (A)             -1.402 %      -1.334 %       0.494 %
+  dispersion FMM (%)                -3.270 %      -9.498 %       3.416 %
+  FEM de phase crete (V)          -100.000 %    -100.000 %       3.367 %
+  enveloppe six-step (V)          -100.000 %    -100.000 %       1.914 %
+  self La (mH)                       0.339 %       0.548 %       1.123 %
+  mutuelle M (mH)                   -5.482 %      -5.241 %       4.089 %
+  synchrone Ld (mH)                  0.102 %       0.312 %       1.244 %
+  facteur k_r (-)                   -1.494 %      -1.865 %      -3.195 %
+  facteur k_l (-)                   -1.611 %      -1.562 %      -1.559 %
+
+  duree 16 s
+=== A1 termine ===
+=== A1 : Table 7 en configuration unique ===
+  machine 15/14 750 W | Ms = 540 | Np = 61 | base P0
+  kfringe = 0.3250 | solveur : lineaire (mu_i) ET Newton, declares
+  references EF relues du projet, aucune transcription
+
+  [diag n_sh=1] lam_a : min -0.25894 max 0.25894 etendue 5.179e-01 | om 157.08
+  [diag n_sh=1] e_a   : min -238.813 max 238.813 V
+  [diag n_sh=2] lam_a : min -0.25908 max 0.25908 etendue 5.182e-01 | om 157.08
+  [diag n_sh=2] e_a   : min -238.818 max 238.818 V
+  inconnues : n_sh=1 -> 5400 | n_sh=2 -> 6480 | 1 dent -> 1260 surf.
+
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped          FEA
+  Bg1 fondamental (T)               1.07787      1.07908      1.07755      1.07455
+  B entrefer moyen |Br| (T)         0.76182      0.76273      0.76147      0.76091
+  Br crete (T)                      0.98051      0.97536      0.98600      0.99073
+  Bt tangentiel rms (T)             0.13755      0.13478      0.14317      0.13326
+  bande de denture nu=8 (T)         0.01704      0.01581      0.01806      0.01966
+  ligne de flux A (Wb/m)            0.00586      0.00587      0.00586      0.00585
+  flux totalise crete (Wb)          0.25894      0.25908      0.26121      0.25833
+  FMM moy./aimant (A)             761.67422    759.32903    762.91185    769.44526
+  FMM moy./entrefer (A)           711.38627    711.88041    725.06447    721.50380
+  dispersion FMM (%)                6.36923      5.95916      6.80953      6.58458
+  FEM de phase crete (V)          238.81290    238.81812    240.87729    233.03054
+  enveloppe six-step (V)          464.55594    464.64465    468.71903    459.91833
+  self La (mH)                     50.37905     50.48371     50.77264     50.20861
+  mutuelle M (mH)                  -2.01599     -2.02114     -2.22015     -2.13292
+  synchrone Ld (mH)                52.39504     52.50485     52.99278     52.34153
+  facteur k_r (-)                   1.07069      1.06665      1.05220      1.08693
+  facteur k_l (-)                   0.85326      0.85368      0.85371      0.86723
+
+  --- ecarts a la FEA, formes sur les valeurs PLEINES ---
+  GRANDEUR                      Mesh n_sh=1  Mesh n_sh=2       Lumped
+  Bg1 fondamental (T)                0.309 %       0.422 %       0.279 %
+  B entrefer moyen |Br| (T)          0.119 %       0.240 %       0.074 %
+  Br crete (T)                      -1.031 %      -1.551 %      -0.477 %
+  Bt tangentiel rms (T)              3.218 %       1.143 %       7.432 %
+  bande de denture nu=8 (T)        -13.340 %     -19.584 %      -8.119 %
+  ligne de flux A (Wb/m)             0.115 %       0.221 %       0.087 %
+  flux totalise crete (Wb)           0.236 %       0.292 %       1.114 %
+  FMM moy./aimant (A)               -1.010 %      -1.315 %      -0.849 %
+  FMM moy./entrefer (A)             -1.402 %      -1.334 %       0.494 %
+  dispersion FMM (%)                -3.270 %      -9.498 %       3.416 %
+  FEM de phase crete (V)             2.481 %       2.484 %       3.367 %
+  enveloppe six-step (V)             1.008 %       1.028 %       1.914 %
+  self La (mH)                       0.339 %       0.548 %       1.123 %
+  mutuelle M (mH)                   -5.482 %      -5.241 %       4.089 %
+  synchrone Ld (mH)                  0.102 %       0.312 %       1.244 %
+  facteur k_r (-)                   -1.494 %      -1.865 %      -3.195 %
+  facteur k_l (-)                   -1.611 %      -1.562 %      -1.559 %
+
+  duree 17 s
+=== A1 termine ===

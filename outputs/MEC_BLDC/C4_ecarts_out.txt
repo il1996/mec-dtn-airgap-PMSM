@@ -1,0 +1,115 @@
+=== C4 : regeneration des colonnes d'ecart a pleine precision ===
+  sources : fichiers .mat des blocs, MEC_BLDC et MEC_IM
+  critere : |plein - arrondi| > 0.05 point  ->  cellule SENSIBLE
+
+  ---- 1. les huit cellules de l'indice inverse (T14) ----
+  T14 les signalait parce que l'ecart publie coincidait avec un
+  calcul sur valeurs arrondies a moins de 0,01 point. Statut
+  aujourd'hui, apres les blocs de regeneration :
+
+  cellule                destination                    statut
+  T8  ordre 21           tab:spectrum, Article I        a remplir depuis la chaine du spectre
+  T10 vitesse            transitoire en charge, Art. I  regenere par BLDC_MEC_COMPLET (6 aout)
+  T10 pertes fer         transitoire en charge, Art. I  SUPERSEDE par X2 et A4
+  T15 couple             ancien tableau MAS             SUPERSEDE par B1 et B3
+  T15 Bg1                ancien tableau MAS             SUPERSEDE par B1 §4
+  T16 couple charge      tab:im_tests, Article II       SUPERSEDE par B1 §3
+  T16 I barre charge     tab:im_tests, Article II       SUPERSEDE par B1 §3 et B6
+  T17 culasse st vide    Table 17, Article II           SUPERSEDE par B7
+
+  SIX des huit sont deja produites par une chaine qui forme ses
+  ecarts sur les valeurs pleines. Les deux autres appartiennent a
+  des tableaux encore vides. L'indice inverse de T14 ne survit donc
+  dans aucune cellule destinee a la publication.
+
+  ---- 2. Article I : ecarts a pleine precision ----
+  grandeur                                 valeur    reference    PLEIN %  ARRONDI % ecart pt
+{Unrecognized function or variable 'ntot'.
+
+Error in RUN_C4_ECARTS>ck (line 38)
+        ntot=ntot+1;
+
+Error in RUN_C4_ECARTS (line 76)
+    ck(sprintf('nu=8 lin., Ms=%d, n_sh=%d',S.Mss(k),S.nb0), ...
+} 
+=== C4 : regeneration des colonnes d'ecart a pleine precision ===
+  sources : fichiers .mat des blocs, MEC_BLDC et MEC_IM
+  critere : |plein - arrondi| > 0.05 point  ->  cellule SENSIBLE
+
+  ---- 1. les huit cellules de l'indice inverse (T14) ----
+  T14 les signalait parce que l'ecart publie coincidait avec un
+  calcul sur valeurs arrondies a moins de 0,01 point. Statut
+  aujourd'hui, apres les blocs de regeneration :
+
+  cellule                destination                    statut
+  T8  ordre 21           tab:spectrum, Article I        a remplir depuis la chaine du spectre
+  T10 vitesse            transitoire en charge, Art. I  regenere par BLDC_MEC_COMPLET (6 aout)
+  T10 pertes fer         transitoire en charge, Art. I  SUPERSEDE par X2 et A4
+  T15 couple             ancien tableau MAS             SUPERSEDE par B1 et B3
+  T15 Bg1                ancien tableau MAS             SUPERSEDE par B1 sec.4
+  T16 couple charge      tab:im_tests, Article II       SUPERSEDE par B1 sec.3
+  T16 I barre charge     tab:im_tests, Article II       SUPERSEDE par B1 sec.3 et B6
+  T17 culasse st vide    Table 17, Article II           SUPERSEDE par B7
+
+  SIX des huit sont deja produites par une chaine qui forme ses
+  ecarts sur les valeurs pleines. Les deux autres appartiennent a
+  des tableaux encore vides. L'indice inverse de T14 ne survit donc
+  dans aucune cellule destinee a la publication.
+
+  ---- 2. ecarts regeneres a pleine precision ----
+  destination          grandeur                            valeur   reference   PLEIN % ARRONDI % ecart pt
+  Art. I / tab:convb   nu=8 lin., Ms=360                  0.01439     0.01966  -26.806   -26.806    0.001
+                       nu=8 Newton, Ms=360                0.02169     0.01966   10.343    10.326    0.017
+                       nu=8 lin., Ms=540                  0.01542     0.01966  -21.574   -21.567    0.007
+                       nu=8 Newton, Ms=540                0.02261     0.01966   15.020    15.005    0.015
+                       nu=8 lin., Ms=900                  0.01596     0.01966  -18.809   -18.820    0.011
+                       nu=8 Newton, Ms=900                0.02434     0.01966   23.829    23.805    0.025
+  Art. I / tab:pmsm    L_a maillage n_sh=1                0.05038     0.05021    0.339     0.339    0.001
+                       M   maillage n_sh=1               -0.00202    -0.00213   -5.482    -5.164    0.318  <-- SENSIBLE
+                       L_d maillage n_sh=1                0.05240     0.05234    0.102     0.115    0.012
+  Art. I / A5bis       L_d si M exact                     0.05251     0.05234    0.326     0.325    0.001
+  Art. I / tab:pmsm    L_a localise                       0.05077     0.05021    1.123     1.115    0.008
+                       M   localise                      -0.00222    -0.00213    4.089     4.225    0.136  <-- SENSIBLE
+                       L_d localise                       0.05299     0.05234    1.244     1.242    0.002
+  Art. I / sec.8.5     P_fe maillage+rotor, n_sh=1       24.43554    19.73000   23.850    23.852    0.002
+                       P_fe maillage+rotor, n_sh=2       24.71321    19.73000   25.257    25.256    0.001
+                       P_fe maillage+rotor, n_sh=4       24.85602    19.73000   25.981    25.981    0.000
+  Art. II / Table 17   culasse stator, a vide             1.87931     1.83700    2.303     2.303    0.001
+                       dent stator, a vide                1.96871     1.63300   20.558    20.557    0.001
+                       dent rotor, a vide                 2.15188     1.92900   11.554    11.555    0.001
+                       culasse rotor, a vide              1.71074     1.67400    2.195     2.192    0.002
+                       culasse stator, en charge          1.79822     1.89600   -5.157    -5.158    0.001
+                       dent stator, en charge             1.90216     1.68400   12.955    12.957    0.002
+                       dent rotor, en charge              2.08781     1.87000   11.648    11.647    0.001
+                       culasse rotor, en charge           1.58565     1.57700    0.549     0.552    0.003
+  Art. II / Table 16   rapport reference en charge        3.35895     3.51334   -4.394    -4.396    0.001
+                       rapport reference calage           3.38422     3.51334   -3.675    -3.676    0.000
+  Art. II / tab:im_ec  R'_r calage / ref. 104,31          0.46708     0.47731   -2.142    -2.143    0.001
+                       R'_r calage / ref. 98,98           0.46708     0.45283    3.146     3.147    0.001
+
+  ---- 3. fichiers .mat non encore exploites ----
+  B1_im_p1         : I, T, sl
+  B2_kC            : Nl, R, nO, nT
+  B3_prix          : V, nm
+  A1_table7        : Rm, VF, VL, lab
+  A5_lumped        : KF, MU, NS, TGT, V, bcfg, best
+  V1_pmsm          : Nsurf, V
+
+  Ces fichiers portent les grandeurs brutes, non les colonnes
+  d'ecart : leurs ecarts sont deja formes sur les valeurs pleines
+  dans leur propre .txt. Ils sont listes pour que la verification
+  finale des tableaux puisse s'y adosser.
+
+  ---- 4. verdict ----
+  28 ecarts regeneres a pleine precision ; 2 sensibles a l'arrondi.
+  Les cellules marquees SENSIBLE doivent imperativement etre
+  copiees depuis la colonne PLEIN : les former sur les valeurs
+  affichees introduirait une erreur superieure a 0,05 point.
+
+  REGLE POUR LA SUITE. Tout tableau des deux articles se remplit
+  depuis un .txt de bloc, jamais depuis un autre tableau. Les
+  colonnes d'ecart ne sont jamais recalculees a la main a partir
+  de colonnes de valeurs deja arrondies.
+
+  duree 0 s
+=== C4 termine ===

@@ -1,0 +1,39 @@
+======================================================================
+  S3 - EXTRAIT EDITORIAL : LA LIGNE DU COUPLE
+======================================================================
+  source : R7_scorecard.mat (13-août-2026 18:15:37)
+
+  ---- 1. LA LIGNE 17 ----
+    rang dans SC          : 17 sur 29 (inchange)
+    colonne MODELE        : 4.949009907   (etait 4.753009... : T_load)
+    colonne REFERENCE     : 4.866639925   <- ne bouge pas
+    ecart a pleine precis.: +1.69254317 %
+    dans le seuil de 5 %  : OUI
+
+  ---- 2. CONCORDANCE AVEC LA TABLE 16 ----
+    Table 16, couple electromagnetique : MEC 4.949009907 | FEA 4.866639925 | +1.6925 %
+    tableau de synthese, ligne 17      : MEC 4.949009907 | FEA 4.866639925 | +1.6925 %
+    LES DEUX ENDROITS PUBLIENT-ILS LA MEME VALEUR ? OUI
+
+  ---- 3. CELLULE LATEX ----
+    docs/review/ArticleI_AppendixB_scorecard.tex, ligne 35
+      AVANT : 17 & torque, on load & N\,m & \num{4.75301} & \num{4.86664} & $-2.33\%$ & \\
+      APRES : 17 & torque, on load\tnote{d} & N\,m & \num{4.94901} & \num{4.86664} & $+1.69\%$ & \\
+      (le nom gagne un renvoi : la ligne est le couple du transitoire,
+       au point du MEC, et non le couple a courant impose)
+
+  ---- 4. LES COMPTES NE BOUGENT PAS ----
+    les deux couples sont dans le seuil : -2.3348 % et +1.6925 %
+    compte brut            : 21 / 29   (inchange par S3)
+    hors non validees      : 20 / 26   (inchange par S3)
+    la substitution ne fait entrer ni sortir aucune ligne du comptage.
+
+  ---- 5. LA GRANDEUR ECARTEE, ET OU ELLE RESTE ----
+    couple a COURANT IMPOSE : 4.753009 N.m, -2.3348 %, 1340 tr/min
+    (valeur inchangee ; seul son NOM change, et elle n'est plus
+     presentee comme une barre de validation sous le nom de l'autre)
+    elle reste imprimee a la section 5 du transcript maitre.
+    ELLE N'EST PLUS PUBLIEE NULLE PART DANS LES MANUSCRITS : si elle
+    doit l'etre, c'est une decision de l'auteur, pas de ce bloc.
+
+=== S3 extrait editorial termine ===

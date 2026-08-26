@@ -1,0 +1,13 @@
+=== T18 : pertes aimant pilotees par le maillage ===
+  Ms=540 nsh=2, 61 positions sur UN PAS D'ENCOCHE, 1688 tr/min
+  balayage maillage termine (49 s)
+
+  source du champ                     P (W)          FEA        ecart
+  reseau a une dent                  0.2000       0.3340       -40.1 %
+  MAILLAGE polaire                   0.2482       0.3340       -25.7 %
+
+  f de denture 422.0 Hz | profondeur de peau 32.87 mm
+  attenuation a travers l'aimant : rang 8 0.416 | rang 22 8.945e-02
+
+  duree 60 s
+=== termine ===

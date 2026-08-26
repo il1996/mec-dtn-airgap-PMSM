@@ -1,0 +1,136 @@
+=== A6 : comparaison de fermetures, mise en forme finale ===
+  machine  : PMSM 15/14, 750 W | Ns = 15, p = 7
+  reference: C:\Users\hp\Desktop\ANSYS résultat 750W
+  chaine   : RUN_CARTER_CMP (N1, N2, trois N2b, N3)
+  kfringe  : 0.3250 | solveur lineaire mu_r = 3000
+
+=== Ce que le DtN apporte face au MEC classique ===
+  ouverture 2.00 mm, entrefer magnetique 4.369 mm -> kC = 1.0100
+
+  --- A6 : parametres des trois variantes de Silva ---
+  arc de FACE DE DENT a_t = 0.361206 rad = 20.696 deg (17.40 elements/tour)
+  variante        a_r (rad)  a_r (deg)    gamma_m    gamma_z   elem./tour   <lambda>
+  a_r = 0.25 a_t   0.090301      5.174   0.135452   0.225754        69.58   1.000000
+  a_r = 0.50 a_t   0.180603     10.348   0.090301   0.270904        34.79   1.000000
+  a_r = 1.00 a_t   0.361206     20.696   0.000000   0.361206        17.40   1.000000
+  gamma_m = |a_t - a_r|/2 et gamma_z = (a_t + a_r)/2 : construction
+  d'Ostovic. AUCUN des deux ne se deduit de la geometrie de la
+  machine -- ils se deduisent du MAILLAGE des deux surfaces. Tout
+  raffinement tangentiel les change, donc change la fermeture.
+
+  modele                               Bg1 (T)      ecart    rang 8      ecart   rang 22      ecart   Bt rms      ecart
+  (N1) lisse + Carter                   1.0958      2.0 %   0.00000   -100.0 %   0.00000   -100.0 %   0.1070    -19.7 %
+  (N2) + permeance cos^2 generique      1.0958      2.0 %   0.08003    307.1 %   0.08004    144.3 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.25 a_t           1.0958      2.0 %   0.01794     -8.7 %   0.01794    -45.2 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.50 a_t           1.0958      2.0 %   0.05310    170.1 %   0.05310     62.1 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 1.00 a_t           1.0958      2.0 %   0.00071    -96.4 %   0.00071    -97.8 %   0.1070    -19.7 %
+  (N3) DtN complet (reseau)             1.0775      0.3 %   0.01806     -8.1 %   0.03524      7.6 %   0.1432      7.4 %
+  reference FEA                         1.0746         --   0.01966         --   0.03276         --   0.1333         --
+
+  --- lecture ---
+  N1 ne produit AUCUNE bande de denture : par construction, un entrefer
+     lisse n'a pas d'harmonique d'encoche. Le Bt qui subsiste (0.107 T)
+     vient des transitions entre aimants, PAS de la denture : d'ou -20 %.
+  N2 restitue des bandes laterales, mais la PROFONDEUR du creux de
+     permeance n'est pas identifiee ici (forme cos^2 generique) et elle
+     depasse la cible d'un facteur 3 a 4. C'est precisement le point :
+     ce niveau de modele EXIGE un calage, que N3 n'exige pas. Et une
+     permeance REELLE module l'amplitude sans rien ajouter a Bt.
+  N2b est la fonction REELLE de Silva (plateau + gaussienne, eq. 14).
+     Ses parametres gm et gz sont des ARCS D'ELEMENTS, pas des grandeurs
+     physiques : le balayage de a_r ci-dessus mesure cette dependance.
+     Dispersion du rang 8 sur les trois maillages : 219 %
+  N3 produit les bandes ET la denture dans Bt, sans coefficient de Carter,
+     sans fonction de permeance et sans aucune constante identifiee.
+
+  --- pourquoi N1 et N2/N2b partagent le meme Bg1 ---
+  Toute modulation de periode le pas dentaire ne cree d'harmoniques
+  qu'aux rangs p +- k*Ns. Normalisee a <lam> = 1, elle laisse le rang p
+  INCHANGE. L'egalite est structurelle, pas fortuite. Verification :
+  <lam> N2 = 1.000000 | N2b = 1.000000 1.000000 1.000000
+
+=== A6 termine ===
+=== A6 : comparaison de fermetures, mise en forme finale ===
+  machine  : PMSM 15/14, 750 W | Ns = 15, p = 7
+  reference: C:\Users\hp\Desktop\ANSYS résultat 750W
+  chaine   : RUN_CARTER_CMP (N1, N2, trois N2b, N3)
+  kfringe  : 0.3250 | solveur lineaire mu_r = 3000
+
+=== Ce que le DtN apporte face au MEC classique ===
+  ouverture 2.00 mm, entrefer magnetique 4.369 mm -> kC = 1.0100
+
+  --- A6.1 : parametres de la fonction de Silva, variante par variante ---
+  reference stator : arc de FACE DE DENT a_t = 0.361206 rad = 20.6956 deg
+                     soit 2*pi/a_t = 17.40 faces de dent par tour
+  construction d'Ostovic : gamma_m = |a_t - a_r|/2 , gamma_z = (a_t + a_r)/2
+
+  variante          a_r (rad)  a_r (deg)     2pi/a_r gam_m (rad) gam_m (deg) gam_z (rad) gam_z (deg)
+  a_r = 0.25 a_t     0.090301     5.1739       69.58    0.135452      7.7608    0.225754     12.9347
+  a_r = 0.50 a_t     0.180603    10.3478       34.79    0.090301      5.1739    0.270904     15.5217
+  a_r = 1.00 a_t     0.361206    20.6956       17.40    0.000000      0.0000    0.361206     20.6956
+
+  variante          gam_m / gam_z    forme obtenue
+  a_r = 0.25 a_t            60.0 %   plateau + gaussienne
+  a_r = 0.50 a_t            33.3 %   plateau + gaussienne
+  a_r = 1.00 a_t             0.0 %   gaussienne seule
+
+  LECTURE DE CE TABLEAU. gamma_m va de 7.7608 deg a 0 et gamma_z de
+  12.9347 a 20.6956 deg alors que la MACHINE n'a pas bouge d'un micron :
+  seul le nombre d'elements rotoriques par tour a change (69.58 -> 17.40).
+  Ni gamma_m ni gamma_z ne se deduisent donc de la geometrie ; ils se
+  deduisent du MAILLAGE des deux surfaces. Le cas a_r = a_t donne meme
+  gamma_m = 0 exactement : le plateau disparait et la fonction (14) se
+  reduit a la seule gaussienne. Tout raffinement tangentiel change donc
+  la fermeture d'entrefer, et impose une recalibration.
+
+  --- A6.2 : moyenne des QUATRE modulations d'entrefer ---
+  modulation                         <lambda> |<lambda> - 1|
+  N2   creux cos^2 generique         1.000000       6.66e-15
+  N2b  Silva a_r = 0.25 a_t          1.000000       6.66e-16
+  N2b  Silva a_r = 0.50 a_t          1.000000       1.11e-15
+  N2b  Silva a_r = 1.00 a_t          1.000000       1.89e-15
+  ecart maximal a l'unite sur les quatre : 6.66e-15 (arrondi machine)
+
+  modele                               Bg1 (T)      ecart    rang 8      ecart   rang 22      ecart   Bt rms      ecart
+  (N1) lisse + Carter                   1.0958      2.0 %   0.00000   -100.0 %   0.00000   -100.0 %   0.1070    -19.7 %
+  (N2) + permeance cos^2 generique      1.0958      2.0 %   0.08003    307.1 %   0.08004    144.3 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.25 a_t           1.0958      2.0 %   0.01794     -8.7 %   0.01794    -45.2 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 0.50 a_t           1.0958      2.0 %   0.05310    170.1 %   0.05310     62.1 %   0.1070    -19.7 %
+  (N2b) Silva, a_r = 1.00 a_t           1.0958      2.0 %   0.00071    -96.4 %   0.00071    -97.8 %   0.1070    -19.7 %
+  (N3) DtN complet (reseau)             1.0775      0.3 %   0.01806     -8.1 %   0.03524      7.6 %   0.1432      7.4 %
+  reference FEA                         1.0746         --   0.01966         --   0.03276         --   0.1333         --
+
+  --- lecture ---
+  N1 ne produit AUCUNE bande de denture : par construction, un entrefer
+     lisse n'a pas d'harmonique d'encoche. Le Bt qui subsiste (0.107 T)
+     vient des transitions entre aimants, PAS de la denture : d'ou -20 %.
+  N2 restitue des bandes laterales, mais la PROFONDEUR du creux de
+     permeance n'est pas identifiee ici (forme cos^2 generique) et elle
+     depasse la cible d'un facteur 3 a 4. C'est precisement le point :
+     ce niveau de modele EXIGE un calage, que N3 n'exige pas. Et une
+     permeance REELLE module l'amplitude sans rien ajouter a Bt.
+  N2b est la fonction REELLE de Silva (plateau + gaussienne, eq. 14).
+     Ses parametres gm et gz sont des ARCS D'ELEMENTS, pas des grandeurs
+     physiques : le balayage de a_r ci-dessus mesure cette dependance.
+  N3 produit les bandes ET la denture dans Bt, sans coefficient de Carter,
+     sans fonction de permeance et sans aucune constante identifiee.
+
+  --- A6.3 : dispersion du rang 8 sur les trois variantes de Silva ---
+  variante                   2pi/a_r   rang 8 (T)  ecart / FEA
+  a_r = 0.25 a_t               69.58      0.01794        -8.7 %
+  a_r = 0.50 a_t               34.79      0.05310       170.1 %
+  a_r = 1.00 a_t               17.40      0.00071       -96.4 %
+  min 0.00071 T | max 0.05310 T | moyenne 0.02392 T | reference FEA 0.01966 T
+  DISPERSION (max - min)/moyenne = 219 %
+  Un seul parametre de MAILLAGE, non contraint par la machine, fait
+  varier la bande de denture de 219 % : la famille (iii) n'a pas de
+  determination propre. Le DtN (N3), lui, donne -8.1 % sans reglage.
+
+  --- pourquoi N1 et N2/N2b partagent le meme Bg1 ---
+  Toute modulation de periode le pas dentaire ne cree d'harmoniques
+  qu'aux rangs p +- k*Ns. Normalisee a <lam> = 1, elle laisse le rang p
+  INCHANGE. L'egalite est structurelle, pas fortuite. Verification :
+  <lam> N2 = 1.000000 | N2b = 1.000000 1.000000 1.000000  (A6.2)
+  ecart maximal des SIX Bg1 modulees a Bg1(N1) : 2.31e-07 T
+
+=== A6 termine ===

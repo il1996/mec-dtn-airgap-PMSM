@@ -1,0 +1,78 @@
+
+M = 
+
+  struct with fields:
+
+      Nm: 14
+       p: 7
+      Ns: 15
+       m: 3
+    Nspp: 0.3571
+     Rsi: 0.0347
+     Rso: 0.0625
+     lag: 1.0000e-03
+      hm: 0.0035
+     Rri: 0.0155
+     Rro: 0.0337
+     rmi: 0.0302
+    rmid: 0.0342
+      ls: 0.0330
+     hs0: 1.0000e-03
+     hs1: 5.0000e-04
+     hs2: 0.0196
+     ws0: 0.0020
+    wst1: 0.0085
+    wst2: 0.0085
+      hs: 0.0211
+     ws1: 6.7000
+
+
+M = 
+
+  struct with fields:
+
+      Nm: 14
+       p: 7
+      Ns: 15
+       m: 3
+    Nspp: 0.3571
+     Rsi: 0.0347
+     Rso: 0.0625
+     lag: 1.0000e-03
+      hm: 0.0035
+     Rri: 0.0155
+     Rro: 0.0337
+     rmi: 0.0302
+    rmid: 0.0342
+      ls: 0.0330
+     hs0: 1.0000e-03
+     hs1: 5.0000e-04
+     hs2: 0.0196
+     ws0: 0.0020
+    wst1: 0.0085
+    wst2: 0.0085
+      hs: 0.0211
+     ws1: 6.7000
+     ws2: 15.0322
+
+=== Inductances : maillage raffine vs reseau a une dent vs FEA ===
+  FEA : La = 50.209 mH | M = -2.1329 mH | Ld = 52.342 mH
+
+     Ms   nsh noeuds |   La (mH)     M (mH)   Ld (mH) |   ec. La    ec. M   ec. Ld
+    360     1   3600 |    50.423    -2.0223    52.445 |     0.4 %     5.2 %     0.2 %
+    360     2   4320 |    50.521    -2.0271    52.548 |     0.6 %     5.0 %     0.4 %
+    540     1   5400 |    50.379    -2.0160    52.395 |     0.3 %     5.5 %     0.1 %
+    540     2   6480 |    50.484    -2.0211    52.505 |     0.5 %     5.2 %     0.3 %
+    900     1   9000 |    51.549    -2.0834    53.632 |     2.7 %     2.3 %     2.5 %
+    900     2  10800 |    51.316    -2.0699    53.386 |     2.2 %     3.0 %     2.0 %
+
+  reseau a une dent         35.351    -1.3634    36.714 |   -29.6 %    36.1 %   -29.9 %
+     (dont fuite d'encoche ANALYTIQUE : 14.81 mH sur 35.35, soit 42 %)
+
+  --- ou passe le flux d'induit (maillage, Ms=540, nsh=2) ---
+  part portee par les branches d'AIR (encoche + becs) : 0.0 %
+  part traversant la SURFACE d'entrefer               : 0.0 %
+  (la fuite d'encoche n'est plus une formule ajoutee : elle est
+   portee par les cellules d'air du maillage)
+
+  (4 s)

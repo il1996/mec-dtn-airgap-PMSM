@@ -1,0 +1,43 @@
+=== A2 : Tables 5(a) et 5(b) reconstruites ===
+  references EF relues du projet :
+    Bg1 = 1.07455 T | nu=8 = 0.019659 T | Ld = 52.3415 mH
+  (le tableau publie utilisait Ld_FEA = 52.24 mH -- PERIME)
+
+  ---- Table 5(a) : n_sh = 1, solveur LINEAIRE ----
+      Ms  inconnues        Bg1         Ld        nu=8  peak iron B
+                         ecart      ecart       ecart          (T)
+{Unrecognized function or variable 'M'.
+
+Error in RUN_A2_TABLE5>pt (line 36)
+        MEf=mesh_bldc(M,Ms,4,3,[],0,kfr,sol,nsh);
+
+Error in RUN_A2_TABLE5 (line 55)
+    [b1,r8,Ld,pk,N]=pt(Ms,1,M.muI);
+} 
+=== A2 : Tables 5(a) et 5(b) reconstruites ===
+  references EF relues du projet :
+    Bg1 = 1.07455 T | nu=8 = 0.019659 T | Ld = 52.3415 mH
+  (le tableau publie utilisait Ld_FEA = 52.24 mH -- PERIME)
+
+  ---- Table 5(a) : n_sh = 1, solveur LINEAIRE ----
+      Ms  inconnues        Bg1         Ld        nu=8  peak iron B
+                         ecart      ecart       ecart          (T)
+     180       1800       0.9 %       0.5 %      -42.3 %       2.2087
+     360       3600       0.4 %       0.2 %      -19.8 %       2.5696
+     540       5400       0.3 %       0.1 %      -13.3 %       2.6986
+     900       9000       0.2 %       2.5 %       -9.7 %       2.7989
+
+  ---- Table 5(b) : n_sh = 2, LINEAIRE et NEWTON ----
+      Ms  inconnues    nu=8 lin.  nu=8 Newton  peak B lin.    peak B NL
+     360       4320       -25.2 %        11.8 %       2.7651       1.9271
+     540       6480       -19.6 %        16.8 %       2.9736       1.9778
+     900      10800       -16.0 %        26.2 %       3.1522       2.0095
+
+  LECTURE. En 5(a) le raffinement ANGULAIRE fait remonter nu=8
+  (-42 -> -10 %). En 5(b) le raffinement RADIAL du bec le fait
+  redescendre. Les deux directions bougent la bande en sens
+  OPPOSES, et le champ de fer crete croit sans se stabiliser :
+  c'est la signature d'une singularite, non d'une convergence.
+
+  duree 10 s
+=== A2 termine ===

@@ -1,0 +1,114 @@
+=== A5 : provenance des trois cellules Lumped ===
+  machine PMSM 15/14 750 W | kfringe identifie = 0.3250 | mu_i nominal = 3000
+  mu_r aimant = 1.0390 (Br = 1.2471 T, Hc = 955204 A/m)
+
+---- 0. sources relues (aucune transcription) ----
+  outF.txt (sortie brute de BLDC_MEC_COMPLET) :
+    === Resolution du reseau couple ... 1260 noeuds de surface, 721 positions (3 s) ===
+    alignement : position rotor 39.429 deg mec (indice 553/721), origine 12.000 deg
+    B entrefer crete 0.9846 | FMM aimant 763.2427 | FMM entrefer 723.8292
+    k_r 1.0545 | k_l 0.8538
+  A1_table7.mat (colonne Lumped, phi = 0, Np = 61) :
+    Br crete 0.98600 | FMM aimant 762.91185 | FMM entrefer 725.06447 | k_r 1.05220 | k_l 0.85371
+  MEC_DtN_paper_v2.tex, colonne Lumped du Tableau 7 :
+    k_r 1.0522 | k_l 0.8537
+    peak $B_r$                           & $0.9505$ & $0.9860$ & $0.9907$ & T \\
+    mean MMF per magnet                  & $759.3$  & $762.9$  & $769.4$  & A \\
+    mean MMF per gap\tnote{c}            & $711.9$  & $725.1$  & $721.5$  & A \\
+
+---- 1. test d'identite interne : k_r = mmf_m/mmf_g ----
+  Dans krkl.m (l.35) k_r n'est pas une grandeur independante :
+  k_r = mean(mm)/mean(mg). Toute configuration de cogging_mec verifie
+  donc EXACTEMENT cette identite. Elle se teste sur les nombres publies.
+
+  jeu de valeurs                                    mmf_m        mmf_g  mmf_m/mmf_g
+  publie (cellules de l'enonce)                  763.2427     723.8292      1.05445
+  programme A1 (phi = 0)                         762.9119     725.0645      1.05220
+
+  k_r du manuscrit                     : 1.05220
+  ecart |k_r manuscrit - mmf publiees| : 0.0023  (0.214 %)
+  ecart |k_r manuscrit - mmf A1|       : 0.000001  (0.0001 %)
+
+  LECTURE. Le k_r du manuscrit est le quotient des FMM du PROGRAMME,
+  pas celui des FMM publiees. La colonne Lumped du manuscrit MELANGE
+  donc deux extractions. Aucune configuration unique de cogging_mec ne
+  peut produire a la fois (763.2 ; 723.8) et k_r = 1.0522 : le systeme est
+  SURDETERMINE et INCOMPATIBLE. Le balayage du paragraphe 3 ne peut
+  donc pas reussir sur les trois cellules ET sur k_r simultanement --
+  ce qui oriente la recherche vers un CHANGEMENT DE POSITION
+  ROTORIQUE, seul parametre qui deplace les FMM sans etre un
+  parametre de modele.
+
+---- 2. reexecution de la configuration declaree dans outF.txt ----
+  outF.txt annonce 1260 noeuds de surface et 721 positions ; le §1 de
+  BLDC_MEC_COMPLET (l.92-93) porte Nsurf = 1260, Np = 721, span = 2pi/p,
+  et le §2 (l.168) evalue les FMM A LA POSITION IDENTIFIEE qb, pas a
+  phi = 0. On rejoue exactement cette chaine.
+
+  position identifiee : indice 553/721, phi = 39.429 deg mec, origine 12.000 deg
+  grandeur                      reexecute     cible outF        ecart
+  Br crete (T)                    0.98458         0.9846     -0.0024 %
+  FMM aimant (A)                763.24273       763.2427      0.0000 %
+  FMM entrefer (A)              723.82915       723.8292     -0.0000 %
+  k_r (-)                         1.05445         1.0545     -0.0046 %
+  k_l (-)                         0.85377         0.8538     -0.0040 %
+
+  meme reseau, evalue a phi = 0 (c'est ce que fait A1) :
+    Br crete 0.98576 (2000 pts) / 0.98600 (3600 pts) | FMM 762.9119 / 725.0645 | k_r 1.05220 | k_l 0.85371
+    -> le SEUL changement entre les deux lignes est la POSITION ROTOR.
+
+---- 3. balayage des configurations plausibles (toutes a phi = 0) ----
+  configuration                            Br crete    FMM aim.   FMM entr.    e_Br %     e_m %     e_g %   TOTAL %
+  cog1 Ns=630 kf=0.000 mu=1500 p0           1.02784    783.9170    720.8117     4.392     2.709    -0.417     7.518
+  cog1 Ns=630 kf=0.000 mu=1500 p1           1.03241    788.6083    718.3135     4.855     3.323    -0.762     8.941
+  cog1 Ns=630 kf=0.000 mu=3000 p0           1.02924    779.2706    722.4478     4.534     2.100    -0.191     6.825
+  cog1 Ns=630 kf=0.000 mu=3000 p1           1.03382    783.9748    719.9349     4.999     2.716    -0.538     8.253
+  cog1 Ns=630 kf=0.000 mu=5000 p0           1.02981    777.3995    723.1068     4.591     1.855    -0.100     6.546
+  cog1 Ns=630 kf=0.000 mu=5000 p1           1.03439    782.1091    720.5879     5.056     2.472    -0.448     7.976
+  cog1 Ns=630 kf=0.325 mu=1500 p0           0.98346    764.7604    720.2810    -0.116     0.199    -0.490     0.805
+  cog1 Ns=630 kf=0.325 mu=1500 p1           0.98413    766.7512    718.5983    -0.048     0.460    -0.723     1.230
+  cog1 Ns=630 kf=0.325 mu=3000 p0           0.98485    760.1587    721.9064     0.025    -0.404    -0.266     0.695
+  cog1 Ns=630 kf=0.325 mu=3000 p1           0.98552    762.1598    720.2105     0.093    -0.142    -0.500     0.735
+  cog1 Ns=630 kf=0.325 mu=5000 p0           0.98541    758.3024    722.5621     0.082    -0.647    -0.175     0.904
+  cog1 Ns=630 kf=0.325 mu=5000 p1           0.98607    760.3078    720.8608     0.150    -0.385    -0.410     0.944
+  cog1 Ns=630 kf=0.750 mu=1500 p0           0.95798    753.7238    719.8074    -2.704    -1.247    -0.556     4.507
+  cog1 Ns=630 kf=0.750 mu=1500 p1           0.95755    754.6769    718.5809    -2.747    -1.122    -0.725     4.595
+  cog1 Ns=630 kf=0.750 mu=3000 p0           0.95935    749.1598    721.4232    -2.565    -1.845    -0.332     4.742
+  cog1 Ns=630 kf=0.750 mu=3000 p1           0.95892    750.1210    720.1842    -2.608    -1.719    -0.504     4.831
+  cog1 Ns=630 kf=0.750 mu=5000 p0           0.95990    747.3147    722.0764    -2.508    -2.087    -0.242     4.837
+  cog1 Ns=630 kf=0.750 mu=5000 p1           0.95947    748.2794    720.8324    -2.552    -1.960    -0.414     4.927
+  cog1 Ns=900 kf=0.000 mu=1500 p0           1.05663    807.0081    692.9258     7.315     5.734    -4.269    17.319
+  cog1 Ns=900 kf=0.000 mu=1500 p1           1.06101    810.7996    687.9291     7.761     6.231    -4.960    18.951
+  cog1 Ns=900 kf=0.000 mu=3000 p0           1.05798    802.3888    694.5083     7.452     5.129    -4.051    16.632
+  cog1 Ns=900 kf=0.000 mu=3000 p1           1.06239    806.1934    689.4937     7.900     5.627    -4.744    18.271
+  cog1 Ns=900 kf=0.000 mu=5000 p0           1.05852    800.5292    695.1454     7.507     4.885    -3.963    16.356
+  cog1 Ns=900 kf=0.000 mu=5000 p1           1.06294    804.3392    690.1236     7.957     5.384    -4.657    17.998
+  cog1 Ns=900 kf=0.325 mu=1500 p0           0.99672    777.0337    701.7450     1.231     1.807    -3.051     6.088
+  cog1 Ns=900 kf=0.325 mu=1500 p1           0.99794    778.6093    699.2598     1.355     2.013    -3.394     6.763
+  cog1 Ns=900 kf=0.325 mu=3000 p0           0.99806    772.4795    703.2983     1.367     1.210    -2.836     5.413
+  cog1 Ns=900 kf=0.325 mu=3000 p1           0.99929    774.0649    700.7988     1.492     1.418    -3.182     6.092
+  cog1 Ns=900 kf=0.325 mu=5000 p0           0.99860    770.6420    703.9250     1.422     0.969    -2.750     5.141
+  cog1 Ns=900 kf=0.325 mu=5000 p1           0.99984    772.2316    701.4197     1.548     1.178    -3.096     5.822
+  cog1 Ns=900 kf=0.750 mu=1500 p0           0.96513    761.1646    706.5635    -1.977    -0.272    -2.385     4.635
+  cog1 Ns=900 kf=0.750 mu=1500 p1           0.96541    761.9302    705.2544    -1.949    -0.172    -2.566     4.687
+  cog1 Ns=900 kf=0.750 mu=3000 p0           0.96646    756.6618    708.0932    -1.842    -0.862    -2.174     4.878
+  cog1 Ns=900 kf=0.750 mu=3000 p1           0.96675    757.4351    706.7726    -1.813    -0.761    -2.356     4.931
+  cog1 Ns=900 kf=0.750 mu=5000 p0           0.96700    754.8401    708.7121    -1.787    -1.101    -2.088     4.977
+  cog1 Ns=900 kf=0.750 mu=5000 p1           0.96729    755.6167    707.3868    -1.758    -0.999    -2.272     5.029
+  cog1 Ns=1260 kf=0.000 mu=1500 p0          1.02934    788.0378    725.2207     4.544     3.249     0.192     7.985
+  cog1 Ns=1260 kf=0.000 mu=1500 p1          1.03306    790.3936    723.3126     4.921     3.557    -0.071     8.550
+  cog1 Ns=1260 kf=0.000 mu=3000 p0          1.03066    783.3852    726.8925     4.678     2.639     0.423     7.740
+  cog1 Ns=1260 kf=0.000 mu=3000 p1          1.03440    785.7505    724.9654     5.058     2.949     0.157     8.164
+  cog1 Ns=1260 kf=0.000 mu=5000 p0          1.03119    781.5118    727.5657     4.732     2.394     0.516     7.642
+  cog1 Ns=1260 kf=0.000 mu=5000 p1          1.03494    783.8810    725.6309     5.113     2.704     0.249     8.066
+  cog1 Ns=1260 kf=0.325 mu=1500 p0          0.98443    767.5083    723.4107    -0.018     0.559    -0.058     0.634
+  cog1 Ns=1260 kf=0.325 mu=1500 p1          0.98590    768.6072    721.9645     0.132     0.703    -0.258     1.093
+  cog1 Ns=1260 kf=0.325 mu=3000 p0          0.98576    762.9119    725.0645     0.117    -0.043     0.171     0.331
+  cog1 Ns=1260 kf=0.325 mu=3000 p1          0.98725    764.0179    723.6017     0.269     0.102    -0.031     0.402
+  cog1 Ns=1260 kf=0.325 mu=5000 p0          0.98629    761.0574    725.7317     0.172    -0.286     0.263     0.721
+  cog1 Ns=1260 kf=0.325 mu=5000 p1          0.98779    762.1664    724.2623     0.324    -0.141     0.060     0.525
+  cog1 Ns=1260 kf=0.750 mu=1500 p0          0.95868    755.6925    722.1525    -2.633    -0.989    -0.232     3.854
+  cog1 Ns=1260 kf=0.750 mu=1500 p1          0.95930    756.2664    721.0181    -2.569    -0.914    -0.388     3.871
+  cog1 Ns=1260 kf=0.750 mu=3000 p0          0.96000    751.1418    723.7921    -2.498    -1.585    -0.005     4.089
+  cog1 Ns=1260 kf=0.750 mu=3000 p1          0.96064    751.7212    722.6424    -2.434    -1.510    -0.164     4.107
+  cog1 Ns=1260 kf=0.750 mu=5000 p0          0.96054    749.3012    724.4553    -2.444    -1.827     0.086     4.357

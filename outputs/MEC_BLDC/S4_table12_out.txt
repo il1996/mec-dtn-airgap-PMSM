@@ -1,0 +1,62 @@
+======================================================================
+  S4 - LA TABLE 12 ET LE TABLEAU DE SYNTHESE : D'OU VIENT L'ECART
+======================================================================
+  RUN_A1_TABLE7.m             9030 octets, modifie 04-août-2026 04:23:28
+  BLDC_MEC_COMPLET.m         90223 octets, modifie 13-août-2026 18:32:12
+
+  ---- T1 : LA CHAINE DE PERTES AIMANT ATTEINT-ELLE LA TABLE 12 ? ----
+    La correction du 12 aout porte sur pm_loss_load.m (passage au
+    repere rotor). Si aucune grandeur de la Table 12 n'en descend,
+    elle ne peut pas avoir deplace la Table 12.
+
+    appels a pm_loss        dans RUN_A1_TABLE7.m : 0
+    appels a pm_loss_load   dans RUN_A1_TABLE7.m : 0
+    appels a pm_loss_R      dans RUN_A1_TABLE7.m : 0
+    appels a Ppm            dans RUN_A1_TABLE7.m : 0
+
+    grandeurs de la Table 12 : champ d'entrefer, FMM, dispersion,
+    flux totalise, FEM, enveloppe, inductances, k_r, k_l.
+    AUCUNE n'est une perte. Verdict T1 : la correction de signe NE PEUT PAS avoir deplace la Table 12
+
+  ---- T2 : LES DEUX CHAINES NE SONT PAS LA MEME ----
+
+    RUN_A1_TABLE7.m (colonne "Lumped" de la Table 12) :
+      champ      : R1=cogging_mec(M,1260,0,Np,M.muI,kfr,2*pi/p);
+      inductances: RI=inductance_mec(M,1260,M.muI,0);
+
+    BLDC_MEC_COMPLET.m (tableau de synthese) :
+      champ      : R=cogging_mec(M,Nsurf,0,Np,M.muI,kfr,2*pi/p);
+      inductances: RI=inductance_mec(M,1260,5000,0);
+      pavage     : Nsurf=1260; Np=721;
+
+    -> Np = 61 positions rotoriques pour la Table 12, contre 721
+       pour le tableau de synthese. Toute grandeur qui est un
+       EXTREMUM ou une MOYENNE sur la position en depend.
+    -> le champ de la Table 12 est pris a la position 1 (phi = 0) ;
+       celui du tableau de synthese a la position ALIGNEE sur l'EF.
+       Comme pgcd(Ns,Nm) = 1, l'ondulation de denture differe d'un
+       pole a l'autre : un CRETE n'est pas invariant par rotation,
+       un FONDAMENTAL l'est. C'est exactement ce que l'on observe :
+       Bg1 coincide (1.07755), Br crete non (0.98600 / 0.984576).
+
+  ---- T3 : UNE SEULE PERMEABILITE DANS LE TABLEAU DE SYNTHESE ? ----
+      M.muI            <- cogging_mec
+      5000             <- inductance_mec
+    permeabilites passees aux solveurs de BLDC_MEC_COMPLET.m :
+
+    M.muI vaut 3000 (machine_bldc.m:85). Les trois lignes
+    d'inductance du tableau sont donc calculees a mu_r = 5000
+    tandis que le champ, les FMM et les FEM le sont a 3000.
+    La Table 12 declare "linear solver at mu_r = 3000 throughout" :
+    c'est le tableau de SYNTHESE qui melange deux permeabilites,
+    pas la Table 12 qui serait perimee.
+
+  ---- VERDICT ----
+    T1  la correction de signe n'atteint pas la Table 12     PASSEE
+    T2  les deux chaines ont des parametres declares differents PASSEE
+    T3  une seule permeabilite dans le tableau de synthese   ECHOUEE
+        -> le tableau de synthese emploie 2 permeabilites differentes (5000, M.muI) sans le declarer
+
+    GARDE S4 ECHOUEE
+
+=== S4 termine ===

@@ -1,0 +1,50 @@
+======================================================================
+  S1 - EXTRAIT EDITORIAL : LES VALEURS PUBLIEES QUI BOUGENT
+======================================================================
+  source : R7_scorecard.mat (13-août-2026 17:18:27)
+  aucune valeur n'est recalculee ici ; elles sont relues telles quelles.
+
+  ---- 1. LA LIGNE 18 DU TABLEAU DE SYNTHESE ----
+    rang dans SC          : 18 sur 29 (inchange)
+    colonne MODELE        : 1.418566337
+    colonne REFERENCE     : 1.551620206   <- ne bouge pas
+    ecart a pleine precis.: -8.575157004 %
+    hors du seuil de 5 %  : OUI
+
+  ---- 2. CELLULES LATEX, A LA PRECISION DE CHAQUE ENDROIT ----
+    docs/review/ArticleI_AppendixB_scorecard.tex, ligne 36
+      convention du tableau : 6 chiffres significatifs, ecart a 2 decimales
+      AVANT : 18 & phase current, rms & A & \num{1.55000} & \num{1.55162} & $-0.10\%$ & \\
+      APRES : 18 & phase current, rms & A & \num{1.41857} & \num{1.55162} & $-8.58\%$ & $\star$\\
+
+  ---- 3. LES DEUX COMPTES ----
+    compte brut            : 21 / 29   (etait 22 / 29)
+    depassements           : 8        (etait 7)
+    hors non validees      : 20 / 26   (etait 21 / 26)
+    depassements apres excl.: 6        (etait 5)
+
+    en toutes lettres, comme le manuscrit les ecrit :
+      twenty-one of twenty-nine          (compte brut)
+      twenty of twenty-six          (hors non validees)
+      eight ... so marked   (depassements, note du tableau annexe)
+
+  ---- 4. LES DEPASSEMENTS, AVANT ET APRES ----
+    la liste s'allonge d'une seule entree :
+      Bt tangentiel RMS                   +7.4505 %
+      Courant de phase RMS                -8.5752 %   <-- ENTREE NOUVELLE
+      Pertes fer a vide                   +8.1401 %
+      Pertes aimant a vide               -36.4143 %
+      Vitesse etablie en charge           -6.1797 %
+      Courant de bus moyen               -13.8796 %
+      Pertes aimant en charge            -50.4342 %
+      Puissance max (balayage)           -25.4270 %
+
+  ---- 5. LES CAS LIMITES SONT INCHANGES ----
+    la legende de la Fig. 10 affirme que trois grandeurs sont a moins
+    d'un point du seuil et que les trois sont dedans. Verification :
+      Mutuelle M                          +4.1538 %  -> DANS les 5 %
+      Couple a l'arret (balayage)         +4.9520 %  -> DANS les 5 %
+      Rendement max (balayage)            -4.4574 %  -> DANS les 5 %
+    3 grandeur(s), toutes dedans -> la phrase reste vraie telle quelle.
+
+=== S1 extrait editorial termine ===
