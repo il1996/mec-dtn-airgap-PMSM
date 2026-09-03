@@ -1,0 +1,463 @@
+==============================================================================
+B12  CONSISTENCY CHECK  --  terminology and status
+==============================================================================
+Date (ISO)   : 2026-09-02
+Manuscript   : manuscript/Boundary Condensation of a Two-Layer Dirichlet-to-Neumann Operator - Trace Conformity and Air-Gap Mesh Reduction (final 2026-09-03 v3).docx
+Size (bytes) : 1671070
+Script       : /sessions/rcw-01phztfroaypjms8clzjwyqf/mnt/mec-dtn-airgap-pmsm/code/revision/consistency_check.py
+Paragraphs   : 1981 (1593 inside w:tbl)
+OMML expr.   : 1044
+Sections     : 42 numbered headings
+Rule         : a check that cannot be settled mechanically reports UNDECIDED, never PASS.
+
+------------------------------------------------------------------------------
+[C-01]  status of every compared quantity, section by section
+------------------------------------------------------------------------------
+Sweep: Abstract, S1, S6.5, S7.2, S7.3, S8, table notes
+Status vocabulary: accuracy | validated | bound | consistency indicator | not validated
+A cue preceded by a negator within 60 characters is recorded as DENIED, not as a status.
+
+QUANTITY: peak flux linkage
+    Abstract       ->  bound
+         p4     "On a 750 W 15-slot/14-pole test machine the condensed model, carrying no fitted air-gap constant, deviates from finite elements by 0.24 % on peak flux linkage and 0.31 % on the fundamental gap flux density; each is smaller than the dispersion the tiling alo..."
+    S1             ->  bound
+         p261   "Ghods et al. come closest without posing it: a coupling permeance that jumps rather than varies continuously produces spikes in the computed flux linkage, and the remedy offered is to smooth the coupling or to raise the resolution of the air-gap mesh."
+         p262   "Against the finite-element reference the lumped iron model, which carries those three constants, deviates by at most 1.3 % on synchronous inductance, flux linkage and the fundamental air-gap flux density (Section 6.5)."
+         p262   "Each of the three deviations is smaller than the dispersion the locked tiling alone produces on its own quantity, and the reference carries no quantified uncertainty at that level, so the synchronous inductance, the flux linkage and the fundamental air-gap ..."
+    S6.5           ->  bound
+         p559   "Section 6.2 adds a second floor to every compared quantity, the dispersion that quantity carries under the locked chain over the six tilings of Table 7(b): for the fundamental gap flux density it is 0.440 % , and on the integral quantities it is 0.612 % on ..."
+         p561   "On terminal quantities the peak flux linkage deviated by +1.11 % on the lumped column and +0.24 % on the mesh, and the back-electromotive force and six-step envelope followed the same ordering (Fig. 10)."
+         p562   "Registration was established once on the flux linkage, at an offset of 143.49° electrical, and held fixed."
+         p562   "Applied unchanged, the residual optimal shift was -0.5° , and the residual root-mean-square differences were 0.0036 Wb on flux linkage and 6.7 V on electromotive force, that is 1.4 % and 2.9 % of the respective peaks."
+    S7.2           ->  bound
+         p1056  "The comparison carries its full weight only where the deviation is large enough to survive any plausible band, as it is on the lumped column and on the mutual inductance, and as it is not on the 0.10 % of L_{d} or the 0.24 % of the flux linkage."
+         p1056  "Measured on the chain that produced the published column, the tiling alone moves the peak flux linkage by 0.612 % over the six tilings and the synchronous inductance by 1.777 %."
+         p1056  "The three figures are therefore bounds on this chain: the 0.31 % on the fundamental gap flux density lies under the 0.440 % floor of that quantity, the 0.24 % on the flux linkage under 0.612 % and the 0.10 % on the synchronous inductance under 1.777 %."
+    S7.3           ->  bound   [DENIED: validated]
+         p1285  "flux linkage, peak (Wb)"
+         p1371  "flux linkage, peak"
+         p1433  "Integral quantities are reported as bounds on this machine and not as validated outputs: the deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are each smaller than the dispersion..."
+    S8             ->  bound
+         p1456  "Against two-dimensional finite elements on a 750 W 15-slot/14-pole machine, with every configuration declared per table, the mesh model, which carries no fitted constant, deviates by 0.10 % on synchronous inductance, 0.24 % on flux linkage and 0.31 % on the..."
+         p1456  "All three are bounds and not agreements: each is smaller than the dispersion the locked tiling alone produces on its own quantity, 1.777 % on the synchronous inductance, 0.612 % on the flux linkage and 0.440 % on the fundamental gap flux density (Table 7(b))."
+         p1608  "flux linkage, rms"
+    table notes    ->  bound
+         p785   "Back-electromotive force and flux linkage at 1500 rpm."
+         p785   "A single angular alignment, established on the flux linkage, the primary, non-differentiated quantity, is used for all three views."
+         p1427  "The deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are bounds: each is smaller than the dispersion the tiling alone produces on that quantity (Table 7(b))."
+
+QUANTITY: L_d (synchronous inductance)
+    Abstract       --  (not mentioned)
+    S1             ->  bound
+         p262   "Against the finite-element reference the lumped iron model, which carries those three constants, deviates by at most 1.3 % on synchronous inductance, flux linkage and the fundamental air-gap flux density (Section 6.5)."
+         p262   "Each of the three deviations is smaller than the dispersion the locked tiling alone produces on its own quantity, and the reference carries no quantified uncertainty at that level, so the synchronous inductance, the flux linkage and the fundamental air-gap ..."
+    S6.5           ->  bound
+         p559   "Section 6.2 adds a second floor to every compared quantity, the dispersion that quantity carries under the locked chain over the six tilings of Table 7(b): for the fundamental gap flux density it is 0.440 % , and on the integral quantities it is 0.612 % on ..."
+         p561   "The self-inductance deviated by +1.12 % and +0.34 % , the mutual by +4.09 % and -5.48 % , so the two models bracket the reference mutual from opposite sides, and the synchronous inductance by +1.24 % and +0.10 % ."
+    S7.2           ->  bound
+         p1056  "The uncertainty budget produces no band on B_{g1} , on L_{d} or on any other field quantity, and none is asserted anywhere in this paper."
+         p1056  "The comparison carries its full weight only where the deviation is large enough to survive any plausible band, as it is on the lumped column and on the mutual inductance, and as it is not on the 0.10 % of L_{d} or the 0.24 % of the flux linkage."
+         p1056  "Measured on the chain that produced the published column, the tiling alone moves the peak flux linkage by 0.612 % over the six tilings and the synchronous inductance by 1.777 %."
+         p1056  "The three figures are therefore bounds on this chain: the 0.31 % on the fundamental gap flux density lies under the 0.440 % floor of that quantity, the 0.24 % on the flux linkage under 0.612 % and the 0.10 % on the synchronous inductance under 1.777 %."
+    S7.3           ->  bound   [DENIED: validated]
+         p1141  "Two quantities do not converge with mesh refinement, the first slot sideband and the synchronous inductance."
+         p1146  "L_{d}"
+         p1325  "L_{d} (mH)"
+         p1411  "L_{d}"
+    S8             ->  bound
+         p1456  "Against two-dimensional finite elements on a 750 W 15-slot/14-pole machine, with every configuration declared per table, the mesh model, which carries no fitted constant, deviates by 0.10 % on synchronous inductance, 0.24 % on flux linkage and 0.31 % on the..."
+         p1456  "All three are bounds and not agreements: each is smaller than the dispersion the locked tiling alone produces on its own quantity, 1.777 % on the synchronous inductance, 0.612 % on the flux linkage and 0.440 % on the fundamental gap flux density (Table 7(b))."
+         p1456  "Two carry a further reservation: the synchronous inductance is a difference of two quantities whose errors subtract, and it does not converge over the refinement sequence examined here, so the figure quoted is the value of a declared configuration and not o..."
+    table notes    ->  bound
+         p1173  "Deviations against the finite-element reference B_{g1} = 1.074548 T , ν = 8 at 0.0196594 T , Ld = 52.3415 mH ."
+         p1175  "The fundamental converges; the first slot sideband does not, and neither does the synchronous inductance, for the reason given in the text."
+         p1427  "The deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are bounds: each is smaller than the dispersion the tiling alone produces on that quantity (Table 7(b))."
+
+QUANTITY: L_a (phase self-inductance)
+    Abstract       --  (not mentioned)
+    S1             --  (not mentioned)
+    S6.5           ->  bound
+         p559   "Section 6.2 adds a second floor to every compared quantity, the dispersion that quantity carries under the locked chain over the six tilings of Table 7(b): for the fundamental gap flux density it is 0.440 % , and on the integral quantities it is 0.612 % on ..."
+         p561   "The self-inductance deviated by +1.12 % and +0.34 % , the mutual by +4.09 % and -5.48 % , so the two models bracket the reference mutual from opposite sides, and the synchronous inductance by +1.24 % and +0.10 % ."
+    S7.2           --  (not mentioned)
+    S7.3           ->  bound   [DENIED: validated]
+         p1315  "L_{a} (mH)"
+         p1401  "L_{a}"
+         p1433  "Integral quantities are reported as bounds on this machine and not as validated outputs: the deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are each smaller than the dispersion..."
+    S8             --  (not mentioned)
+    table notes    ->  bound
+         p1427  "The deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are bounds: each is smaller than the dispersion the tiling alone produces on that quantity (Table 7(b))."
+
+QUANTITY: M (mutual inductance)
+    Abstract       --  (not mentioned)
+    S1             --  (not mentioned)
+    S6.5           ->  bound
+         p559   "Section 6.2 adds a second floor to every compared quantity, the dispersion that quantity carries under the locked chain over the six tilings of Table 7(b): for the fundamental gap flux density it is 0.440 % , and on the integral quantities it is 0.612 % on ..."
+         p561   "The self-inductance deviated by +1.12 % and +0.34 % , the mutual by +4.09 % and -5.48 % , so the two models bracket the reference mutual from opposite sides, and the synchronous inductance by +1.24 % and +0.10 % ."
+    S7.2           ->  bound
+         p1056  "The comparison carries its full weight only where the deviation is large enough to survive any plausible band, as it is on the lumped column and on the mutual inductance, and as it is not on the 0.10 % of L_{d} or the 0.24 % of the flux linkage."
+         p1056  "The mutual inductance is the exception: its deviation exceeds the 2.039 % the tiling produces on it in both columns, and the two models bracket the reference from opposite sides."
+    S7.3           --  (not mentioned)
+    S8             --  (not mentioned)
+    table notes    ->  bound
+         p1427  "The mutual inductance is the exception, its deviation exceeding that dispersion in both columns, and the two models bracket the reference from opposite sides."
+
+QUANTITY: B_g1 (fundamental gap flux density)
+    Abstract       ->  bound
+         p4     "On a 750 W 15-slot/14-pole test machine the condensed model, carrying no fitted air-gap constant, deviates from finite elements by 0.24 % on peak flux linkage and 0.31 % on the fundamental gap flux density; each is smaller than the dispersion the tiling alo..."
+    S1             ->  bound
+         p262   "Against the finite-element reference the lumped iron model, which carries those three constants, deviates by at most 1.3 % on synchronous inductance, flux linkage and the fundamental air-gap flux density (Section 6.5)."
+         p262   "Each of the three deviations is smaller than the dispersion the locked tiling alone produces on its own quantity, and the reference carries no quantified uncertainty at that level, so the synchronous inductance, the flux linkage and the fundamental air-gap ..."
+    S6.5           ->  bound
+         p559   "Section 6.2 adds a second floor to every compared quantity, the dispersion that quantity carries under the locked chain over the six tilings of Table 7(b): for the fundamental gap flux density it is 0.440 % , and on the integral quantities it is 0.612 % on ..."
+         p560   "The fundamental air-gap flux density deviated by +0.28 % on the lumped column and +0.31 % at one shoe layer, and the radial component deviated by less than a percent in both mean and peak."
+    S7.2           ->  bound
+         p809   "Read from the same magnetostatic study, the fundamental gap flux density is 1.074551 T when the bore profile is interpolated onto a uniform 3600-point grid and 1.074918 T when it is taken on the solver’s own 1001-point output, a spread of 0.034 %."
+         p1056  "The uncertainty budget produces no band on B_{g1} , on L_{d} or on any other field quantity, and none is asserted anywhere in this paper."
+         p1056  "The three figures are therefore bounds on this chain: the 0.31 % on the fundamental gap flux density lies under the 0.440 % floor of that quantity, the 0.24 % on the flux linkage under 0.612 % and the 0.10 % on the synchronous inductance under 1.777 %."
+    S7.3           ->  bound   [DENIED: validated]
+         p1145  "B_{g1}"
+         p1255  "B_{g1} (T)"
+         p1341  "B_{g1}"
+         p1433  "Integral quantities are reported as bounds on this machine and not as validated outputs: the deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are each smaller than the dispersion..."
+    S8             ->  bound
+         p1456  "Against two-dimensional finite elements on a 750 W 15-slot/14-pole machine, with every configuration declared per table, the mesh model, which carries no fitted constant, deviates by 0.10 % on synchronous inductance, 0.24 % on flux linkage and 0.31 % on the..."
+         p1456  "All three are bounds and not agreements: each is smaller than the dispersion the locked tiling alone produces on its own quantity, 1.777 % on the synchronous inductance, 0.612 % on the flux linkage and 0.440 % on the fundamental gap flux density (Table 7(b))."
+    table notes    ->  bound
+         p197   "Every closure of the N1–N2b family returns B_{g1}=1.0958 T , +2.0 %, against 1.0775 T for N3, +0.3 %."
+         p760   "The released chain reproduces the locked one to the last bit at N_{h} = M_{s}/2 in both bases, and reproduces the four previously published values of B_{g1} ."
+         p1173  "Deviations against the finite-element reference B_{g1} = 1.074548 T , ν = 8 at 0.0196594 T , Ld = 52.3415 mH ."
+         p1427  "The deviations on the peak flux linkage, the phase self-inductance, the synchronous inductance and the fundamental gap flux density are bounds: each is smaller than the dispersion the tiling alone produces on that quantity (Table 7(b))."
+
+QUANTITY: nu = 8 sideband
+    Abstract       ->  bound
+         p4     "Slot sidebands and cogging torque, governed by a tooth-tip singularity, are bounds."
+    S1             ->  bound   [DENIED: validated]
+         p115   "Closing the gap of the 750 W machine studied here (Fig. 1) with Carter’s factor suppresses the first slot sideband entirely and leaves the tangential field low by 19.7 % (Table 1)."
+         p116   "Implemented at the discretisation its authors specify, that family is as close to the reference as the operator on the first slot sideband (Section 7.1); swept over three tangential discretisations of the same machine it changes sign and magnitude on that q..."
+         p125   "ν=8"
+         p198   "Spread of the first sideband over the three N2b rows: 219 %."
+    S6.5           ->  bound
+         p562   "In the spatial spectrum (Table 11) the pole harmonics deviated by at most 2.4 % , while the first slot sidebands, which are reported throughout as bounds because the tiling alone moves that column by 26.126 %, deviated by about 8 % and the second by 61 % an..."
+    S7.2           ->  bound
+         p809   "On the first slot sideband the same two conventions give 0.019658 T and 0.018664 T, a spread of 5.3 %, and on ν = 22 3.0 %."
+         p809   "The consequence is not the same for every quantity: on the fundamental the extraction spread is thirteen times smaller than the tiling floor of Section 6.2 and changes nothing, while on the slot sidebands it is of the size of the deviations themselves, whic..."
+         p861   "ν = 8 p.c."
+         p862   "ν = 8 hat (T)"
+    S7.3           ->  bound   [DENIED: validated]
+         p1141  "Two quantities do not converge with mesh refinement, the first slot sideband and the synchronous inductance."
+         p1147  "ν=8"
+         p1178  "ν=8 linear"
+         p1179  "ν=8 Newton"
+    S8             ->  bound
+         p1458  "The first slot sideband and the cogging torque are governed by a tooth-tip corner singularity, are bracketed by the two solvers, and the bracket does not close under refinement of the region that should resolve it."
+    table notes    ->  bound
+         p201   "Under the locked chain the tiling alone moves the ν = 8 column of this table by 26.126 % in the piecewise-constant basis and 28.514 % in the hat basis (Table 7(b)), so the first slot sideband is read here as a bound and differences smaller than that band do..."
+         p1173  "Deviations against the finite-element reference B_{g1} = 1.074548 T , ν = 8 at 0.0196594 T , Ld = 52.3415 mH ."
+         p1175  "The fundamental converges; the first slot sideband does not, and neither does the synchronous inductance, for the reason given in the text."
+         p1249  "Orders 23 and 37 are the second slot sidebands and are governed by the tooth-tip singularity of Section 7.3."
+
+QUANTITY: cogging torque
+    Abstract       ->  bound
+         p4     "Slot sidebands and cogging torque, governed by a tooth-tip singularity, are bounds."
+    S1             ->  bound   [DENIED: validated]
+         p116   "A permeance modulation superimposed on the smooth-gap solution restores them [12], and in the complex form of Žarko, Ban and Lipo it returns both field components exactly for a slotted stator facing a smooth rotor, and yields the cogging torque through the ..."
+         p261   "The difficulty is partly physical: the re-entrant tooth-tip corner carries an r^{λ-1} singularity with λ<1 [36, 37], which leaves corner-governed quantities such as the cogging torque [38] mesh-dependent in the reference as much as in the network."
+         p261   "On this machine the magnetostatic cogging reference peaks at order 42, which the least common multiple of 15 and 14 forbids, and two meshing strategies of the same model differ there by a factor of 87."
+         p262   "One condensation replaces two coupled regions, and the operator is invariant with rotor position whenever one bounding surface is smooth, which lets a 721-position cogging sweep cost one factorisation and 721 back-substitutions."
+    S6.5           --  (not mentioned)
+    S7.2           ->  bound   [DENIED: validated]
+         p808   "The cogging outcome of Section 6 is a bracket and not an agreement, and the audit explains why."
+         p808   "The magnetostatic reference is not a measurement of cogging torque but of cogging torque plus remeshing noise, and the surrogate accounts for its variance entirely, leaving nothing for a model to predict."
+    S7.3           ->  bound
+         p1433  "The first slot sideband, the cogging torque and any quantity built from them are bounds and must carry the solver and the corner discretisation used."
+         p1433  "And the method is not suitable, on the present evidence, for acoustic-noise prediction or for cogging-torque design."
+    S8             ->  bound
+         p1458  "The first slot sideband and the cogging torque are governed by a tooth-tip corner singularity, are bracketed by the two solvers, and the bracket does not close under refinement of the region that should resolve it."
+    table notes    ->  bound   [DENIED: validated]
+         p1208  "Cogging torque of the PMSM."
+         p1208  "The cogging comparison is a bracket and not an agreement."
+         p1208  "The physical cogging predicted by the model is 1.255 mN m peak-to-peak at order 210."
+         p1694  "The model samples one pole pitch at 840 positions, 56 per cogging period, so its Nyquist order is 5880; the reference samples 360 over the revolution, so its own is 180."
+
+QUANTITY: magnet loss
+    Abstract       --  (not mentioned)
+    S1             ->  not validated   [DENIED: validated]
+         p262   "The magnet losses are declared not validated, the reference being unable to resolve them."
+    S6.5           --  (not mentioned)
+    S7.2           --  (not mentioned)
+    S7.3           --  (not mentioned)
+    S8             ->  not validated   [DENIED: validated]
+         p1457  "The standstill torque and the magnet losses are declared not validated, the reference being unable to resolve either."
+    table notes    ->  not validated   [DENIED: validated]
+         p1446  "The two rows of this table are a controlled comparison of field sources at a common frozen chain, not the published value of the quantity: the deposited comparison table carries the published no-load magnet loss, produced by the chain declared for it."
+         p1447  "Magnet eddy-current losses at no load."
+         p1447  "The magnet eddy-current loss is declared not validated: the reference cannot resolve it (Section 7.2)."
+
+QUANTITY: standstill torque
+    Abstract       --  (not mentioned)
+    S1             --  (not mentioned)
+    S6.5           --  (not mentioned)
+    S7.2           --  (not mentioned)
+    S7.3           --  (not mentioned)
+    S8             ->  not validated   [DENIED: validated]
+         p1457  "The standstill torque and the magnet losses are declared not validated, the reference being unable to resolve either."
+         p1575  "standstill torque (N m)"
+    table notes    ->  not validated   [DENIED: validated]
+         p787   "Twenty-one fall within 5 % ; excluding the three declared not validated (the two magnet-loss bars and the standstill torque, hatched), the count is twenty of twenty-six."
+         p787   "Two quantities lie within one point of the threshold and both inside it, the standstill torque at +4.95% ."
+
+C-01 verdict: PASS -- every compared quantity carries one status everywhere
+
+------------------------------------------------------------------------------
+[C-02]  no occurrence of "the off-diagonal entries converge"
+------------------------------------------------------------------------------
+why banned: the off-diagonal series converges only conditionally and only for the asymptotic kernel; stated flatly it reads as a property of the operator
+  (no occurrence)
+C-02 verdict: PASS -- phrase absent
+
+------------------------------------------------------------------------------
+[C-03]  no occurrence of "more diagonally dominant"
+------------------------------------------------------------------------------
+why banned: a matrix whose diagonal grows without bound is not "more diagonally dominant"; the statement converts a divergence into a virtue
+  (no occurrence)
+C-03 verdict: PASS -- phrase absent
+
+------------------------------------------------------------------------------
+[C-04]  "Delta_{k+1}/Delta_k -> 1" only with the alpha = 1 clause
+------------------------------------------------------------------------------
+The ratio tends to 1 for a logarithmic tail, i.e. for a symbol of order alpha = 1 exactly.
+Accompanying clause must be in the same paragraph and must be strict (alpha = 1 / "of order one" not followed by "or").
+
+  SYMBOLIC p373   [S3.4] accompanied=True
+           "A logarithmic tail contributes the same amount at each doubling, so Δ_{k+1}/Δ_{k} → 1 ; a symbol of order α > 1 makes the tail algebraic in N and gives Δ_{k+1}/Δ_{k} → 2^(α-1) , reproduced to five decimals at α = 0.75, 1, 1.25, 1.5 and 2; geometric convergence with ratio ρ gives Δ_{k+1}/Δ_{k} → ρ ."
+           nearby weaker clause(s): ['order one or higher', 'symbol of order']
+  PROSE    p545   [S6.2] accompanied=False  "Measured against it under the locked truncation, both bases converge at order two in the column width: over four tilings the deviation falls from 7.1×10^{-6} % to 1.1×10^{-7} % in the piecewise-constant basis and from 1.4×10^{-5} % to 2.2×10^{-7} % in the h..."
+  PROSE    p761   [table notes] accompanied=False  "Panel (a): the piecewise-constant fundamental drifts by 0.703 % and its increment ratios rise monotonically from a minimum of 0.844646 towards unity, reaching 0.923624 at N_{h} = 1 105 920 ; the hat fundamental drifts by 0.023 % and its ratios settle on 1/4 ."
+  PROSE    p779   [table notes] accompanied=False  "(a) Ratio of successive increments: the piecewise-constant curves rise towards unity without settling, the logarithmic signature, while the hat curves sit on 1/4, the value a tail in n^{-3} imposes."
+C-04 verdict: PASS -- every symbolic occurrence carries the alpha = 1 clause
+
+------------------------------------------------------------------------------
+[C-05]  equation (32) is not invoked as a bound on a Section 6 quantity
+------------------------------------------------------------------------------
+  every sentence carrying "(32)", for the record:
+    p354   [S3.1] (the display of (32) itself)
+           "-Y_{N} = c ln N Δ_{h} + O(1) (32)"
+    p1449  [S7.4] (no quantity+bound pairing)
+           "The divergent part is a periodic second difference (32), from which the symmetry, the null space and the rank of the condensed operator follow at every truncation rather than being observed on the meshes tried."
+C-05 verdict: PASS -- 2 sentence(s) carry (32); none pairs it with a Section 6 quantity in a positive bound claim
+
+------------------------------------------------------------------------------
+[C-06]  Nomenclature is complete in both directions
+------------------------------------------------------------------------------
+  Nomenclature table found: 35 entries in the symbol column, 71 distinct atoms over both columns.
+  declared (symbol column): φ, u_{s}, R_{s}, R_{ro}, r_{mi}, U_{a}, U_{m}, g, L, μ_{r}, M_{r}, M_{n}, B_{r}, B_{t}, p, N_{s}, N_{m}, γ, λ, R_{d}, W_{n}, d_{k}, A_{n}, C_{n}, S_{b}, l, k_{C}, P_{n}, B_{g1}, A_{ss}, κ_{n}, h_{m}, L_{a}, M, L_{d}
+
+  (a) declared in the Nomenclature but never used elsewhere:
+        none
+
+  (b) watchlist (symbols a manual audit established as undeclared):
+        ok           B_{g1}     declared and used
+        ok           L_{d}      declared and used
+        ok           L_{a}      declared and used
+        ok           A_{ss}     declared and used
+        ok           Γ          declared and used
+        ok           κ_{n}      declared and used
+        ok           b_{0}      declared and used
+        ok           τ_{s}      declared and used
+        ok           h_{m}      declared and used
+        ok           μ_{I}      declared and used
+        ok           n_{st}     declared and used
+        ok           n_{y}      declared and used
+
+  (c) other symbols used but not declared (candidates for triage):
+      primary candidates (base symbol itself undeclared), 64:
+        C_{1}        paragraphs [368, 369]
+        C_{2}        paragraphs [368]
+        J_{z}        paragraphs [565]
+        P_{core}     paragraphs [419, 420]
+        P_{cu}       paragraphs [419, 420, 1661]
+        P_{em}       paragraphs [1495]
+        P_{out}      paragraphs [419, 419, 420]
+        P_{solid}    paragraphs [419, 420]
+        R_{ph}       paragraphs [1661, 1661, 1661]
+        U_{k}        paragraphs [301]
+        U_{s}        paragraphs [305]
+        U_{t}        paragraphs [385]
+        U_{y}        paragraphs [385]
+        V_{dc}       paragraphs [1206]
+        W_{nk}       paragraphs [302, 302, 318, 318]
+        a_{1,2}      paragraphs [346]
+        a_{1}        paragraphs [347, 352]
+        a_{2}        paragraphs [347, 352]
+        a_{3,4}      paragraphs [346]
+        a_{3}        paragraphs [347, 352]
+        a_{4}        paragraphs [347]
+        a_{N}        paragraphs [366]
+        a_{r}        paragraphs [142, 149, 156, 801, 801, 801]
+        a_{t}        paragraphs [142, 149, 156, 196, 801, 801]
+        b_{s0}       paragraphs [448, 799]
+        b_{s1}       paragraphs [448]
+        b_{s2}       paragraphs [448]
+        d_{i}        paragraphs [346, 346, 352]
+        d_{j}        paragraphs [346, 346, 352]
+        f_{n}        paragraphs [303, 303]
+        i_{k}        paragraphs [1661]
+        i_{α}        paragraphs [764, 764, 765]
+        i_{β}        paragraphs [764, 764, 765]
+        k_{E}        paragraphs [1206, 1591]
+        k_{c}        paragraphs [415, 466]
+        k_{e}        paragraphs [415, 466]
+        k_{h}        paragraphs [415, 466]
+        k_{w1}       paragraphs [454]
+        u_{h}        paragraphs [368]
+        u_{n}        paragraphs [334]
+        u_{s,n}      paragraphs [274, 287, 293, 323, 323, 324]
+        x_{FEA}      paragraphs [488, 488]
+        x_{MEC}      paragraphs [488]
+        Δ            paragraphs [346, 346, 346, 352, 352, 577]
+        Δ_{h}        paragraphs [354]
+        Δ_{k+1}      paragraphs [373, 373, 373]
+        Δ_{k}        paragraphs [373, 373, 373, 373]
+        Δ_{n}        paragraphs [343, 343, 345, 345]
+        Λ            paragraphs [215]
+        Φ            paragraphs [389, 397]
+        Φ_{s}        paragraphs [305]
+        Ω            paragraphs [460, 1661, 1661]
+        α            paragraphs [335, 335, 335, 335, 352, 352]
+        δ            paragraphs [488, 568]
+        ε            paragraphs [370, 392, 392]
+        η            paragraphs [419]
+        μ            paragraphs [346, 355]
+        μ_{0}        paragraphs [275, 275, 281, 285, 285, 285]
+        π            paragraphs [281, 281, 302, 302, 318, 319]
+        ρ            paragraphs [373, 373]
+        ψ_{ab}       paragraphs [789]
+        ψ_{i}        paragraphs [366]
+        ψ_{j}        paragraphs [366]
+        ω            paragraphs [370, 486]
+      index variants of a declared base, 28:
+        A_{st}, A_{ts}, A_{tt}, A_{ty}, B_{r,n}, B_{t,n}, H_{c}, L_{ll}, N_{0}, N_{pos}, N_{p}, Y_{N}, Y_{ij}, Y_{kk}, h_{s0}, h_{s1}, h_{s2}, r_{0}, r_{t}, γ_{m}, γ_{z}, θ_{i}, θ_{k}, λ_{0}, λ_{k}, φ_{i,n}, φ_{n}, φ_{p,n}
+
+C-06 verdict: UNDECIDED -- 64 further symbols are used and not declared; each needs an editorial decision
+
+------------------------------------------------------------------------------
+[C-07]  comparative conclusions on the nu = 8 column carry the +-26 % dispersion
+------------------------------------------------------------------------------
+Table 7(b): the tiling dispersion of the first slot sideband under the locked chain is 26.126 % (p.c.) and 28.514 % (hat).
+A comparative conclusion on that column without the dispersion is a conclusion drawn inside the noise.
+
+  accompanied (dispersion in the same sentence or paragraph):
+    p549   [S6.2.1] in-sentence=False  "It is closer on the fundamental gap flux density, +0.226 % against +0.279 % ; closer on the first slot sideband, -5.19 % against -8.12 % ; closer on the peak flux linkage, +1.04 % against +1.11 % ; and farther only on the upper member of..."
+    p550   [S6.2.1] in-sentence=True  "The hat basis disperses slightly more over the six tilings, 0.496 % against 0.440 % on the fundamental and 28.5 % against 26.1 % on the first sideband, which invites the conclusion that the conforming basis is the worse of the two."
+    p799   [S7.1] in-sentence=False  "Implemented as its authors specify [15], the same family reaches −8.7 % on the first sideband, against −8.1 % for the operator."
+    p803   [S7.1] in-sentence=True  "The complex map reproduces the first slot sideband to +0.1 % against −8.1 % for the operator, a difference that lies inside the ±26 % tiling dispersion of that column (Table 7(b)) and therefore does not order the two; what its constructi..."
+    p1430  [S7.3] in-sentence=False  "On the first slot sideband the lumped network is the closest of the three models to the reference, -8.12 % against -13.34 % for the refined mesh at one shoe layer and -19.58 % at two (Table 12)."
+C-07 verdict: PASS -- all 5 comparative conclusions carry it
+
+------------------------------------------------------------------------------
+[C-08]  no sentence claims the mesh iron model is more accurate than the lumped one
+------------------------------------------------------------------------------
+Table 12 is 9 rows to 8 between the two columns, so the ordering is undecidable and no accuracy claim is available in either direction.
+
+  CANDIDATE p561   [S6.5] cues=['same ordering']
+            "On terminal quantities the peak flux linkage deviated by +1.11 % on the lumped column and +0.24 % on the mesh, and the back-electromotive force and six-step envelope followed the same ordering (Fig. 10)."
+  CANDIDATE p1430  [S7.3] cues=['the closest']
+            "On the first slot sideband the lumped network is the closest of the three models to the reference, -8.12 % against -13.34 % for the refined mesh at one shoe layer and -19.58 % at two (Table 12)."
+C-08 verdict: UNDECIDED -- 2 comparative sentence(s) put the two models side by side with a comparative cue; each needs an editorial reading
+
+------------------------------------------------------------------------------
+[C-09]  front and back matter required by the journal
+------------------------------------------------------------------------------
+  abstract <= 250 words                  PASS  245 words
+  keywords present                       PASS  Keywords Mesh reduction, Boundary condensation, Dirichlet-to-Neumann operator, Trace conformity, Reluctance network, Air-gap modelling
+  CRediT statement present               PASS  heading=True, 9 CRediT role words found
+  Declaration of competing interest      PASS  The authors have no competing interests relevant to the content of this article.
+  Elsevier numbered reference style      PASS  in-text bracketed numerals=41 distinct, author-year hits=0, reference list=41 entries in a decimal numbered list, cited range contiguous=True
+  note: numbering, bracketing and completeness of the reference list are decidable here; the punctuation of an individual entry is not, and is not claimed.
+C-09 verdict: PASS -- all five sub-checks pass
+
+------------------------------------------------------------------------------
+[C-10]  equations, tables, figures, references and section cross-references
+------------------------------------------------------------------------------
+  equations: 43 declared, numbered 1..43
+      every item is called in the text
+  tables: 17 declared, numbered 1..17
+      every item is called in the text
+  figures: 16 declared, numbered 1..16
+      every item is called in the text
+  references: 41 entries in the list (decimal numbering), 41 distinct numbers cited, highest cited [41]
+      every entry is cited and the list length matches
+  section cross-references: 27 distinct targets, 27 exist
+      every "Section x.y" resolves to a heading
+  section map:
+      1        Introduction
+      2        The Dirichlet-to-Neumann Air-Gap Operator
+      2.1      Two-Layer Boundary-Value Problem
+      2.2      Response Coefficients and the Bore Admittance
+      2.3      Projection onto the Network Surface Nodes
+      2.4      Algebraic Properties
+      2.5      Field Recovery and Torque
+      3        Trace Conformity of the Condensed Operator
+      3.1      The Piecewise-Constant Bore Basis and Its Spectral Tail
+      3.2      The Piecewise-Linear Basis Restores Absolute Convergence
+      3.3      An Error Estimate for the Conforming Condensation
+      3.4      A Diagnostic That Needs Neither the Closed Form nor the Operator
+      3.5      Truncation–Tiling Locking on the Test Machine
+      4        Coupling to a Nonlinear Reluctance Mesh
+      4.1      Polar Mesh and Static Condensation
+      4.2      Newton Scheme with Differential Reluctance
+      4.3      Elimination of Empirically Fitted Constants
+      5        Validation Protocol
+      5.1      Protocol, Admissibility and the Two Comparison Axes
+      5.2      Sources, Reference Data and Traceability
+      5.3      Extraction, Registration, Metrics and Scope
+      6        Results
+      6.1      Algebraic Properties of the Condensed Operator
+      6.2      Trace Conformity
+      6.2.1    What an Implementation Inherits Once the Truncation Is Free
+      6.3      Coupling to the Nonlinear Mesh
+      6.4      Mesh Convergence and the Quantity That Does Not Converge
+      6.5      No-Load Field, Circuit and Terminal Quantities
+      6.6      Losses
+      6.7      Drive Behaviour
+      6.8      Audit of the Reference
+      6.9      Computational Cost
+      7        Discussion
+      7.1      The Operator Against the Closures It Replaces
+      7.2      What the Reference Can and Cannot Resolve
+      7.3      Bounds of Validity
+      7.4      What Is Established and What Is Not
+      8        Conclusion
+      8.1      Further work
+      9        Appendix A. A Second Case: The Exterior Helmholtz Dirichlet-to-Neumann Map
+      10       Appendix B. The Twenty-Nine Compared Quantities of Fig. 11
+      11       Declarations
+C-10 verdict: PASS -- complete sequences, all called, no dangling reference
+
+==============================================================================
+SUMMARY
+==============================================================================
+C-01   PASS       same status in every section
+       every compared quantity carries one status everywhere
+C-02   PASS       no occurrence of "the off-diagonal entries converge"
+       phrase absent
+C-03   PASS       no occurrence of "more diagonally dominant"
+       phrase absent
+C-04   PASS       "Delta_{k+1}/Delta_k -> 1" only with the alpha = 1 clause
+       every symbolic occurrence carries the alpha = 1 clause
+C-05   PASS       equation (32) is not invoked as a bound on a Section 6 quantity
+       2 sentence(s) carry (32); none pairs it with a Section 6 quantity in a positive bound claim
+C-06   UNDECIDED  Nomenclature is complete in both directions
+       64 further symbols are used and not declared; each needs an editorial decision
+C-07   PASS       comparative conclusions on the nu = 8 column carry the +-26 % dispersion
+       all 5 comparative conclusions carry it
+C-08   UNDECIDED  no sentence claims the mesh iron model is more accurate than the lumped one
+       2 comparative sentence(s) put the two models side by side with a comparative cue; each needs an editorial reading
+C-09   PASS       front and back matter required by the journal
+       all five sub-checks pass
+C-10   PASS       equations, tables, figures, references and section cross-references
+       complete sequences, all called, no dangling reference
+
+PASS 8   FAIL 0   UNDECIDED 2   (of 10 checks)
+exit code: 1

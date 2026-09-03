@@ -1,0 +1,108 @@
+=== B1 : tiling dispersion of the integral quantities ===
+  date (ISO)        : 2026-09-02
+  MATLAB            : 24.1.0.2537033 (R2024a)
+  machine           : PMSM 15 slots / 14 poles, 750 W (machine_bldc)
+  chain             : cogging_mec + airgap_magnet  (the Table 7(b) chain,
+                      RUN_V1_PMSM_BASE.m -> V1_pmsm_basis_out.txt)
+  IRON MODEL        : LINEAR, relative permeability mu_i = 3000
+                      no Newton iteration, no saturation curve
+  fringing constant : no-load problem   kfringe = 0.3250
+                      armature problem  kfringe = 0  (declared, not fitted:
+                      see the header of code/MEC_BLDC/inductance_mec.m)
+  lock              : N = floor(Ms/2), imposed by cogging_mec
+  tilings           : [540 1080 1260 2160 4320 8640]
+  bases             : p0 (piecewise constant) and p1 (hat)
+  B_g1 / nu=8 run   : span = 1e-6 rad, Np = 3   (published call, untouched)
+  flux-linkage run  : span = 2*pi/p, Np = 61   (RUN_A1_TABLE7 convention)
+  inductance run    : inductance_mec_basis, numax = floor(Ms/2), I = 1 A
+  reduction         : thu = 2000 points, amp = 2|mean(B e^{-i k th})|
+
+  ---------- basis p0 (p.c.) ----------
+  Ms=  540 N=  270 | B_g1 1.07390 (pub 1.07390, d=4.6e-06 OK) | nu8 0.021761 (pub 0.021761, d=1.1e-07 OK)
+                    | lambda 0.259990 Wb | La 50.07544  M -2.18502  Ld 52.26046 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 1 s
+  Ms= 1080 N=  540 | B_g1 1.07865 (pub 1.07865, d=1.7e-06 OK) | nu8 0.016944 (pub 0.016944, d=1.7e-07 OK)
+                    | lambda 0.261587 Wb | La 50.97078  M -2.23023  Ld 53.20100 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 2 s
+  Ms= 1260 N=  630 | B_g1 1.07755 (pub 1.07755, d=2.6e-06 OK) | nu8 0.018062 (pub 0.018062, d=1.2e-07 OK)
+                    | lambda 0.261206 Wb | La 50.77264  M -2.22015  Ld 52.99278 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 3 s
+  Ms= 2160 N= 1080 | B_g1 1.07793 (pub 1.07793, d=7.1e-07 OK) | nu8 0.017672 (pub 0.017672, d=1.7e-07 OK)
+                    | lambda 0.261317 Wb | La 50.85949  M -2.22458  Ld 53.08407 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 5 s
+  Ms= 4320 N= 2160 | B_g1 1.07759 (pub 1.07759, d=1.3e-06 OK) | nu8 0.018014 (pub 0.018014, d=3.3e-07 OK)
+                    | lambda 0.261189 Wb | La 50.80404  M -2.22177  Ld 53.02581 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 20 s
+  Ms= 8640 N= 4320 | B_g1 1.07743 (pub 1.07743, d=2.0e-06 OK) | nu8 0.018180 (pub 0.018180, d=1.2e-07 OK)
+                    | lambda 0.261128 Wb | La 50.77613  M -2.22035  Ld 52.99648 mH
+                    | guard span-invariance 0.00e+00 | guard p0-copy==published 0.00e+00 | 112 s
+
+  ---------- basis p1 (hat) ----------
+  Ms=  540 N=  270 | B_g1 1.07267 (pub 1.07267, d=1.2e-06 OK) | nu8 0.023000 (pub 0.023000, d=3.8e-08 OK)
+                    | lambda 0.259531 Wb | La 49.83764  M -2.17334  Ld 52.01097 mH
+                    | guard span-invariance 0.00e+00 | 1 s
+  Ms= 1080 N=  540 | B_g1 1.07801 (pub 1.07801, d=2.7e-06 OK) | nu8 0.017596 (pub 0.017596, d=2.4e-07 OK)
+                    | lambda 0.261379 Wb | La 50.83138  M -2.22313  Ld 53.05450 mH
+                    | guard span-invariance 0.00e+00 | 2 s
+  Ms= 1260 N=  630 | B_g1 1.07698 (pub 1.07698, d=7.1e-07 OK) | nu8 0.018637 (pub 0.018637, d=4.3e-07 OK)
+                    | lambda 0.261018 Wb | La 50.65639  M -2.21426  Ld 52.87065 mH
+                    | guard span-invariance 0.00e+00 | 2 s
+  Ms= 2160 N= 1080 | B_g1 1.07759 (pub 1.07759, d=3.7e-06 OK) | nu8 0.018020 (pub 0.018020, d=1.7e-08 OK)
+                    | lambda 0.261206 Wb | La 50.79041  M -2.22107  Ld 53.01148 mH
+                    | guard span-invariance 0.00e+00 | 5 s
+  Ms= 4320 N= 2160 | B_g1 1.07741 (pub 1.07741, d=3.5e-06 OK) | nu8 0.018195 (pub 0.018195, d=2.9e-07 OK)
+                    | lambda 0.261132 Wb | La 50.76983  M -2.22003  Ld 52.98986 mH
+                    | guard span-invariance 0.00e+00 | 21 s
+  Ms= 8640 N= 4320 | B_g1 1.07734 (pub 1.07734, d=2.1e-06 OK) | nu8 0.018271 (pub 0.018271, d=3.1e-07 OK)
+                    | lambda 0.261099 Wb | La 50.75922  M -2.21949  Ld 52.97872 mH
+                    | guard span-invariance 0.00e+00 | 93 s
+
+=== B1 : tiling dispersion of the integral quantities, locked chain N = floor(Ms/2) ===
+iron model : linear, mu_i = 3000, kfringe 0.3250 no-load / 0 armature          basis : p.c.          date : 2026-09-02
+ Ms     N     B_g1(T)   nu8(T)    lambda(Wb)  L_a(mH)   M(mH)    L_d(mH)
+ 540    270    1.07390  0.021761    0.259990  50.07544  -2.18502  52.26046
+1080    540    1.07865  0.016944    0.261587  50.97078  -2.23023  53.20100
+1260    630    1.07755  0.018062    0.261206  50.77264  -2.22015  52.99278
+2160   1080    1.07793  0.017672    0.261317  50.85949  -2.22458  53.08407
+4320   2160    1.07759  0.018014    0.261189  50.80404  -2.22177  53.02581
+8640   4320    1.07743  0.018180    0.261128  50.77613  -2.22035  52.99648
+dispersion (max-min)/mean :  B_g1 0.440%  nu8 26.126%  lambda 0.612%  L_a 1.766%  M 2.039%  L_d 1.777%
+  same, coarsest tiling dropped (Section 6.2 convention, five tilings) :
+                             B_g1 0.113%  nu8 6.954%  lambda 0.176%  L_a 0.390%  M 0.453%  L_d 0.392%
+
+=== B1 : tiling dispersion of the integral quantities, locked chain N = floor(Ms/2) ===
+iron model : linear, mu_i = 3000, kfringe 0.3250 no-load / 0 armature          basis : hat          date : 2026-09-02
+ Ms     N     B_g1(T)   nu8(T)    lambda(Wb)  L_a(mH)   M(mH)    L_d(mH)
+ 540    270    1.07267  0.023000    0.259531  49.83764  -2.17334  52.01097
+1080    540    1.07801  0.017596    0.261379  50.83138  -2.22313  53.05450
+1260    630    1.07698  0.018637    0.261018  50.65639  -2.21426  52.87065
+2160   1080    1.07759  0.018020    0.261206  50.79041  -2.22107  53.01148
+4320   2160    1.07741  0.018195    0.261132  50.76983  -2.22003  52.98986
+8640   4320    1.07734  0.018271    0.261099  50.75922  -2.21949  52.97872
+dispersion (max-min)/mean :  B_g1 0.496%  nu8 28.514%  lambda 0.708%  L_a 1.964%  M 2.251%  L_d 1.976%
+  same, coarsest tiling dropped (Section 6.2 convention, five tilings) :
+                             B_g1 0.095%  nu8 5.736%  lambda 0.138%  L_a 0.345%  M 0.400%  L_d 0.347%
+
+---- the contested deviations placed against the tiling floor ----
+  quantity          published deviation   tiling floor (6 tilings, p.c. / hat)   verdict
+  peak flux linkage   +0.24 %               0.612 % /  0.708 %                        BELOW the floor
+  L_d                 +0.10 %               1.777 % /  1.976 %                        BELOW the floor
+  B_g1                +0.31 %               0.440 % /  0.496 %                        BELOW the floor
+  Reading. A deviation below the movement the tiling alone produces is a
+  BOUND, not a measurement. This block states which of the three are which;
+  it does not decide how the manuscript should word them.
+
+---- NON-REGRESSION GATE against Table 7(b) ----
+  quantity        recomputed   published   difference
+  dispersion B_g1 p.c.      0.440 %     0.440 %   +0.0004 point
+  dispersion nu8  p.c.     26.126 %    26.126 %   -0.0002 point
+  dispersion B_g1 hat      0.496 %     0.496 %   -0.0004 point
+  dispersion nu8  hat     28.514 %    28.514 %   -0.0004 point
+
+  columns B_g1 and nu=8 reproduced at all six tilings, both bases : YES
+  four published dispersions within 0.002 point                   : YES
+  GATE PASSED. The chain is the Table 7(b) chain; the four new
+  dispersions above are produced on that same chain.
+
+  duration 269 s
+=== B1 complete ===

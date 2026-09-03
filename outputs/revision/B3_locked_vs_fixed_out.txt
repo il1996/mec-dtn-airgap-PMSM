@@ -1,0 +1,175 @@
+=== B3 : how far the closed forms sit from the truth, under the lock ===
+  date (ISO)        : 2026-09-03
+  MATLAB            : 24.1.0.2537033 (R2024a)
+  script            : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm\code\revision\locked_vs_fixed_limits.m
+
+  --- CONFIGURATION ---
+  operator          : condensed Dirichlet-to-Neumann air-gap operator,
+                      uniform contiguous tiling d = 2*pi/Ms,
+                      centres theta_i = (i+1/2)*d
+  entry             : -Y(i,i+k) = (4*mu0*L/pi) *
+                        sum_{n=1..N} (kappa_n/n) * sin(n*d/2)^2 * cos(n*k*d)
+  BASIS             : piecewise constant (p0) on the tile - the sin(n*d/2)^2
+                      factor IS the p0 tile transform; no hat basis here
+  KERNEL, two of them, both reported and never mixed:
+     EXACT      kappa_n = (cosh(n*U_a) - alpha_n)/sinh(n*U_a),
+                alpha_n = 1/(cosh(n*U_a) + mu_r*sinh(n*U_a)*coth(n*U_m))
+     ASYMPTOTIC kappa_n = 1 for all n
+  numerical guard   : kappa_n := 1 exactly for n*U_a > 25 (correction < e^-50);
+                      coth argument clamped at min(n*U_m,25). Without this
+                      cosh overflows the double near n > 24265 (Table 6, note d)
+  geometry          : mu0 = 1.256637061e-06   L = 0.0330 m   R_s = 3.467800e-02 m
+                      U_a = 2.9260675e-02   U_m = 1.0973162e-01   mu_r = 1.038952
+                      c = mu0*L/pi = 1.320000e-08   gamma = 0.5772156649015329
+  TRUNCATION, the whole point of this task:
+     LOCK          N = floor(Ms/2)  (what the chain imposes; N*d -> pi always)
+     FIXED TILING  Ms held at 1080, N swept independently to 540000
+  closed forms      : (30)  -Y(i,i)    = 2c[ lnN + gamma + ln|2 sin(d/2)| ]
+                      (30b) -Y(i,i+-1) = -c(lnN+gamma) + c[ ln|2 sin d| - 2 ln|2 sin(d/2)| ]
+  deviation         : dev % = 100*(numerical - closed form)/|closed form|
+  sign convention   : -Y(i,i) > 0, -Y(i,i+-1) < 0, as printed
+  no fitted quantity, no tuned parameter, no adjusted value.
+
+======================================================================
+  CONTROL VALUES  -  reproduced BEFORE any new result is produced
+======================================================================
+  kappa_1                                        7.4607050174   (spec 7.4607050000, d=1.74e-08)  OK
+  first n |kappa_n-1|<1e-6                       181   (spec 181, d=0.00e+00)  OK
+  min kappa_n, n<=5000                           1.000000   (spec 1.000000, d=2.22e-16)  OK
+  max kappa_n, n<=5000                           7.460705   (spec 7.460705, d=1.74e-08)  OK
+  -Y(i,i)    Ms=1080 N=34560 asympt              1.55254492e-07   (spec 1.55254492e-07, d=3.41e-16)  OK
+  -Y(i,i+-1) Ms=1080 N=34560 asympt              -6.84780037e-08   (spec -6.84780037e-08, d=4.00e-17)  OK
+  (30b) rel deviation, N=34560                   -8.3432e-06   (spec -8.3430e-06, d=2.16e-10)  OK
+  stencil increments/(c ln2), Ms=1080, N 17280->34560, EXACT kernel:
+      k=0                                        +1.99979   (spec +1.99979, d=3.97e-06)  OK
+      k=1                                        -0.99981   (spec -0.99981, d=2.79e-06)  OK
+      k=2                                        -0.00007   (spec -0.00007, d=4.64e-06)  OK
+      k=3                                        -0.00001   (spec -0.00001, d=3.38e-07)  OK
+      k=4                                        -0.00000   (spec -0.00000, d=2.80e-06)  OK
+  ratio sum|Y_ij|/|Y_ii|, Ms=1080 N=540 (lock)   2.109410   (spec 2.109410, d=4.96e-07)  OK
+  ratio sum|Y_ij|/|Y_ii|, Ms=1080 N=1080         1.000000   (spec 1.000000, d=2.84e-14)  OK
+  Table 7(a) bracket  lnN + gamma + ln|2 sin(d/2)|, N = floor(Ms/2):
+      Ms=  540                                   1.721940   (spec 1.721940, d=9.03e-08)  OK
+      Ms= 1080                                   1.721944   (spec 1.721944, d=1.40e-07)  OK
+      Ms= 2160                                   1.721945   (spec 1.721945, d=1.98e-07)  OK
+      Ms= 4320                                   1.721945   (spec 1.721945, d=4.63e-07)  OK
+      Ms= 8640                                   1.721946   (spec 1.721946, d=4.71e-07)  OK
+
+  ALL CONTROL VALUES REPRODUCED : YES
+======================================================================
+
+=== (i) UNDER THE LOCK  N = floor(Ms/2)  -  EXACT kernel ===
+basis p0 | kernel exact | truncation N = floor(Ms/2) | date 2026-09-03
+   Ms       N      N*d        -Y(i,i)          (30)        dev %      -Y(i,i+-1)       (30b)        dev %
+   540     270    3.1416  4.37031977e-08  4.54592136e-08    -3.863  -1.13466278e-08  -1.35802874e-08   +16.448
+  1080     540    3.1416  4.35862211e-08  4.54593253e-08    -4.120  -1.13637210e-08  -1.35801757e-08   +16.321
+  2160    1080    3.1416  4.35446798e-08  4.54593532e-08    -4.212  -1.13562462e-08  -1.35801478e-08   +16.376
+  4320    2160    3.1416  4.35281786e-08  4.54593602e-08    -4.248  -1.13482991e-08  -1.35801408e-08   +16.435
+  8640    4320    3.1416  4.35209975e-08  4.54593620e-08    -4.264  -1.13432588e-08  -1.35801391e-08   +16.472
+ 17280    8640    3.1416  4.35176744e-08  4.54593624e-08    -4.271  -1.13404711e-08  -1.35801386e-08   +16.492
+READING. N*d is constant at pi to four figures across a factor 32 in Ms.
+The remainder parameter of the expansion is frozen; the closed forms keep an
+O(1) error that refining the tiling does NOT remove. It does not shrink, it
+SATURATES - and it saturates at the wrong value.
+
+    same, ASYMPTOTIC kernel (kappa_n = 1), for reference:
+   Ms       N      N*d        -Y(i,i)          (30)        dev %      -Y(i,i+-1)       (30b)        dev %
+   540     270    3.1416  4.36120982e-08  4.54592136e-08    -4.063  -1.14353712e-08  -1.35802874e-08   +15.794
+  1080     540    3.1416  4.35633662e-08  4.54593253e-08    -4.171  -1.13864159e-08  -1.35801757e-08   +16.154
+  2160    1080    3.1416  4.35389610e-08  4.54593532e-08    -4.224  -1.13619549e-08  -1.35801478e-08   +16.334
+  4320    2160    3.1416  4.35267486e-08  4.54593602e-08    -4.251  -1.13497285e-08  -1.35801408e-08   +16.424
+  8640    4320    3.1416  4.35206400e-08  4.54593620e-08    -4.265  -1.13436163e-08  -1.35801391e-08   +16.469
+ 17280    8640    3.1416  4.35175850e-08  4.54593624e-08    -4.271  -1.13405605e-08  -1.35801386e-08   +16.492
+
+=== (ii) AT FIXED TILING  Ms = 1080, N swept  -  EXACT kernel ===
+basis p0 | kernel exact | tiling frozen at Ms = 1080, d = 5.817764e-03 rad | date 2026-09-03
+   Ms       N        N*d         -Y(i,i)          (30)        dev %      -Y(i,i+-1)       (30b)        dev %
+  1080      540      3.1416  4.35862211e-08  4.54593253e-08    -4.1204  -1.13637210e-08  -1.35801757e-08   +16.3213
+  1080     1080      6.2832  6.43768672e-08  6.37584109e-08    +0.9700  -2.32218854e-08  -2.27297185e-08    -2.1653
+  1080     5400     31.4159  1.06297016e-07  1.06247572e-07    +0.0465  -4.39748548e-08  -4.39742989e-08    -0.0013
+  1080    54000    314.1593  1.67058941e-07  1.67035818e-07    +0.0138  -7.43459613e-08  -7.43684222e-08    +0.0302
+  1080   540000   3141.5927  2.27846922e-07  2.27824065e-07    +0.0100  -1.04739853e-07  -1.04762545e-07    +0.0217
+READING. The first row IS the locked point (N = 540 = floor(1080/2)): same
+operator, same numbers as row 2 of table (i). Below it the truncation is
+released and N*d grows without bound. The deviation collapses by three orders
+of magnitude between the first row and N*d ~ 31. The closed forms are correct;
+they are simply evaluated outside their domain of validity by the lock.
+
+    same, ASYMPTOTIC kernel (kappa_n = 1), for reference:
+   Ms       N        N*d         -Y(i,i)          (30)        dev %      -Y(i,i+-1)       (30b)        dev %
+  1080      540      3.1416  4.35633662e-08  4.54593253e-08    -4.1707  -1.13864159e-08  -1.35801757e-08   +16.1541
+  1080     1080      6.2832  6.43540123e-08  6.37584109e-08    +0.9342  -2.32445803e-08  -2.27297185e-08    -2.2651
+  1080     5400     31.4159  1.06274161e-07  1.06247572e-07    +0.0250  -4.39975497e-08  -4.39742989e-08    -0.0529
+  1080    54000    314.1593  1.67036086e-07  1.67035818e-07    +0.0002  -7.43686562e-08  -7.43684222e-08    -0.0003
+  1080   540000   3141.5927  2.27824067e-07  2.27824065e-07    +0.0000  -1.04762548e-07  -1.04762545e-07    -0.0000
+    Note. Only the asymptotic kernel converges to the closed forms: at
+    N*d ~ 3142 its deviation is 0.0000 % on both entries. The exact kernel
+    stalls near -0.010 % / -0.022 %, because kappa_n differs from 1 over the
+    first ~180 harmonics and that finite defect never washes out. (30) and
+    (30b) are asymptotics of the ASYMPTOTIC kernel, not of the exact one.
+
+=== (iii) the "self term" row of Table 7(a) : variation Ms 540 -> 8640 ===
+lock N = floor(Ms/2) at both ends | basis p0 | date 2026-09-03
+  quantity                                  Ms=540           Ms=8640      variation
+  -Y(i,i), EXACT kernel (13)          4.37031977e-08  4.35209975e-08    -0.4169 %
+  -Y(i,i), ASYMPTOTIC kernel          4.36120982e-08  4.35206400e-08    -0.2097 %
+  2c x bracket, i.e. formula (30)     4.54592136e-08  4.54593620e-08    +0.0003 %
+  published Table 7(a) "self term"                                          -0.21 %
+
+  distance to the published value :  asymptotic 0.0003 point   exact 0.2069 point
+
+  *** DECLARATION ***
+  Table 7(a) is carried by the ASYMPTOTIC kernel (kappa_n = 1).
+  It is that kernel, and only that kernel, that reproduces the published
+  -0.21 %: -0.2097 % rounds to -0.21 %. The exact kernel gives -0.4169 %,
+  a factor 1.99 larger. The manuscript does not state this anywhere;
+  Table 8 declares its kernel panel by panel, Table 7 does not, and the
+  caption of Table 7(a) must be made to declare it too.
+
+  THE CAUSALITY IN THE CAPTION IS FALSE, on either kernel.
+  A stationary bracket predicts the movement of 2c x bracket, which is +0.0003 %.
+  The published -0.21 % is 644 times larger and of the OPPOSITE sign.
+  The bracket being stationary cannot be the cause of a -0.21 % movement; the
+  movement is the O(1) truncation error of the lock, which (30) does not carry.
+  The published value stands. Its stated explanation does not.
+
+=== the lock freezes the whole divergent structure, not only the diagonal ===
+  first-neighbour entry in units of c, under the lock, EXACT kernel
+     Ms       N     -Y(i,i+-1)/c      -Y(i,i)/c
+     540     270       -0.859593        3.310848
+    1080     540       -0.860888        3.301986
+    2160    1080       -0.860322        3.298839
+    4320    2160       -0.859720        3.297589
+    8640    4320       -0.859338        3.297045
+  the first-neighbour entry moves from -0.8596 to -0.8593 over a factor 16 in Ms,
+  a relative movement of +0.0297 %. It is as stationary as the diagonal, and for
+  the same reason: N*d = pi at every tiling.
+
+---- gate on the new results, against the expected controls of task B3 ----
+  N*d under the lock, max deviation from pi      0.00e+00   (spec 0.00e+00, d=0.00e+00)  OK
+  dev (30)  lock Ms=540                          -3.8628   (spec -3.8600, d=2.84e-03)  OK
+  dev (30)  lock Ms=17280                        -4.2713   (spec -4.2700, d=1.26e-03)  OK
+  dev (30b) lock Ms=540                          +16.4478   (spec +16.4500, d=2.19e-03)  OK
+  dev (30b) lock Ms=17280                        +16.4922   (spec +16.4900, d=2.23e-03)  OK
+  dev (30)  fixed tiling N*d~31                  +0.0465   (spec +0.0470, d=4.63e-04)  OK
+  dev (30b) fixed tiling N*d~31                  -0.00126   (spec -0.00100, d=2.64e-04)  OK
+  self term 540->8640, asymptotic                -0.2097   (spec -0.2097, d=8.33e-06)  OK
+  self term 540->8640, exact (13)                -0.4169   (spec -0.4169, d=3.59e-06)  OK
+  self term 540->8640, 2c x bracket              +0.0003   (spec +0.0003, d=2.63e-05)  OK
+  dev (30) monotone decreasing under the lock : YES
+  dev (30) increments, Ms 540->17280          : -0.2576 -0.0914 -0.0363 -0.0158 -0.0073
+  dev (30b) increments (NOT monotone, see below): -0.1266 +0.0549 +0.0585 +0.0371 +0.0205
+  Honest note. dev (30b) is NOT monotone: it dips at Ms = 1080 before rising
+  back. Both endpoints match the expected controls to better than 0.01 point,
+  and the specification asks only that (30b) saturate, which it does. The dip
+  is a real feature of the lock, not noise: with Ms even, N = Ms/2 puts the
+  last retained harmonic exactly at n*d/2 = pi/2 where sin^2 = 1, so the
+  truncation always cuts at a maximum of the tile transform and the residual
+  oscillates with the parity structure of the tiling instead of decaying.
+
+  NEW-RESULT GATE : PASSED
+  NON-REGRESSION, Table 7(a) bracket : PASSED
+  CONTROL VALUES  : PASSED
+
+  duration 0 s
+=== B3 complete ===

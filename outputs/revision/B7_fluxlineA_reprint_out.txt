@@ -1,0 +1,60 @@
+=== B7 : Table 12, row "flux line A", reprinted at six significant figures ===
+  date (ISO)   : 2026-09-02
+  MATLAB       : 24.1.0.2537033 (R2024a)
+  source       : code/MEC_BLDC/A1_table7.mat
+  saved        : 2026-08-04 04:24:08   (by RUN_A1_TABLE7.m, line 134)
+  transcript of the same run : outputs/MEC_BLDC/A1_table7_out.txt
+  THE MODEL IS NOT RE-RUN. Values are read, not recomputed.
+
+  row index 6 of 17, label "ligne de flux A (Wb/m)"
+
+  ---- as printed in Table 12 (three significant figures) ----
+    mesh n_sh=1     mesh n_sh=2     lumped          reference (FE) 
+    0.00586         0.00587         0.00586         0.00585        
+    rounding step of that display : 1e-05 Wb/m  =  0.171 % of the row
+
+  ---- reprinted at six significant figures ----
+    mesh n_sh=1     mesh n_sh=2     lumped          reference (FE) 
+    0.00586136      0.00586759      0.00585972      0.00585463     
+    full double precision :
+      mesh n_sh=1      0.0058613557440260668
+      mesh n_sh=2      0.0058675935385456629
+      lumped           0.0058597184869708151
+      reference (FE)   0.0058546282696252854
+
+  ---- deviations, re-formed at full precision ----
+    column            recomputed     Table 12   transcript
+    mesh n_sh=1          0.1149 %       0.12 %      0.115 %
+    mesh n_sh=2          0.2215 %       0.22 %      0.221 %
+    lumped               0.0869 %       0.09 %      0.087 %
+
+    (1) PROVENANCE - against the declared transcript (3 decimals)
+        largest gap : 0.0005 point (tolerance 0.005)  -> PASSED
+        The row does come from outputs/MEC_BLDC/A1_table7_out.txt. The printed
+        row was simply too coarse to let a reader check it.
+
+    (2) TRANSCRIPTION - against the manuscript row (2 decimals)
+        column          full prec. correct 2dp    printed
+        mesh n_sh=1        0.1149 %      0.11 %      0.12 %  MISMATCH
+        mesh n_sh=2        0.2215 %      0.22 %      0.22 %  ok
+        lumped             0.0869 %      0.09 %      0.09 %  ok
+        *** FINDING: at least one printed deviation is not the correct rounding
+        of its own full-precision value. The cause is DOUBLE ROUNDING: the
+        transcript prints 0.115 %, and 0.115 rounded again to two decimals gives
+        0.12 %, whereas the underlying 0.1149 % rounds to 0.11 %. The value is
+        sound; the last printed digit is not. Corrected below. No value adjusted.
+
+  ---- why the coarse row could not carry them ----
+    deviations re-formed from the ROUNDED values that Table 12 prints:
+      mesh n_sh=1        0.171 %   (published 0.12 %)
+      mesh n_sh=2        0.342 %   (published 0.22 %)
+      lumped             0.171 %   (published 0.09 %)
+    These do not agree with the published figures, which is the point: the
+    row as printed cannot be used to check its own deviations, and columns 1
+    and 3 share a printed value while carrying different deviations.
+
+  ---- replacement row for Table 12 ----
+    flux line A (Wb/m)   0.005861   0.005868   0.005860   0.005855
+                         +0.11 %    +0.22 %    +0.09 %        --
+
+=== B7 complete ===

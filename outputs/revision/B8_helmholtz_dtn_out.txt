@@ -1,0 +1,149 @@
+=== B8 : exterior Helmholtz DtN on a circle - the second case ===
+  date (ISO) : 2026-09-03
+  MATLAB     : 24.1.0.2537033 (R2024a)
+  geometry   : circle of radius R = 1.0
+  operator   : Lambda_n = k H'_n^(1)(kR) / H_n^(1)(kR)
+  parameters : kR = [1 5 20]
+  tilings    : Ms = [180 360 720] contiguous columns, d = 2*pi/Ms
+  bases      : P0  W_n = (2/(n pi)) sin(n d/2)          [form of (14)]
+               hat W_n = (4/(pi n^2 d)) sin^2(n d/2)    [form of (31)]
+  FIREWALL   : this appendix feeds no other claim in the manuscript.
+
+=== validation of the Hankel ratio against besselh ===
+  z      n      Lambda_n (recurrence)        Lambda_n (besselh)        rel. err
+  1      1      -6.6691682513e-01   -6.6691682513e-01   0.00e+00
+  1      5      -4.8722055556e+00   -4.8722055556e+00   3.48e-22
+  1      20     -1.9973664944e+01   -1.9973664944e+01   1.56e-62
+  1      60     -5.9991524805e+01   -5.9991524805e+01   6.26e-212
+  1      100    -9.9994949365e+01   -9.9994949365e+01   0.00e+00
+  5      1      -5.1387877556e-01   -5.1387877556e-01   0.00e+00
+  5      5      -1.5453005131e+00   -1.5453005131e+00   5.57e-16
+  5      20     -1.9329591888e+01   -1.9329591888e+01   2.19e-34
+  5      60     -5.9787747195e+01   -5.9787747195e+01   4.79e-128
+  5      100    -9.9873655930e+01   -9.9873655930e+01   2.85e-16
+  20     1      -5.0093230331e-01   -5.0093230331e-01   0.00e+00
+  20     5      -5.3268139038e-01   -5.3268139038e-01   3.68e-16
+  20     20     -3.5846578062e+00   -3.5846578062e+00   2.54e-15
+  20     60     -5.6504732288e+01   -5.6504732288e+01   2.03e-57
+  20     100    -9.7958530048e+01   -9.7958530048e+01   4.35e-16
+  worst relative error against besselh : 2.54e-15   PASS
+
+=== order of the symbol : Lambda_n * R / n -> -1 ===
+  n          kR=1            kR=5            kR=20
+  10         -0.994424999   -0.845520127   -0.066317942
+  100        -0.999949494   -0.998736559   -0.979585300
+  1000       -0.999999499   -0.999987487   -0.999799780
+  10000      -0.999999995   -0.999999875   -0.999998000
+  100000     -1.000000000   -0.999999999   -0.999999980
+  the symbol is of order one, exactly the threshold of the paper.
+
+=== diagnostic 1 and 2 : truncation sweep at fixed tiling, and the
+    ratio of successive increments, over 14 doublings, Ms = 360 ===
+
+  ---- basis P0 ----
+  kR              N        Re[-Y(i,i)]          ratio
+  1             360     4.93872707e-01              -
+  1             720     6.31001183e-01              -
+  ...           ...                ...            ...
+  1          737280     2.03437145e+00        1.00000
+  1         1474560     2.17483244e+00        1.00000
+  1         2949120     2.31529342e+00        1.00000
+  --> last three increment ratios : 1.00000 1.00000 1.00000
+  5             360     4.92222093e-01              -
+  5             720     6.29344466e-01              -
+  ...           ...                ...            ...
+  5          737280     2.03271247e+00        1.00000
+  5         1474560     2.17317345e+00        1.00000
+  5         2949120     2.31363444e+00        1.00000
+  --> last three increment ratios : 1.00000 1.00000 1.00000
+  20            360     4.74651354e-01              -
+  20            720     6.11678337e-01              -
+  ...           ...                ...            ...
+  20         737280     2.01501091e+00        1.00000
+  20        1474560     2.15547189e+00        1.00000
+  20        2949120     2.29593288e+00        1.00000
+  --> last three increment ratios : 1.00000 1.00000 1.00000
+
+  ---- basis hat ----
+  kR              N        Re[-Y(i,i)]          ratio
+  1             360     2.74163293e-01              -
+  1             720     2.78984525e-01              -
+  ...           ...                ...            ...
+  1          737280     2.80827792e-01        0.25000
+  1         1474560     2.80827794e-01        0.25000
+  1         2949120     2.80827794e-01        0.25000
+  --> last three increment ratios : 0.25000 0.25000 0.25000
+  5             360     2.72632385e-01              -
+  5             720     2.77453401e-01              -
+  ...           ...                ...            ...
+  5          737280     2.79296649e-01        0.25000
+  5         1474560     2.79296651e-01        0.25000
+  5         2949120     2.79296651e-01        0.25000
+  --> last three increment ratios : 0.25000 0.25000 0.25000
+  20            360     2.56962561e-01              -
+  20            720     2.61780197e-01              -
+  ...           ...                ...            ...
+  20         737280     2.63623140e-01        0.25000
+  20        1474560     2.63623142e-01        0.25000
+  20        2949120     2.63623142e-01        0.25000
+  --> last three increment ratios : 0.25000 0.25000 0.25000
+
+  TOLERANCES OF THE SPECIFICATION
+  kR=1    P0 -> 1 within 0.05 : PASS  (1.0000 1.0000 1.0000)
+          hat -> 0.250 within 0.002 : PASS  (0.25000 0.25000 0.25000)
+  kR=5    P0 -> 1 within 0.05 : PASS  (1.0000 1.0000 1.0000)
+          hat -> 0.250 within 0.002 : PASS  (0.25000 0.25000 0.25000)
+  kR=20   P0 -> 1 within 0.05 : PASS  (1.0000 1.0000 1.0000)
+          hat -> 0.250 within 0.002 : PASS  (0.25000 0.25000 0.25000)
+  READING. The P0 ratio tends to 1: a logarithmic tail, no limit, the
+  condensation is NOT defined. The hat ratio tends to 1/4: the tail falls
+  as N^-2 and the condensation converges. Same verdict as the paper's
+  magnetostatic operator, on a different physics.
+
+=== diagnostic 3 : the stencil of the divergent term, in units of the
+    logarithmic step (expected +2, -1, 0, 0, ...) ===
+  kR     |i-j| =    0         1         2         3         4
+  1                +2.0000   -1.0000   -0.0000   -0.0000   -0.0000
+  5                +2.0000   -1.0000   -0.0000   -0.0000   -0.0000
+  20               +2.0000   -1.0000   -0.0000   -0.0000   -0.0000
+  the divergent part is the periodic (-1,2,-1) Laplacian here too.
+
+=== diagnostic 4 : a functional quantity under released truncation ===
+  condensed energy of one column, a(u_h,u_h) for u_h the indicator of
+  a single column, normalised by its value at N = Ms.
+  kR              N               P0              hat
+  1             360         1.000000         1.000000
+  1            5760         2.128412         1.024199
+  1           92160         3.266001         1.024308
+  1         1474560         4.403630         1.024309
+  5             360         1.000000         1.000000
+  5            5760         2.132179         1.024334
+  5           92160         3.273582         1.024444
+  5         1474560         4.415026         1.024444
+  20            360         1.000000         1.000000
+  20           5760         2.173816         1.025803
+  20          92160         3.357471         1.025920
+  20        1474560         4.541169         1.025920
+  the P0 column keeps moving; the hat column settles. Truncation selects
+  the value of a functional in the discontinuous basis, and does not in
+  the conforming one.
+
+=== appendix table : the same verdict at three tilings ===
+  kR     Ms           P0 ratio      hat ratio
+  1      180           1.00000        0.25000
+  1      360           1.00000        0.25000
+  1      720           1.00000        0.25000
+  5      180           1.00000        0.25000
+  5      360           1.00000        0.25000
+  5      720           1.00000        0.25000
+  20     180           1.00000        0.25000
+  20     360           1.00000        0.25000
+  20     720           1.00000        0.25000
+
+  appendix figure written : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm\code\revision\helmholtz_dtn_case\B8_helmholtz_increment_ratios.pdf
+  editable source written : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm\code\revision\helmholtz_dtn_case\B8_helmholtz_increment_ratios.fig   (openfig)
+
+  ACCEPTANCE : P0 ratios -> 1 : PASS | hat ratios -> 0.250 : PASS
+
+  duration 14 s
+=== B8 complete ===

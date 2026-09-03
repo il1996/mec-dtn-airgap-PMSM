@@ -1,0 +1,117 @@
+=== B4 : diagonal dominance, spectrum and conditioning ===
+  date (ISO) : 2026-09-03
+  MATLAB     : 24.1.0.2537033 (R2024a)
+  kernel     : EXACT two-layer, kappa_n = (cosh(nUa)-alpha_n)/sinh(nUa)
+  guard      : kappa_n := 1 for n*Ua > 25 ; coth argument clamped at 25
+  c = mu0*L/pi = 1.320000e-08   gamma = 0.5772156649015329
+
+---- CONTROL VALUES, reproduced before any new result ----
+  geometry taken from machine_bldc : U_a = 2.9260522489e-02  U_m = 1.0973100998e-01  mu_r = 1.038952
+  specification quotes             : U_a = 2.9260675000e-02  U_m = 1.0973162000e-01  mu_r = 1.038952
+  relative difference              : U_a 5.21e-06   U_m 5.56e-06   mu_r 4.62e-07
+
+  kappa_1 (specification constants)                      7.460705  (ref 7.460705, d=1.74e-08)  OK
+  first n |kappa_n-1|<1e-6                                    181  (ref 181, d=0.00e+00)  OK
+  min kappa_n n<=5000                                           1  (ref 1, d=2.22e-16)  OK
+  max kappa_n n<=5000                                    7.460705  (ref 7.460705, d=1.74e-08)  OK
+  folded vs airgap_magnet, rel. -Y(i,i)   Ms=360 N=180    1.5086089e-16  (ref 0, d=1.51e-16)  OK
+  folded vs airgap_magnet, rel. -Y(i,i+1) Ms=360 N=180    1.4651926e-16  (ref 0, d=1.47e-16)  OK
+  folded vs airgap_magnet, rel. hat -Y(i,i) Ms=360 N=180    2.1182319e-16  (ref 0, d=2.12e-16)  OK
+  folded vs airgap_magnet, rel. -Y(i,i)   Ms=1080 N=540    3.0364848e-16  (ref 0, d=3.04e-16)  OK
+  (asymptotic-kernel spot checks use kappa_n=1 and are covered by B2/B3)
+  ALL CONTROLS : PASS
+
+=== (i) diagonal dominance, Ms = 1080, EXACT kernel ===
+     N        -Y(i,i)     sum|Y_ij| j~=i        ratio    two neighbours   share of the off-diagonal
+     540  4.358622e-08     9.194123e-08     2.109410     2.272744e-08         24.72 %
+    1080  6.437687e-08     6.437687e-08     1.000000     4.644377e-08         72.14 %
+    2160  8.224183e-08     8.224183e-08     1.000000     6.399468e-08         77.81 %
+    4320  1.004208e-07     1.004208e-07     1.000000     8.208461e-08         81.74 %
+    8640  1.186889e-07     1.186889e-07     1.000000     1.003295e-07         84.53 %
+   17280  1.369802e-07     1.369802e-07     1.000000     1.186150e-07         86.59 %
+  READING. The ratio is EXACTLY 1 from N = Ms onward: the row sums of the
+  divergent part vanish, so -Y sits ON the boundary of diagonal dominance at
+  every truncation and cannot become "more dominant". At the lock N = 540 the
+  ratio is 2.109, larger than 1, because some off-diagonal entries are still
+  POSITIVE there and the cancellation in sum_j Y_ij is not yet sign-coherent.
+  The published footnote has the movement backwards.
+
+=== (iii) spectrum of -Y, and the Laplacian stiffness law ===
+  independent spectral formula:
+    lambda_m = eps_m (2 mu0 L Ms/pi) sum_{n<=N, n = +-m mod Ms} (kappa_n/n) sin^2(pi n/Ms)
+    N=   540 : max relative difference formula vs numerical spectrum = 5.013e-16
+    N=  1080 : max relative difference formula vs numerical spectrum = 1.003e-15
+    N=  4320 : max relative difference formula vs numerical spectrum = 6.729e-16
+  spectral formula validated to 1.0e-15  : PASS
+  lambda_0 = -1.323e-23  (must be 0 exactly: sin(pi n/Ms) = 0 for n = 0 mod Ms)
+  d(lambda_m)/d(c ln N) vs 4 sin^2(pi m/Ms), m = 1..540, over successive doublings :
+        N -> 2N            max dev.      median dev.
+       1080 -> 2160          8.1521 %        3.0163 %
+       2160 -> 4320          2.1784 %        0.8399 %
+       4320 -> 8640          0.5562 %        0.2172 %
+       8640 -> 17280         0.1398 %        0.0548 %
+      17280 -> 34560         0.0350 %        0.0137 %
+      34560 -> 69120         0.0088 %        0.0034 %
+      69120 -> 138240        0.0022 %        0.0009 %
+     138240 -> 276480        0.0005 %        0.0002 %
+    the deviation falls monotonically towards zero: the stencil law is the
+    N -> infinity limit, reached to 0.0005 % by the last doubling  : PASS (<0.1 %)
+    These ARE the eigenvalues of the periodic (-1,2,-1) Laplacian. Every
+    non-zero eigenvalue grows by the SAME factor c ln N, so their ratio - the
+    condition number - tends to a constant. That, and not any growth of
+    diagonal dominance, is why the condition number settles.
+
+=== NON-REGRESSION : Table 4, Ms = 360 ===
+     N    rank(Y)   expected   nullity   expected   min(2N,Ms-1)
+     60      120        120       240        240          120   OK
+    120      240        240       120        120          240   OK
+    179      358        358         2          2          358   OK
+    180      359        359         1          1          359   OK
+    360      359        359         1          1          359   OK
+  Table 4 reproduced : YES
+  and it is not an observation but a consequence: lambda_m > 0 iff some n <= N
+  has n = +-m (mod Ms), the smallest such n being min(m, Ms-m), hence
+  rank Y = min(2N, Ms-1).
+
+=== (ii) the reduced matrix of order 1109 : singular values and conditioning ===
+  IDENTIFICATION. Footnote c speaks of "the reduced matrix, of order 1109".
+    Ms + 2*Ns - 1 = 1080 + 30 - 1 = 1109, and 1105920 = 540 x 2^11.
+    So the matrix is cogging_mec's A(keep,keep) at Ms = 1080: 1080 surface nodes,
+    15 tooth-body and 15 yoke nodes, one yoke node grounded as reference.
+    The sweep is the eleven doublings of Table 7(c), N_h = 540 -> 1105920.
+  iron model : linear, mu_i = 3000, kfringe = 0.3250 (the Table 6 / R4 configuration)
+
+  basis  N_h               order        sigma_min        sigma_max         cond_2
+  p0     540                1109     1.277703e-08     1.127076e-03     8.8211e+04
+  p0     1105920            1109     1.649059e-08     1.127076e-03     6.8347e+04
+  p1     540                1109     1.255653e-08     1.127076e-03     8.9760e+04
+  p1     1105920            1109     1.262729e-08     1.127076e-03     8.9257e+04
+
+  published footnote c (Table 6) states, for comparison:
+    smallest singular value 1.649059e-08 at the largest truncation,
+    against 1.277703e-08 at the lock; condition number 8.821e+04 -> 6.835e+04.
+    reproduced here (p0) : 1.649059e-08 at N_h, 1.277703e-08 at the lock ; cond 8.8211e+04 -> 6.8347e+04
+
+  VERDICT ON THE FOUR PUBLISHED NUMBERS : ALL FOUR REPRODUCED
+  The numbers of footnote c are CORRECT. They were re-produced here, not
+  transcribed: the assembly, the tiling, the truncations and the iron model were
+  set from the published chain and the singular values fell out. What was wrong
+  in footnote c is not its arithmetic but the reason it gives. The condition
+  number does not fall because the operator becomes more diagonally dominant -
+  it cannot, the ratio is pinned at 1 - but because every non-zero eigenvalue
+  grows by the same factor c ln N, so their ratio tends to a constant.
+
+  PROVENANCE FINDING, separate from the above. Neither 1.649059e-08 nor
+  1.277703e-08, nor the condition numbers 8.821e+04 and 6.835e+04, nor the
+  truncation N_h = 1105920, occurs anywhere in the archived scripts or
+  transcripts of this repository. The published footnote is arithmetically
+  sound and has NO archived chain. This script is now that chain.
+
+  AND A RESULT THE FOOTNOTE DOES NOT CARRY. In the HAT basis the smallest
+  singular value barely moves (1.255653e-08 -> 1.262729e-08) and the condition number is
+  essentially unchanged (8.9760e+04 -> 8.9257e+04) over the same eleven doublings.
+  The conditioning improvement reported in footnote c is a property of the
+  PIECEWISE-CONSTANT basis under released truncation, not of the operator.
+
+  duration 2 s
+=== B4 complete ===

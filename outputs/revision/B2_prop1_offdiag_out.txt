@@ -1,0 +1,178 @@
+=========================================================================
+ TASK B2 - Proposition 1, off-diagonal entries: where (29) fails, and
+           the behaviour at the operational truncation
+ Date (ISO)      : 2026-09-02
+ Script          : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm\code\revision\prop1_offdiag_panels.m
+ Transcript      : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm\outputs\revision\B2_prop1_offdiag_out.txt
+ MATLAB          : 24.1.0.2537033 (R2024a) (PCWIN64)
+-------------------------------------------------------------------------
+ CONFIGURATION
+   Basis         : piecewise-constant (unit) on contiguous arcs of the
+                   stator bore; condensed two-layer annulus operator.
+   Kernel        : two variants, both used below and always labelled.
+                   ASYMPTOTIC : kappa_n replaced by 1 for all n.
+                   EXACT      : alpha_n = 1/(cosh(n Ua) + mu_r sinh(n Ua) coth(n Um))
+                                kappa_n = (cosh(n Ua) - alpha_n)/sinh(n Ua)
+   Guard         : n*U_a > 25  ->  kappa_n = 1 exactly (n > 854);
+                   coth argument clamped at min(n*U_m,25).
+   General entry : -Y(i,j) = (4 mu0 L/pi) SUM_{n=1..N} (kappa_n/n)
+                              * sin(n d_i/2) sin(n d_j/2) cos(n dtheta)
+                   (with d_i = d_j = d and dtheta = k d this is the
+                    condensed uniform-tiling form of the specification).
+   Closed forms  : (29)  -Y = c[ ln|2 sin(a3/2)| + ln|2 sin(a4/2)|
+                                 - ln|2 sin(a1/2)| - ln|2 sin(a2/2)| ]
+                   a1 = (di-dj)/2 - dtheta, a2 = (di-dj)/2 + dtheta,
+                   a3 = (di+dj)/2 - dtheta, a4 = (di+dj)/2 + dtheta.
+                   (30b) -Y(i,i+-1) = -c(ln N + gamma)
+                                      + c[ ln|2 sin d| - 2 ln|2 sin(d/2)| ]
+   Tilings       : d = 6 mrad (published Table 8) and the OPERATIONAL
+                   uniform tiling Ms = 1080, d = 2*pi/Ms = 5.817764e-03 rad.
+   Truncations   : N = 1e3..1e7 (panels A and I); N in {540, 1080, 1e4,
+                   1e5, 1e6} (panel II, the operational range).
+   Summation     : direct, vectorised, chunked; no closed form is used
+                   inside any summed column.
+   Constants     : mu0 = 1.256637061435917e-06   L = 0.033000 m   R_s = 3.467800e-02 m
+                   U_a = 2.9260675e-02  U_m = 1.0973162e-01  mu_r = 1.038952
+                   c = mu0*L/pi = 1.320000e-08   gamma = 0.5772156649015329
+   No tuned parameter, no fitted constant, no wall-clock measurement.
+=========================================================================
+
+=========================================================================
+ CONTROL-VALUE COMPARISON (must pass before any new result is used)
+=========================================================================
+control                                                           reference       reproduced    deviation  verdict
+kappa_1                                                        7.4607050000     7.4607050174    2.333e-09  PASS
+first n with |kappa_n - 1| < 1e-6                                       181              181            -  PASS
+min kappa_n, n <= 5000                                             1.000000         1.000000   -2.220e-16  PASS
+max kappa_n, n <= 5000                                             7.460705         7.460705    2.333e-09  PASS
+-Y(i,i)    Ms=1080, N=34560, asymptotic                      1.55254492e-07   1.55254492e-07   -2.194e-09  PASS
+-Y(i,i+-1) Ms=1080, N=34560, asymptotic                     -6.84780037e-08  -6.84780037e-08   -5.836e-10  PASS
+(30b) rel. deviation at N=34560                                  -8.343e-06       -8.343e-06            -  PASS
+
+  Non-regression, published Table 8(a): d_i = d_j = 6 mrad, dtheta = 50 mrad,
+  asymptotic kernel.  Manuscript values as rendered.
+  N          summed(ms)   summed(here)       (29)(ms)     (29)(here)   reldev(ms) reldev(here)  verdict
+  1e3       -2.1165e-10    -2.1165e-10    -1.9150e-10    -1.9150e-10    1.052e-01    1.052e-01  PASS
+  1e4       -2.4041e-10    -2.4041e-10    -1.9150e-10    -1.9150e-10    2.554e-01    2.554e-01  PASS
+  1e5       -2.0196e-10    -2.0196e-10    -1.9150e-10    -1.9150e-10    5.460e-02    5.460e-02  PASS
+  1e6       -1.9154e-10    -1.9154e-10    -1.9150e-10    -1.9150e-10    2.260e-04    2.260e-04  PASS
+  1e7       -1.9150e-10    -1.9150e-10    -1.9150e-10    -1.9150e-10    2.300e-05    2.300e-05  PASS
+
+-c*ln(10) (reference increment per decade)                      -3.0394e-08    (see panel I)            -  INFO
+
+  ALL CONTROLS ABOVE: PASS
+  (the k=2,3,5,10 deviation controls are checked inside panel II)
+=========================================================================
+
+=========================================================================
+ PANEL A  (published Table 8(a), unchanged)
+ Off diagonal, d_i = d_j = 6 mrad, dtheta = 50 mrad, ASYMPTOTIC kernel.
+ dtheta / d = 8.5944 columns -- this separation is not a matrix entry of
+ the operational tiling Ms = 1080 (d = 5.818 mrad), and a3 = (di+dj)/2 -
+ dtheta = -0.0440 rad is far from zero, so (29) is well posed here.
+-------------------------------------------------------------------------
+ N                  summed             (29)      rel. dev.
+ 1e3           -2.1165e-10      -1.9150e-10      1.052e-01
+ 1e4           -2.4041e-10      -1.9150e-10      2.554e-01
+ 1e5           -2.0196e-10      -1.9150e-10      5.460e-02
+ 1e6           -1.9154e-10      -1.9150e-10      2.260e-04
+ 1e7           -1.9150e-10      -1.9150e-10      2.300e-05
+=========================================================================
+
+=========================================================================
+ PANEL I  (new)  Off diagonal at the FIRST NEIGHBOUR of a contiguous
+                 tiling: dtheta = (d_i + d_j)/2 = d = 6 mrad.
+ ASYMPTOTIC kernel, N = 1e3..1e7.
+-------------------------------------------------------------------------
+ WHY (29) FAILS HERE.  With d_i = d_j = d and dtheta = d the four
+ arguments are a1 = -d, a2 = +d, a3 = 0, a4 = 2d.  The third series is
+ SUM cos(0)/n = SUM 1/n, the harmonic series: (29) evaluates
+ ln|2 sin(a3/2)| = ln 0 = -Inf and the entry has no finite limit.
+ (29) at a3 = 0 gives : -Inf
+ This is not a degenerate corner case: on a contiguous tiling it is the
+ generic situation of the two largest off-diagonal entries of EVERY row.
+ The correct statement at the first neighbour is (30b), which carries the
+ ln N explicitly.  That is what is compared below.
+-------------------------------------------------------------------------
+ N                  summed            (30b)      rel. dev.     incr./decade
+ 1e3         -2.326008e-08    -2.212097e-08     -5.149e-02               --
+ 1e4         -5.270773e-08    -5.251509e-08     -3.668e-03      -2.9448e-08
+ 1e5         -8.290648e-08    -8.290922e-08      3.297e-05      -3.0199e-08
+ 1e6         -1.133044e-07    -1.133033e-07     -9.098e-06      -3.0398e-08
+ 1e7         -1.436970e-07    -1.436975e-07      3.351e-06      -3.0393e-08
+-------------------------------------------------------------------------
+ predicted increment per decade  -c*ln10 = -3.0394e-08
+ last measured increment                 = -3.0393e-08
+ agreement within 1%                     : PASS  (rel. dev. 4.976e-05)
+ READING: the first-neighbour entry DOES NOT CONVERGE.  It decreases by
+ -c ln 10 per decade of N, exactly like the diagonal, and with the same
+ coefficient c (not 2c).  Panel (a) of Table 8 tests (29) at a separation
+ that converges and therefore never sees this.
+=========================================================================
+
+=========================================================================
+ PANEL II (new)  The OPERATIONAL truncation.  EXACT two-layer kernel,
+                 uniform contiguous tiling Ms = 1080, d = 2*pi/Ms =
+                 5.817764173e-03 rad (5.8178 mrad).
+ Entries k = 1,2,3,5,10 at N in {540, 1080, 1e4, 1e5, 1e6}.
+ The validated chain runs at N = 540 or 630, i.e. the FIRST column below.
+-------------------------------------------------------------------------
+ N -> infinity limit for k >= 2 is taken analytically as
+     lim = (29) + (4 mu0 L/pi) SUM_{n<=4270} ((kappa_n - 1)/n) sin^2(n d/2) cos(n k d)
+ the correction being finite and fully acquired by n ~ 200 (kappa_n = 1
+ to 1e-6 from n = 181).  A direct summation at N = 1e7 is printed beside
+ it as an independent cross-check; neither is fitted to the other.
+ k = 1 has NO limit (panel I): it is reported as DIVERGENT.
+-------------------------------------------------------------------------
+
+ (II.1)  Entry values, EXACT kernel, Ms = 1080  [H]
+ k             N=540         N=1080          N=1e4          N=1e5          N=1e6 |     limit N->inf
+ 1     -1.136372e-08  -2.322189e-08  -5.161994e-08  -8.251487e-08  -1.128746e-07 |        DIVERGENT
+ 2     -5.434530e-09  -3.602322e-09  -3.953036e-09  -3.734394e-09  -3.775255e-09 |    -3.775199e-09
+ 3     -9.231683e-10  -1.504875e-09  -1.682708e-09  -1.562604e-09  -1.533244e-09 |    -1.533208e-09
+ 5     -3.459928e-10  -5.156254e-10  -4.323783e-10  -5.236853e-10  -5.189784e-10 |    -5.189900e-10
+ 10    -1.214665e-10  -1.161588e-10  -1.476851e-10  -1.201258e-10  -1.163165e-10 |    -1.163617e-10
+
+ (II.2)  Deviation from the N -> infinity limit  [%]
+ k             N=540         N=1080          N=1e4          N=1e5          N=1e6 | status
+ 1                --             --             --             --             -- | DIVERGENT - no limit exists, see panel I
+ 2            -43.95           4.58          -4.71           1.08          -0.00 | converges
+ 3             39.79           1.85          -9.75          -1.92          -0.00 | converges
+ 5             33.33           0.65          16.69          -0.90           0.00 | converges
+ 10            -4.39           0.17         -26.92          -3.23           0.04 | converges
+
+ (II.3)  k = 1 reported as it must be: a running value, not a number.
+ N                -Y(i,i+-1)   incr. vs prev.
+ 540           -1.136372e-08               --
+ 1080          -2.322189e-08      -1.1858e-08
+ 10000         -5.161994e-08      -2.8398e-08
+ 100000        -8.251487e-08      -3.0895e-08
+ 1000000       -1.128746e-07      -3.0360e-08
+ The value moves by -3.0360e-08 between N = 1e5 and N = 1e6, i.e. by
+ -c ln10 = -3.0394e-08 per decade.  It has no N -> infinity limit.
+
+ (II.4)  Cross-check of the analytic limit against a direct sum at N = 1e7
+ k      limit (analytic)       sum at N=1e7     rel. diff.
+ 2       -3.77519892e-09    -3.77537867e-09       4.76e-05
+ 3       -1.53320820e-09    -1.53335683e-09       9.69e-05
+ 5       -5.18990035e-10    -5.18903646e-10      -1.66e-04
+ 10      -1.16361719e-10    -1.16393103e-10       2.70e-04
+
+ (II.5)  CONTROL CHECK on panel II (deviation at N = 540, EXACT kernel)
+ k       reference [%]   reproduced [%]    deviation  verdict
+ 2              -43.98          -43.953        0.027  PASS
+ 3               39.78           39.788        0.008  PASS
+ 5               33.33           33.333        0.003  PASS
+ 10              -4.41           -4.387        0.023  PASS
+ panel II controls: PASS
+-------------------------------------------------------------------------
+ READING.  At the truncation the validated chain actually uses (N = 540,
+ i.e. N = Ms/2), the off-diagonal entries are NOT converged: the second
+ neighbour is -44.0 % away from its limit, the third +39.8 %, the fifth
+ +33.3 %, the tenth -4.4 %, and the first neighbour has no limit at all.
+ The deviations do not decay monotonically in N either: they oscillate
+ (see k = 5 and k = 10 at N = 1e4), because the residual tail is the
+ oscillatory remainder of SUM cos(n k d)/n, not a smooth O(1/N) term.
+=========================================================================
+
+END OF RUN  2026-09-02

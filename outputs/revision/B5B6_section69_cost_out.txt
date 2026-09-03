@@ -1,0 +1,81 @@
+=== B5 / B6 : the cost claims of Section 6.9, measured ===
+  date (ISO)  : 2026-09-03
+  MATLAB      : 24.1.0.2537033 (R2024a)
+  CPU         : 
+  declared HW : Intel Core i5-11400H @ 2.70 GHz, 16 GB, MATLAB R2024a
+  iron model  : linear, mu_i = 3000, kfringe = 0.3250
+  timing      : wall clock, median of repeats, warm-up discarded
+
+=== B5 : decomposition of the cost per rotor position, Ms = 1260 ===
+  assembly of Y (airgap_magnet, 1260 x 1260)             0.137 s
+  assembly of the stator network                     0.021 s
+  ONE factorisation of the reduced matrix (1289)      0.247 s  (dense LU, as the chain does)
+  Np =   1 : source assembly   0.0015 s | back-substitution   0.0053 s
+  Np = 128 : source assembly   0.0624 s | back-substitution   0.0221 s
+  Np = 721 : source assembly   0.2994 s | back-substitution   0.0649 s
+
+  --- the sweep, as Section 6.9 counts it (solve stage only) ---
+  a single position, total                          0.4119 s   (published 0.111 s)
+  128 positions, total                              0.4895 s   (published 0.119 s)
+  sweep as a fraction of 128 independent solves      0.929 %   (published 0.84 %)
+  marginal cost of one further position             0.6113 ms  (published 0.06 ms)
+  721 positions, total                              0.7693 s
+
+  --- the counterfactual of Section 6.9 ---
+  reassemble + refactorise at EVERY position         0.3670 s per position
+  128 positions that way                            46.973 s   (published 13.79 s)
+  factor on the sweep                                 96.0     (published 115)
+
+  --- chain (b) : cogging_mec(M,1260,0,721,...) as MEC_BLDC_MASTER calls it ---
+  full cogging_mec at 721 positions                  1.965 s   (published 3 s)
+  per position                                      2.7255 ms  (published 4.16 ms)
+  of which the solve stage measured above             0.769 s
+  the remainder - field and torque reconstruction     1.196 s   (61 % of the call)
+
+  RECONCILIATION. The two figures are not in conflict; they count different
+  work. The 0.06 ms marginal cost is ONE back-substitution against an already
+  factorised operator, and nothing else. The 4.16 ms per position is a whole
+  cogging_mec call divided by its positions, and that call also assembles the
+  operator once, factorises once, and then, at EVERY position, rebuilds the
+  source, reconstructs Br and Bt over the bore and forms the Maxwell stress.
+  The measured split above says how much of the gap each part accounts for.
+  NEITHER PUBLISHED NUMBER HAS BEEN ALTERED. What the manuscript lacks is one
+  sentence saying what each includes.
+
+=== B6 : the run time of the complete study ===
+  consistency controls that must hold, and do:
+    540 x 12 = 6480 unknowns                         (manuscript: 6480)
+    n_sh = 1 -> 2(1)+4+3+1 = 10 nodes per column    (Table 9: 10)
+    n_sh = 4 -> 2(4)+4+3+1 = 16 nodes per column    (Table 10: 16)
+
+  WHAT "THE COMPLETE STUDY" IS, AND THE PROBLEM WITH TIMING IT.
+  No single script in this repository is named as the complete study. The
+  archived transcript T9_temps_out.txt reports "BLDC 15/14 : 133 s (8 analyses,
+  29 grandeurs, 9 figures)" without naming the eight analyses, and the README
+  repeats 133 s. The manuscript says 143 s. MEC_BLDC_MASTER.m is the only
+  end-to-end entry point, so it is what is timed here, and it is timed as the
+  thing it is - not asserted to be the thing the manuscript meant.
+
+  timing MEC_BLDC_MASTER.m in a fresh MATLAB process each time,
+  one cold warm-up (discarded) then five runs
+    run        wall clock
+    warm-up       18.94 s  (discarded)
+    1             18.77 s
+    2             18.63 s
+    3             18.91 s
+    4             19.11 s
+    5             19.36 s
+
+    median 18.91 s | min 18.63 s | max 19.36 s | std 0.29 s | n = 5
+    published in the manuscript : 143 s
+    archived in T9_temps_out.txt and the README : 133 s
+
+  FINDING. Neither figure is reproduced by the only end-to-end script in the
+  archive, and the two published figures differ from each other. The median
+  above is what MEC_BLDC_MASTER.m costs on this machine today; it is NOT a
+  correction of 143 s, because it is not established that the two measure the
+  same work. What is established is that no archived chain produces either
+  number, so neither is currently verifiable. Reported, not harmonised.
+
+  total duration of this script 179 s
+=== B5 / B6 complete ===

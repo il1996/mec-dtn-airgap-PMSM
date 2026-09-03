@@ -1,0 +1,61 @@
+﻿==============================================================================
+B9 : NON-REGRESSION BATTERY
+     repository : C:\Users\hp\Desktop\mec-dtn-airgap-pmsm
+==============================================================================
+  [NR-01] PASS      Table 4, Ms=360: ranks 120/240/358/359/359
+             N=  60  rank= 120 expected  120  nullity= 240 expected  240
+             N= 120  rank= 240 expected  240  nullity= 120 expected  120
+             N= 179  rank= 358 expected  358  nullity=   2 expected    2
+             N= 180  rank= 359 expected  359  nullity=   1 expected    1
+             N= 360  rank= 359 expected  359  nullity=   1 expected    1
+  [NR-02] PASS      Table 5: hat tail x N^2 -> 0.001100 on the last two decades
+             N=1e5  tail=1.1003e-13  tail x N^2 = 0.001100  target 0.001100
+             N=1e6  tail=1.0992e-15  tail x N^2 = 0.001099  target 0.001100
+  [NR-04] PASS      Table 6(b): p.c. increment -> (2 mu0 L/pi) ln2
+             (2 mu0 L/pi) ln2 = 1.829909e-08   manuscript prints 1.829908e-08 (value) and 1.829909e-08 (prediction)
+             difference to the printed prediction : 4.43e-15
+  [NR-05] PASS      Table 7(a): bracket 1.721940/44/45/45/46
+             1.721940  1.721944  1.721945  1.721945  1.721946
+  [NR-06] PASS      Table 7(b): dispersions 0.440 / 0.496 / 26.126 / 28.514 %
+             0.441 %  0.496 %  26.124 %  28.512 %
+  [NR-07] PASS      Table 7(b) without the coarsest tiling: 0.096 vs 0.113 %, 5.7 vs 7.0 %
+             p.c. B_g1 0.113 %  hat B_g1 0.096 %  p.c. nu8 6.954 %  hat nu8 5.737 %
+  [NR-09] PASS      Table 8(a): first row summed, and (29) = -1.91501e-10
+             summed(N=1e3) = -2.116515e-10   target -2.11652e-10
+             |(29)|        = 1.915015e-10   target  1.91501e-10
+  [NR-10] PASS      Table 8(b): increment per decade -> 6.0788e-08
+             (2 mu0 L/pi) ln10 = 6.078825e-08   target 6.0788e-08
+  [NR-11] PASS      Table 8(c): kernel correction 2.4307e-11 H, constant from 1e3 to 1e7
+             correction at N=1e3 : 2.430725e-11 H
+             correction at N=1e7 : 2.430725e-11 H
+             difference between them : 3.23e-27 H   (must be negligible)
+  [NR-13] PASS      Fig. 11: 21 of 29 under 5 %, 20 of 26 excluding the three
+             transcript reports raw 21/29 and 20/26 excluding the three
+             note: the same transcript records the manuscript once announced 22/29
+  [NR-14] PASS      Section 6.9: 540 x 12 = 6480; Tables 9/10 -> 10 and 16 nodes per column
+             540 x 12 = 6480;  n_sh=1 -> 10;  n_sh=4 -> 16
+  [NR-08] PASS      Table 7(d): p.c. +0.279/-8.12/+1.11 and hat +0.226/-5.19/+1.04
+             pc : B_g1 +0.279 % (target +0.279)  nu8 -8.12 % (target -8.12)  lambda +1.11 % (target +1.11)   ok
+             hat: B_g1 +0.226 % (target +0.226)  nu8 -5.19 % (target -5.19)  lambda +1.04 % (target +1.04)   ok
+             nu = 22 is not carried by the B1 transcript and is not checked here.
+  [NR-15] PASS      Manuscript: eq (1)-(41), Tables 1-17, Figures 1-16, abstract <= 250 words
+             equations   : 1..41, sequential = True
+             tables      : 1..17, sequential = True
+             figures     : 1..16, sequential = True
+             abstract    : 243 words (limit 250)
+             the 41-reference and all-called-once checks belong to B12 (consistency_check.py), which resolves citation ranges properly.
+  [NR-03] UNDECIDED Table 6(a): 12 rows; p.c. drift 0.703 %; hat 0.023 %; final ratio 0.923624
+             Table 6 is the released-truncation sweep to N_h = 1 105 920. The archived
+             chain RUN_R4_UNLOCK.m breaks at numax = 8640 (RCOND = NaN in its transcript),
+             so no archived run reaches the published truncation. B4 reaches it by the
+             residue-folded assembly, but only for the operator, not for the B_g1 drift
+             this check needs. Reported UNDECIDED rather than asserted.
+  [NR-12] UNDECIDED Table 12: 51 deviations; 13 of 17 move away under shoe refinement
+             Needs the full-precision Table 12 archive (code/MEC_BLDC/A1_table7.mat), a
+             MATLAB v5 .mat that this battery cannot read without scipy. B7 reads it in
+             MATLAB and reprints the row that decides the 9-against-8 count; see
+             outputs/revision/B7_fluxlineA_reprint_out.txt.
+
+==============================================================================
+B9 SUMMARY : 13 PASS, 0 FAIL, 2 UNDECIDED, of 15 checks
+==============================================================================
