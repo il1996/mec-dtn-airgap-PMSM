@@ -1,0 +1,3984 @@
+{
+  "manifest": "B10 -- the authoritative chain for the submitted manuscript",
+  "manuscript": "Boundary Condensation of a Two-Layer Dirichlet-to-Neumann Operator: Trace Conformity and Air-Gap Mesh Reduction",
+  "date_iso": "2026-09-02",
+  "numbering": "Tables 1-17 and Figures 1-16 are those of the SUBMITTED manuscript. docs/PROVENANCE.md follows the numbering of the earlier manuscript ('A Well-Posed Dirichlet-to-Neumann Air-Gap Operator...') and was NOT used as a lookup table: every row below was mapped by CONTENT, by matching the submitted caption and cells against the transcripts.",
+  "rules": [
+    "No value in this file was typed by hand: published values are read from the rendered manuscript by paragraph index, computed values are parsed from the transcripts.",
+    "Where a chain could not be established the record carries authoritative=false with an empty script and transcript. An empty cell is information; a wrong cell is not.",
+    "Nothing is deleted. The RUN_DIAG_* family and every script that writes no transcript are declared exploratory and kept."
+  ],
+  "script_census": {
+    "run_scripts_found": 95,
+    "run_scripts_whose_transcript_is_deposited": 34,
+    "manuscript_claim": "Section 5.2: '76 executable run scripts for this machine, of which 18 write a dated transcript'"
+  },
+  "counts_from_transcripts": {
+    "R7_master_counter": "21 / 29",
+    "R7_independent_recount": "21 / 29",
+    "R7_excluding_three": "20 / 26",
+    "G4_relative_all": "21 / 29",
+    "G4_points_rows_25_29": "21 / 29",
+    "G4_relative_excluding_three": "20 / 26",
+    "G4_points_excluding_three": "20 / 26",
+    "G4_within_one_point": "3 en relatif, 2 en points",
+    "G4_recomposition_guard": "7.105e-15"
+  },
+  "records": [
+    {
+      "quantity": "Table 1, rows N1 / N2 / three N2b / N3 and the FEA reference: air-gap closure at fixed iron model",
+      "table": "1",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_CARTER_CMP.m",
+      "transcript": "outputs/MEC_BLDC/A6_n2b_out.txt",
+      "date": "2026-08-05 (docs/MANIFEST.md section 1)",
+      "configuration": "PMSM 15/14 750 W, lumped iron network, linear solver mu_r = 3000, kfringe = 0.325, tooth-face arc a_t = 0.361206 rad",
+      "authoritative": true,
+      "block": "last complete block",
+      "values": [
+        {
+          "value": "0.135452",
+          "paragraph": 132
+        },
+        {
+          "value": "0.225754",
+          "paragraph": 133
+        },
+        {
+          "value": "69.58",
+          "paragraph": 134
+        },
+        {
+          "value": "0.090301",
+          "paragraph": 139
+        },
+        {
+          "value": "0.270904",
+          "paragraph": 140
+        },
+        {
+          "value": "0.000000",
+          "paragraph": 146
+        },
+        {
+          "value": "0.361206",
+          "paragraph": 147
+        },
+        {
+          "value": "0.01966",
+          "paragraph": 182
+        },
+        {
+          "value": "0.03276",
+          "paragraph": 183
+        },
+        {
+          "value": "0.1333",
+          "paragraph": 184
+        }
+      ],
+      "note": "Mapped by content: the closure names, the three tangential discretisations a_r = 0.25/0.50/1.00 a_t and the FEA row of the transcript are the rows of the submitted Table 1. outputs/MEC_BLDC/t6_n2b_out.txt holds the same block behind a MATLAB variable dump and is the superseded copy."
+    },
+    {
+      "quantity": "Table 1, rows N4 (air-gap element), A1 (relative permeance), A2 (complex permeance)",
+      "table": "1",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. None of the six deviations of these three rows, nor the fundamental 1.1210 T quoted for N4 in the table notes, occurs anywhere in outputs/. No script in code/ writes them. The rows are published in the submitted manuscript only."
+    },
+    {
+      "quantity": "Table 2: positioning against the air-gap closures in use",
+      "table": "2",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Narrative table. It carries no computed quantity, so it has no chain; this is a declaration, not a gap."
+    },
+    {
+      "quantity": "Table 3: data of the test machine",
+      "table": "3",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_U2_MACHINE_TABLE.m",
+      "transcript": "outputs/MEC_BLDC/U2_machine_table_out.txt",
+      "date": "2026-08-12 (script mtime; run emits 34 lines, guard passed)",
+      "configuration": "values emitted from machine_bldc.m and checked line by line against the ANSYS project BLDC.aedt; 34 lines concordant, 0 discrepant",
+      "authoritative": true,
+      "block": "only block",
+      "values": [
+        {
+          "value": "69.356",
+          "paragraph": 414
+        },
+        {
+          "value": "125.0",
+          "paragraph": 416
+        },
+        {
+          "value": "1.000",
+          "paragraph": 418
+        },
+        {
+          "value": "33.0",
+          "paragraph": 420
+        },
+        {
+          "value": "3.500",
+          "paragraph": 422
+        },
+        {
+          "value": "0.94",
+          "paragraph": 422
+        },
+        {
+          "value": "8.490",
+          "paragraph": 424
+        },
+        {
+          "value": "1.00",
+          "paragraph": 426
+        },
+        {
+          "value": "0.50",
+          "paragraph": 426
+        },
+        {
+          "value": "19.60",
+          "paragraph": 426
+        },
+        {
+          "value": "2.00",
+          "paragraph": 428
+        },
+        {
+          "value": "6.70",
+          "paragraph": 428
+        },
+        {
+          "value": "15.03",
+          "paragraph": 428
+        },
+        {
+          "value": "21.10",
+          "paragraph": 430
+        },
+        {
+          "value": "6.722",
+          "paragraph": 432
+        },
+        {
+          "value": "14.678",
+          "paragraph": 432
+        },
+        {
+          "value": "0.9514",
+          "paragraph": 434
+        },
+        {
+          "value": "152",
+          "paragraph": 436
+        },
+        {
+          "value": "760",
+          "paragraph": 436
+        },
+        {
+          "value": "10.220",
+          "paragraph": 440
+        },
+        {
+          "value": "0.90",
+          "paragraph": 444
+        },
+        {
+          "value": "182.455",
+          "paragraph": 446
+        },
+        {
+          "value": "1.34676",
+          "paragraph": 446
+        },
+        {
+          "value": "0",
+          "paragraph": 446
+        },
+        {
+          "value": "1.2471",
+          "paragraph": 450
+        },
+        {
+          "value": "955.204",
+          "paragraph": 450
+        },
+        {
+          "value": "1.0390",
+          "paragraph": 452
+        },
+        {
+          "value": "555556",
+          "paragraph": 452
+        },
+        {
+          "value": "6.07927101854027",
+          "paragraph": 458
+        },
+        {
+          "value": "10",
+          "paragraph": 458
+        },
+        {
+          "value": "-4",
+          "paragraph": 458
+        },
+        {
+          "value": "4.8",
+          "paragraph": 460
+        }
+      ],
+      "note": "Mapped by content: the transcript's 'emis/publie' table is line-for-line the submitted Table 3."
+    },
+    {
+      "quantity": "Table 4: rank of the bore operator, M_s = 360",
+      "table": "4",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. The five rank/null-space triples are not printed by any transcript in outputs/. They appear in code/article/ArticleI_DtN_PMSM.tex (tab:rank) with the same values, but a manuscript source file is not a run transcript and is not accepted here as one."
+    },
+    {
+      "quantity": "Table 5: hat-basis residual tail on the two-layer annulus",
+      "table": "5",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. The submitted tail values (3.4267e-8 down to 1.0998e-15) are in no transcript in outputs/. The earlier manuscript's tab:p1tail carries a DIFFERENT tail (1.7111e-7 down to 5.4918e-15) on a different annulus, so the submitted table is a later recomputation whose transcript is not deposited."
+    },
+    {
+      "quantity": "Table 6, panels (a) and (b), rows N_h = 540 to 4320: truncation released from the tiling",
+      "table": "6",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R4_UNLOCK.m + code/MEC_BLDC/RUN_M4_HATBASIS.m + code/MEC_BLDC/RUN_G1_GAMMA.m (gamma convention)",
+      "transcript": "outputs/MEC_BLDC/M4_hatbasis_out.txt + outputs/MEC_BLDC/G1_gamma_out.txt + outputs/MEC_BLDC/R4_unlock_out.txt",
+      "date": "2026-08-10 (M4 script mtime) / 2026-08-26 (G1, docs/MANIFEST.md section 4)",
+      "configuration": "PMSM 15/14 750 W, M_s = 1080 fixed, N released over lock x [1 2 4 8], P0 and hat bases, linear solver mu_r = 3000, kfringe = 0.325, gamma = 0.57721566490153287",
+      "authoritative": true,
+      "block": "M4: both basis blocks; G1: sections 1 and 2; R4: section 2",
+      "values": [
+        {
+          "value": "1.721944",
+          "paragraph": 564
+        },
+        {
+          "value": "1.078648295",
+          "paragraph": 565
+        },
+        {
+          "value": "1.078007335",
+          "paragraph": 568
+        },
+        {
+          "value": "2.415091",
+          "paragraph": 571
+        },
+        {
+          "value": "1.079783044",
+          "paragraph": 572
+        },
+        {
+          "value": "1.135",
+          "paragraph": 573
+        },
+        {
+          "value": "10",
+          "paragraph": 573
+        },
+        {
+          "value": "-3",
+          "paragraph": 573
+        },
+        {
+          "value": "1.078217653",
+          "paragraph": 575
+        },
+        {
+          "value": "3.108239",
+          "paragraph": 578
+        },
+        {
+          "value": "1.080846644",
+          "paragraph": 579
+        },
+        {
+          "value": "1.064",
+          "paragraph": 580
+        },
+        {
+          "value": "10",
+          "paragraph": 580
+        },
+        {
+          "value": "-3",
+          "paragraph": 580
+        },
+        {
+          "value": "0.937299",
+          "paragraph": 581
+        },
+        {
+          "value": "1.078246080",
+          "paragraph": 582
+        },
+        {
+          "value": "0.135161",
+          "paragraph": 583
+        },
+        {
+          "value": "3.801386",
+          "paragraph": 585
+        },
+        {
+          "value": "1.081745009",
+          "paragraph": 586
+        },
+        {
+          "value": "8.984",
+          "paragraph": 587
+        },
+        {
+          "value": "10",
+          "paragraph": 587
+        },
+        {
+          "value": "-4",
+          "paragraph": 587
+        },
+        {
+          "value": "0.844646",
+          "paragraph": 588
+        },
+        {
+          "value": "1.078253756",
+          "paragraph": 589
+        },
+        {
+          "value": "0.270048",
+          "paragraph": 590
+        }
+      ],
+      "note": "Mapped by content: M4 prints both bases at exactly these four truncations and the same increment ratios; G1 prints the bracket column with gamma."
+    },
+    {
+      "quantity": "Table 6, rows N_h = 8640 to 1 105 920 (seven further doublings), panel (b) in full, and footnotes c and d",
+      "table": "6",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. The deposited chain stops at N_h = 4320: R4_unlock_out.txt returns NaN at 8640 with a singular-matrix warning, which the submitted footnote d identifies as the sinh overflow of the two-layer kernel. The submitted rows 8640 to 1 105 920, the smallest singular values of footnote c and the ratio 0.923624 come from a later run whose transcript is not in outputs/."
+    },
+    {
+      "quantity": "Table 7 panel (a): the divergent bracket under the locked chain",
+      "table": "7",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R4_UNLOCK.m + code/MEC_BLDC/RUN_G1_GAMMA.m",
+      "transcript": "outputs/MEC_BLDC/R4_unlock_out.txt + outputs/MEC_BLDC/G1_gamma_out.txt",
+      "date": "2026-08-26 (G1) / 2026-08-24 (R4 as deposited)",
+      "configuration": "locked chain N = floor(M_s/2), M_s = 540, 1080, 2160, 4320, 8640, P0 basis, linear solver mu_r = 3000",
+      "authoritative": true,
+      "block": "R4 section 1 (locked chain, M_s = 540..8640); G1 section 5 (ln pi + gamma)",
+      "values": [
+        {
+          "value": "1.721940",
+          "paragraph": 804
+        },
+        {
+          "value": "1.721944",
+          "paragraph": 810
+        },
+        {
+          "value": "1.721945",
+          "paragraph": 816
+        },
+        {
+          "value": "1.721945",
+          "paragraph": 822
+        },
+        {
+          "value": "1.721946",
+          "paragraph": 828
+        },
+        {
+          "value": "-0.21",
+          "paragraph": 834
+        }
+      ],
+      "note": "DERIVED COLUMN. R4 prints the bracket WITHOUT gamma (1.144724 ... 1.144730); G1 fixes the gamma convention and prints ln(pi)+gamma = 1.721946. The published column is R4 + gamma, an addition performed between the transcript and the table. Only 1.721944 (M_s = 1080) and 1.721946 (the limit) are printed as such."
+    },
+    {
+      "quantity": "Table 7 panel (b): the bore in both surface bases, locked chain, six tilings, and the four dispersions",
+      "table": "7",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_V1_PMSM_BASE.m",
+      "transcript": "outputs/MEC_BLDC/V1_pmsm_basis_out.txt",
+      "date": "2026-08-04 (docs/MANIFEST.md section 1)",
+      "configuration": "PMSM 15/14 750 W, locked chain numax = Nsurf/2 imposed by cogging_mec, six tilings 540..8640, P0 and P1 bases, kfringe = 0.325, linear solver",
+      "authoritative": true,
+      "block": "second block (the first aborts on an unrecognised field 'ths')",
+      "values": [
+        {
+          "value": "1.07390",
+          "paragraph": 849
+        },
+        {
+          "value": "1.07267",
+          "paragraph": 850
+        },
+        {
+          "value": "0.021761",
+          "paragraph": 851
+        },
+        {
+          "value": "0.023000",
+          "paragraph": 852
+        },
+        {
+          "value": "1.07865",
+          "paragraph": 855
+        },
+        {
+          "value": "1.07801",
+          "paragraph": 856
+        },
+        {
+          "value": "0.016944",
+          "paragraph": 857
+        },
+        {
+          "value": "0.017596",
+          "paragraph": 858
+        },
+        {
+          "value": "1.07755",
+          "paragraph": 861
+        },
+        {
+          "value": "1.07698",
+          "paragraph": 862
+        },
+        {
+          "value": "0.018062",
+          "paragraph": 863
+        },
+        {
+          "value": "0.018637",
+          "paragraph": 864
+        },
+        {
+          "value": "1.07793",
+          "paragraph": 867
+        },
+        {
+          "value": "1.07759",
+          "paragraph": 868
+        },
+        {
+          "value": "0.017672",
+          "paragraph": 869
+        },
+        {
+          "value": "0.018020",
+          "paragraph": 870
+        },
+        {
+          "value": "1.07759",
+          "paragraph": 873
+        },
+        {
+          "value": "1.07741",
+          "paragraph": 874
+        },
+        {
+          "value": "0.018014",
+          "paragraph": 875
+        },
+        {
+          "value": "0.018195",
+          "paragraph": 876
+        },
+        {
+          "value": "1.07743",
+          "paragraph": 879
+        },
+        {
+          "value": "1.07734",
+          "paragraph": 880
+        },
+        {
+          "value": "0.018180",
+          "paragraph": 881
+        },
+        {
+          "value": "0.018271",
+          "paragraph": 882
+        },
+        {
+          "value": "0.440",
+          "paragraph": 885
+        },
+        {
+          "value": "0.496",
+          "paragraph": 886
+        },
+        {
+          "value": "26.126",
+          "paragraph": 887
+        },
+        {
+          "value": "28.514",
+          "paragraph": 888
+        }
+      ],
+      "note": "Anchor supplied with the task and re-verified here cell by cell. The dispersions 0.440 / 0.496 / 26.126 / 28.514 % are reproduced independently on 2026-09-02 by code/revision/tiling_dispersion_integral.m -> outputs/revision/B1_tiling_dispersion_out.txt (non-regression gate passed)."
+    },
+    {
+      "quantity": "Table 7 panel (d), rows B_g1 and nu = 8: both bases against the finite-element reference at M_s = 1260",
+      "table": "7",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_V1_PMSM_BASE.m",
+      "transcript": "outputs/MEC_BLDC/V1_pmsm_basis_out.txt",
+      "date": "2026-08-04 (docs/MANIFEST.md section 1)",
+      "configuration": "M_s = 1260, N = 630, P0 and hat bases, linear solver mu_r = 3000, kfringe = 0.325",
+      "authoritative": true,
+      "block": "second block, row Nsurf = 1260",
+      "values": [
+        {
+          "value": "1.074551",
+          "paragraph": 900
+        },
+        {
+          "value": "1.077547",
+          "paragraph": 901
+        },
+        {
+          "value": "1.076981",
+          "paragraph": 903
+        },
+        {
+          "value": "0.019658",
+          "paragraph": 906
+        },
+        {
+          "value": "0.018062",
+          "paragraph": 907
+        },
+        {
+          "value": "0.018637",
+          "paragraph": 909
+        }
+      ],
+      "note": "The transcript prints five decimals where the table publishes six; the reference column 1.074551 / 0.019658 is printed there to four and five decimals only."
+    },
+    {
+      "quantity": "Table 7 panel (d), rows nu = 22 and flux linkage peak",
+      "table": "7",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED at submission. V1_pmsm_basis_out.txt carries neither nu = 22 nor the flux linkage: its columns are B_g1, |B_r| mean, B_r peak, B_t rms, nu = 8. The two hat-basis values 0.036196 and 0.261018 are in no transcript that predates the submission; lambda = 0.261206 (p.c.) and 0.261018 (hat) are reproduced on 2026-09-02 in outputs/revision/B1_tiling_dispersion_out.txt, after submission, and nu = 22 in either basis is still unattributed."
+    },
+    {
+      "quantity": "Table 8: verification of Proposition 1 on the two-layer annulus of the PMSM (panels a, b, c)",
+      "table": "8",
+      "figure": null,
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. docs/PROVENANCE.md sends its own Table 8 to outputs/annulus_reference/C3_truekernel_out.txt, but that block is the 48/44 INDUCTION-machine annulus (X_g = 2.971852e-03, L = 0.164782 m, increment per decade 3.035405e-07 H). The submitted Table 8 is the PMSM annulus (mu_r = 1.0390, L = 33.0 mm, increment 6.0788e-08 H). Different machine, different numbers: the mapping by number would have been wrong. The predicted slope 6.078825e-08 is printed in R4_unlock_out.txt, but none of the summed, closed-form or increment values of the three panels is in outputs/."
+    },
+    {
+      "quantity": "Table 9: angular mesh convergence at one layer per shoe sub-region",
+      "table": "9",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A2_TABLE5.m",
+      "transcript": "outputs/MEC_BLDC/A2_table5_out.txt",
+      "date": "2026-08-04 (docs/MANIFEST.md section 1)",
+      "configuration": "PMSM 15/14, n_sh = 1 (nine radial layers), n_st = 4, n_ys = 3, linear solver mu_r = 3000, kfringe = 0.325 (inert), P0 basis, rotor at phi = 0; reference B_g1 = 1.07455 T, nu=8 = 0.019659 T, L_d = 52.3415 mH",
+      "authoritative": true,
+      "block": "second block, panel 'Table 5(a) : n_sh = 1, solveur LINEAIRE'",
+      "values": [
+        {
+          "value": "+0.9",
+          "paragraph": 1016
+        },
+        {
+          "value": "+0.5",
+          "paragraph": 1017
+        },
+        {
+          "value": "-42.3",
+          "paragraph": 1018
+        },
+        {
+          "value": "2.209",
+          "paragraph": 1019
+        },
+        {
+          "value": "+0.4",
+          "paragraph": 1022
+        },
+        {
+          "value": "+0.2",
+          "paragraph": 1023
+        },
+        {
+          "value": "-19.8",
+          "paragraph": 1024
+        },
+        {
+          "value": "2.570",
+          "paragraph": 1025
+        },
+        {
+          "value": "+0.3",
+          "paragraph": 1028
+        },
+        {
+          "value": "+0.1",
+          "paragraph": 1029
+        },
+        {
+          "value": "-13.3",
+          "paragraph": 1030
+        },
+        {
+          "value": "2.699",
+          "paragraph": 1031
+        },
+        {
+          "value": "+0.2",
+          "paragraph": 1034
+        },
+        {
+          "value": "+2.5",
+          "paragraph": 1035
+        },
+        {
+          "value": "-9.7",
+          "paragraph": 1036
+        },
+        {
+          "value": "2.799",
+          "paragraph": 1037
+        }
+      ],
+      "note": "Mapped by content: same four tilings 180/360/540/900, same unknown counts, same three deviation columns and the same peak iron field. The first block of the transcript aborts on an unrecognised variable 'M'."
+    },
+    {
+      "quantity": "Table 10: angular sweep at four layers per shoe sub-region, both solvers",
+      "table": "10",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_X1_TABLE5B_RECONCILE.m",
+      "transcript": "outputs/MEC_BLDC/X1_table5b_reconcile_out.txt",
+      "date": "2026-08-05 (docs/MANIFEST.md section 1)",
+      "configuration": "PMSM 15/14, n_sh = 4 (fifteen radial layers), n_st = 4, n_ys = 3, linear mu_r = 3000 and exact Newton on bh_curve M350, P0 basis, numax = floor(M_s/2); reference nu=8 = 0.0196594150 T",
+      "authoritative": true,
+      "block": "section 3, 'Table 5(b) retenue : n_sh = 4'; the identification residuals come from section 2 of the same run",
+      "values": [
+        {
+          "value": "-26.8",
+          "paragraph": 1050
+        },
+        {
+          "value": "+10.3",
+          "paragraph": 1051
+        },
+        {
+          "value": "2.908",
+          "paragraph": 1052
+        },
+        {
+          "value": "1.928",
+          "paragraph": 1053
+        },
+        {
+          "value": "-21.6",
+          "paragraph": 1056
+        },
+        {
+          "value": "+15.0",
+          "paragraph": 1057
+        },
+        {
+          "value": "3.191",
+          "paragraph": 1058
+        },
+        {
+          "value": "1.979",
+          "paragraph": 1059
+        },
+        {
+          "value": "-18.8",
+          "paragraph": 1062
+        },
+        {
+          "value": "+23.8",
+          "paragraph": 1063
+        },
+        {
+          "value": "3.471",
+          "paragraph": 1064
+        },
+        {
+          "value": "2.013",
+          "paragraph": 1065
+        },
+        {
+          "value": "1",
+          "paragraph": 1067
+        },
+        {
+          "value": "4",
+          "paragraph": 1067
+        },
+        {
+          "value": "9.08",
+          "paragraph": 1067
+        },
+        {
+          "value": "2.78",
+          "paragraph": 1067
+        },
+        {
+          "value": "0.81",
+          "paragraph": 1067
+        },
+        {
+          "value": "0.06",
+          "paragraph": 1067
+        },
+        {
+          "value": "4",
+          "paragraph": 1067
+        }
+      ],
+      "note": "Mapped by content: the n_sh sweep of the transcript identifies n_sh = 4 with a maximum residual of 0.06 point over the six published cells, and the footnote's four residuals 9.08 / 2.78 / 0.81 / 0.06 are that identification."
+    },
+    {
+      "quantity": "Table 11: PMSM air-gap flux density at no load, spatial spectrum",
+      "table": "11",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_C4C_TABLE8.m",
+      "transcript": "outputs/MEC_BLDC/C4c_table8_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "PMSM 15/14, lumped network, mid-gap radius, kfringe = 0.325, reference read from the finite-element project",
+      "authoritative": true,
+      "block": "only block",
+      "values": [
+        {
+          "value": "1.0776",
+          "paragraph": 1080
+        },
+        {
+          "value": "1.0746",
+          "paragraph": 1081
+        },
+        {
+          "value": "0.0181",
+          "paragraph": 1085
+        },
+        {
+          "value": "0.0197",
+          "paragraph": 1086
+        },
+        {
+          "value": "0.2593",
+          "paragraph": 1090
+        },
+        {
+          "value": "0.2657",
+          "paragraph": 1091
+        },
+        {
+          "value": "0.0352",
+          "paragraph": 1095
+        },
+        {
+          "value": "0.0328",
+          "paragraph": 1096
+        },
+        {
+          "value": "0.0326",
+          "paragraph": 1100
+        },
+        {
+          "value": "0.0202",
+          "paragraph": 1101
+        },
+        {
+          "value": "0.1047",
+          "paragraph": 1105
+        },
+        {
+          "value": "0.1067",
+          "paragraph": 1106
+        },
+        {
+          "value": "0.0427",
+          "paragraph": 1110
+        },
+        {
+          "value": "0.0271",
+          "paragraph": 1111
+        }
+      ],
+      "note": "Mapped by content: the seven orders p, |N_s-p|, 3p, N_s+p, |2N_s-p|, 5p, 2N_s+p and their identification strings are the transcript's own rows."
+    },
+    {
+      "quantity": "Table 12: PMSM at no load, mesh at two shoe layerings, lumped counterpart and 2-D finite-element reference",
+      "table": "12",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A1_TABLE7.m",
+      "transcript": "outputs/MEC_BLDC/A1_table7_out.txt",
+      "date": "2026-08-04 (docs/MANIFEST.md section 1)",
+      "configuration": "PMSM 15/14, M_s = 540, N_p = 61 rotor positions, P0 basis, kfringe = 0.325 (inert in the mesh columns), linear solver mu_r = 3000; unknowns 5400 / 6480 / 1260 surface columns",
+      "authoritative": true,
+      "block": "LAST complete block (the transcript holds four starts; the earlier mesh columns return a peak phase EMF of exactly zero, the warm-start defect)",
+      "values": [
+        {
+          "value": "1.07787",
+          "paragraph": 1120
+        },
+        {
+          "value": "1.07908",
+          "paragraph": 1121
+        },
+        {
+          "value": "1.07755",
+          "paragraph": 1122
+        },
+        {
+          "value": "1.07455",
+          "paragraph": 1123
+        },
+        {
+          "value": "0.76182",
+          "paragraph": 1125
+        },
+        {
+          "value": "0.76273",
+          "paragraph": 1126
+        },
+        {
+          "value": "0.76147",
+          "paragraph": 1127
+        },
+        {
+          "value": "0.76091",
+          "paragraph": 1128
+        },
+        {
+          "value": "0.98051",
+          "paragraph": 1130
+        },
+        {
+          "value": "0.97536",
+          "paragraph": 1131
+        },
+        {
+          "value": "0.98600",
+          "paragraph": 1132
+        },
+        {
+          "value": "0.99073",
+          "paragraph": 1133
+        },
+        {
+          "value": "0.13755",
+          "paragraph": 1135
+        },
+        {
+          "value": "0.13478",
+          "paragraph": 1136
+        },
+        {
+          "value": "0.14317",
+          "paragraph": 1137
+        },
+        {
+          "value": "0.13326",
+          "paragraph": 1138
+        },
+        {
+          "value": "8",
+          "paragraph": 1139
+        },
+        {
+          "value": "0.01704",
+          "paragraph": 1140
+        },
+        {
+          "value": "0.01581",
+          "paragraph": 1141
+        },
+        {
+          "value": "0.01806",
+          "paragraph": 1142
+        },
+        {
+          "value": "0.01966",
+          "paragraph": 1143
+        },
+        {
+          "value": "0.00586",
+          "paragraph": 1145
+        },
+        {
+          "value": "0.00587",
+          "paragraph": 1146
+        },
+        {
+          "value": "0.00586",
+          "paragraph": 1147
+        },
+        {
+          "value": "0.00585",
+          "paragraph": 1148
+        },
+        {
+          "value": "0.25894",
+          "paragraph": 1150
+        },
+        {
+          "value": "0.25908",
+          "paragraph": 1151
+        },
+        {
+          "value": "0.26121",
+          "paragraph": 1152
+        },
+        {
+          "value": "0.25833",
+          "paragraph": 1153
+        },
+        {
+          "value": "761.674",
+          "paragraph": 1155
+        },
+        {
+          "value": "759.329",
+          "paragraph": 1156
+        },
+        {
+          "value": "762.912",
+          "paragraph": 1157
+        },
+        {
+          "value": "769.445",
+          "paragraph": 1158
+        },
+        {
+          "value": "711.386",
+          "paragraph": 1160
+        },
+        {
+          "value": "711.880",
+          "paragraph": 1161
+        },
+        {
+          "value": "725.064",
+          "paragraph": 1162
+        },
+        {
+          "value": "721.504",
+          "paragraph": 1163
+        },
+        {
+          "value": "6.369",
+          "paragraph": 1165
+        },
+        {
+          "value": "5.959",
+          "paragraph": 1166
+        },
+        {
+          "value": "6.810",
+          "paragraph": 1167
+        },
+        {
+          "value": "6.585",
+          "paragraph": 1168
+        },
+        {
+          "value": "238.813",
+          "paragraph": 1170
+        },
+        {
+          "value": "238.818",
+          "paragraph": 1171
+        },
+        {
+          "value": "240.877",
+          "paragraph": 1172
+        },
+        {
+          "value": "233.031",
+          "paragraph": 1173
+        },
+        {
+          "value": "464.556",
+          "paragraph": 1175
+        },
+        {
+          "value": "464.645",
+          "paragraph": 1176
+        },
+        {
+          "value": "468.719",
+          "paragraph": 1177
+        },
+        {
+          "value": "459.918",
+          "paragraph": 1178
+        },
+        {
+          "value": "50.379",
+          "paragraph": 1180
+        },
+        {
+          "value": "50.484",
+          "paragraph": 1181
+        },
+        {
+          "value": "50.773",
+          "paragraph": 1182
+        },
+        {
+          "value": "50.209",
+          "paragraph": 1183
+        },
+        {
+          "value": "-2.016",
+          "paragraph": 1185
+        },
+        {
+          "value": "-2.021",
+          "paragraph": 1186
+        },
+        {
+          "value": "-2.220",
+          "paragraph": 1187
+        },
+        {
+          "value": "-2.133",
+          "paragraph": 1188
+        },
+        {
+          "value": "52.395",
+          "paragraph": 1190
+        },
+        {
+          "value": "52.505",
+          "paragraph": 1191
+        },
+        {
+          "value": "52.993",
+          "paragraph": 1192
+        },
+        {
+          "value": "52.342",
+          "paragraph": 1193
+        },
+        {
+          "value": "1.07069",
+          "paragraph": 1195
+        },
+        {
+          "value": "1.06665",
+          "paragraph": 1196
+        },
+        {
+          "value": "1.05220",
+          "paragraph": 1197
+        },
+        {
+          "value": "1.08693",
+          "paragraph": 1198
+        },
+        {
+          "value": "0.85326",
+          "paragraph": 1200
+        },
+        {
+          "value": "0.85368",
+          "paragraph": 1201
+        },
+        {
+          "value": "0.85371",
+          "paragraph": 1202
+        },
+        {
+          "value": "0.86723",
+          "paragraph": 1203
+        },
+        {
+          "value": "6.5",
+          "paragraph": 1291
+        },
+        {
+          "value": "1.0664",
+          "paragraph": 1291
+        },
+        {
+          "value": "1.0869",
+          "paragraph": 1291
+        },
+        {
+          "value": "-1.49",
+          "paragraph": 1291
+        },
+        {
+          "value": "-1.87",
+          "paragraph": 1291
+        },
+        {
+          "value": "-3.20",
+          "paragraph": 1291
+        },
+        {
+          "value": "1.0664",
+          "paragraph": 1291
+        },
+        {
+          "value": "+0.40",
+          "paragraph": 1291
+        },
+        {
+          "value": "+0.02",
+          "paragraph": 1291
+        },
+        {
+          "value": "-1.34",
+          "paragraph": 1291
+        }
+      ],
+      "note": "Anchor supplied with the task (published there as 'Table 12/13') and re-verified: the seventeen quantities and the four columns are the transcript's last block. The footnote's 0.32 and 0.14 percentage points are the two cells marked SENSIBLE in outputs/MEC_BLDC/C4_ecarts_out.txt (0.318 and 0.136)."
+    },
+    {
+      "quantity": "Table 13: magnet eddy-current losses at no load, two field sources",
+      "table": "13",
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A3_PMLOSS.m",
+      "transcript": "outputs/MEC_BLDC/A3_pmloss_out.txt",
+      "date": "2026-08-04 (docs/MANIFEST.md section 1)",
+      "configuration": "frozen chain pm_loss, N_p = 241, 1688 rpm, sigma_pm = 555556 S/m, kfringe = 0.325",
+      "authoritative": true,
+      "block": "section 'A VIDE'",
+      "values": [
+        {
+          "value": "0.2036",
+          "paragraph": 1298
+        },
+        {
+          "value": "0.334",
+          "paragraph": 1299
+        },
+        {
+          "value": "-39.1",
+          "paragraph": 1300
+        },
+        {
+          "value": "0.2516",
+          "paragraph": 1302
+        },
+        {
+          "value": "0.334",
+          "paragraph": 1303
+        },
+        {
+          "value": "-24.7",
+          "paragraph": 1304
+        }
+      ],
+      "note": "Mapped by content: 'reseau a une dent' and 'MAILLAGE polaire' are the two rows. outputs/MEC_BLDC/A3_pmloss_prefix_out.txt is the pre-sign-correction copy and is exploratory. The provenance of the value published elsewhere for this quantity is in outputs/MEC_BLDC/D1_pmloss_chain_out.txt."
+    },
+    {
+      "quantity": "Table 14: where the sweep deviation originates, quasi-static against settled phase current",
+      "table": "14",
+      "figure": null,
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited; master run 677 s)",
+      "configuration": "PMSM 15/14, 500 V dc six-step, saturable maps, drive_mec current loop; tau = L/2R = 5.19 ms against a 9.83 ms electrical period at 872 rpm",
+      "authoritative": true,
+      "block": "section 6b, the five-row quasi-static panel",
+      "values": [
+        {
+          "value": "297",
+          "paragraph": 1325
+        },
+        {
+          "value": "93",
+          "paragraph": 1326
+        },
+        {
+          "value": "19.91",
+          "paragraph": 1327
+        },
+        {
+          "value": "17.76",
+          "paragraph": 1328
+        },
+        {
+          "value": "19.45",
+          "paragraph": 1329
+        },
+        {
+          "value": "584",
+          "paragraph": 1330
+        },
+        {
+          "value": "183",
+          "paragraph": 1331
+        },
+        {
+          "value": "15.51",
+          "paragraph": 1332
+        },
+        {
+          "value": "11.57",
+          "paragraph": 1333
+        },
+        {
+          "value": "14.63",
+          "paragraph": 1334
+        },
+        {
+          "value": "872",
+          "paragraph": 1335
+        },
+        {
+          "value": "273",
+          "paragraph": 1336
+        },
+        {
+          "value": "11.12",
+          "paragraph": 1337
+        },
+        {
+          "value": "5.59",
+          "paragraph": 1338
+        },
+        {
+          "value": "9.14",
+          "paragraph": 1339
+        },
+        {
+          "value": "1159",
+          "paragraph": 1340
+        },
+        {
+          "value": "362",
+          "paragraph": 1341
+        },
+        {
+          "value": "6.73",
+          "paragraph": 1342
+        },
+        {
+          "value": "2.51",
+          "paragraph": 1343
+        },
+        {
+          "value": "3.73",
+          "paragraph": 1344
+        },
+        {
+          "value": "1446",
+          "paragraph": 1345
+        },
+        {
+          "value": "452",
+          "paragraph": 1346
+        },
+        {
+          "value": "2.33",
+          "paragraph": 1347
+        },
+        {
+          "value": "0.82",
+          "paragraph": 1348
+        },
+        {
+          "value": "1.10",
+          "paragraph": 1349
+        }
+      ],
+      "note": "Mapped by content: the five speeds 297/584/872/1159/1446 and the three current columns are the transcript's own panel."
+    },
+    {
+      "quantity": "Table 15 upper panel: seven representative points of the speed sweep at a 500 V dc bus",
+      "table": "15",
+      "figure": null,
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "30 points from 10 to 1676 rpm, 500 V dc bus, six-step",
+      "authoritative": true,
+      "block": "section 6b, the thirty-point sweep table",
+      "values": [
+        {
+          "value": "10",
+          "paragraph": 1365
+        },
+        {
+          "value": "30.68",
+          "paragraph": 1366
+        },
+        {
+          "value": "29.23",
+          "paragraph": 1367
+        },
+        {
+          "value": "32",
+          "paragraph": 1368
+        },
+        {
+          "value": "31",
+          "paragraph": 1369
+        },
+        {
+          "value": "19.80",
+          "paragraph": 1370
+        },
+        {
+          "value": "24.35",
+          "paragraph": 1371
+        },
+        {
+          "value": "11",
+          "paragraph": 1372
+        },
+        {
+          "value": "1",
+          "paragraph": 1373
+        },
+        {
+          "value": "297",
+          "paragraph": 1374
+        },
+        {
+          "value": "23.10",
+          "paragraph": 1375
+        },
+        {
+          "value": "24.03",
+          "paragraph": 1376
+        },
+        {
+          "value": "719",
+          "paragraph": 1377
+        },
+        {
+          "value": "748",
+          "paragraph": 1378
+        },
+        {
+          "value": "14.50",
+          "paragraph": 1379
+        },
+        {
+          "value": "15.88",
+          "paragraph": 1380
+        },
+        {
+          "value": "289",
+          "paragraph": 1381
+        },
+        {
+          "value": "182",
+          "paragraph": 1382
+        },
+        {
+          "value": "584",
+          "paragraph": 1383
+        },
+        {
+          "value": "17.47",
+          "paragraph": 1384
+        },
+        {
+          "value": "20.49",
+          "paragraph": 1385
+        },
+        {
+          "value": "1069",
+          "paragraph": 1386
+        },
+        {
+          "value": "1254",
+          "paragraph": 1387
+        },
+        {
+          "value": "9.44",
+          "paragraph": 1388
+        },
+        {
+          "value": "11.95",
+          "paragraph": 1389
+        },
+        {
+          "value": "458",
+          "paragraph": 1390
+        },
+        {
+          "value": "325",
+          "paragraph": 1391
+        },
+        {
+          "value": "872",
+          "paragraph": 1392
+        },
+        {
+          "value": "11.70",
+          "paragraph": 1393
+        },
+        {
+          "value": "16.38",
+          "paragraph": 1394
+        },
+        {
+          "value": "1068",
+          "paragraph": 1395
+        },
+        {
+          "value": "1495",
+          "paragraph": 1396
+        },
+        {
+          "value": "4.56",
+          "paragraph": 1397
+        },
+        {
+          "value": "7.46",
+          "paragraph": 1398
+        },
+        {
+          "value": "492",
+          "paragraph": 1399
+        },
+        {
+          "value": "444",
+          "paragraph": 1400
+        },
+        {
+          "value": "1159",
+          "paragraph": 1401
+        },
+        {
+          "value": "6.66",
+          "paragraph": 1402
+        },
+        {
+          "value": "9.20",
+          "paragraph": 1403
+        },
+        {
+          "value": "808",
+          "paragraph": 1404
+        },
+        {
+          "value": "1116",
+          "paragraph": 1405
+        },
+        {
+          "value": "2.05",
+          "paragraph": 1406
+        },
+        {
+          "value": "3.04",
+          "paragraph": 1407
+        },
+        {
+          "value": "477",
+          "paragraph": 1408
+        },
+        {
+          "value": "468",
+          "paragraph": 1409
+        },
+        {
+          "value": "1446",
+          "paragraph": 1410
+        },
+        {
+          "value": "2.27",
+          "paragraph": 1411
+        },
+        {
+          "value": "2.96",
+          "paragraph": 1412
+        },
+        {
+          "value": "344",
+          "paragraph": 1413
+        },
+        {
+          "value": "449",
+          "paragraph": 1414
+        },
+        {
+          "value": "0.67",
+          "paragraph": 1415
+        },
+        {
+          "value": "0.90",
+          "paragraph": 1416
+        },
+        {
+          "value": "487",
+          "paragraph": 1417
+        },
+        {
+          "value": "482",
+          "paragraph": 1418
+        },
+        {
+          "value": "1676",
+          "paragraph": 1419
+        },
+        {
+          "value": "-0.08",
+          "paragraph": 1420
+        },
+        {
+          "value": "0.09",
+          "paragraph": 1421
+        },
+        {
+          "value": "-13",
+          "paragraph": 1422
+        },
+        {
+          "value": "16",
+          "paragraph": 1423
+        },
+        {
+          "value": "0.03",
+          "paragraph": 1424
+        },
+        {
+          "value": "0.04",
+          "paragraph": 1425
+        },
+        {
+          "value": "501",
+          "paragraph": 1426
+        },
+        {
+          "value": "499",
+          "paragraph": 1427
+        }
+      ],
+      "note": "Mapped by content: identical seven speeds and five column pairs."
+    },
+    {
+      "quantity": "Table 15 lower panel: anchors of the characteristic and the mean deviations over the 28 points above 100 rpm",
+      "table": "15",
+      "figure": null,
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m + code/MEC_BLDC/RUN_R7_SCORECARD.m + code/MEC_BLDC/RUN_G4_POINTS.m",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt + outputs/MEC_BLDC/R7_scorecard_out.txt + outputs/MEC_BLDC/G4_points_out.txt",
+      "date": "2026-08-24 (master, R7) / 2026-08-26 (G4)",
+      "configuration": "same sweep; the peak-efficiency row is reported in points per the rule of Section 5.3, which is what G4 computes",
+      "authoritative": true,
+      "block": "master section 6b (anchors and mean deviations); R7 rows 27 and 29; G4 row 29 in points",
+      "values": [
+        {
+          "value": "30.68",
+          "paragraph": 1434
+        },
+        {
+          "value": "29.23",
+          "paragraph": 1435
+        },
+        {
+          "value": "+4.95",
+          "paragraph": 1436
+        },
+        {
+          "value": "1658",
+          "paragraph": 1438
+        },
+        {
+          "value": "1680",
+          "paragraph": 1439
+        },
+        {
+          "value": "1115",
+          "paragraph": 1442
+        },
+        {
+          "value": "1495",
+          "paragraph": 1443
+        },
+        {
+          "value": "642",
+          "paragraph": 1446
+        },
+        {
+          "value": "929",
+          "paragraph": 1447
+        },
+        {
+          "value": "312.8",
+          "paragraph": 1450
+        },
+        {
+          "value": "323.6",
+          "paragraph": 1451
+        },
+        {
+          "value": "85.45",
+          "paragraph": 1454
+        },
+        {
+          "value": "89.43",
+          "paragraph": 1455
+        },
+        {
+          "value": "-3.99",
+          "paragraph": 1456
+        },
+        {
+          "value": "25.8",
+          "paragraph": 1459
+        },
+        {
+          "value": "25.3",
+          "paragraph": 1461
+        },
+        {
+          "value": "24.8",
+          "paragraph": 1463
+        },
+        {
+          "value": "38.1",
+          "paragraph": 1465
+        },
+        {
+          "value": "22.1",
+          "paragraph": 1467
+        },
+        {
+          "value": "6.1",
+          "paragraph": 1469
+        },
+        {
+          "value": "15.1",
+          "paragraph": 1471
+        },
+        {
+          "value": "57.44",
+          "paragraph": 1474
+        },
+        {
+          "value": "100",
+          "paragraph": 1474
+        },
+        {
+          "value": "10",
+          "paragraph": 1474
+        },
+        {
+          "value": "67.4",
+          "paragraph": 1474
+        }
+      ],
+      "note": "Mapped by content: 'puissance max', 'couple a l'arret', 'vitesse a vide' and the mean-deviation line of the master transcript, with the two efficiency figures carried in points by G4 (-3.986350 p.p.)."
+    },
+    {
+      "quantity": "Table 16: PMSM on-load transient, steady state",
+      "table": "16",
+      "figure": null,
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "registration +143.49 deg electrical established on the flux linkage at no load and held fixed; saturable maps L_line 104.3 -> 12.1 mH; the two columns are at different speeds",
+      "authoritative": true,
+      "block": "section 5b, the full-precision panel saved as T10_full.mat",
+      "values": [
+        {
+          "value": "1257",
+          "paragraph": 1483
+        },
+        {
+          "value": "1340",
+          "paragraph": 1484
+        },
+        {
+          "value": "-6.2",
+          "paragraph": 1485
+        },
+        {
+          "value": "651.5",
+          "paragraph": 1487
+        },
+        {
+          "value": "682.8",
+          "paragraph": 1488
+        },
+        {
+          "value": "-4.6",
+          "paragraph": 1489
+        },
+        {
+          "value": "4.949",
+          "paragraph": 1491
+        },
+        {
+          "value": "4.867",
+          "paragraph": 1492
+        },
+        {
+          "value": "+1.7",
+          "paragraph": 1493
+        },
+        {
+          "value": "69.43",
+          "paragraph": 1495
+        },
+        {
+          "value": "71.56",
+          "paragraph": 1496
+        },
+        {
+          "value": "-3.0",
+          "paragraph": 1497
+        },
+        {
+          "value": "1.419",
+          "paragraph": 1499
+        },
+        {
+          "value": "1.552",
+          "paragraph": 1500
+        },
+        {
+          "value": "-8.6",
+          "paragraph": 1501
+        },
+        {
+          "value": "1.505",
+          "paragraph": 1503
+        },
+        {
+          "value": "1.528",
+          "paragraph": 1504
+        },
+        {
+          "value": "-1.5",
+          "paragraph": 1505
+        },
+        {
+          "value": "19.08",
+          "paragraph": 1507
+        },
+        {
+          "value": "18.47",
+          "paragraph": 1508
+        },
+        {
+          "value": "+3.3",
+          "paragraph": 1509
+        },
+        {
+          "value": "1.578",
+          "paragraph": 1511
+        },
+        {
+          "value": "3.183",
+          "paragraph": 1512
+        },
+        {
+          "value": "-50.4",
+          "paragraph": 1513
+        },
+        {
+          "value": "86.33",
+          "paragraph": 1515
+        },
+        {
+          "value": "86.51",
+          "paragraph": 1516
+        },
+        {
+          "value": "-0.2",
+          "paragraph": 1517
+        }
+      ],
+      "note": "Mapped by content: the nine rows are the transcript's own full-precision panel. Footnote c ('this row moved from 1.593 W') is the sign correction recorded in outputs/MEC_BLDC/D1_pmloss_chain_prefix_out.txt; outputs/MEC_BLDC/en.txt, fr.txt and outF.txt are the pre-correction copies of this master transcript and are superseded."
+    },
+    {
+      "quantity": "Table 17: harmonic comparison of the cogging torque",
+      "table": "17",
+      "figure": null,
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "model samples one pole pitch at 840 positions; magnetostatic reference remeshed at 360 positions over the revolution; only multiples of lcm(15,14) = 210 admissible",
+      "authoritative": true,
+      "block": "section 7, 'COMPARAISON HARMONIQUE DU COUPLE DE DETENTE (A vs B)'",
+      "values": [
+        {
+          "value": "1.255",
+          "paragraph": 1526
+        },
+        {
+          "value": "220.2",
+          "paragraph": 1527
+        },
+        {
+          "value": "210",
+          "paragraph": 1529
+        },
+        {
+          "value": "42",
+          "paragraph": 1530
+        },
+        {
+          "value": "0.628",
+          "paragraph": 1532
+        },
+        {
+          "value": "77.07",
+          "paragraph": 1533
+        },
+        {
+          "value": "100.0",
+          "paragraph": 1538
+        },
+        {
+          "value": "0.0",
+          "paragraph": 1539
+        },
+        {
+          "value": "0.0",
+          "paragraph": 1541
+        },
+        {
+          "value": "90.1",
+          "paragraph": 1542
+        },
+        {
+          "value": "0.0",
+          "paragraph": 1544
+        },
+        {
+          "value": "1.1",
+          "paragraph": 1545
+        },
+        {
+          "value": "0.0",
+          "paragraph": 1547
+        },
+        {
+          "value": "8.7",
+          "paragraph": 1548
+        },
+        {
+          "value": "5880",
+          "paragraph": 1550
+        },
+        {
+          "value": "180",
+          "paragraph": 1551
+        }
+      ],
+      "note": "Mapped by content. ONE CELL DOES NOT MATCH: the table publishes an angular Nyquist order of 5880 for the model, the transcript prints 5866. The reference column (180) matches. Reported, not adjusted."
+    },
+    {
+      "quantity": "Figure 1: cross-section of the 750 W 15/14 PMSM",
+      "table": null,
+      "figure": "1",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. A geometry drawing, not a computed result. The deposit holds code/article/figures/fig_machines.pdf, but the earlier manuscript's caption for it is 'Cross-sections of the TWO machines, to scale', so it is not the submitted single-machine figure and is not claimed as its source."
+    },
+    {
+      "quantity": "Figure 2: geometry of the two-layer annulus",
+      "table": null,
+      "figure": "2",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Schematic. code/article/figures/fig_annulus.pdf carries the same caption in the earlier manuscript source, but no run produces it and no transcript is claimed."
+    },
+    {
+      "quantity": "Figure 3: the four-branch cell",
+      "table": null,
+      "figure": "3",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Schematic; code/article/figures/fig_cell.pdf. No computed quantity, no chain."
+    },
+    {
+      "quantity": "Figure 4: radial layering of the stator mesh",
+      "table": null,
+      "figure": "4",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Schematic; code/article/figures/fig_mesh.pdf. No computed quantity, no chain."
+    },
+    {
+      "quantity": "Figure 5: solution chain",
+      "table": null,
+      "figure": "5",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Schematic; code/article/figures/fig_chain.pdf. No computed quantity, no chain."
+    },
+    {
+      "quantity": "Figure 6: the two comparison axes of Section 5.1",
+      "table": null,
+      "figure": "6",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Schematic; code/article/figures/fig_protocol.pdf. No computed quantity, no chain."
+    },
+    {
+      "quantity": "Figure 7: convergence diagnostics of the released sweep of Table 6",
+      "table": null,
+      "figure": "7",
+      "script": "",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "NOT ATTRIBUTED. It plots the released sweep of Table 6 at M_s = 1080 over eleven doublings; the deposited chain stops at N_h = 4320 (see T6b). No figure file of that content exists in code/article/figures/."
+    },
+    {
+      "quantity": "Figure 8: air-gap flux density at no load, DtN operator against 2-D FEA",
+      "table": null,
+      "figure": "8",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG1_champ)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "PMSM 15/14 at no load, lumped iron model, mid-gap radius",
+      "authoritative": true,
+      "block": "sections 1-2 of the master run",
+      "values": [],
+      "note": "Mapped by content and by the export name printed in the transcript ('BLDC_FIG1_champ - champ d'entrefer (Br, Bt, spectre)'). File code/article/figures/BLDC_FIG1_champ.pdf."
+    },
+    {
+      "quantity": "Figure 9: internal magnetic circuit, magnetomotive force per magnet and per gap",
+      "table": null,
+      "figure": "9",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG2_circuit)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "lumped iron model; k_r computed retaining the outlying gap MMF mmf_g1 = 531 A, second reference 1.0664 excluding it",
+      "authoritative": true,
+      "block": "section 3 of the master run",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG2_circuit."
+    },
+    {
+      "quantity": "Figure 10: back-electromotive force and flux linkage at 1500 rpm",
+      "table": null,
+      "figure": "10",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG3_bemf)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "single angular registration +143.49 deg electrical established on the flux linkage; residual optimal shift -0.5 deg",
+      "authoritative": true,
+      "block": "section 4 of the master run",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG3_bemf."
+    },
+    {
+      "quantity": "Figure 11: synthesis of the PMSM validation, the twenty-nine deviations",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m + code/MEC_BLDC/RUN_G4_POINTS.m (+ code/MEC_BLDC/BLDC_MEC_COMPLET.m savefigure BLDC_FIG7_scorecard)",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt + outputs/MEC_BLDC/G4_points_out.txt",
+      "date": "2026-08-24 (R7) / 2026-08-26 (G4)",
+      "configuration": "lumped iron model throughout; threshold |deviation| < 5 % strict; rows 25 and 29 reported in points per Section 5.3",
+      "authoritative": true,
+      "block": "R7 sections 1 to 6; G4 in full",
+      "values": [],
+      "note": "The twenty-nine bars are the twenty-nine rows tabulated in code/revision/annex_29_quantities.md. Both published counts re-derived there. outputs/MEC_BLDC/R7_scorecard_prefix_out.txt is the earlier 155 s run and is superseded by the 679 s run."
+    },
+    {
+      "quantity": "Figure 12: saturation curves L(i) and psi(i) from the map",
+      "table": null,
+      "figure": "12",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG5_3_saturation)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "line inductance 104.3 mH at 0 A to 12.1 mH at 25 A; psi_ab 3.01 to 0.68 Wb/rad",
+      "authoritative": true,
+      "block": "section 5b, saturation line",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG5_3_saturation. The map itself is audited in outputs/MEC_BLDC/R6_satmap_out.txt and R6a_grid_out.txt."
+    },
+    {
+      "quantity": "Figure 13: on-load transient, speed, phase current, steady-state current and dc-bus current",
+      "table": null,
+      "figure": "13",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG5_1_transient)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "MEC drive model, 500 V dc six-step, load torque 4.8 N m",
+      "authoritative": true,
+      "block": "section 5b of the master run",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG5_1_transient ('transitoire electrique (4 vues)')."
+    },
+    {
+      "quantity": "Figure 14: on-load transient, conversion and losses",
+      "table": null,
+      "figure": "14",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG5_2_conversion)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "power balance in the ANSYS definition; efficiency by (37) in both columns",
+      "authoritative": true,
+      "block": "section 5b, power balance",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG5_2_conversion ('conversion et pertes (4 vues)')."
+    },
+    {
+      "quantity": "Figure 15: speed sweep at constant dc-bus voltage",
+      "table": null,
+      "figure": "15",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG6_balayage)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "30 points, 10 to 1676 rpm, 500 V dc; 'BEMF' is the terminal envelope Vdc - 2Ri, not the back-EMF",
+      "authoritative": true,
+      "block": "sections 6 and 6b",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG6_balayage."
+    },
+    {
+      "quantity": "Figure 16: cogging torque of the PMSM",
+      "table": null,
+      "figure": "16",
+      "script": "code/MEC_BLDC/BLDC_MEC_COMPLET.m (savefigure BLDC_FIG4_detente)",
+      "transcript": "outputs/MEC_BLDC/BLDC_MEC_COMPLET_out.txt",
+      "date": "2026-08-24 (as deposited)",
+      "configuration": "magnetostatic reference remeshed at 360 positions; surrogate with identical amplitude spectrum; C3 block for the sigma multiples",
+      "authoritative": true,
+      "block": "section 7 of the master run",
+      "values": [],
+      "note": "Mapped by content and by the printed export name BLDC_FIG4_detente. The sigma-multiple analysis of the same figure is in outputs/MEC_BLDC/C3_sigma_out.txt (RUN_C3_SIGMA.m)."
+    },
+    {
+      "quantity": "Compared quantity 1 of 29: Fundamental air-gap flux density B_g1 (T)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1.07755",
+          "role": "model"
+        },
+        {
+          "value": "1.07455",
+          "role": "reference"
+        },
+        {
+          "value": "+0.2788",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 1 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 2 of 29: Mean air-gap flux density |B_r| (T)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.761473",
+          "role": "model"
+        },
+        {
+          "value": "0.760909",
+          "role": "reference"
+        },
+        {
+          "value": "+0.0741",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 2 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 3 of 29: Peak air-gap flux density B_r (T)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.984576",
+          "role": "model"
+        },
+        {
+          "value": "0.990727",
+          "role": "reference"
+        },
+        {
+          "value": "-0.6208",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 3 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 4 of 29: Tangential air-gap flux density B_t, rms (T)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.143165",
+          "role": "model"
+        },
+        {
+          "value": "0.133238",
+          "role": "reference"
+        },
+        {
+          "value": "+7.4505",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 4 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 5 of 29: Flux-line value A, peak (Wb/m)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.00585972",
+          "role": "model"
+        },
+        {
+          "value": "0.00585343",
+          "role": "reference"
+        },
+        {
+          "value": "+0.1074",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 5 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 6 of 29: Magnetomotive force per magnet, mean (A)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "763.243",
+          "role": "model"
+        },
+        {
+          "value": "769.445",
+          "role": "reference"
+        },
+        {
+          "value": "-0.8061",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 6 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 7 of 29: Magnetomotive force per gap, mean (A)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "723.829",
+          "role": "model"
+        },
+        {
+          "value": "721.504",
+          "role": "reference"
+        },
+        {
+          "value": "+0.3223",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 7 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 8 of 29: Magnet magnetomotive force, dispersion (%)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load field and internal magnetic circuit (master run, sections 1-3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "6.8073",
+          "role": "model"
+        },
+        {
+          "value": "6.58458",
+          "role": "reference"
+        },
+        {
+          "value": "+3.3826",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 8 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 9 of 29: Reluctance factor k_r (-)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "reluctance and leakage factors (master run, section 3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1.05445",
+          "role": "model"
+        },
+        {
+          "value": "1.08693",
+          "role": "reference"
+        },
+        {
+          "value": "-2.9880",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 9 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 10 of 29: Leakage factor k_l (-)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "reluctance and leakage factors (master run, section 3); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.853766",
+          "role": "model"
+        },
+        {
+          "value": "0.86723",
+          "role": "reference"
+        },
+        {
+          "value": "-1.5525",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 10 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 11 of 29: Self inductance L_a (mH)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "inductances (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "50.8159",
+          "role": "model"
+        },
+        {
+          "value": "50.2086",
+          "role": "reference"
+        },
+        {
+          "value": "+1.2096",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 11 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 12 of 29: Mutual inductance M (mH)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "inductances (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "-2.22152",
+          "role": "model"
+        },
+        {
+          "value": "-2.13292",
+          "role": "reference"
+        },
+        {
+          "value": "+4.1538",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 12 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 13 of 29: Synchronous inductance L_d (mH)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "inductances (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "53.0374",
+          "role": "model"
+        },
+        {
+          "value": "52.3415",
+          "role": "reference"
+        },
+        {
+          "value": "+1.3295",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 13 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 14 of 29: Phase back-electromotive force, peak (V)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "back-EMF and flux linkage at 1500 rpm (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "240.936",
+          "role": "model"
+        },
+        {
+          "value": "233.031",
+          "role": "reference"
+        },
+        {
+          "value": "+3.3925",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 14 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 15 of 29: Six-step envelope, peak (V)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "back-EMF and flux linkage at 1500 rpm (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "469.262",
+          "role": "model"
+        },
+        {
+          "value": "459.918",
+          "role": "reference"
+        },
+        {
+          "value": "+2.0315",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 15 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 16 of 29: Flux linkage, peak (Wb)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "back-EMF and flux linkage at 1500 rpm (master run, section 4); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.261206",
+          "role": "model"
+        },
+        {
+          "value": "0.258328",
+          "role": "reference"
+        },
+        {
+          "value": "+1.1139",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 16 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 17 of 29: Electromagnetic torque on load (N m)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "4.94901",
+          "role": "model"
+        },
+        {
+          "value": "4.86664",
+          "role": "reference"
+        },
+        {
+          "value": "+1.6925",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 17 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 18 of 29: Phase current, rms, on load (A)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1.41857",
+          "role": "model"
+        },
+        {
+          "value": "1.55162",
+          "role": "reference"
+        },
+        {
+          "value": "-8.5752",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 18 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 19 of 29: Iron loss at no load (W)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load losses (master run, section 5); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "21.3358",
+          "role": "model"
+        },
+        {
+          "value": "19.7298",
+          "role": "reference"
+        },
+        {
+          "value": "+8.1401",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 19 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 20 of 29: Magnet eddy-current loss at no load (W)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "no-load losses (master run, section 5); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "0.212037",
+          "role": "model"
+        },
+        {
+          "value": "0.333466",
+          "role": "reference"
+        },
+        {
+          "value": "-36.4143",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 20 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 21 of 29: Settled speed on load (rpm)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1257.03",
+          "role": "model"
+        },
+        {
+          "value": "1339.83",
+          "role": "reference"
+        },
+        {
+          "value": "-6.1797",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 21 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 22 of 29: Mean dc-bus current (A)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1.42741",
+          "role": "model"
+        },
+        {
+          "value": "1.65746",
+          "role": "reference"
+        },
+        {
+          "value": "-13.8796",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 22 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 23 of 29: Iron loss on load (W)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "19.083",
+          "role": "model"
+        },
+        {
+          "value": "18.465",
+          "role": "reference"
+        },
+        {
+          "value": "+3.3471",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 23 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 24 of 29: Magnet eddy-current loss on load (W)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1.57752",
+          "role": "model"
+        },
+        {
+          "value": "3.18268",
+          "role": "reference"
+        },
+        {
+          "value": "-50.4342",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 24 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 25 of 29: Efficiency on load (%)",
+      "table": null,
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m + code/MEC_BLDC/RUN_G4_POINTS.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt + outputs/MEC_BLDC/G4_points_out.txt",
+      "date": "2026-08-24 (R7) / 2026-08-26 (G4)",
+      "configuration": "on-load transient, steady state (master run, section 5b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1 + G4 section 'les deux lignes de rendement'",
+      "values": [
+        {
+          "value": "86.334",
+          "role": "model"
+        },
+        {
+          "value": "86.5148",
+          "role": "reference"
+        },
+        {
+          "value": "-0.2089",
+          "role": "deviation_pct"
+        },
+        {
+          "value": "86.3340330680",
+          "role": "model_full_precision"
+        },
+        {
+          "value": "86.5147786624",
+          "role": "reference_full_precision"
+        },
+        {
+          "value": "-0.180746",
+          "role": "deviation_points"
+        }
+      ],
+      "note": "Row 25 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values. Reported in points per Section 5.3: G4 gives -0.180746 p.p."
+    },
+    {
+      "quantity": "Compared quantity 26 of 29: Back-electromotive-force constant k_E (mV/rpm)",
+      "table": "15",
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "speed sweep at 500 V dc (master run, sections 6-6b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "312.841",
+          "role": "model"
+        },
+        {
+          "value": "323.644",
+          "role": "reference"
+        },
+        {
+          "value": "-3.3380",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 26 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 27 of 29: Standstill torque, speed sweep (N m)",
+      "table": "15",
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "speed sweep at 500 V dc (master run, sections 6-6b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "30.6807",
+          "role": "model"
+        },
+        {
+          "value": "29.2331",
+          "role": "reference"
+        },
+        {
+          "value": "+4.9520",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 27 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 28 of 29: Peak power, speed sweep (W)",
+      "table": "15",
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt",
+      "date": "2026-08-24 (R7)",
+      "configuration": "speed sweep at 500 V dc (master run, sections 6-6b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1",
+      "values": [
+        {
+          "value": "1115.07",
+          "role": "model"
+        },
+        {
+          "value": "1495.27",
+          "role": "reference"
+        },
+        {
+          "value": "-25.4270",
+          "role": "deviation_pct"
+        }
+      ],
+      "note": "Row 28 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values."
+    },
+    {
+      "quantity": "Compared quantity 29 of 29: Peak efficiency, speed sweep (%)",
+      "table": "15",
+      "figure": "11",
+      "script": "code/MEC_BLDC/RUN_R7_SCORECARD.m + code/MEC_BLDC/RUN_G4_POINTS.m",
+      "transcript": "outputs/MEC_BLDC/R7_scorecard_out.txt + outputs/MEC_BLDC/G4_points_out.txt",
+      "date": "2026-08-24 (R7) / 2026-08-26 (G4)",
+      "configuration": "speed sweep at 500 V dc (master run, sections 6-6b); lumped iron model; threshold |dev| < 5 % strict",
+      "authoritative": true,
+      "block": "R7 section 1 + G4 section 'les deux lignes de rendement'",
+      "values": [
+        {
+          "value": "85.4456",
+          "role": "model"
+        },
+        {
+          "value": "89.4319",
+          "role": "reference"
+        },
+        {
+          "value": "-4.4574",
+          "role": "deviation_pct"
+        },
+        {
+          "value": "85.4455763512",
+          "role": "model_full_precision"
+        },
+        {
+          "value": "89.4319268475",
+          "role": "reference_full_precision"
+        },
+        {
+          "value": "-3.986350",
+          "role": "deviation_points"
+        }
+      ],
+      "note": "Row 29 of the recount. Produced inside the master run and re-counted by R7; the deviation is formed on full-precision values. Reported in points per Section 5.3: G4 gives -3.986350 p.p."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_A4_IRONLOSS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A4_IRONLOSS.m",
+      "transcript": "outputs/MEC_BLDC/A4_ironloss_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_A5BIS_MUTUAL.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A5BIS_MUTUAL.m",
+      "transcript": "outputs/MEC_BLDC/A5bis_mutual_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_A5_LUMPED.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A5_LUMPED.m",
+      "transcript": "outputs/MEC_BLDC/A5_lumped_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_A8.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_A8.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_ARMSAT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_ARMSAT.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_ARTICLE_TABLES.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_ARTICLE_TABLES.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_BEMF.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_BEMF.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_C3_SIGMA.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_C3_SIGMA.m",
+      "transcript": "outputs/MEC_BLDC/C3_sigma_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_C4_ECARTS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_C4_ECARTS.m",
+      "transcript": "outputs/MEC_BLDC/C4_ecarts_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_CONV.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_CONV.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_EMUL.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_EMUL.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_FEA.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_FEA.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_MATCH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_MATCH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COG_ORDER42.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COG_ORDER42.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_COMPARE_ALL.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_COMPARE_ALL.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_D1_PMLOSS_CHAIN.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_D1_PMLOSS_CHAIN.m",
+      "transcript": "outputs/MEC_BLDC/A3_pmloss_out.txt; outputs/MEC_BLDC/D1_pmloss_chain_out.txt; outputs/MEC_BLDC/D1_pmloss_chain_prefix_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_ANGLE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_ANGLE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_BILAN.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_BILAN.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_CARTER.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_CARTER.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_COGCONV.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_COGCONV.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_COGSUM.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_COGSUM.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_CYCLE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_CYCLE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_DEPTH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_DEPTH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_DRIVE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_DRIVE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_ETA.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_ETA.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_FEM.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_FEM.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_H8_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_H8_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_LOAD.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_LOAD.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_MU.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_MU.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_SEQ.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_SEQ.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_SIGNE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_SIGNE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_DIAG_WAVE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_DIAG_WAVE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "RUN_DIAG_* family: diagnostic by declaration. Section 5.2 is right to keep it; it is kept. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_FEA_MESHNOISE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_FEA_MESHNOISE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_FIELD.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_FIELD.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_G2_CLOTURE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_G2_CLOTURE.m",
+      "transcript": "outputs/MEC_BLDC/G2_cloture_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_G3_DUMP.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_G3_DUMP.m",
+      "transcript": "outputs/MEC_BLDC/G3_dump_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_G5_COUNT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_G5_COUNT.m",
+      "transcript": "outputs/MEC_BLDC/G5_count_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_IDENT_H8.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_IDENT_H8.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_IND.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_IND.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_IND_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_IND_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_KRKL_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_KRKL_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_LOAD_MEC.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_LOAD_MEC.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_LOSS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_LOSS.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_MAP.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_MAP.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_MAP2D_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_MAP2D_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_MESH_BLDC.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_MESH_BLDC.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_NL.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_NL.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_ONLOAD.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_ONLOAD.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_OPT_H8.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_OPT_H8.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PERF.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PERF.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PMLOSS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PMLOSS.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PMLOSS_LOAD.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PMLOSS_LOAD.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PMLOSS_MU.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PMLOSS_MU.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PMLOSS_NL.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PMLOSS_NL.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_PMLOSS_SPLIT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_PMLOSS_SPLIT.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_R5_NSH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R5_NSH.m",
+      "transcript": "outputs/MEC_BLDC/R5_nsh_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_R6A_GRID.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R6A_GRID.m",
+      "transcript": "outputs/MEC_BLDC/R6a_grid_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_R6B_FEA.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R6B_FEA.m",
+      "transcript": "outputs/MEC_BLDC/R6_satmap_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_R6C_CORR.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_R6C_CORR.m",
+      "transcript": "outputs/MEC_BLDC/R6_satmap_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SAT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SAT.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SCORE_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SCORE_MESH.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SHOE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SHOE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SLOT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SLOT.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SLOT2D.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SLOT2D.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SLOT2D_VALID.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SLOT2D_VALID.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SLOT_IDENT.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SLOT_IDENT.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_SUBDOMAIN.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_SUBDOMAIN.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T18_CONV.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_T18_CONV.m",
+      "transcript": "outputs/MEC_BLDC/T18_conv_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T18_PERTES_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_T18_PERTES_MESH.m",
+      "transcript": "outputs/MEC_BLDC/T18_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T18_PMLOSS_MESH.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_T18_PMLOSS_MESH.m",
+      "transcript": "outputs/MEC_BLDC/T18_pmloss_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T5_TABLE5A.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_T5_TABLE5A.m",
+      "transcript": "outputs/MEC_BLDC/table5a_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_TORQUE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_TORQUE.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_TORQUE2D.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_TORQUE2D.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_WEFF.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_WEFF.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_WFUNC.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_WFUNC.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_X2_IRONLOSS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/MEC_BLDC/RUN_X2_IRONLOSS.m",
+      "transcript": "outputs/MEC_BLDC/T18_out.txt; outputs/MEC_BLDC/X2_ironloss_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_C4_ECARTS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/article/RUN_C4_ECARTS.m",
+      "transcript": "outputs/MEC_BLDC/C4_ecarts_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_R9_ARCHIVE.m",
+      "table": null,
+      "figure": null,
+      "script": "code/article/RUN_R9_ARCHIVE.m",
+      "transcript": "outputs/MEC_BLDC/R9_archive_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T14_AUDIT_ECARTS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/article/RUN_T14_AUDIT_ECARTS.m",
+      "transcript": "",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes no transcript into outputs/, so no published value can be traced through it. NOT DELETED."
+    },
+    {
+      "quantity": "Exploratory / unattributed script: RUN_T9_TEMPS.m",
+      "table": null,
+      "figure": null,
+      "script": "code/article/RUN_T9_TEMPS.m",
+      "transcript": "outputs/MEC_BLDC/T9_temps_out.txt",
+      "date": "",
+      "configuration": "",
+      "authoritative": false,
+      "block": "",
+      "values": [],
+      "note": "Writes a transcript, but no cell of the submitted manuscript was traced to it in this pass. NOT DELETED."
+    }
+  ]
+}
