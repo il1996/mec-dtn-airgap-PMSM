@@ -17,8 +17,9 @@
       "affiliation": "Electrotechnical Laboratory Skikda (LES), University 20 August 1955, Skikda, Algeria"
     }
   ],
-  "title": "Reproduction archive for a well-posed Dirichlet-to-Neumann air-gap operator for magnetic equivalent circuits (Paper I)",
-  "description": "<p>Complete reproduction archive for the paper <em>A Well-Posed Dirichlet-to-Neumann Air-Gap Operator for Magnetic Equivalent Circuits: Trace Conformity, and Validation on a 15-Slot/14-Pole PMSM</em>.</p><p>Contains the MATLAB chain for the 750 W permanent-magnet machine, the execution transcripts from which every published value originates, the ANSYS Maxwell 2D exports used as the reference, the manuscript source with its 15 figures, and delivery notes for each verification block.</p><p>Each script prints its own guard, a check that would contradict its result if the result were wrong. The README gives a two-minute test that reproduces one published quantity.</p><p>An independent audit found 91 % of the values published at three or more significant digits to be present in the archived transcripts within rounding; the remainder are declared inputs or arithmetic carried out in the text.</p><p>A small set of transcripts produced on an induction-machine annulus is included because the closed-form divergence proved in the paper is observable only in the thin-annulus regime.</p>",
+  "title": "Reproduction archive for the boundary condensation of a two-layer Dirichlet-to-Neumann operator",
+  "version": "1.2.0",
+  "description": "<p>Reproduction archive for the paper <em>Boundary Condensation of a Two-Layer Dirichlet-to-Neumann Operator: Trace Conformity and Air-Gap Mesh Reduction</em>.</p><p>Contains the MATLAB chain for the 750 W permanent-magnet machine, the execution transcripts from which every published value originates, the ANSYS Maxwell 2-D exports used as the reference, the manifest that binds each published quantity to the chain that produced it, and a second, independent implementation in Python of the closed forms of Section 3 and of the tables that follow from them.</p><p>Each MATLAB script prints its own guard, a check that would contradict its result if the result were wrong. REPRODUCIBILITY_STATUS.md states, table by table, what the archive regenerates and what it does not: three tables are supplied by recomputation from the published equations rather than by an archived run, and that distinction is kept throughout.</p><p>An independent audit found 454 of the 490 values the manifest attributes to a transcript to be present in it; the remaining 36 are listed individually. The independent recomputation runs 251 checks with no mismatch.</p><p>A small set of transcripts produced on a thin annulus is included because the closed-form divergence proved in the paper is observable in the outputs only in that regime. No published value is read from them.</p>",
   "keywords": [
     "magnetic equivalent circuit",
     "reluctance network",
@@ -30,5 +31,5 @@
     "finite-element validation",
     "reproducibility"
   ],
-  "notes": "Reproduction archive for a manuscript submitted for publication. The companion paper on the doubly slotted annulus operator is deposited separately; the two archives are independent."
+  "notes": "Reproduction archive for a manuscript submitted for publication. The authors have a separate manuscript under review elsewhere, whose relationship to this one is declared in the paper; its archive is separate and no data are shared between them."
 }

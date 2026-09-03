@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or these data, please cite both the paper and this archive."
-title: "Reproduction archive for a well-posed Dirichlet-to-Neumann air-gap operator for magnetic equivalent circuits"
+title: "Reproduction archive for the boundary condensation of a two-layer Dirichlet-to-Neumann operator"
 type: software
 authors:
   - family-names: Laouar
@@ -14,7 +14,7 @@ authors:
   - family-names: Mezhoud
     given-names: Nabil
     affiliation: "Electrotechnical Laboratory of Skikda (LES), University 20 August 1955 Skikda, Algeria"
-version: "1.1.0"          # closure of 26 August 2026, see notes/G_NOTE.md
+version: "1.2.0"          # pre-submission audit of 3 September 2026, see CHANGELOG.md
 license: MIT
 # doi: 10.5281/zenodo.XXXXXXX      # uncomment once the deposit is published
 keywords:
@@ -27,3 +27,5 @@ keywords:
   - permanent-magnet synchronous machine
   - finite-element validation
   - reproducibility
+  - boundary condensation
+  - mesh reduction
