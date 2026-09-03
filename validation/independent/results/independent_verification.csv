@@ -1,0 +1,252 @@
+block,item,printed,recomputed,absolute_difference,relative_difference,verdict,note
+constants,(2 mu0 L / pi) ln 10  [Sec. 6.2],6.078825e-08,6.078824645504281e-08,-3.5449571863442565e-15,-5.831648692542155e-08,REPRODUCED,
+constants,(2 mu0 L / pi) ln 2   [Table 6 note a],1.829909e-08,1.8299085566782556e-08,-4.433217443985465e-15,-2.422643663693367e-07,REPRODUCED,
+constants,"(3/4) 3 mu0 L / (pi d^2), d = 2pi/1080  [Table 6 note b]",0.0008774941,0.0008774941373581391,3.7358139151622005e-11,4.2573664200844204e-08,REPRODUCED,
+constants,"3 mu0 L / (pi d^2), d = 6 mrad  [Table 5]",0.0011,0.0011,0.0,0.0,REPRODUCED,
+constants,ln pi + gamma  [Table 7 caption],1.721946,1.7219455507509331,-4.4924906683618815e-07,-2.608961412472796e-07,REPRODUCED,
+constants,U_a  [Table 8 caption],0.029261,0.029260674934363875,-3.2506563612394457e-07,-1.1109177270904773e-05,REPRODUCED,
+constants,U_m  [Table 8 caption],0.10973,0.10973162309665765,1.6230966576602501e-06,1.4791731136974849e-05,REPRODUCED,
+constants,tail onset 1/U_a  [Sec. 1 and 3.5: 'near order 34'],34.0,34.17556164521671,0.17556164521671036,0.005163577800491481,REPRODUCED,
+Table 8(a),closed form (29),-1.915e-10,-1.9150146284041316e-10,-1.4628404131539154e-15,-7.638853332396425e-06,REPRODUCED,
+Table 8(a),"summed, N = 1e3",-2.1165e-10,-2.1165150089776422e-10,-1.5008977642314333e-15,-7.091413958097961e-06,REPRODUCED,
+Table 8(a),"rel. dev., N = 1e3",0.1052,0.10522132707750119,2.1327077501187564e-05,0.0002027288735854331,REPRODUCED,
+Table 8(a),"summed, N = 1e4",-2.4041e-10,-2.404117919709643e-10,-1.7919709643066217e-15,-7.453812088958952e-06,REPRODUCED,
+Table 8(a),"rel. dev., N = 1e4",0.2554,0.25540446743903117,4.4674390311527645e-06,1.7491930427379655e-05,REPRODUCED,
+Table 8(a),"summed, N = 1e5",-2.0196e-10,-2.0195839985486876e-10,1.6001451312355122e-15,7.923079477300021e-06,REPRODUCED,
+Table 8(a),"rel. dev., N = 1e5",0.0546,0.054604998099517556,4.998099517553034e-06,9.154028420426802e-05,REPRODUCED,
+Table 8(a),"summed, N = 1e6",-1.9154e-10,-1.915447368594881e-10,-4.7368594881098225e-15,-2.473039306729572e-05,REPRODUCED,
+Table 8(a),"rel. dev., N = 1e6",0.000226,0.0002259722637784723,-2.7736221527689415e-08,-0.00012272664392782927,REPRODUCED,
+Table 8(a),"summed, N = 1e7",-1.915e-10,-1.9149705892143808e-10,2.941078561929181e-15,1.5358112594930447e-05,REPRODUCED,
+Table 8(a),"rel. dev., N = 1e7",2.3e-05,2.2996790258218976e-05,-3.2097417810244113e-09,-0.00013955399047932223,REPRODUCED,
+Table 8(b),"summed, N = 1e3",6.4338e-08,6.433813715609926e-08,1.3715609925913896e-13,2.1318054533734177e-06,REPRODUCED,
+Table 8(b),"closed form (30), N = 1e3",6.2541e-08,6.254090394100922e-08,-9.605899077994573e-14,-1.5359362782805795e-06,REPRODUCED,
+Table 8(b),"summed, N = 1e4",1.2346e-07,1.2345879676104705e-07,-1.2032389529406305e-12,-9.745982123283903e-06,REPRODUCED,
+Table 8(b),"closed form (30), N = 1e4",1.2333e-07,1.2332915039605209e-07,-8.496039479208183e-13,-6.888866844407835e-06,REPRODUCED,
+Table 8(b),increment per decade at N = 1e4,5.9121e-08,5.912065960494779e-08,-3.4039505220525303e-13,-5.7575997057771864e-06,REPRODUCED,
+Table 8(b),"summed, N = 1e5",1.8412e-07,1.841156434501593e-07,-4.356549840716354e-12,-2.3661469914818343e-05,REPRODUCED,
+Table 8(b),"closed form (30), N = 1e5",1.8412e-07,1.8411739685109488e-07,-2.6031489051289993e-12,-1.4138327748908316e-05,REPRODUCED,
+Table 8(b),increment per decade at N = 1e5,6.0657e-08,6.065684668911224e-08,-1.5331088775908645e-13,-2.527505279837223e-06,REPRODUCED,
+Table 8(b),"summed, N = 1e6",2.4491e-07,2.449075271974752e-07,-2.472802524774387e-12,-1.0096780551118318e-05,REPRODUCED,
+Table 8(b),"closed form (30), N = 1e6",2.4491e-07,2.449056433061376e-07,-4.35669386236365e-12,-1.7788958647518067e-05,REPRODUCED,
+Table 8(b),increment per decade at N = 1e6,6.0792e-08,6.079188374731592e-08,-1.1625268408677084e-13,-1.912302343840815e-06,REPRODUCED,
+Table 8(b),"summed, N = 1e7",3.0569e-07,3.0569347017584157e-07,3.4701758415924184e-12,1.1351944262463341e-05,REPRODUCED,
+Table 8(b),"closed form (30), N = 1e7",3.0569e-07,3.056938897611805e-07,3.8897611805189176e-12,1.2724528707248906e-05,REPRODUCED,
+Table 8(b),increment per decade at N = 1e7,6.0786e-08,6.078594297836636e-08,-5.702163363999825e-14,-9.380718198269051e-07,REPRODUCED,
+Table 8(c),"exact kernel, N = 1e4",1.2348e-07,1.234831109968478e-07,3.1109968478023634e-12,2.5194337931667993e-05,REPRODUCED,
+Table 8(c),"exact kernel, N = 1e5",1.8414e-07,1.8413995768596006e-07,-4.2314039946889873e-14,-2.2979276608498898e-07,REPRODUCED,
+Table 8(c),"increment per decade, exact, N = 1e5",6.0657e-08,6.065684668911227e-08,-1.5331088773261667e-13,-2.5275052794008386e-06,REPRODUCED,
+Table 8(c),"exact kernel, N = 1e6",2.4493e-07,2.4493184143327627e-07,1.8414332762597747e-12,7.518202246600149e-06,REPRODUCED,
+Table 8(c),"increment per decade, exact, N = 1e6",6.0792e-08,6.079188374731621e-08,-1.1625268379560327e-13,-1.9123023390512447e-06,REPRODUCED,
+Table 8(c),"exact kernel, N = 1e7",3.0572e-07,3.057177844116427e-07,-2.2155883573318197e-12,-7.2471161760166805e-06,REPRODUCED,
+Table 8(c),"increment per decade, exact, N = 1e7",6.0786e-08,6.078594297836641e-08,-5.70216335870587e-14,-9.380718189559882e-07,REPRODUCED,
+Table 8 caption,constant offset between the two kernels,2.4307e-11,2.4314235800765672e-11,7.235800765671047e-15,0.0002976838262916463,REPRODUCED,geometry reconstructed from Table 3 to six figures
+Table 4,rank Y at N = 60,120,120,0,0.0,REPRODUCED,
+Table 4,null-space dimension at N = 60,240,240,0,0.0,REPRODUCED,
+Table 4,rank Y at N = 120,240,240,0,0.0,REPRODUCED,
+Table 4,null-space dimension at N = 120,120,120,0,0.0,REPRODUCED,
+Table 4,rank Y at N = 179,358,358,0,0.0,REPRODUCED,
+Table 4,null-space dimension at N = 179,2,2,0,0.0,REPRODUCED,
+Table 4,rank Y at N = 180,359,359,0,0.0,REPRODUCED,
+Table 4,null-space dimension at N = 180,1,1,0,0.0,REPRODUCED,
+Table 4,rank Y at N = 360,359,359,0,0.0,REPRODUCED,
+Table 4,null-space dimension at N = 360,1,1,0,0.0,REPRODUCED,
+Table 5,"residual tail, N = 1e2",3.4267e-08,3.426908437561698e-08,2.0843756169814104e-12,6.082749050052268e-05,REPRODUCED,
+Table 5,"tail x N^2, N = 1e2",0.000343,0.0003426908437561698,-3.0915624383019745e-07,-0.0009013301569393512,REPRODUCED,
+Table 5,"residual tail, N = 1e3",8.6824e-10,8.68257913142174e-10,1.791314217404026e-14,2.0631555991477307e-05,REPRODUCED,
+Table 5,"tail x N^2, N = 1e3",0.000868,0.0008682579131421741,2.5791314217410606e-07,0.0002971349564217812,REPRODUCED,
+Table 5,"residual tail, N = 1e4",1.0837e-11,1.0834567852454075e-11,-2.4321475459248096e-15,-0.00022442996640443014,REPRODUCED,
+Table 5,"tail x N^2, N = 1e4",0.001084,0.0010834567852454075,-5.432147545923489e-07,-0.000501120622317665,REPRODUCED,
+Table 5,"residual tail, N = 1e5",1.1002e-13,,,,SKIPPED (cost),converges to the same constant
+Table 5,"residual tail, N = 1e6",1.0998e-15,,,,SKIPPED (cost),converges to the same constant
+Table 6(b),"-Y(i,i) p.c., N_h = 540",4.358622e-08,4.3586227648263564e-08,7.648263562562852e-15,1.7547434860290367e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 540",3.102211e-08,3.102211568081041e-08,5.680810412494307e-15,1.8312134192336714e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) p.c., N_h = 1080",6.437687e-08,6.437687376346033e-08,3.763460333281928e-15,5.845982156762091e-08,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 1080",3.575272e-08,3.5752724009017116e-08,4.00901711698486e-15,1.1213180750960655e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 1080",2.079065e-08,2.079064611519677e-08,-3.884803232589647e-15,-1.868533803700051e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 1080",0.001379445,0.0013794453885050749,3.885050748990426e-10,2.8163868432524865e-07,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 1080",13.615765,13.615737805523494,-2.7194476505343346e-05,-1.9972786329187782e-06,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 1080",57.202804,57.202810651954806,6.65195480564762e-06,1.1628721566949095e-07,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 2160",8.224183e-08,8.224183713321958e-08,7.13321958062649e-15,8.673468939864896e-08,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 2160",3.638082e-08,3.638082945641776e-08,9.456417760722678e-15,2.599286591320008e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 2160",1.786496e-08,1.7864963369759243e-08,3.369759244035839e-15,1.8862394564756034e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 2160",0.0007326222,0.0007326221938481141,-6.1518858583686775e-12,-8.397078137092594e-09,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 2160",-2.372371,-2.372394639518997,-2.363951899742034e-05,-9.964511873320126e-06,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 2160",-16.509733,-16.509729940279463,3.0597205373794623e-06,1.853282871006734e-07,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 4320",1.004208e-07,1.0042085322668106e-07,5.3226681058488775e-14,5.30036417340718e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 4320",3.655899e-08,3.655899705853388e-08,7.05853387987044e-15,1.9307245303741816e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 4320",1.817902e-08,1.8179016093461482e-08,-3.906538518223944e-15,-2.148926904873829e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 4320",0.0008312588,0.0008312587644329559,-3.5567044101569856e-11,-4.2786968512778276e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 4320",-0.65615,-0.6561741952114438,-2.4195211443811537e-05,-3.687451260201408e-05,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 4320",-5.269024,-5.269019537230397,4.462769602753269e-06,8.469822120288823e-07,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 8640",1.186889e-07,1.1868895312120114e-07,5.312120113082816e-14,4.4756671542855444e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 8640",3.660534e-08,3.660534142610386e-08,1.4261038585060404e-15,3.895890213029138e-08,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 8640",1.82681e-08,1.826809989452008e-08,-1.0547992104316945e-16,-5.7739951633267526e-09,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 8640",0.0008648971,0.0008648971253379374,2.5337937368911934e-11,2.9295898169749827e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 8640",-0.169329,-0.16935326007970844,-2.426007970843247e-05,-0.00014327185366022635,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 8640",-1.435567,-1.435562320255209,4.679744791014073e-06,3.259858154313991e-06,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 17280",1.369802e-07,1.3698022519950624e-07,2.51995062341469e-14,1.8396458929207944e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 17280",3.661705e-08,3.6617053024643375e-08,3.024643375691661e-15,8.26020494739926e-08,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 17280",1.829127e-08,1.8291272078305108e-08,2.078305106264434e-15,1.1362278869998825e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 17280",0.0008742661,0.0008742661463355849,4.633558489154643e-11,5.299940703585148e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 17280",-0.042699,-0.04272300805609323,-2.400805609322626e-05,-0.0005622627249637289,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 17280",-0.367865,-0.3678604408183582,4.55918164177227e-06,1.2393627123461786e-05,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 34560",1.552773e-07,1.552773530770818e-07,5.3077081805113864e-14,3.418212565849217e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 34560",3.661998e-08,3.6619989014661875e-08,9.014661875179395e-15,2.4616785359192974e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 34560",1.829713e-08,1.8297127877575558e-08,-2.1224244419048974e-15,-1.1599766968398308e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 34560",0.0008766819,0.0008766819219401982,2.1940198139183686e-11,2.5026407114352064e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 34560",-0.010698,-0.010722513657462464,-2.451365746246499e-05,-0.0022914243281421756,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 34560",-0.092561,-0.09255652656830539,4.4734316946154484e-06,4.8329552345106994e-05,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 69120",1.735759e-07,1.7357594894966614e-07,4.894966614482911e-14,2.8200727258121153e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 69120",3.662072e-08,3.6620723521906995e-08,3.5219069978646334e-15,9.617252194562624e-08,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 69120",1.82986e-08,1.8298595872584342e-08,-4.12741565697603e-15,-2.2555909506607226e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 69120",0.0008772908,0.0008772907527253748,-4.7274625186721764e-11,-5.388706365862011e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 69120",-0.002676,-0.0027002840887588616,-2.4284088758861656e-05,-0.00907477158402902,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 69120",-0.023178,-0.02317363440108877,4.365598911232338e-06,0.00018835097554717136,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 138240",1.918749e-07,1.9187491207587434e-07,1.2075874343269209e-14,6.293618572970831e-08,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 138240",3.66209e-08,3.6620907180641927e-08,7.180641924553493e-15,1.9608043288268427e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 138240",1.829896e-08,1.8298963126208196e-08,3.1262081946473353e-15,1.7084075787079347e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 138240",0.0008774433,0.0008774432703433435,-2.965665647086668e-11,-3.3798943442689325e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 138240",-0.000669,-0.0006933338860226358,-2.4333886022635766e-05,-0.03637352170797573,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 138240",-0.005797,-0.00579259241246713,4.4075875328701206e-06,0.0007603221550578093,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 276480",2.10174e-07,2.101739670314455e-07,-3.296855452446629e-14,-1.568631444634745e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 276480",3.662095e-08,3.662095309732035e-08,3.0973203510481866e-15,8.457782638211698e-08,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 276480",1.829905e-08,1.8299054955571148e-08,4.9555711482030655e-15,2.7081029606471733e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 276480",0.0008774814,0.00087748138945902,-1.0540979981238374e-11,-1.201276742873225e-08,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 276480",-0.000167,-0.00019150913434117704,-2.450913434117705e-05,-0.1467612834801021,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 276480",-0.001449,-0.0014485044378047904,4.955621952095358e-07,0.0003420028952446762,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 552960",2.28473e-07,2.284730449453624e-07,4.494536238238392e-14,1.9672067326285344e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 552960",3.662096e-08,3.662096457660939e-08,4.57660938845999e-15,1.2497240346675755e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 552960",1.829908e-08,1.8299077913916904e-08,-2.0860830954904376e-15,-1.1399934288993969e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 552960",0.000877491,0.0008774905192091009,-4.807908990638737e-10,-5.47915476128956e-07,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 552960",-4.2e-05,-6.604745424701134e-05,-2.4047454247011345e-05,-0.5725584344526511,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 552960",-0.000362,-0.00040807008264064564,-4.6070082640645626e-05,-0.12726542165924207,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"-Y(i,i) p.c., N_h = 1105920",2.467721e-07,2.467721285989304e-07,2.859893037524932e-14,1.1589207359847129e-07,REPRODUCED,
+Table 6(b),"-Y(i,i) hat, N_h = 1105920",3.662096e-08,3.662096744642725e-08,7.446427251317732e-15,2.0333784945336583e-07,REPRODUCED,
+Table 6(b),"increment p.c., N_h = 1105920",1.829908e-08,1.829908365356801e-08,3.653568009166996e-15,1.9965856257074107e-07,REPRODUCED,
+Table 6(b),"increment x N^2, hat, N_h = 1105920",0.0008774933,0.0008774891746721192,-4.125327880840322e-09,-4.701264249926834e-06,REPRODUCED,
+Table 6(b),"deviation of the increment, N_h = 1105920",-1e-05,-3.468168084157187e-05,-2.468168084157187e-05,-2.468168084157187,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(b),"deviation of increment x N^2, hat, N_h = 1105920",-9.1e-05,-0.0005612947005327861,-0.00047029470053278614,-5.168073632228419,REPRODUCED,recomputed from the double-precision self-energy
+Table 6(a),"bracket, N_h = 540",1.721944,1.7219441404847027,1.4048470275973557e-07,8.158494280867182e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 1080",2.415091,2.415091321044648,3.210446481993756e-07,1.3293273346609947e-07,REPRODUCED,
+Table 6(a),"bracket, N_h = 2160",3.108239,3.1082385016045935,-4.983954067228069e-07,-1.603465520903659e-07,REPRODUCED,
+Table 6(a),"bracket, N_h = 4320",3.801386,3.801385682164539,-3.1783546106112226e-07,-8.36104150068218e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 8640",4.494533,4.494532862724484,-1.372755153994376e-07,-3.054277616816644e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 17280",5.18768,5.18768004328443,4.328442937406862e-08,8.343696869133914e-09,REPRODUCED,
+Table 6(a),"bracket, N_h = 34560",5.880827,5.880827223844375,2.2384437503575327e-07,3.806341778728626e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 69120",6.573974,6.5739744044043205,4.044043206974379e-07,6.151595985889782e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 138240",7.267122,7.267121584964266,-4.150357337806554e-07,-5.711143060219099e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 276480",7.960269,7.960268765524211,-2.3447578900714916e-07,-2.9455761985826e-08,REPRODUCED,
+Table 6(a),"bracket, N_h = 552960",8.653416,8.653415946084156,-5.391584423364293e-08,-6.230585035278892e-09,REPRODUCED,
+Table 6(a),"bracket, N_h = 1105920",9.346563,9.346563126644103,1.2664410320439856e-07,1.3549804693382857e-08,REPRODUCED,
+Sec. 6.2,growth of the bracket over the released sweep (%),442.8,442.79134513085216,-0.008654869147846966,-1.9545774949970565e-05,ARITHMETIC,
+Sec. 6.2,"drift of B_g1, piecewise-constant (%)",0.703,0.7032017790377038,0.00020177903770379757,0.00028702565818463385,ARITHMETIC,
+Sec. 6.2,"drift of B_g1, hat (%)",0.023,0.023102718498664132,0.00010271849866413246,0.0044660216810492375,ARITHMETIC,
+Table 6(a),B_g1 columns,1.078648295 ... 1.086233369,,,,NOT-FROM-MS,"an output of the coupled model; the recomputation checks only the bracket, the increments and the ratios"
+Table 7(a),bracket at M_s = 540,1.72194,1.7219399096812396,-9.031876047060905e-08,-5.245174655946726e-08,REPRODUCED,
+Table 7(a),bracket at M_s = 1080,1.721944,1.7219441404847027,1.4048470275973557e-07,8.158494280867182e-08,REPRODUCED,
+Table 7(a),bracket at M_s = 2160,1.721945,1.72194519818445,1.9818444996211326e-07,1.1509336823308135e-07,REPRODUCED,
+Table 7(a),bracket at M_s = 4320,1.721945,1.721945462609317,4.626093168536016e-07,2.6865510620467064e-07,REPRODUCED,
+Table 7(a),bracket at M_s = 8640,1.721946,1.7219455287155299,-4.7128447011601793e-07,-2.736929439808321e-07,REPRODUCED,
+Table 7(a),movement of the bracket over a factor 16 in tiling (%),0.0003,0.0003263199986662287,2.6319998666228723e-05,0.08773332888742909,REPRODUCED,
+Table 7(a),ratio |self term| / bracket movement,644,643.5400859841116,-0.45991401588844383,-0.0007141521985845401,ARITHMETIC,
+Table 7(b),"dispersion over six tilings, Bg1 p.c. (%)",0.44,0.44096827349316786,-0.0009682734931678594,,ARITHMETIC,"printed value consistent with [0.435858, 0.446079] implied by the printed columns"
+Table 7(b),"dispersion over six tilings, Bg1 hat (%)",0.496,0.4959752321981333,2.4767801866720784e-05,,ARITHMETIC,"printed value consistent with [0.495045, 0.496906] implied by the printed columns"
+Table 7(b),"dispersion over six tilings, nu8 p.c. (%)",26.126,26.124212486328663,0.0017875136713385587,,ARITHMETIC,"printed value consistent with [26.1173, 26.1312] implied by the printed columns"
+Table 7(b),"dispersion over six tilings, nu8 hat (%)",28.514,28.512385793051287,0.0016142069487123933,,ARITHMETIC,"printed value consistent with [25.9843, 31.0186] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, lambda peak p.c. (%)",0.612,0.611714505141357,0.0002854948586430428,,ARITHMETIC,"printed value consistent with [0.609605, 0.613824] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, lambda peak p.c. (%)",0.176,0.17566997620226282,0.0003300237977371667,,ARITHMETIC,"printed value consistent with [0.175287, 0.176053] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, L_a p.c. (%)",1.766,1.7656169496913294,0.000383050308670585,,ARITHMETIC,"printed value consistent with [1.7656, 1.76564] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, L_a p.c. (%)",0.39,0.3897584371076059,0.00024156289239413153,,ARITHMETIC,"printed value consistent with [0.389739, 0.389778] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, M p.c. (%)",2.039,2.039226888987452,-0.00022688898745171215,,ARITHMETIC,"printed value consistent with [2.03877, 2.03968] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, M p.c. (%)",0.453,0.4533564569113612,-0.0003564569113612137,,ARITHMETIC,"printed value consistent with [0.452906, 0.453807] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, L_d p.c. (%)",1.777,1.7770592447551712,-5.92447551712727e-05,,ARITHMETIC,"printed value consistent with [1.77611, 1.77801] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, L_d p.c. (%)",0.392,0.3924234642318643,-0.00042346423186429005,,ARITHMETIC,"printed value consistent with [0.391472, 0.393375] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, lambda peak hat (%)",0.708,0.7083332002440176,-0.0003332002440176174,,ARITHMETIC,"printed value consistent with [0.707949, 0.708717] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, lambda peak hat (%)",0.138,0.13822583881259035,-0.00022583881259033434,,ARITHMETIC,"printed value consistent with [0.137843, 0.138609] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, L_a hat (%)",1.964,1.9636228334764936,0.00037716652350638924,,ARITHMETIC,"printed value consistent with [1.9636, 1.96364] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, L_a hat (%)",0.345,0.34473013239221173,0.00026986760778824337,,ARITHMETIC,"printed value consistent with [0.34471, 0.34475] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, M hat (%)",2.251,2.2510194916556805,-1.9491655680603515e-05,,ARITHMETIC,"printed value consistent with [2.25056, 2.25147] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, M hat (%)",0.4,0.3996222736029409,0.00037772639705913047,,ARITHMETIC,"printed value consistent with [0.399171, 0.400073] implied by the printed columns"
+Table 7(b) cont.,"dispersion over six tilings, L_d hat (%)",1.976,1.9756580430825528,0.0003419569174472059,,ARITHMETIC,"printed value consistent with [1.97555, 1.97576] implied by the printed columns"
+Table 7(b) cont.,"dispersion over the five finest, L_d hat (%)",0.347,0.3470109176033186,-1.0917603318616464e-05,,ARITHMETIC,"printed value consistent with [0.346907, 0.347115] implied by the printed columns"
+Table 7(b) cont.,"identity L_d = L_a - M, p.c. (worst residual, mH)",0.0,9.999999996068709e-06,9.999999996068709e-06,nan,ARITHMETIC,
+Table 7(b) cont.,"identity L_d = L_a - M, hat (worst residual, mH)",0.0,1.0000000003174137e-05,1.0000000003174137e-05,nan,ARITHMETIC,
+Table 7(d),"deviation p.c., B_g1 (T) (%)",0.279,0.2788141279473937,0.00018587205260633954,,ARITHMETIC,"printed value consistent with [0.278721, 0.278907] implied by the printed columns"
+Table 7(d),"deviation hat, B_g1 (T) (%)",0.226,0.22614096492394797,-0.0001409649239479671,,ARITHMETIC,"printed value consistent with [0.226048, 0.226234] implied by the printed columns"
+Table 7(d),"deviation p.c., nu = 8 (T) (%)",-8.12,-8.118832027673196,-0.0011679723268027686,,ARITHMETIC,"printed value consistent with [-8.12371, -8.11395] implied by the printed columns"
+Table 7(d),"deviation hat, nu = 8 (T) (%)",-5.19,-5.193814223216999,0.003814223216998869,,ARITHMETIC,"printed value consistent with [-5.19877, -5.18886] implied by the printed columns"
+Table 7(d),"deviation p.c., nu = 22 (T) (%)",7.56,7.564102564102567,-0.004102564102567818,,ARITHMETIC,"printed value consistent with [7.54616, 7.58205] implied by the printed columns"
+Table 7(d),"deviation hat, nu = 22 (T) (%)",10.49,10.488400488400494,0.0015995115995064424,,ARITHMETIC,"printed value consistent with [10.47, 10.5068] implied by the printed columns"
+Table 7(d),"deviation p.c., lambda peak (Wb) (%)",1.11,1.1140875166455018,-0.004087516645501665,,ARITHMETIC,"printed value consistent with [1.1137, 1.11448] implied by the printed columns"
+Table 7(d),"deviation hat, lambda peak (Wb) (%)",1.04,1.041311820631124,-0.0013118206311240055,,ARITHMETIC,"printed value consistent with [1.04092, 1.0417] implied by the printed columns"
+Table 12,B_g1 (T) / mesh n_sh=1 (%),0.31,0.3089665441347738,0.001033455865226185,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_g1 (T) / mesh n_sh=2 (%),0.42,0.421571820762193,-0.0015718207621930325,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_g1 (T) / lumped (%),0.28,0.27918663626635465,0.0008133637336453781,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,|B_r| mean (T) / mesh n_sh=1 (%),0.12,0.11959364445204787,0.00040635554795212525,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,|B_r| mean (T) / mesh n_sh=2 (%),0.24,0.23918728890408117,0.0008127110959188222,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,|B_r| mean (T) / lumped (%),0.07,0.07359608889356231,-0.0035960888935623048,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_r peak (T) / mesh n_sh=1 (%),-1.03,-1.0315625851644754,0.001562585164475383,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_r peak (T) / mesh n_sh=2 (%),-1.55,-1.5513813046945177,0.0013813046945176932,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_r peak (T) / lumped (%),-0.48,-0.47742573657808,-0.0025742634219199645,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_t rms (T) / mesh n_sh=1 (%),3.22,3.2192705988293686,0.0007294011706315828,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_t rms (T) / mesh n_sh=2 (%),1.14,1.1406273450397881,-0.0006273450397882296,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,B_t rms (T) / lumped (%),7.43,7.436590124568515,-0.0065901245685155985,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,slot sideband nu=8 (T) / mesh n_sh=1 (%),-13.34,-13.3265513733469,-0.013448626653099538,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,slot sideband nu=8 (T) / mesh n_sh=2 (%),-19.58,-19.582909460834177,0.0029094608341786454,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,slot sideband nu=8 (T) / lumped (%),-8.12,-8.138351983723298,0.01835198372329927,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,flux line A (Wb/m) / mesh n_sh=1 (%),0.11,0.10247651579846165,0.007523484201538352,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,flux line A (Wb/m) / mesh n_sh=2 (%),0.22,0.22203245089666934,-0.002032450896669341,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,flux line A (Wb/m) / lumped (%),0.09,0.08539709649871556,0.004602903501284436,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"flux linkage, peak (Wb) / mesh n_sh=1 (%)",0.24,0.23613207912360137,0.0038679208763986173,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"flux linkage, peak (Wb) / mesh n_sh=2 (%)",0.29,0.29032632679130294,-0.0003263267913029555,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"flux linkage, peak (Wb) / lumped (%)",1.11,1.114853094878641,-0.00485309487864094,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per magnet (A) / mesh n_sh=1 (%),-1.01,-1.009948729278905,-5.1270721094898164e-05,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per magnet (A) / mesh n_sh=2 (%),-1.31,-1.3147138521921773,0.004713852192177237,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per magnet (A) / lumped (%),-0.85,-0.8490535385895047,-0.0009464614104952584,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per gap (A) / mesh n_sh=1 (%),-1.4,-1.4023484277287515,0.0023484277287515454,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per gap (A) / mesh n_sh=2 (%),-1.33,-1.3338803388477436,0.0038803388477435252,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF per gap (A) / lumped (%),0.49,0.4934137579278764,-0.003413757927876404,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF dispersion (%) / mesh n_sh=1 (%),-3.27,-3.2801822323462444,0.01018223234624438,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF dispersion (%) / mesh n_sh=2 (%),-9.5,-9.506454062262723,0.006454062262722715,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,MMF dispersion (%) / lumped (%),3.42,3.416856492027329,0.0031435079726707116,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"phase back-EMF, peak (V) / mesh n_sh=1 (%)",2.48,2.481214945651,-0.001214945651000221,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"phase back-EMF, peak (V) / mesh n_sh=2 (%)",2.48,2.4833605829267373,-0.0033605829267373544,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,"phase back-EMF, peak (V) / lumped (%)",3.37,3.3669340130712238,0.003065986928776354,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,six-step envelope (V) / mesh n_sh=1 (%),1.01,1.0084406350697248,0.0015593649302751977,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,six-step envelope (V) / mesh n_sh=2 (%),1.03,1.0277919107319078,0.0022080892680922393,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,six-step envelope (V) / lumped (%),1.91,1.9136019899199397,-0.003601989919939763,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_a (mH) / mesh n_sh=1 (%),0.34,0.3385847158875791,0.0014152841124209226,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_a (mH) / mesh n_sh=2 (%),0.55,0.5477105698181572,0.0022894301818427998,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_a (mH) / lumped (%),1.12,1.123304586827063,-0.0033045868270629164,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,M (mH) / mesh n_sh=1 (%),-5.48,-5.485232067510548,0.005232067510547722,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,M (mH) / mesh n_sh=2 (%),-5.24,-5.250820440693863,0.010820440693862565,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,M (mH) / lumped (%),4.09,4.078762306610416,0.01123769338958347,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_d (mH) / mesh n_sh=1 (%),0.1,0.1012571166558488,-0.0012571166558487945,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_d (mH) / mesh n_sh=2 (%),0.31,0.31141339650759203,-0.0014133965075920352,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,L_d (mH) / lumped (%),1.24,1.2437430743953295,-0.0037430743953295043,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_r / mesh n_sh=1 (%),-1.49,-1.4941164564415401,0.004116456441540128,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_r / mesh n_sh=2 (%),-1.87,-1.8658055256548127,-0.004194474345187382,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_r / lumped (%),-3.2,-3.1952379638063104,-0.004762036193689756,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_l / mesh n_sh=1 (%),-1.61,-1.6108760075181818,0.0008760075181817317,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_l / mesh n_sh=2 (%),-1.56,-1.5624459485949462,0.002445948594946179,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Table 12,k_l / lumped (%),-1.56,-1.5589866586718606,-0.001013341328139461,,ARITHMETIC,"deviation formed at full precision and rounded once, Sec. 5.3"
+Sec. 7.4,"count, mesh closer / lumped closer  ('within one quantity')",1,1,0,0.0,ARITHMETIC,"mesh 8, lumped 9"
+Sec. 8,'thirteen of the seventeen' move away under shoe refinement,13,12,-1,-0.07692307692307693,ARITHMETIC,"away 12, toward 5"
+Table 12,"identity L_d = L_a - M (worst residual, mH)",0.0,7.105427357601002e-15,7.105427357601002e-15,nan,ARITHMETIC,
+Sec. 7.1,g' (mm),4.3686,4.368623676612128,2.3676612127765395e-05,5.419725341703382e-06,REPRODUCED,
+Sec. 7.1,tau_s (mm),14.5259,14.525886672158244,-1.3327841756449743e-05,-9.175226152217586e-07,REPRODUCED,
+Sec. 7.1,x,0.22891,0.22890504516413304,-4.954835866960439e-06,-2.1645344751039443e-05,REPRODUCED,
+Sec. 7.1,"gamma, exact form (43)",0.033072,0.033071929970762116,-7.002923788079762e-08,-2.1174781652394058e-06,REPRODUCED,
+Sec. 7.1,"k_C, exact form (43)",1.010046,1.0100462220214894,2.220214894155248e-07,2.1981324555072224e-07,REPRODUCED,
+Sec. 7.1,"gamma, approximate form",0.038402,0.03840186362984446,-1.3637015553596976e-07,-3.5511211795211125e-06,REPRODUCED,
+Sec. 7.1,"k_C, approximate form",1.011684,1.0116842073453536,2.0734535355337869e-07,2.0495070946400128e-07,REPRODUCED,
+Sec. 7.1,difference between the two forms (%),0.16,0.16216934315995263,0.0021693431599526247,0.013558394749703905,REPRODUCED,
+Sec. 6.6,slotting frequency seen from the rotor (Hz),422.0,422.0,0.0,0.0,REPRODUCED,
+Sec. 6.6,magnet conductivity (S/m),555556,555555.5555555556,-0.44444444437976927,-7.999993598840967e-07,REPRODUCED,
+Sec. 6.6,skin depth (mm),32.25,32.24722775444143,-0.0027722455585674766,-8.596110259123958e-05,REPRODUCED,mu = mu0 mu_r
+Sec. 6.6,skin depth / magnet thickness,9.2,9.213493644126123,0.013493644126123527,0.0014667004484916878,REPRODUCED,
+Sec. 6.9,sweep as a fraction of 128 independent solutions (%),0.84,0.8375563063063063,-0.0024436936936936826,-0.002909159159159146,ARITHMETIC,
+Sec. 6.9,marginal cost with reassembly (ms),108,107.734375,-0.265625,-0.002459490740740741,ARITHMETIC,
+Sec. 6.9,factor on the sweep,115,115.88235294117646,0.8823529411764639,0.007672634271099686,ARITHMETIC,
+Sec. 6.9,per-position cost of the 721-position sweep (ms),4.16,4.160887656033287,0.0008876560332868877,0.00021337885415550185,ARITHMETIC,
+Sec. 7.1,"factor, invariant operator against sliding interface",12.7,12.75,0.05000000000000071,0.003937007874015804,ARITHMETIC,

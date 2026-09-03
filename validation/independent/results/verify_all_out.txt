@@ -1,0 +1,349 @@
+
+====================================================================================================
+constants
+====================================================================================================
+  (2 mu0 L / pi) ln 10  [Sec. 6.2]                              printed      6.07882e-08   recomputed      6.07882e-08   rel  -5.83e-08   REPRODUCED
+  (2 mu0 L / pi) ln 2   [Table 6 note a]                        printed      1.82991e-08   recomputed      1.82991e-08   rel  -2.42e-07   REPRODUCED
+  (3/4) 3 mu0 L / (pi d^2), d = 2pi/1080  [Table 6 note b]      printed      0.000877494   recomputed      0.000877494   rel  +4.26e-08   REPRODUCED
+  3 mu0 L / (pi d^2), d = 6 mrad  [Table 5]                     printed           0.0011   recomputed           0.0011   rel  +0.00e+00   REPRODUCED
+  ln pi + gamma  [Table 7 caption]                              printed          1.72195   recomputed          1.72195   rel  -2.61e-07   REPRODUCED
+  U_a  [Table 8 caption]                                        printed         0.029261   recomputed        0.0292607   rel  -1.11e-05   REPRODUCED
+  U_m  [Table 8 caption]                                        printed          0.10973   recomputed         0.109732   rel  +1.48e-05   REPRODUCED
+  tail onset 1/U_a  [Sec. 1 and 3.5: 'near order 34']           printed               34   recomputed          34.1756   rel  +5.16e-03   REPRODUCED
+
+====================================================================================================
+Table 8(a)
+====================================================================================================
+  closed form (29)                                              printed       -1.915e-10   recomputed     -1.91501e-10   rel  -7.64e-06   REPRODUCED
+  summed, N = 1e3                                               printed      -2.1165e-10   recomputed     -2.11652e-10   rel  -7.09e-06   REPRODUCED
+  rel. dev., N = 1e3                                            printed           0.1052   recomputed         0.105221   rel  +2.03e-04   REPRODUCED
+  summed, N = 1e4                                               printed      -2.4041e-10   recomputed     -2.40412e-10   rel  -7.45e-06   REPRODUCED
+  rel. dev., N = 1e4                                            printed           0.2554   recomputed         0.255404   rel  +1.75e-05   REPRODUCED
+  summed, N = 1e5                                               printed      -2.0196e-10   recomputed     -2.01958e-10   rel  +7.92e-06   REPRODUCED
+  rel. dev., N = 1e5                                            printed           0.0546   recomputed         0.054605   rel  +9.15e-05   REPRODUCED
+  summed, N = 1e6                                               printed      -1.9154e-10   recomputed     -1.91545e-10   rel  -2.47e-05   REPRODUCED
+  rel. dev., N = 1e6                                            printed         0.000226   recomputed      0.000225972   rel  -1.23e-04   REPRODUCED
+  summed, N = 1e7                                               printed       -1.915e-10   recomputed     -1.91497e-10   rel  +1.54e-05   REPRODUCED
+  rel. dev., N = 1e7                                            printed          2.3e-05   recomputed      2.29968e-05   rel  -1.40e-04   REPRODUCED
+
+====================================================================================================
+Table 8(b)
+====================================================================================================
+  summed, N = 1e3                                               printed       6.4338e-08   recomputed      6.43381e-08   rel  +2.13e-06   REPRODUCED
+  closed form (30), N = 1e3                                     printed       6.2541e-08   recomputed      6.25409e-08   rel  -1.54e-06   REPRODUCED
+  summed, N = 1e4                                               printed       1.2346e-07   recomputed      1.23459e-07   rel  -9.75e-06   REPRODUCED
+  closed form (30), N = 1e4                                     printed       1.2333e-07   recomputed      1.23329e-07   rel  -6.89e-06   REPRODUCED
+  increment per decade at N = 1e4                               printed       5.9121e-08   recomputed      5.91207e-08   rel  -5.76e-06   REPRODUCED
+  summed, N = 1e5                                               printed       1.8412e-07   recomputed      1.84116e-07   rel  -2.37e-05   REPRODUCED
+  closed form (30), N = 1e5                                     printed       1.8412e-07   recomputed      1.84117e-07   rel  -1.41e-05   REPRODUCED
+  increment per decade at N = 1e5                               printed       6.0657e-08   recomputed      6.06568e-08   rel  -2.53e-06   REPRODUCED
+  summed, N = 1e6                                               printed       2.4491e-07   recomputed      2.44908e-07   rel  -1.01e-05   REPRODUCED
+  closed form (30), N = 1e6                                     printed       2.4491e-07   recomputed      2.44906e-07   rel  -1.78e-05   REPRODUCED
+  increment per decade at N = 1e6                               printed       6.0792e-08   recomputed      6.07919e-08   rel  -1.91e-06   REPRODUCED
+  summed, N = 1e7                                               printed       3.0569e-07   recomputed      3.05693e-07   rel  +1.14e-05   REPRODUCED
+  closed form (30), N = 1e7                                     printed       3.0569e-07   recomputed      3.05694e-07   rel  +1.27e-05   REPRODUCED
+  increment per decade at N = 1e7                               printed       6.0786e-08   recomputed      6.07859e-08   rel  -9.38e-07   REPRODUCED
+
+====================================================================================================
+Table 8(c)
+====================================================================================================
+  exact kernel, N = 1e4                                         printed       1.2348e-07   recomputed      1.23483e-07   rel  +2.52e-05   REPRODUCED
+  exact kernel, N = 1e5                                         printed       1.8414e-07   recomputed       1.8414e-07   rel  -2.30e-07   REPRODUCED
+  increment per decade, exact, N = 1e5                          printed       6.0657e-08   recomputed      6.06568e-08   rel  -2.53e-06   REPRODUCED
+  exact kernel, N = 1e6                                         printed       2.4493e-07   recomputed      2.44932e-07   rel  +7.52e-06   REPRODUCED
+  increment per decade, exact, N = 1e6                          printed       6.0792e-08   recomputed      6.07919e-08   rel  -1.91e-06   REPRODUCED
+  exact kernel, N = 1e7                                         printed       3.0572e-07   recomputed      3.05718e-07   rel  -7.25e-06   REPRODUCED
+  increment per decade, exact, N = 1e7                          printed       6.0786e-08   recomputed      6.07859e-08   rel  -9.38e-07   REPRODUCED
+
+====================================================================================================
+Table 8 caption
+====================================================================================================
+  constant offset between the two kernels                       printed       2.4307e-11   recomputed      2.43142e-11   rel  +2.98e-04   REPRODUCED   [geometry reconstructed from Table 3 to six figures]
+
+====================================================================================================
+Table 4
+====================================================================================================
+  rank Y at N = 60                                              printed              120   recomputed              120   rel  +0.00e+00   REPRODUCED
+  null-space dimension at N = 60                                printed              240   recomputed              240   rel  +0.00e+00   REPRODUCED
+  rank Y at N = 120                                             printed              240   recomputed              240   rel  +0.00e+00   REPRODUCED
+  null-space dimension at N = 120                               printed              120   recomputed              120   rel  +0.00e+00   REPRODUCED
+  rank Y at N = 179                                             printed              358   recomputed              358   rel  +0.00e+00   REPRODUCED
+  null-space dimension at N = 179                               printed                2   recomputed                2   rel  +0.00e+00   REPRODUCED
+  rank Y at N = 180                                             printed              359   recomputed              359   rel  +0.00e+00   REPRODUCED
+  null-space dimension at N = 180                               printed                1   recomputed                1   rel  +0.00e+00   REPRODUCED
+  rank Y at N = 360                                             printed              359   recomputed              359   rel  +0.00e+00   REPRODUCED
+  null-space dimension at N = 360                               printed                1   recomputed                1   rel  +0.00e+00   REPRODUCED
+
+====================================================================================================
+Table 5
+====================================================================================================
+  residual tail, N = 1e2                                        printed       3.4267e-08   recomputed      3.42691e-08   rel  +6.08e-05   REPRODUCED
+  tail x N^2, N = 1e2                                           printed         0.000343   recomputed      0.000342691   rel  -9.01e-04   REPRODUCED
+  residual tail, N = 1e3                                        printed       8.6824e-10   recomputed      8.68258e-10   rel  +2.06e-05   REPRODUCED
+  tail x N^2, N = 1e3                                           printed         0.000868   recomputed      0.000868258   rel  +2.97e-04   REPRODUCED
+  residual tail, N = 1e4                                        printed       1.0837e-11   recomputed      1.08346e-11   rel  -2.24e-04   REPRODUCED
+  tail x N^2, N = 1e4                                           printed         0.001084   recomputed       0.00108346   rel  -5.01e-04   REPRODUCED
+  residual tail, N = 1e5                                        printed       1.1002e-13   recomputed                    rel              SKIPPED (cost)   [converges to the same constant]
+  residual tail, N = 1e6                                        printed       1.0998e-15   recomputed                    rel              SKIPPED (cost)   [converges to the same constant]
+
+====================================================================================================
+Table 6(b)
+====================================================================================================
+  -Y(i,i) p.c., N_h = 540                                       printed      4.35862e-08   recomputed      4.35862e-08   rel  +1.75e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 540                                        printed      3.10221e-08   recomputed      3.10221e-08   rel  +1.83e-07   REPRODUCED
+  -Y(i,i) p.c., N_h = 1080                                      printed      6.43769e-08   recomputed      6.43769e-08   rel  +5.85e-08   REPRODUCED
+  -Y(i,i) hat, N_h = 1080                                       printed      3.57527e-08   recomputed      3.57527e-08   rel  +1.12e-07   REPRODUCED
+  increment p.c., N_h = 1080                                    printed      2.07907e-08   recomputed      2.07906e-08   rel  -1.87e-07   REPRODUCED
+  increment x N^2, hat, N_h = 1080                              printed       0.00137944   recomputed       0.00137945   rel  +2.82e-07   REPRODUCED
+  deviation of the increment, N_h = 1080                        printed          13.6158   recomputed          13.6157   rel  -2.00e-06   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 1080                 printed          57.2028   recomputed          57.2028   rel  +1.16e-07   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 2160                                      printed      8.22418e-08   recomputed      8.22418e-08   rel  +8.67e-08   REPRODUCED
+  -Y(i,i) hat, N_h = 2160                                       printed      3.63808e-08   recomputed      3.63808e-08   rel  +2.60e-07   REPRODUCED
+  increment p.c., N_h = 2160                                    printed       1.7865e-08   recomputed       1.7865e-08   rel  +1.89e-07   REPRODUCED
+  increment x N^2, hat, N_h = 2160                              printed      0.000732622   recomputed      0.000732622   rel  -8.40e-09   REPRODUCED
+  deviation of the increment, N_h = 2160                        printed         -2.37237   recomputed         -2.37239   rel  -9.96e-06   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 2160                 printed         -16.5097   recomputed         -16.5097   rel  +1.85e-07   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 4320                                      printed      1.00421e-07   recomputed      1.00421e-07   rel  +5.30e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 4320                                       printed       3.6559e-08   recomputed       3.6559e-08   rel  +1.93e-07   REPRODUCED
+  increment p.c., N_h = 4320                                    printed       1.8179e-08   recomputed       1.8179e-08   rel  -2.15e-07   REPRODUCED
+  increment x N^2, hat, N_h = 4320                              printed      0.000831259   recomputed      0.000831259   rel  -4.28e-08   REPRODUCED
+  deviation of the increment, N_h = 4320                        printed         -0.65615   recomputed        -0.656174   rel  -3.69e-05   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 4320                 printed         -5.26902   recomputed         -5.26902   rel  +8.47e-07   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 8640                                      printed      1.18689e-07   recomputed      1.18689e-07   rel  +4.48e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 8640                                       printed      3.66053e-08   recomputed      3.66053e-08   rel  +3.90e-08   REPRODUCED
+  increment p.c., N_h = 8640                                    printed      1.82681e-08   recomputed      1.82681e-08   rel  -5.77e-09   REPRODUCED
+  increment x N^2, hat, N_h = 8640                              printed      0.000864897   recomputed      0.000864897   rel  +2.93e-08   REPRODUCED
+  deviation of the increment, N_h = 8640                        printed        -0.169329   recomputed        -0.169353   rel  -1.43e-04   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 8640                 printed         -1.43557   recomputed         -1.43556   rel  +3.26e-06   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 17280                                     printed       1.3698e-07   recomputed       1.3698e-07   rel  +1.84e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 17280                                      printed       3.6617e-08   recomputed      3.66171e-08   rel  +8.26e-08   REPRODUCED
+  increment p.c., N_h = 17280                                   printed      1.82913e-08   recomputed      1.82913e-08   rel  +1.14e-07   REPRODUCED
+  increment x N^2, hat, N_h = 17280                             printed      0.000874266   recomputed      0.000874266   rel  +5.30e-08   REPRODUCED
+  deviation of the increment, N_h = 17280                       printed        -0.042699   recomputed        -0.042723   rel  -5.62e-04   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 17280                printed        -0.367865   recomputed         -0.36786   rel  +1.24e-05   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 34560                                     printed      1.55277e-07   recomputed      1.55277e-07   rel  +3.42e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 34560                                      printed        3.662e-08   recomputed        3.662e-08   rel  +2.46e-07   REPRODUCED
+  increment p.c., N_h = 34560                                   printed      1.82971e-08   recomputed      1.82971e-08   rel  -1.16e-07   REPRODUCED
+  increment x N^2, hat, N_h = 34560                             printed      0.000876682   recomputed      0.000876682   rel  +2.50e-08   REPRODUCED
+  deviation of the increment, N_h = 34560                       printed        -0.010698   recomputed       -0.0107225   rel  -2.29e-03   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 34560                printed        -0.092561   recomputed       -0.0925565   rel  +4.83e-05   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 69120                                     printed      1.73576e-07   recomputed      1.73576e-07   rel  +2.82e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 69120                                      printed      3.66207e-08   recomputed      3.66207e-08   rel  +9.62e-08   REPRODUCED
+  increment p.c., N_h = 69120                                   printed      1.82986e-08   recomputed      1.82986e-08   rel  -2.26e-07   REPRODUCED
+  increment x N^2, hat, N_h = 69120                             printed      0.000877291   recomputed      0.000877291   rel  -5.39e-08   REPRODUCED
+  deviation of the increment, N_h = 69120                       printed        -0.002676   recomputed      -0.00270028   rel  -9.07e-03   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 69120                printed        -0.023178   recomputed       -0.0231736   rel  +1.88e-04   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 138240                                    printed      1.91875e-07   recomputed      1.91875e-07   rel  +6.29e-08   REPRODUCED
+  -Y(i,i) hat, N_h = 138240                                     printed      3.66209e-08   recomputed      3.66209e-08   rel  +1.96e-07   REPRODUCED
+  increment p.c., N_h = 138240                                  printed       1.8299e-08   recomputed       1.8299e-08   rel  +1.71e-07   REPRODUCED
+  increment x N^2, hat, N_h = 138240                            printed      0.000877443   recomputed      0.000877443   rel  -3.38e-08   REPRODUCED
+  deviation of the increment, N_h = 138240                      printed        -0.000669   recomputed     -0.000693334   rel  -3.64e-02   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 138240               printed        -0.005797   recomputed      -0.00579259   rel  +7.60e-04   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 276480                                    printed      2.10174e-07   recomputed      2.10174e-07   rel  -1.57e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 276480                                     printed      3.66209e-08   recomputed       3.6621e-08   rel  +8.46e-08   REPRODUCED
+  increment p.c., N_h = 276480                                  printed      1.82991e-08   recomputed      1.82991e-08   rel  +2.71e-07   REPRODUCED
+  increment x N^2, hat, N_h = 276480                            printed      0.000877481   recomputed      0.000877481   rel  -1.20e-08   REPRODUCED
+  deviation of the increment, N_h = 276480                      printed        -0.000167   recomputed     -0.000191509   rel  -1.47e-01   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 276480               printed        -0.001449   recomputed       -0.0014485   rel  +3.42e-04   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 552960                                    printed      2.28473e-07   recomputed      2.28473e-07   rel  +1.97e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 552960                                     printed       3.6621e-08   recomputed       3.6621e-08   rel  +1.25e-07   REPRODUCED
+  increment p.c., N_h = 552960                                  printed      1.82991e-08   recomputed      1.82991e-08   rel  -1.14e-07   REPRODUCED
+  increment x N^2, hat, N_h = 552960                            printed      0.000877491   recomputed      0.000877491   rel  -5.48e-07   REPRODUCED
+  deviation of the increment, N_h = 552960                      printed         -4.2e-05   recomputed     -6.60475e-05   rel  -5.73e-01   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 552960               printed        -0.000362   recomputed      -0.00040807   rel  -1.27e-01   REPRODUCED   [recomputed from the double-precision self-energy]
+  -Y(i,i) p.c., N_h = 1105920                                   printed      2.46772e-07   recomputed      2.46772e-07   rel  +1.16e-07   REPRODUCED
+  -Y(i,i) hat, N_h = 1105920                                    printed       3.6621e-08   recomputed       3.6621e-08   rel  +2.03e-07   REPRODUCED
+  increment p.c., N_h = 1105920                                 printed      1.82991e-08   recomputed      1.82991e-08   rel  +2.00e-07   REPRODUCED
+  increment x N^2, hat, N_h = 1105920                           printed      0.000877493   recomputed      0.000877489   rel  -4.70e-06   REPRODUCED
+  deviation of the increment, N_h = 1105920                     printed           -1e-05   recomputed     -3.46817e-05   rel  -2.47e+00   REPRODUCED   [recomputed from the double-precision self-energy]
+  deviation of increment x N^2, hat, N_h = 1105920              printed         -9.1e-05   recomputed     -0.000561295   rel  -5.17e+00   REPRODUCED   [recomputed from the double-precision self-energy]
+
+====================================================================================================
+Table 6(a)
+====================================================================================================
+  bracket, N_h = 540                                            printed          1.72194   recomputed          1.72194   rel  +8.16e-08   REPRODUCED
+  bracket, N_h = 1080                                           printed          2.41509   recomputed          2.41509   rel  +1.33e-07   REPRODUCED
+  bracket, N_h = 2160                                           printed          3.10824   recomputed          3.10824   rel  -1.60e-07   REPRODUCED
+  bracket, N_h = 4320                                           printed          3.80139   recomputed          3.80139   rel  -8.36e-08   REPRODUCED
+  bracket, N_h = 8640                                           printed          4.49453   recomputed          4.49453   rel  -3.05e-08   REPRODUCED
+  bracket, N_h = 17280                                          printed          5.18768   recomputed          5.18768   rel  +8.34e-09   REPRODUCED
+  bracket, N_h = 34560                                          printed          5.88083   recomputed          5.88083   rel  +3.81e-08   REPRODUCED
+  bracket, N_h = 69120                                          printed          6.57397   recomputed          6.57397   rel  +6.15e-08   REPRODUCED
+  bracket, N_h = 138240                                         printed          7.26712   recomputed          7.26712   rel  -5.71e-08   REPRODUCED
+  bracket, N_h = 276480                                         printed          7.96027   recomputed          7.96027   rel  -2.95e-08   REPRODUCED
+  bracket, N_h = 552960                                         printed          8.65342   recomputed          8.65342   rel  -6.23e-09   REPRODUCED
+  bracket, N_h = 1105920                                        printed          9.34656   recomputed          9.34656   rel  +1.35e-08   REPRODUCED
+
+====================================================================================================
+Sec. 6.2
+====================================================================================================
+  growth of the bracket over the released sweep (%)             printed            442.8   recomputed          442.791   rel  -1.95e-05   ARITHMETIC
+  drift of B_g1, piecewise-constant (%)                         printed            0.703   recomputed         0.703202   rel  +2.87e-04   ARITHMETIC
+  drift of B_g1, hat (%)                                        printed            0.023   recomputed        0.0231027   rel  +4.47e-03   ARITHMETIC
+
+====================================================================================================
+Table 6(a)
+====================================================================================================
+  B_g1 columns                                                  printed 1.078648295 ... 1.086233369   recomputed                    rel              NOT-FROM-MS   [an output of the coupled model; the recomputation checks only the bracket, the increments and the ratios]
+
+====================================================================================================
+Table 7(a)
+====================================================================================================
+  bracket at M_s = 540                                          printed          1.72194   recomputed          1.72194   rel  -5.25e-08   REPRODUCED
+  bracket at M_s = 1080                                         printed          1.72194   recomputed          1.72194   rel  +8.16e-08   REPRODUCED
+  bracket at M_s = 2160                                         printed          1.72195   recomputed          1.72195   rel  +1.15e-07   REPRODUCED
+  bracket at M_s = 4320                                         printed          1.72195   recomputed          1.72195   rel  +2.69e-07   REPRODUCED
+  bracket at M_s = 8640                                         printed          1.72195   recomputed          1.72195   rel  -2.74e-07   REPRODUCED
+  movement of the bracket over a factor 16 in tiling (%)        printed           0.0003   recomputed       0.00032632   rel  +8.77e-02   REPRODUCED
+  ratio |self term| / bracket movement                          printed              644   recomputed           643.54   rel  -7.14e-04   ARITHMETIC
+
+====================================================================================================
+Table 7(b)
+====================================================================================================
+  dispersion over six tilings, Bg1 p.c. (%)                     printed             0.44   recomputed         0.440968   rel              ARITHMETIC   [printed value consistent with [0.435858, 0.446079] implied by the printed columns]
+  dispersion over six tilings, Bg1 hat (%)                      printed            0.496   recomputed         0.495975   rel              ARITHMETIC   [printed value consistent with [0.495045, 0.496906] implied by the printed columns]
+  dispersion over six tilings, nu8 p.c. (%)                     printed           26.126   recomputed          26.1242   rel              ARITHMETIC   [printed value consistent with [26.1173, 26.1312] implied by the printed columns]
+  dispersion over six tilings, nu8 hat (%)                      printed           28.514   recomputed          28.5124   rel              ARITHMETIC   [printed value consistent with [25.9843, 31.0186] implied by the printed columns]
+
+====================================================================================================
+Table 7(b) cont.
+====================================================================================================
+  dispersion over six tilings, lambda peak p.c. (%)             printed            0.612   recomputed         0.611715   rel              ARITHMETIC   [printed value consistent with [0.609605, 0.613824] implied by the printed columns]
+  dispersion over the five finest, lambda peak p.c. (%)         printed            0.176   recomputed          0.17567   rel              ARITHMETIC   [printed value consistent with [0.175287, 0.176053] implied by the printed columns]
+  dispersion over six tilings, L_a p.c. (%)                     printed            1.766   recomputed          1.76562   rel              ARITHMETIC   [printed value consistent with [1.7656, 1.76564] implied by the printed columns]
+  dispersion over the five finest, L_a p.c. (%)                 printed             0.39   recomputed         0.389758   rel              ARITHMETIC   [printed value consistent with [0.389739, 0.389778] implied by the printed columns]
+  dispersion over six tilings, M p.c. (%)                       printed            2.039   recomputed          2.03923   rel              ARITHMETIC   [printed value consistent with [2.03877, 2.03968] implied by the printed columns]
+  dispersion over the five finest, M p.c. (%)                   printed            0.453   recomputed         0.453356   rel              ARITHMETIC   [printed value consistent with [0.452906, 0.453807] implied by the printed columns]
+  dispersion over six tilings, L_d p.c. (%)                     printed            1.777   recomputed          1.77706   rel              ARITHMETIC   [printed value consistent with [1.77611, 1.77801] implied by the printed columns]
+  dispersion over the five finest, L_d p.c. (%)                 printed            0.392   recomputed         0.392423   rel              ARITHMETIC   [printed value consistent with [0.391472, 0.393375] implied by the printed columns]
+  dispersion over six tilings, lambda peak hat (%)              printed            0.708   recomputed         0.708333   rel              ARITHMETIC   [printed value consistent with [0.707949, 0.708717] implied by the printed columns]
+  dispersion over the five finest, lambda peak hat (%)          printed            0.138   recomputed         0.138226   rel              ARITHMETIC   [printed value consistent with [0.137843, 0.138609] implied by the printed columns]
+  dispersion over six tilings, L_a hat (%)                      printed            1.964   recomputed          1.96362   rel              ARITHMETIC   [printed value consistent with [1.9636, 1.96364] implied by the printed columns]
+  dispersion over the five finest, L_a hat (%)                  printed            0.345   recomputed          0.34473   rel              ARITHMETIC   [printed value consistent with [0.34471, 0.34475] implied by the printed columns]
+  dispersion over six tilings, M hat (%)                        printed            2.251   recomputed          2.25102   rel              ARITHMETIC   [printed value consistent with [2.25056, 2.25147] implied by the printed columns]
+  dispersion over the five finest, M hat (%)                    printed              0.4   recomputed         0.399622   rel              ARITHMETIC   [printed value consistent with [0.399171, 0.400073] implied by the printed columns]
+  dispersion over six tilings, L_d hat (%)                      printed            1.976   recomputed          1.97566   rel              ARITHMETIC   [printed value consistent with [1.97555, 1.97576] implied by the printed columns]
+  dispersion over the five finest, L_d hat (%)                  printed            0.347   recomputed         0.347011   rel              ARITHMETIC   [printed value consistent with [0.346907, 0.347115] implied by the printed columns]
+  identity L_d = L_a - M, p.c. (worst residual, mH)             printed                0   recomputed            1e-05   rel              ARITHMETIC
+  identity L_d = L_a - M, hat (worst residual, mH)              printed                0   recomputed            1e-05   rel              ARITHMETIC
+
+====================================================================================================
+Table 7(d)
+====================================================================================================
+  deviation p.c., B_g1 (T) (%)                                  printed            0.279   recomputed         0.278814   rel              ARITHMETIC   [printed value consistent with [0.278721, 0.278907] implied by the printed columns]
+  deviation hat, B_g1 (T) (%)                                   printed            0.226   recomputed         0.226141   rel              ARITHMETIC   [printed value consistent with [0.226048, 0.226234] implied by the printed columns]
+  deviation p.c., nu = 8 (T) (%)                                printed            -8.12   recomputed         -8.11883   rel              ARITHMETIC   [printed value consistent with [-8.12371, -8.11395] implied by the printed columns]
+  deviation hat, nu = 8 (T) (%)                                 printed            -5.19   recomputed         -5.19381   rel              ARITHMETIC   [printed value consistent with [-5.19877, -5.18886] implied by the printed columns]
+  deviation p.c., nu = 22 (T) (%)                               printed             7.56   recomputed           7.5641   rel              ARITHMETIC   [printed value consistent with [7.54616, 7.58205] implied by the printed columns]
+  deviation hat, nu = 22 (T) (%)                                printed            10.49   recomputed          10.4884   rel              ARITHMETIC   [printed value consistent with [10.47, 10.5068] implied by the printed columns]
+  deviation p.c., lambda peak (Wb) (%)                          printed             1.11   recomputed          1.11409   rel              ARITHMETIC   [printed value consistent with [1.1137, 1.11448] implied by the printed columns]
+  deviation hat, lambda peak (Wb) (%)                           printed             1.04   recomputed          1.04131   rel              ARITHMETIC   [printed value consistent with [1.04092, 1.0417] implied by the printed columns]
+
+====================================================================================================
+Table 12
+====================================================================================================
+  B_g1 (T) / mesh n_sh=1 (%)                                    printed             0.31   recomputed         0.308967   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_g1 (T) / mesh n_sh=2 (%)                                    printed             0.42   recomputed         0.421572   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_g1 (T) / lumped (%)                                         printed             0.28   recomputed         0.279187   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  |B_r| mean (T) / mesh n_sh=1 (%)                              printed             0.12   recomputed         0.119594   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  |B_r| mean (T) / mesh n_sh=2 (%)                              printed             0.24   recomputed         0.239187   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  |B_r| mean (T) / lumped (%)                                   printed             0.07   recomputed        0.0735961   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_r peak (T) / mesh n_sh=1 (%)                                printed            -1.03   recomputed         -1.03156   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_r peak (T) / mesh n_sh=2 (%)                                printed            -1.55   recomputed         -1.55138   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_r peak (T) / lumped (%)                                     printed            -0.48   recomputed        -0.477426   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_t rms (T) / mesh n_sh=1 (%)                                 printed             3.22   recomputed          3.21927   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_t rms (T) / mesh n_sh=2 (%)                                 printed             1.14   recomputed          1.14063   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  B_t rms (T) / lumped (%)                                      printed             7.43   recomputed          7.43659   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  slot sideband nu=8 (T) / mesh n_sh=1 (%)                      printed           -13.34   recomputed         -13.3266   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  slot sideband nu=8 (T) / mesh n_sh=2 (%)                      printed           -19.58   recomputed         -19.5829   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  slot sideband nu=8 (T) / lumped (%)                           printed            -8.12   recomputed         -8.13835   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux line A (Wb/m) / mesh n_sh=1 (%)                          printed             0.11   recomputed         0.102477   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux line A (Wb/m) / mesh n_sh=2 (%)                          printed             0.22   recomputed         0.222032   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux line A (Wb/m) / lumped (%)                               printed             0.09   recomputed        0.0853971   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux linkage, peak (Wb) / mesh n_sh=1 (%)                     printed             0.24   recomputed         0.236132   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux linkage, peak (Wb) / mesh n_sh=2 (%)                     printed             0.29   recomputed         0.290326   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  flux linkage, peak (Wb) / lumped (%)                          printed             1.11   recomputed          1.11485   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per magnet (A) / mesh n_sh=1 (%)                          printed            -1.01   recomputed         -1.00995   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per magnet (A) / mesh n_sh=2 (%)                          printed            -1.31   recomputed         -1.31471   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per magnet (A) / lumped (%)                               printed            -0.85   recomputed        -0.849054   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per gap (A) / mesh n_sh=1 (%)                             printed             -1.4   recomputed         -1.40235   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per gap (A) / mesh n_sh=2 (%)                             printed            -1.33   recomputed         -1.33388   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF per gap (A) / lumped (%)                                  printed             0.49   recomputed         0.493414   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF dispersion (%) / mesh n_sh=1 (%)                          printed            -3.27   recomputed         -3.28018   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF dispersion (%) / mesh n_sh=2 (%)                          printed             -9.5   recomputed         -9.50645   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  MMF dispersion (%) / lumped (%)                               printed             3.42   recomputed          3.41686   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  phase back-EMF, peak (V) / mesh n_sh=1 (%)                    printed             2.48   recomputed          2.48121   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  phase back-EMF, peak (V) / mesh n_sh=2 (%)                    printed             2.48   recomputed          2.48336   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  phase back-EMF, peak (V) / lumped (%)                         printed             3.37   recomputed          3.36693   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  six-step envelope (V) / mesh n_sh=1 (%)                       printed             1.01   recomputed          1.00844   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  six-step envelope (V) / mesh n_sh=2 (%)                       printed             1.03   recomputed          1.02779   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  six-step envelope (V) / lumped (%)                            printed             1.91   recomputed           1.9136   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_a (mH) / mesh n_sh=1 (%)                                    printed             0.34   recomputed         0.338585   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_a (mH) / mesh n_sh=2 (%)                                    printed             0.55   recomputed         0.547711   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_a (mH) / lumped (%)                                         printed             1.12   recomputed           1.1233   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  M (mH) / mesh n_sh=1 (%)                                      printed            -5.48   recomputed         -5.48523   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  M (mH) / mesh n_sh=2 (%)                                      printed            -5.24   recomputed         -5.25082   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  M (mH) / lumped (%)                                           printed             4.09   recomputed          4.07876   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_d (mH) / mesh n_sh=1 (%)                                    printed              0.1   recomputed         0.101257   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_d (mH) / mesh n_sh=2 (%)                                    printed             0.31   recomputed         0.311413   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  L_d (mH) / lumped (%)                                         printed             1.24   recomputed          1.24374   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_r / mesh n_sh=1 (%)                                         printed            -1.49   recomputed         -1.49412   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_r / mesh n_sh=2 (%)                                         printed            -1.87   recomputed         -1.86581   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_r / lumped (%)                                              printed             -3.2   recomputed         -3.19524   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_l / mesh n_sh=1 (%)                                         printed            -1.61   recomputed         -1.61088   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_l / mesh n_sh=2 (%)                                         printed            -1.56   recomputed         -1.56245   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+  k_l / lumped (%)                                              printed            -1.56   recomputed         -1.55899   rel              ARITHMETIC   [deviation formed at full precision and rounded once, Sec. 5.3]
+
+====================================================================================================
+Sec. 7.4
+====================================================================================================
+  count, mesh closer / lumped closer  ('within one quantity')   printed                1   recomputed                1   rel  +0.00e+00   ARITHMETIC   [mesh 8, lumped 9]
+
+====================================================================================================
+Sec. 8
+====================================================================================================
+  'thirteen of the seventeen' move away under shoe refinement   printed               13   recomputed               12   rel  -7.69e-02   ARITHMETIC   [away 12, toward 5]
+
+====================================================================================================
+Table 12
+====================================================================================================
+  identity L_d = L_a - M (worst residual, mH)                   printed                0   recomputed      7.10543e-15   rel              ARITHMETIC
+
+====================================================================================================
+Sec. 7.1
+====================================================================================================
+  g' (mm)                                                       printed           4.3686   recomputed          4.36862   rel  +5.42e-06   REPRODUCED
+  tau_s (mm)                                                    printed          14.5259   recomputed          14.5259   rel  -9.18e-07   REPRODUCED
+  x                                                             printed          0.22891   recomputed         0.228905   rel  -2.16e-05   REPRODUCED
+  gamma, exact form (43)                                        printed         0.033072   recomputed        0.0330719   rel  -2.12e-06   REPRODUCED
+  k_C, exact form (43)                                          printed          1.01005   recomputed          1.01005   rel  +2.20e-07   REPRODUCED
+  gamma, approximate form                                       printed         0.038402   recomputed        0.0384019   rel  -3.55e-06   REPRODUCED
+  k_C, approximate form                                         printed          1.01168   recomputed          1.01168   rel  +2.05e-07   REPRODUCED
+  difference between the two forms (%)                          printed             0.16   recomputed         0.162169   rel  +1.36e-02   REPRODUCED
+
+====================================================================================================
+Sec. 6.6
+====================================================================================================
+  slotting frequency seen from the rotor (Hz)                   printed              422   recomputed              422   rel  +0.00e+00   REPRODUCED
+  magnet conductivity (S/m)                                     printed           555556   recomputed           555556   rel  -8.00e-07   REPRODUCED
+  skin depth (mm)                                               printed            32.25   recomputed          32.2472   rel  -8.60e-05   REPRODUCED   [mu = mu0 mu_r]
+  skin depth / magnet thickness                                 printed              9.2   recomputed          9.21349   rel  +1.47e-03   REPRODUCED
+
+====================================================================================================
+Sec. 6.9
+====================================================================================================
+  sweep as a fraction of 128 independent solutions (%)          printed             0.84   recomputed         0.837556   rel  -2.91e-03   ARITHMETIC
+  marginal cost with reassembly (ms)                            printed              108   recomputed          107.734   rel  -2.46e-03   ARITHMETIC
+  factor on the sweep                                           printed              115   recomputed          115.882   rel  +7.67e-03   ARITHMETIC
+  per-position cost of the 721-position sweep (ms)              printed             4.16   recomputed          4.16089   rel  +2.13e-04   ARITHMETIC
+
+====================================================================================================
+Sec. 7.1
+====================================================================================================
+  factor, invariant operator against sliding interface          printed             12.7   recomputed            12.75   rel  +3.94e-03   ARITHMETIC
+
+====================================================================================================
+checks: 251   agreeing: 248   mismatches: 0   not reproducible from the manuscript: 1   skipped: 2
+VERDICT: PASS
+====================================================================================================
+written: /sessions/rcw-01phztfroaypjms8clzjwyqf/mnt/mec-dtn-airgap-pmsm/validation/independent/results/independent_verification.csv
